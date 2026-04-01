@@ -169,3 +169,118 @@ export const DangerText: Story = {
     variant: "text",
   },
 };
+
+export const Loading: Story = {
+  render: () => (
+    <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+      <Button color="primary" variant="contained" loading>
+        Loading
+      </Button>
+      <Button color="neutral" variant="contained" loading>
+        Loading
+      </Button>
+      <Button color="success" variant="contained" loading>
+        Loading
+      </Button>
+      <Button color="danger" variant="contained" loading>
+        Loading
+      </Button>
+      <Button color="warning" variant="contained" loading>
+        Loading
+      </Button>
+      <Button color="info" variant="contained" loading>
+        Loading
+      </Button>
+    </div>
+  ),
+};
+
+export const LoadingSubtlest: Story = {
+  render: () => (
+    <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+      <Button color="primary" variant="subtlest" loading>
+        Loading
+      </Button>
+      <Button color="neutral" variant="subtlest" loading>
+        Loading
+      </Button>
+      <Button color="success" variant="subtlest" loading>
+        Loading
+      </Button>
+      <Button color="danger" variant="subtlest" loading>
+        Loading
+      </Button>
+      <Button color="warning" variant="subtlest" loading>
+        Loading
+      </Button>
+      <Button color="info" variant="subtlest" loading>
+        Loading
+      </Button>
+    </div>
+  ),
+};
+
+export const LoadingText: Story = {
+  render: () => (
+    <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+      <Button color="primary" variant="text" loading>
+        Loading
+      </Button>
+      <Button color="neutral" variant="text" loading>
+        Loading
+      </Button>
+      <Button color="success" variant="text" loading>
+        Loading
+      </Button>
+      <Button color="danger" variant="text" loading>
+        Loading
+      </Button>
+      <Button color="warning" variant="text" loading>
+        Loading
+      </Button>
+      <Button color="info" variant="text" loading>
+        Loading
+      </Button>
+    </div>
+  ),
+};
+
+export const LoadingAndDisabledStates: Story = {
+  parameters: { layout: "padded" },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "24px", padding: "16px" }}>
+      <section>
+        <h3 style={{ margin: "0 0 12px", color: "var(--color-font)", fontSize: "14px", fontWeight: 600 }}>Normal State</h3>
+        <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+          <Button color="primary" variant="contained">Contained</Button>
+          <Button color="primary" variant="subtlest">Subtlest</Button>
+          <Button color="primary" variant="text">Text</Button>
+        </div>
+      </section>
+
+      <section>
+        <h3 style={{ margin: "0 0 12px", color: "var(--color-font)", fontSize: "14px", fontWeight: 600 }}>Loading State (spinner + 60% opacity, disabled interaction)</h3>
+        <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+          <Button color="primary" variant="contained" loading>Contained</Button>
+          <Button color="primary" variant="subtlest" loading>Subtlest</Button>
+          <Button color="primary" variant="text" loading>Text</Button>
+          <Button color="success" variant="contained" loading>Success</Button>
+          <Button color="danger" variant="contained" loading>Danger</Button>
+          <Button color="warning" variant="contained" loading>Warning</Button>
+        </div>
+      </section>
+
+      <section>
+        <h3 style={{ margin: "0 0 12px", color: "var(--color-font)", fontSize: "14px", fontWeight: 600 }}>Disabled State (60% opacity, disabled cursor)</h3>
+        <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+          <Button color="primary" variant="contained" disabled>Contained</Button>
+          <Button color="primary" variant="subtlest" disabled>Subtlest</Button>
+          <Button color="primary" variant="text" disabled>Text</Button>
+          <Button color="success" variant="contained" disabled>Success</Button>
+          <Button color="danger" variant="contained" disabled>Danger</Button>
+          <Button color="warning" variant="contained" disabled>Warning</Button>
+        </div>
+      </section>
+    </div>
+  ),
+};
