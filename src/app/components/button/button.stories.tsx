@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+
 import { Button } from "./button";
 
 const meta: Meta<typeof Button> = {
@@ -40,32 +41,68 @@ export const AllColors: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
       <h3 style={{ margin: 0, color: "var(--color-font)" }}>Contained</h3>
       <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-        <Button color="primary" variant="contained">Primary</Button>
-        <Button color="neutral" variant="contained">Neutral</Button>
-        <Button color="success" variant="contained">Success</Button>
-        <Button color="danger" variant="contained">Danger</Button>
-        <Button color="warning" variant="contained">Warning</Button>
-        <Button color="info" variant="contained">Info</Button>
+        <Button color="primary" variant="contained">
+          Primary
+        </Button>
+        <Button color="neutral" variant="contained">
+          Neutral
+        </Button>
+        <Button color="success" variant="contained">
+          Success
+        </Button>
+        <Button color="danger" variant="contained">
+          Danger
+        </Button>
+        <Button color="warning" variant="contained">
+          Warning
+        </Button>
+        <Button color="info" variant="contained">
+          Info
+        </Button>
       </div>
 
       <h3 style={{ margin: 0, color: "var(--color-font)" }}>Subtlest</h3>
       <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-        <Button color="primary" variant="subtlest">Primary</Button>
-        <Button color="neutral" variant="subtlest">Neutral</Button>
-        <Button color="success" variant="subtlest">Success</Button>
-        <Button color="danger" variant="subtlest">Danger</Button>
-        <Button color="warning" variant="subtlest">Warning</Button>
-        <Button color="info" variant="subtlest">Info</Button>
+        <Button color="primary" variant="subtlest">
+          Primary
+        </Button>
+        <Button color="neutral" variant="subtlest">
+          Neutral
+        </Button>
+        <Button color="success" variant="subtlest">
+          Success
+        </Button>
+        <Button color="danger" variant="subtlest">
+          Danger
+        </Button>
+        <Button color="warning" variant="subtlest">
+          Warning
+        </Button>
+        <Button color="info" variant="subtlest">
+          Info
+        </Button>
       </div>
 
       <h3 style={{ margin: 0, color: "var(--color-font)" }}>Text</h3>
       <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-        <Button color="primary" variant="text">Primary</Button>
-        <Button color="neutral" variant="text">Neutral</Button>
-        <Button color="success" variant="text">Success</Button>
-        <Button color="danger" variant="text">Danger</Button>
-        <Button color="warning" variant="text">Warning</Button>
-        <Button color="info" variant="text">Info</Button>
+        <Button color="primary" variant="text">
+          Primary
+        </Button>
+        <Button color="neutral" variant="text">
+          Neutral
+        </Button>
+        <Button color="success" variant="text">
+          Success
+        </Button>
+        <Button color="danger" variant="text">
+          Danger
+        </Button>
+        <Button color="warning" variant="text">
+          Warning
+        </Button>
+        <Button color="info" variant="text">
+          Info
+        </Button>
       </div>
     </div>
   ),
@@ -74,8 +111,12 @@ export const AllColors: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-      <Button size="md" color="primary" variant="contained">Medium</Button>
-      <Button size="lg" color="primary" variant="contained">Large</Button>
+      <Button size="md" color="primary" variant="contained">
+        Medium
+      </Button>
+      <Button size="lg" color="primary" variant="contained">
+        Large
+      </Button>
     </div>
   ),
 };
@@ -83,12 +124,24 @@ export const Sizes: Story = {
 export const Disabled: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-      <Button color="primary" variant="contained" disabled>Primary</Button>
-      <Button color="neutral" variant="contained" disabled>Neutral</Button>
-      <Button color="success" variant="contained" disabled>Success</Button>
-      <Button color="danger" variant="contained" disabled>Danger</Button>
-      <Button color="warning" variant="contained" disabled>Warning</Button>
-      <Button color="info" variant="contained" disabled>Info</Button>
+      <Button color="primary" variant="contained" disabled>
+        Primary
+      </Button>
+      <Button color="neutral" variant="contained" disabled>
+        Neutral
+      </Button>
+      <Button color="success" variant="contained" disabled>
+        Success
+      </Button>
+      <Button color="danger" variant="contained" disabled>
+        Danger
+      </Button>
+      <Button color="warning" variant="contained" disabled>
+        Warning
+      </Button>
+      <Button color="info" variant="contained" disabled>
+        Info
+      </Button>
     </div>
   ),
 };
