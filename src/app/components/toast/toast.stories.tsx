@@ -3,6 +3,39 @@ import { toast, ToastContainer } from "react-toastify";
 import { Theme } from "@app/store/theme.store";
 import { Toast } from "./toast";
 
+// Spinner component for loading toast
+const Spinner = () => (
+  <svg
+    className="toast-spinner"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    style={{
+      display: "inline-block",
+      width: "1rem",
+      height: "1rem",
+      animation: "spin 1s linear infinite",
+      marginRight: "0.5rem",
+      flexShrink: 0,
+    }}
+  >
+    <circle
+      cx="12"
+      cy="12"
+      r="10"
+      stroke="var(--color-border-info)"
+      strokeWidth="3"
+      strokeLinecap="round"
+      style={{ opacity: 0.25 }}
+    />
+    <path
+      fill="var(--color-border-info)"
+      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+      style={{ opacity: 0.75 }}
+    />
+  </svg>
+);
+
 const meta: Meta<typeof Toast> = {
   title: "Components/Toast",
   component: Toast,
@@ -36,6 +69,24 @@ const ToastDemo = ({ theme }: { theme: Theme }) => {
     toast.info("New updates are available. Click to refresh.", {
       toastId: "info",
     });
+    toast(
+      () => (
+        <span style={{ display: "flex", alignItems: "center" }}>
+          <Spinner />
+          Processing your request...
+        </span>
+      ),
+      {
+        type: "loading",
+        toastId: "loading",
+        autoClose: false,
+      }
+    );
+    toast("This action is disabled.", {
+      type: "disabled",
+      toastId: "disabled",
+      autoClose: false,
+    });
   };
 
   return (
@@ -65,6 +116,34 @@ const ToastDemo = ({ theme }: { theme: Theme }) => {
           className="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600"
         >
           Show Info Toast
+        </button>
+        <button
+          onClick={() =>
+            toast(
+              () => (
+                <span style={{ display: "flex", alignItems: "center" }}>
+                  <Spinner />
+                  Processing your request...
+                </span>
+              ),
+              {
+                type: "loading",
+                autoClose: false,
+              }
+            )
+          }
+          className="px-4 py-2 rounded bg-slate-500 text-white hover:bg-slate-600"
+        >
+          Show Loading Toast
+        </button>
+        <button
+          onClick={() => toast("This action is disabled.", {
+            type: "disabled",
+            autoClose: false,
+          })}
+          className="px-4 py-2 rounded bg-gray-500 text-white hover:bg-gray-600"
+        >
+          Show Disabled Toast
         </button>
         <button
           onClick={showToasts}
@@ -139,6 +218,8 @@ const getToastBorderClass = (type?: string) => {
     case "error": return "border-border-danger";
     case "warning": return "border-border-warning";
     case "info": return "border-border-info";
+    case "loading": return "border-border-info";
+    case "disabled": return "border-border-subtle";
     default: return "border-border";
   }
 };
@@ -154,6 +235,11 @@ const ToastDemoStaticLight = () => {
       toast.error("Failed to update issue. Please try again.", { toastId: "sl2", autoClose: false });
       toast.warning("You are running low on storage space.", { toastId: "sl3", autoClose: false });
       toast.info("New updates are available. Click to refresh.", { toastId: "sl4", autoClose: false });
+      toast(
+        () => <span style={{ display: "flex", alignItems: "center" }}><Spinner />Processing your request...</span>,
+        { type: "loading", toastId: "sl5", autoClose: false }
+      );
+      toast("This action is disabled.", { type: "disabled", toastId: "sl6", autoClose: false });
     }, 50);
   }
   return null;
@@ -209,6 +295,11 @@ const ToastDemoStaticDark = () => {
       toast.error("Failed to update issue. Please try again.", { toastId: "sd2", autoClose: false });
       toast.warning("You are running low on storage space.", { toastId: "sd3", autoClose: false });
       toast.info("New updates are available. Click to refresh.", { toastId: "sd4", autoClose: false });
+      toast(
+        () => <span style={{ display: "flex", alignItems: "center" }}><Spinner />Processing your request...</span>,
+        { type: "loading", toastId: "sd5", autoClose: false }
+      );
+      toast("This action is disabled.", { type: "disabled", toastId: "sd6", autoClose: false });
     }, 50);
   }
   return null;

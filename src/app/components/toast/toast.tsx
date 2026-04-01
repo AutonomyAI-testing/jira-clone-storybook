@@ -40,6 +40,10 @@ const getToastClasses = (type?: string) => {
       return "border-border-warning";
     case "info":
       return "border-border-info";
+    case "loading":
+      return "border-border-info";
+    case "disabled":
+      return "border-border-subtle";
     default:
       return "border-border";
   }
