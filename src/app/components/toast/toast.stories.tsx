@@ -87,6 +87,11 @@ const ToastDemo = ({ theme }: { theme: Theme }) => {
       toastId: "disabled",
       autoClose: false,
     });
+    toast("This is a blue theme notification.", {
+      type: "blue",
+      toastId: "blue",
+      autoClose: false,
+    });
   };
 
   return (
@@ -146,6 +151,15 @@ const ToastDemo = ({ theme }: { theme: Theme }) => {
           Show Disabled Toast
         </button>
         <button
+          onClick={() => toast("This is a blue theme notification.", {
+            type: "blue",
+            autoClose: false,
+          })}
+          className="px-4 py-2 rounded bg-indigo-500 text-white hover:bg-indigo-600"
+        >
+          Show Blue Toast
+        </button>
+        <button
           onClick={showToasts}
           className="px-4 py-2 rounded bg-purple-500 text-white hover:bg-purple-600"
         >
@@ -175,6 +189,7 @@ export const AllToastsLight: Story = {
   render: () => {
     const toastTheme = "light";
     const toastClassName = (type?: string) => `
+      Toastify__toast--${type || "default"}
       relative flex items-center gap-3 rounded-lg px-4 py-3 shadow-md
       font-primary text-sm text-font
       bg-elevation-surface-overlay border border-solid
@@ -220,6 +235,7 @@ const getToastBorderClass = (type?: string) => {
     case "info": return "border-border-info";
     case "loading": return "border-border-info";
     case "disabled": return "border-border-subtle";
+    case "blue": return "border-border-accent-blue";
     default: return "border-border";
   }
 };
@@ -240,6 +256,7 @@ const ToastDemoStaticLight = () => {
         { type: "loading", toastId: "sl5", autoClose: false }
       );
       toast("This action is disabled.", { type: "disabled", toastId: "sl6", autoClose: false });
+      toast("This is a blue theme notification.", { type: "blue", toastId: "sl7", autoClose: false });
     }, 50);
   }
   return null;
@@ -249,6 +266,7 @@ export const AllToastsDark: Story = {
   render: () => {
     const toastTheme = "dark";
     const toastClassName = (type?: string) => `
+      Toastify__toast--${type || "default"}
       relative flex items-center gap-3 rounded-lg px-4 py-3 shadow-md
       font-primary text-sm text-font
       bg-elevation-surface-overlay border border-solid
@@ -300,6 +318,7 @@ const ToastDemoStaticDark = () => {
         { type: "loading", toastId: "sd5", autoClose: false }
       );
       toast("This action is disabled.", { type: "disabled", toastId: "sd6", autoClose: false });
+      toast("This is a blue theme notification.", { type: "blue", toastId: "sd7", autoClose: false });
     }, 50);
   }
   return null;

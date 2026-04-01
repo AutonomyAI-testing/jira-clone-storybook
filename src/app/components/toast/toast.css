@@ -69,6 +69,15 @@
   );
 }
 
+.Toastify__toast--blue .Toastify__progress-bar,
+.Toastify__progress-bar--blue {
+  background: linear-gradient(
+    to right,
+    var(--color-border-accent-blue),
+    var(--color-font-accent-blue)
+  );
+}
+
 /* Toast body content */
 .Toastify__toast-body {
   padding: 0;
@@ -108,6 +117,10 @@
 
 .Toastify__toast--info {
   border-left: 3px solid var(--color-border-info);
+}
+
+.Toastify__toast--blue {
+  border-left: 3px solid var(--color-border-accent-blue);
 }
 
 .Toastify__toast--loading {

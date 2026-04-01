@@ -19,6 +19,7 @@ export const Toast = ({ theme }: Props) => {
       theme={toastTheme}
       className="toast-container"
       toastClassName={({ type }) => `
+        Toastify__toast--${type || "default"}
         relative flex items-center gap-3 rounded-lg px-4 py-3 shadow-md
         font-primary text-sm text-font
         bg-elevation-surface-overlay border border-solid
@@ -44,6 +45,8 @@ const getToastClasses = (type?: string) => {
       return "border-border-info";
     case "disabled":
       return "border-border-subtle";
+    case "blue":
+      return "border-border-accent-blue";
     default:
       return "border-border";
   }
