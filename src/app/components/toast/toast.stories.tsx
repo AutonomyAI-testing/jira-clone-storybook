@@ -24,60 +24,90 @@ const meta: Meta<typeof Toast> = {
 export default meta;
 type Story = StoryObj<typeof Toast>;
 
-const text = "This is the alert text";
+const successMessage = "✨ Success! Operation completed successfully.";
+const errorMessage = "❌ Error! Something went wrong. Please try again.";
+const warningMessage = "⚠️ Warning! Please review before proceeding.";
+const infoMessage = "ℹ️ Info! Here's something you should know.";
 
 export const Default: Story = {
   render: () => (
-    <div className="grid grid-cols-4 gap-4 p-4">
-      {[SuccessAlert, WarningAlert, DangerAlert, InfoAlert].map(
-        (ComponentAlert, index) => (
-          <ComponentAlert key={index} />
-        )
-      )}
+    <div className="grid grid-cols-1 gap-4 p-4">
+      <Button
+        color="success"
+        variant="contained"
+        onClick={() => toast.success(successMessage)}
+      >
+        Show Success Toast
+      </Button>
+      <Button
+        color="danger"
+        variant="contained"
+        onClick={() => toast.error(errorMessage)}
+      >
+        Show Error Toast
+      </Button>
+      <Button
+        color="warning"
+        variant="contained"
+        onClick={() => toast.warning(warningMessage)}
+      >
+        Show Warning Toast
+      </Button>
+      <Button
+        color="info"
+        variant="contained"
+        onClick={() => toast.info(infoMessage)}
+      >
+        Show Info Toast
+      </Button>
     </div>
   ),
 };
 
-const SuccessAlert = () => (
-  <Button
-    color="success"
-    variant="subtlest"
-    onClick={() => toast.success(text)}
-  >
-    Success
-  </Button>
-);
 export const Success: Story = {
-  render: () => <SuccessAlert />,
+  render: () => (
+    <Button
+      color="success"
+      variant="contained"
+      onClick={() => toast.success(successMessage)}
+    >
+      Show Success Toast
+    </Button>
+  ),
 };
 
-const WarningAlert = () => (
-  <Button
-    color="warning"
-    variant="subtlest"
-    onClick={() => toast.warning(text)}
-  >
-    Warning
-  </Button>
-);
+export const Error: Story = {
+  render: () => (
+    <Button
+      color="danger"
+      variant="contained"
+      onClick={() => toast.error(errorMessage)}
+    >
+      Show Error Toast
+    </Button>
+  ),
+};
+
 export const Warning: Story = {
-  render: () => <WarningAlert />,
+  render: () => (
+    <Button
+      color="warning"
+      variant="contained"
+      onClick={() => toast.warning(warningMessage)}
+    >
+      Show Warning Toast
+    </Button>
+  ),
 };
 
-const DangerAlert = () => (
-  <Button color="danger" variant="subtlest" onClick={() => toast.error(text)}>
-    Danger
-  </Button>
-);
-export const Danger: Story = {
-  render: () => <DangerAlert />,
-};
-
-const InfoAlert = () => (
-  <Button color="info" variant="subtlest" onClick={() => toast.info(text)}>
-    Info
-  </Button>
-);
 export const Info: Story = {
-  render: () => <InfoAlert />,
+  render: () => (
+    <Button
+      color="info"
+      variant="contained"
+      onClick={() => toast.info(infoMessage)}
+    >
+      Show Info Toast
+    </Button>
+  ),
 };
