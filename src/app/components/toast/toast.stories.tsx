@@ -23,6 +23,7 @@ const meta: Meta<typeof Toast> = {
 export default meta;
 type Story = StoryObj<typeof Toast>;
 
+// Sample notification messages for each toast type
 const successText = "Operation completed successfully!";
 const errorText = "An error occurred. Please try again.";
 const warningText = "Please be careful with this action.";
@@ -77,10 +78,12 @@ const SuccessAlert = () => (
     Success
   </Button>
 );
+// Success toast story - demonstrates successful operation notification.
 export const Success: Story = {
   render: () => <SuccessAlert />,
 };
 
+// Error toast story - demonstrates error notification with danger context.
 const ErrorAlert = () => (
   <Button
     color="danger"
@@ -94,6 +97,7 @@ export const Error: Story = {
   render: () => <ErrorAlert />,
 };
 
+// Warning toast story - demonstrates cautionary notification.
 const WarningAlert = () => (
   <Button
     color="warning"
@@ -107,6 +111,7 @@ export const Warning: Story = {
   render: () => <WarningAlert />,
 };
 
+// Info toast story - demonstrates informational notification.
 const InfoAlert = () => (
   <Button
     color="info"
@@ -120,6 +125,8 @@ export const Info: Story = {
   render: () => <InfoAlert />,
 };
 
+// LongMessage story - demonstrates how the toast handles extended
+// content without breaking layout.
 export const LongMessage: Story = {
   render: () => (
     <Button
@@ -127,7 +134,9 @@ export const LongMessage: Story = {
       variant="subtlest"
       onClick={() =>
         customToast.success(
-          "This is a much longer success message that demonstrates how the toast component handles extended text content and maintains proper alignment and spacing."
+          "This is a much longer success message that demonstrates how the " +
+            "toast component handles extended text content and maintains " +
+            "proper alignment and spacing."
         )
       }
     >

@@ -25,7 +25,11 @@ export const Toast = ({ theme }: Props) => {
   );
 };
 
-// Custom toast wrapper functions with pre-configured styling
+/**
+ * Creates a custom toast notification with pre-configured styling and icons.
+ * Uses ToastContent component to maintain consistent visual appearance across all toast types.
+ * closeButton is disabled in favor of a custom close button within ToastContent.
+ */
 export const createCustomToast = (
   message: string,
   type: "success" | "error" | "warning" | "info"
@@ -46,6 +50,10 @@ export const createCustomToast = (
   );
 };
 
+/**
+ * Convenience object for showing toast notifications with type-specific methods.
+ * Each method automatically handles styling and icons based on the notification type.
+ */
 export const customToast = {
   success: (message: string) => createCustomToast(message, "success"),
   error: (message: string) => createCustomToast(message, "error"),

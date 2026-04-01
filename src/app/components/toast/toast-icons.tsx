@@ -73,6 +73,10 @@ export const ToastIcon = ({
   }
 };
 
+/**
+ * Simple close (X) icon for use in the toast notification close button.
+ * The button using this icon should provide an aria-label since the icon is purely visual.
+ */
 export const CloseIcon = ({
   className = "h-5 w-5",
 }: {

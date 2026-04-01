@@ -28,6 +28,11 @@ const getToastStyles = (type: "success" | "error" | "warning" | "info") => {
   }
 };
 
+/**
+ * Custom toast notification content component with type-specific icon and styling.
+ * Includes an accessible close button that maintains focus visibility.
+ * The icon and close button are flex-shrink-0 to prevent them from being squeezed in narrow containers.
+ */
 export const ToastContent = ({
   message,
   type,

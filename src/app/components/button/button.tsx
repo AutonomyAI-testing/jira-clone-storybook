@@ -113,7 +113,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
       <button
         ref={forwardedRef}
         className={cx(
-          "flex cursor-pointer items-center justify-center gap-2 rounded border-2 border-border-danger p-2 text-font disabled:cursor-not-allowed disabled:opacity-60",
+          "flex cursor-pointer items-center justify-center gap-2 rounded p-2 text-font disabled:cursor-not-allowed disabled:opacity-60",
           color === "primary" && primaryStyle(),
           color === "neutral" && neutralStyle(),
           color === "success" && successStyle(),
