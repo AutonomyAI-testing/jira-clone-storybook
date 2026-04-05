@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { FiLink2, FiLink2Off } from "react-icons/fi";
+import { FiLink2, FiX } from "react-icons/fi";
 import {
   SiFigma,
   SiSlack,
@@ -62,7 +62,7 @@ export const IntegrationRow = ({
             className="flex items-center gap-2"
             aria-label={`Revoke ${integration.name} connection`}
           >
-            <FiLink2Off size={16} />
+            <FiX size={16} />
             <span>Revoke</span>
           </Button>
         ) : (
