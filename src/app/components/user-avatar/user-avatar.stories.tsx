@@ -4,6 +4,7 @@ import { UserAvatar } from "./user-avatar";
 
 const meta: Meta<typeof UserAvatar> = {
   title: "Components/UserAvatar",
+  component: UserAvatar,
   parameters: {
     layout: "centered",
   },
@@ -57,12 +58,14 @@ export const Default: Story = {
 
 export const Image: Story = {
   args: {
+    name: userName,
     image: userImage,
   },
 };
 
 export const Fallback: Story = {
   args: {
+    name: userName,
     image: undefined,
     color: "#dae3f9",
   },
@@ -70,6 +73,7 @@ export const Fallback: Story = {
 
 export const Tooltip: Story = {
   args: {
+    name: userName,
     image: userImage,
     tooltip: true,
   },
@@ -77,6 +81,7 @@ export const Tooltip: Story = {
 
 export const MediumSize: Story = {
   args: {
+    name: userName,
     image: userImage,
     size: 48,
   },
@@ -84,7 +89,26 @@ export const MediumSize: Story = {
 
 export const LargeSize: Story = {
   args: {
+    name: userName,
     image: userImage,
     size: 82,
   },
+};
+
+export const WithGradientBorder: Story = {
+  render: () => (
+    <div
+      style={{
+        padding: "6px",
+        borderRadius: "50%",
+        background: "linear-gradient(135deg, #4dd9e0, #5c9cf5, #b9a6f5)",
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        boxShadow: "0 6px 24px rgba(92, 156, 245, 0.35)",
+      }}
+    >
+      <UserAvatar name={userName} image={userImage} size={280} />
+    </div>
+  ),
 };
