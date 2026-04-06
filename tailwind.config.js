@@ -191,6 +191,17 @@ module.exports = {
       white: "white",
       black: "black",
       transparent: "transparent",
+      red: {
+        100: "#ffedeb",
+        200: "#ffd2cc",
+        300: "#ff9c8f",
+        400: "#f87462",
+        500: "#ef5c48",
+        600: "#e34935",
+        700: "#ca3521",
+        800: "#ae2a19",
+        900: "#601e16",
+      },
     },
     fontFamily: {
       "primary-light": ["CircularStdLight", "sans-serif"],
