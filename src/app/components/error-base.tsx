@@ -1,4 +1,12 @@
-export const ErrorBase = ({ variant, message, href }: Props) => {
+import cx from "classix";
+
+export const ErrorBase = ({
+  variant,
+  message,
+  href,
+  loading = false,
+  disabled = false,
+}: Props) => {
   const imgPath = `/images/error-${variant}.svg`;
 
   return (
@@ -6,17 +14,39 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
       <img
         src={imgPath}
         alt="Server error"
-        className="mx-auto mb-4 h-[350px] w-auto"
+        className={cx(
+          "mx-auto mb-4 h-[350px] w-auto",
+          (loading || disabled) && "opacity-60"
+        )}
       />
       {href ? (
         <a
           href={href}
-          className="max-w-[100px] text-lg text-link hover:underline active:text-link-pressed"
+          className={cx(
+            "max-w-[100px] text-lg",
+            disabled
+              ? "cursor-not-allowed text-font"
+              : "text-link hover:underline active:text-link-pressed",
+            loading && "cursor-wait"
+          )}
+          onClick={(e) => {
+            if (disabled || loading) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+          }}
         >
-          {message}
+          {loading ? "Loading..." : message}
         </a>
       ) : (
-        <span className="max-w-[100px] text-lg text-font">{message}</span>
+        <span
+          className={cx(
+            "max-w-[100px] text-lg",
+            (loading || disabled) && "text-font-disabled"
+          )}
+        >
+          {loading ? "Loading..." : message}
+        </span>
       )}
     </div>
   );
@@ -25,5 +55,7 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
 interface Props {
   variant: "500" | "404";
   message: string;
-  href: string;
+  href?: string;
+  loading?: boolean;
+  disabled?: boolean;
 }
