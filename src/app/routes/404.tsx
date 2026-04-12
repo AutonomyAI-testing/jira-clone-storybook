@@ -1,6 +1,6 @@
 import type { V2_MetaFunction } from "@remix-run/node";
 import { Error404 } from "@app/components/error-404";
-import { formatTags, formatProperties } from "@utils/meta";
+import { formatTags } from "@utils/meta";
 
 export const meta: V2_MetaFunction = () => {
   const title = "Jira clone - 404 Page Not Found";
@@ -26,7 +26,7 @@ export const meta: V2_MetaFunction = () => {
     "og:image": image,
   };
 
-  return formatTags(formatProperties(tags));
+  return formatTags(tags);
 };
 
 export default function NotFound404Route() {
