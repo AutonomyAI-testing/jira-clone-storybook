@@ -217,6 +217,9 @@ module.exports = {
           300: "#d1d5db",
           400: "#9ca3af",
         },
+        green: {
+          500: "#22c55e",
+        },
       },
       fontSize: {
         "2xs": ["0.75rem", "1rem"],

@@ -7,7 +7,7 @@ export const PropertySearchView = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-8">
       {/* Header Section */}
       <div className="text-center mb-12 max-w-2xl">
-        <h1 className="text-6xl font-bold text-red-600 mb-4 font-primary">
+        <h1 className="text-6xl font-bold text-red-600 mb-4 font-primary border-4 border-green-500 p-4">
           Let's Find Your Ideal Space
         </h1>
         <p className="text-2xl text-red-600 font-primary">
