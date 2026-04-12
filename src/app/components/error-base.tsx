@@ -10,7 +10,7 @@ export const ErrorBase = ({
   const imgPath = `/images/error-${variant}.svg`;
 
   return (
-    <div className="max-w-[500px] text-center">
+    <div className="max-w-[500px] rounded-lg border-2 border-border-danger p-6 text-center">
       <img
         src={imgPath}
         alt="Server error"
