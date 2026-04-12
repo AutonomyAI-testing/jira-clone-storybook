@@ -15,7 +15,7 @@ export const Header = (): JSX.Element => {
       <section>
         <Link
           to="/"
-          className="flex cursor-pointer items-center rounded px-3 py-2 text-font-warning hover:bg-background-brand-subtlest hover:text-font-warning"
+          className="flex cursor-pointer items-center rounded px-3 py-2 [color:#e2b203] hover:bg-background-brand-subtlest [&:hover]:[color:#e2b203]"
         >
           <img src="/images/logo.png" width={24} height={24} alt="Logo" />
           <span className="ml-2">Jira Clone</span>
