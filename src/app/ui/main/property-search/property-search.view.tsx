@@ -1,105 +1,169 @@
 import { useState } from "react";
 
+type TabType = "commercial" | "residential";
+
+// Tab options for property search
+const TAB_OPTIONS: Array<{ id: TabType; label: string }> = [
+  { id: "commercial", label: "Commercial" },
+  { id: "residential", label: "Residential" },
+];
+
+interface TabButtonProps {
+  id: TabType;
+  label: string;
+  isActive: boolean;
+  onClick: () => void;
+}
+
+// Reusable tab button with consistent styling for active/inactive states
+const TabButton = ({ id, label, isActive, onClick }: TabButtonProps) => (
+  <button
+    onClick={onClick}
+    className={`px-2 pb-2 font-primary text-sm font-medium ${
+      isActive ? "border-b-2 border-black text-black" : "text-gray-400"
+    }`}
+  >
+    {label}
+  </button>
+);
+
+interface FormFieldProps {
+  label: string;
+  type?: string;
+  placeholder?: string;
+}
+
+// Reusable text input field with label and consistent styling
+const FormField = ({ label, type = "text", placeholder }: FormFieldProps) => (
+  <div className="flex flex-col gap-2">
+    <label className="font-primary text-sm text-red-600">{label}</label>
+    <input
+      type={type}
+      placeholder={placeholder}
+      className="rounded border border-gray-300 px-4 py-2
+        font-primary text-red-600 placeholder-gray-400"
+    />
+  </div>
+);
+
+interface SelectFieldProps {
+  label: string;
+  options: string[];
+}
+
+// Reusable select dropdown field with label and consistent styling
+const SelectField = ({ label, options }: SelectFieldProps) => (
+  <div className="flex flex-col gap-2">
+    <label className="font-primary text-sm text-red-600">{label}</label>
+    <select className="rounded border border-gray-300 px-4 py-2 font-primary text-red-600">
+      {options.map((option) => (
+        <option key={option}>{option}</option>
+      ))}
+    </select>
+  </div>
+);
+
+// Time period toggle with active/inactive states (Hourly and Monthly options)
+const TimePeriodToggle = () => (
+  <div className="flex gap-2">
+    <button
+      className="rounded-full bg-black px-4 py-2 font-primary
+        text-sm font-medium text-white"
+    >
+      Hourly
+    </button>
+    <button className="px-4 py-2 font-primary text-sm font-medium text-gray-400">
+      Monthly
+    </button>
+  </div>
+);
+
+// Price range input with min and max values
+const PriceRangeInput = () => (
+  <div className="flex gap-2">
+    <input
+      type="number"
+      placeholder="$500"
+      className="w-20 rounded bg-black px-3 py-2 text-center
+        font-primary text-sm font-medium text-white"
+    />
+    <input
+      type="number"
+      placeholder="$2500"
+      className="w-20 rounded bg-black px-3 py-2 text-center
+        font-primary text-sm font-medium text-white"
+    />
+  </div>
+);
+
 export const PropertySearchView = () => {
-  const [activeTab, setActiveTab] = useState<"commercial" | "residential">("commercial");
+  const [activeTab, setActiveTab] = useState<TabType>("commercial");
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-8">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-8">
       {/* Header Section */}
-      <div className="text-center mb-12 max-w-2xl">
-        <h1 className="text-6xl font-bold text-red-600 mb-4 font-primary border-4 border-green-500 p-4">
-          Let's Find Your Ideal Space
+      <div className="mb-12 max-w-2xl text-center">
+        <h1
+          className={[
+            "mb-4 border-4 border-green-500 p-4 font-primary text-6xl",
+            "font-bold text-red-600",
+          ].join(" ")}
+        >
+          Let&apos;s Find Your Ideal Space
         </h1>
-        <p className="text-2xl text-red-600 font-primary">
+        <p
+          className="font-primary text-2xl text-red-600"
+        >
           Discover residential and commercial properties tailored to your needs
         </p>
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex gap-8 mb-12 border-b">
-        <button
-          onClick={() => setActiveTab("commercial")}
-          className={`pb-2 px-2 font-primary font-medium text-sm ${
-            activeTab === "commercial"
-              ? "text-black border-b-2 border-black"
-              : "text-gray-400"
-          }`}
-        >
-          Commercial
-        </button>
-        <button
-          onClick={() => setActiveTab("residential")}
-          className={`pb-2 px-2 font-primary font-medium text-sm ${
-            activeTab === "residential"
-              ? "text-black border-b-2 border-black"
-              : "text-gray-400"
-          }`}
-        >
-          Residential
-        </button>
+      <div className="mb-12 flex gap-8 border-b">
+        {TAB_OPTIONS.map(({ id, label }) => (
+          <TabButton
+            key={id}
+            id={id}
+            label={label}
+            isActive={activeTab === id}
+            onClick={() => setActiveTab(id)}
+          />
+        ))}
       </div>
 
       {/* Search Filters */}
-      <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-6xl">
-        <div className="grid grid-cols-4 gap-4 items-end">
+      <div className="w-full max-w-6xl rounded-lg bg-white p-6 shadow-lg">
+        <div className="grid grid-cols-4 items-end gap-4">
           {/* Location Input */}
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-primary text-red-600">Location</label>
-            <input
-              type="text"
-              placeholder="Type a location"
-              className="px-4 py-2 border border-gray-300 rounded font-primary text-red-600 placeholder-gray-400"
-            />
-          </div>
+          <FormField
+            label="Location"
+            type="text"
+            placeholder="Type a location"
+          />
 
           {/* Property Type Dropdown */}
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-primary text-red-600">Property Type</label>
-            <select className="px-4 py-2 border border-gray-300 rounded font-primary text-red-600">
-              <option>Select</option>
-            </select>
-          </div>
+          <SelectField label="Property Type" options={["Select"]} />
 
           {/* Time Period Toggle */}
-          <div className="flex gap-2">
-            <button className="px-4 py-2 bg-black text-white rounded-full font-primary font-medium text-sm">
-              Hourly
-            </button>
-            <button className="px-4 py-2 text-gray-400 font-primary font-medium text-sm">
-              Monthly
-            </button>
-          </div>
+          <TimePeriodToggle />
 
           {/* Space Type Dropdown */}
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-primary text-red-600">Space Type</label>
-            <select className="px-4 py-2 border border-gray-300 rounded font-primary text-red-600">
-              <option>Select</option>
-            </select>
-          </div>
+          <SelectField label="Space Type" options={["Select"]} />
         </div>
 
         {/* Price Range and Search */}
-        <div className="grid grid-cols-4 gap-4 items-center mt-6 border-t pt-6">
+        <div className="mt-6 grid grid-cols-4 items-center gap-4 border-t pt-6">
           <div />
           <div />
-          
+
           {/* Price Range */}
-          <div className="flex gap-2">
-            <input
-              type="number"
-              placeholder="$500"
-              className="px-3 py-2 bg-black text-white rounded text-sm font-primary font-medium text-center w-20"
-            />
-            <input
-              type="number"
-              placeholder="$2500"
-              className="px-3 py-2 bg-black text-white rounded text-sm font-primary font-medium text-center w-20"
-            />
-          </div>
+          <PriceRangeInput />
 
           {/* Search Button */}
-          <button className="px-8 py-3 bg-black text-white rounded-full font-primary font-semibold text-base">
+          <button
+            className="rounded-full bg-black px-8 py-3 font-primary
+              text-base font-semibold text-white"
+          >
             Search
           </button>
         </div>
