@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 import { MemoryRouter } from "react-router-dom";
 
 import { Error404Page } from "./error-404.page";
@@ -10,7 +10,7 @@ const meta: Meta<typeof Error404Page> = {
     layout: "fullscreen",
   },
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <MemoryRouter>
         <Story />
       </MemoryRouter>

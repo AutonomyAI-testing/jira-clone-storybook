@@ -21,8 +21,9 @@ export const Error404Page = () => {
           </h1>
 
           <p className="font-primary-light text-lg text-font-subtle">
-            Sorry, the page you're looking for doesn't exist. It might have been
-            moved or deleted. Let's get you back on track!
+            Sorry, the page you&apos;re looking for doesn&apos;t exist. It
+            might have been moved or deleted. Let&apos;s get you back on
+            track!
           </p>
         </div>
 
