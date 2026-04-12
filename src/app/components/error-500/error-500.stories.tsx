@@ -1,4 +1,3 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Error500 } from "./error-500";
@@ -9,7 +8,6 @@ const meta: Meta<typeof Error500> = {
   parameters: {
     layout: "centered",
   },
-
   argTypes: {
     message: {
       control: {

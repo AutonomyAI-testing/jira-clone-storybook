@@ -9,16 +9,26 @@ export const ErrorBase = ({
 }: Props) => {
   const imgPath = `/images/error-${variant}.svg`;
 
+  // Display "Loading..." when loading, otherwise show the message
+  const displayText = loading ? "Loading..." : message;
+
+  // Prevent interaction (click/navigation) when disabled or loading
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (disabled || loading) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
+  // Image opacity decreases during loading or disabled states
+  const imageClassName = cx(
+    "mx-auto mb-4 h-[350px] w-auto",
+    (loading || disabled) && "opacity-60"
+  );
+
   return (
     <div className="max-w-[500px] rounded-lg border-2 border-border-danger p-6 text-center">
-      <img
-        src={imgPath}
-        alt="Server error"
-        className={cx(
-          "mx-auto mb-4 h-[350px] w-auto",
-          (loading || disabled) && "opacity-60"
-        )}
-      />
+      <img src={imgPath} alt="Server error" className={imageClassName} />
       {href ? (
         <a
           href={href}
@@ -29,14 +39,9 @@ export const ErrorBase = ({
               : "text-link hover:underline active:text-link-pressed",
             loading && "cursor-wait"
           )}
-          onClick={(e) => {
-            if (disabled || loading) {
-              e.preventDefault();
-              e.stopPropagation();
-            }
-          }}
+          onClick={handleLinkClick}
         >
-          {loading ? "Loading..." : message}
+          {displayText}
         </a>
       ) : (
         <span
@@ -45,7 +50,7 @@ export const ErrorBase = ({
             (loading || disabled) && "text-font-disabled"
           )}
         >
-          {loading ? "Loading..." : message}
+          {displayText}
         </span>
       )}
     </div>
