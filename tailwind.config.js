@@ -211,7 +211,7 @@ module.exports = {
       colors: {
         red: { 500: "#ef4444", 600: "#dc2626" },
         gray: { 50: "#f9fafb", 300: "#d1d5db", 400: "#9ca3af", 600: "#4b5563" },
-        green: { 500: "#22c55e" },
+        green: { 500: "#22c55e", 600: "#16a34a" },
       },
       fontSize: {
         "2xs": ["0.75rem", "1rem"],
