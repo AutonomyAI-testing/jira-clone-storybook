@@ -42,7 +42,7 @@ export const Title = ({
         onFocus={onFocus}
         onBlur={onBlur}
         textareaClassName={cx(
-          "font-primary-black text-2xl",
+          "font-primary-black text-2xl text-font-danger",
           requireError &&
             "focus-visible:outline-border-danger outline outline-2 outline-border-danger"
         )}
