@@ -22,27 +22,26 @@ export const Tooltip = ({
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [isTouching, setIsTouching] = useState<boolean>(false);
 
-  // Desktop mouse events
-  const handleMouseEnter = () => {
-    setIsVisible(true);
-  };
+  // Show tooltip on mouse enter
+  const handleMouseEnter = () => setIsVisible(true);
 
+  // Hide tooltip on mouse leave, but preserve visibility on touch devices
+  // to maintain the tooltip while the user is still touching
   const handleMouseLeave = () => {
-    // Don't hide if we're on a touch device
     if (!isTouching) {
       setIsVisible(false);
     }
   };
 
-  // Touch device events
+  // Activate tooltip on touch start
   const handleTouchStart = () => {
     setIsTouching(true);
     setIsVisible(true);
   };
 
+  // Hide tooltip immediately on touch end
   const handleTouchEnd = () => {
     setIsTouching(false);
-    // Hide immediately on touch end
     setIsVisible(false);
   };
 
@@ -70,8 +69,7 @@ export const Tooltip = ({
       >
         <div
           className={twMerge(
-            "w-fit whitespace-nowrap rounded bg-font px-1.5 py-0.5 text-2xs"
-              + " text-font-inverse border border-red-500",
+            "w-fit whitespace-nowrap rounded bg-font px-1.5 py-0.5 text-2xs text-font-inverse",
             className
           )}
         >
