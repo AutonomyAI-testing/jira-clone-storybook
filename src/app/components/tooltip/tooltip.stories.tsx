@@ -23,18 +23,19 @@ export const Default: Story = {
   ),
 };
 
-// Shows the real Tooltip component in visible state by hovering on mount.
-// Uses the real Tooltip component — the red outline on the bubble comes from
-// the component's own `outline outline-2 outline-red-500` classes.
-const TooltipHoveredOnMount = () => {
+/**
+ * Displays the tooltip in a visible state by simulating a mouseenter event on mount.
+ * Used to showcase the component when it's actively displaying a tooltip.
+ */
+const TooltipWithVisibleState = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // The Tooltip component attaches onMouseEnter to a div wrapping children.
-    // We find that wrapper div (firstElementChild of our ref) and dispatch mouseenter.
+    // The Tooltip component wraps children with event handlers on a div.
+    // We find that wrapper and dispatch a mouseenter event to make the tooltip visible.
     const wrapper = wrapperRef.current?.querySelector("[onmouseenter]") ??
       wrapperRef.current?.firstElementChild;
-    if (wrapper) {
+    if (wrapper instanceof HTMLElement) {
       wrapper.dispatchEvent(new MouseEvent("mouseenter", { bubbles: false }));
     }
   }, []);
@@ -51,7 +52,7 @@ const TooltipHoveredOnMount = () => {
 };
 
 export const VisibleWithRedOutline: Story = {
-  render: () => <TooltipHoveredOnMount />,
+  render: () => <TooltipWithVisibleState />,
 };
 
 export const WithLongText: Story = {
