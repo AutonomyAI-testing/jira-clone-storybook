@@ -1,6 +1,15 @@
+import cx from "classix";
 import * as Accordion from "@app/components/accordion";
 
-export const FaqView = (): JSX.Element => {
+interface Props {
+  isLoading?: boolean;
+  isDisabled?: boolean;
+}
+
+export const FaqView = ({
+  isLoading = false,
+  isDisabled = false,
+}: Props = {}): JSX.Element => {
   return (
     <div className="mx-auto max-w-4xl px-8 py-12">
       <header className="mb-12">
@@ -13,8 +22,25 @@ export const FaqView = (): JSX.Element => {
         </p>
       </header>
 
-      <div className="space-y-2">
-        <Accordion.Root type="single" collapsible>
+      <div
+        className={cx(
+          "space-y-2",
+          isDisabled && "pointer-events-none opacity-50"
+        )}
+      >
+        {isLoading ? (
+          <div className="flex items-center justify-center py-12">
+            <div className="space-y-4 w-full">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="h-16 animate-pulse rounded-md bg-background-subtlest"
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <Accordion.Root type="single" collapsible>
           {/* Projects Section */}
           <Accordion.Item value="projects-1">
             <Accordion.Header>
@@ -308,6 +334,7 @@ export const FaqView = (): JSX.Element => {
             </Accordion.Content>
           </Accordion.Item>
         </Accordion.Root>
+        )}
       </div>
     </div>
   );

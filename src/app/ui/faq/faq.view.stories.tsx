@@ -15,3 +15,11 @@ type Story = StoryObj<typeof FaqView>;
 export const Default: Story = {
   render: () => <FaqView />,
 };
+
+export const Loading: Story = {
+  render: () => <FaqView isLoading={true} />,
+};
+
+export const Disabled: Story = {
+  render: () => <FaqView isDisabled={true} />,
+};

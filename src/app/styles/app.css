@@ -290,6 +290,7 @@
   --color-background-disabled: var(--Neutral100A);
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
+  --color-background-subtlest: var(--Neutral200);
 }
 
 .dark {
@@ -428,6 +429,7 @@
   --color-background-disabled: var(--DarkNeutral100A);
   --color-background-interaction: #10121499;
   --color-background-drop: rgba(0, 0, 0, 0.7);
+  --color-background-subtlest: var(--DarkNeutral300);
 }
 
 .lava {
@@ -566,6 +568,7 @@
   --color-background-disabled: var(--DarkNeutral100A);
   --color-background-interaction: #10121499;
   --color-background-drop: rgba(0, 0, 0, 0.7);
+  --color-background-subtlest: var(--DarkNeutral300);
 }
 
 .lime {
@@ -704,6 +707,7 @@
   --color-background-disabled: var(--DarkNeutral100A);
   --color-background-interaction: #10121499;
   --color-background-drop: rgba(0, 0, 0, 0.7);
+  --color-background-subtlest: var(--DarkNeutral300);
 }
 
 .barbie {
@@ -838,4 +842,5 @@
   --color-background-disabled: var(--Neutral100A);
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
+  --color-background-subtlest: var(--Neutral200);
 }
