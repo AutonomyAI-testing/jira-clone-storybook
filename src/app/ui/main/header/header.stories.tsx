@@ -18,4 +18,23 @@ const meta: Meta<typeof Header> = {
 export default meta;
 type Story = StoryObj<typeof Header>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    isLoading: false,
+    isDisabled: false,
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    isLoading: true,
+    isDisabled: false,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    isLoading: false,
+    isDisabled: true,
+  },
+};
