@@ -29,7 +29,7 @@ export const Tooltip = ({
       >
         <div
           className={twMerge(
-            "w-fit whitespace-nowrap rounded bg-font px-1.5 py-0.5 text-2xs text-font-inverse",
+            "w-fit whitespace-nowrap rounded bg-font px-1.5 py-0.5 text-2xs text-font-inverse outline outline-2 outline-red-500",
             className
           )}
         >
