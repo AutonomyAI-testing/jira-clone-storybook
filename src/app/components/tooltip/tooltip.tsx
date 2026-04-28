@@ -1,6 +1,21 @@
-import { useState } from "react";
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
+import { twix } from "tailwindcss-radix-ui";
 import cx from "classix";
 import { twMerge } from "tailwind-merge";
+
+// Styled tooltip content component
+const StyledContent = twix(
+  TooltipPrimitive.Content,
+  cx(
+    "z-50 w-fit whitespace-nowrap break-words rounded bg-font px-2 py-1 text-2xs text-font-inverse shadow-md",
+    "duration-200 radix-state-open:animate-slide-up-fade"
+  )
+);
+
+const StyledArrow = twix(
+  TooltipPrimitive.Arrow,
+  "fill-font"
+);
 
 export const Tooltip = ({
   title,
@@ -8,35 +23,26 @@ export const Tooltip = ({
   className = "",
   children,
 }: TooltipProps): JSX.Element => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-
-  const showTooltip = () => setIsVisible(true);
-  const hideTooltip = () => setIsVisible(false);
-
   if (!show) return children;
 
   return (
-    // Don't know why h-fit (and other h-*) doesn't work here
-    <div className="relative w-fit" style={{ height: "fit-content" }}>
-      <div onMouseEnter={showTooltip} onMouseLeave={hideTooltip}>
+    <TooltipPrimitive.Root>
+      <TooltipPrimitive.Trigger asChild>
         {children}
-      </div>
-      <div
-        className={cx(
-          "absolute left-1/2 top-full z-50 mt-1.5 -translate-x-1/2 transform justify-center break-words",
-          isVisible ? "flex" : "hidden"
-        )}
-      >
-        <div
+      </TooltipPrimitive.Trigger>
+      <TooltipPrimitive.Portal>
+        <StyledContent
           className={twMerge(
-            "w-fit whitespace-nowrap rounded bg-font px-1.5 py-0.5 text-2xs text-font-inverse",
+            "z-50 w-fit whitespace-nowrap break-words rounded bg-font px-2 py-1 text-2xs text-font-inverse shadow-md",
             className
           )}
+          sideOffset={8}
         >
           {title}
-        </div>
-      </div>
-    </div>
+          <StyledArrow width={10} height={5} />
+        </StyledContent>
+      </TooltipPrimitive.Portal>
+    </TooltipPrimitive.Root>
   );
 };
 
@@ -44,5 +50,5 @@ interface TooltipProps {
   title: string;
   show?: boolean;
   className?: string;
-  children: JSX.Element;
+  children: React.ReactNode;
 }
