@@ -7,7 +7,7 @@ import { twMerge } from "tailwind-merge";
 const StyledContent = twix(
   TooltipPrimitive.Content,
   cx(
-    "z-50 w-fit whitespace-nowrap break-words rounded bg-font px-2 py-1 text-2xs text-font-inverse shadow-md",
+    "z-50 w-fit whitespace-nowrap break-words rounded border-2 border-border-danger bg-font px-2 py-1 text-2xs text-font-inverse shadow-md",
     "duration-200 radix-state-open:animate-slide-up-fade"
   )
 );
@@ -33,7 +33,7 @@ export const Tooltip = ({
       <TooltipPrimitive.Portal>
         <StyledContent
           className={twMerge(
-            "z-50 w-fit whitespace-nowrap break-words rounded bg-font px-2 py-1 text-2xs text-font-inverse shadow-md",
+            "z-50 w-fit whitespace-nowrap break-words rounded border-2 border-border-danger bg-font px-2 py-1 text-2xs text-font-inverse shadow-md",
             className
           )}
           sideOffset={8}
