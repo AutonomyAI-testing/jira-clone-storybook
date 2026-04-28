@@ -3,21 +3,28 @@ import { PageTitle } from "./page-title";
 
 const meta: Meta<typeof PageTitle> = {
   title: "Components/PageTitle",
+  component: PageTitle,
   parameters: {
     layout: "centered",
   },
   argTypes: {
     children: {
-      defaultValue: "Page Title",
+      description: "The heading content",
       control: {
         type: "text",
       },
     },
     level: {
-      defaultValue: "h1",
+      description: "Semantic heading level (h1-h6)",
       control: {
         type: "select",
         options: ["h1", "h2", "h3", "h4", "h5", "h6"],
+      },
+    },
+    className: {
+      description: "Additional CSS classes for customization",
+      control: {
+        type: "text",
       },
     },
   },
@@ -26,11 +33,23 @@ const meta: Meta<typeof PageTitle> = {
 export default meta;
 type Story = StoryObj<typeof PageTitle>;
 
+// Display all heading levels in sequence to show semantic variety
+// while maintaining consistent typography
 export const Default: Story = {
   render: () => (
     <div className="space-y-8">
-      {[H1, H2, H3, H4, H5, H6].map((story, index) => (
-        <PageTitle {...story.args} key={index} />
+      {[
+        { args: H1.args || { children: "" }, id: "h1" },
+        { args: H2.args || { children: "" }, id: "h2" },
+        { args: H3.args || { children: "" }, id: "h3" },
+        { args: H4.args || { children: "" }, id: "h4" },
+        { args: H5.args || { children: "" }, id: "h5" },
+        { args: H6.args || { children: "" }, id: "h6" },
+      ].map(({ args, id }) => (
+        <PageTitle
+          {...(args as React.ComponentProps<typeof PageTitle>)}
+          key={id}
+        />
       ))}
     </div>
   ),
@@ -78,6 +97,7 @@ export const H6: Story = {
   },
 };
 
+// Demonstrates how className prop extends base styling
 export const WithCustomStyling: Story = {
   args: {
     children: "Title with custom color",
