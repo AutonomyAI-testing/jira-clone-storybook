@@ -83,19 +83,54 @@ export const Info: Story = {
   render: () => <InfoAlert />,
 };
 
-// AllVariants: shows all 4 toasts pre-triggered with autoClose=false
+/**
+ * AllVariants story displays all 4 toast notification types simultaneously.
+ * The story auto-triggers all toast variants with colored backgrounds and borders
+ * to showcase the complete toast design system in one view.
+ * Each toast is set with autoClose=false to remain visible for inspection.
+ */
+const TOAST_MESSAGES = {
+  success: "Success: Your changes have been saved!",
+  warning: "Warning: This action cannot be undone!",
+  error: "Danger: An error occurred. Please try again.",
+  info: "Info: New updates are available.",
+};
+
 const AllVariantsInner = () => {
   useEffect(() => {
+    // Dismiss any existing toasts and trigger all variants at once
     toast.dismiss();
-    toast.success("Success: Your changes have been saved!", { toastId: "success", autoClose: false });
-    toast.warning("Warning: This action cannot be undone!", { toastId: "warning", autoClose: false });
-    toast.error("Danger: An error occurred. Please try again.", { toastId: "danger", autoClose: false });
-    toast.info("Info: New updates are available.", { toastId: "info", autoClose: false });
+    toast.success(TOAST_MESSAGES.success, {
+      toastId: "success",
+      autoClose: false,
+    });
+    toast.warning(TOAST_MESSAGES.warning, {
+      toastId: "warning",
+      autoClose: false,
+    });
+    toast.error(TOAST_MESSAGES.error, { toastId: "error", autoClose: false });
+    toast.info(TOAST_MESSAGES.info, { toastId: "info", autoClose: false });
   }, []);
+
   return (
     <div style={{ padding: "20px", minHeight: "300px" }}>
-      <p style={{ fontSize: "14px", color: "var(--color-font-subtle)", marginBottom: "8px" }}>All 4 toast variants (top-right corner):</p>
-      <ul style={{ fontSize: "13px", color: "var(--color-font-subtle)", paddingLeft: "20px", lineHeight: "2" }}>
+      <p
+        style={{
+          fontSize: "14px",
+          color: "var(--color-font-subtle)",
+          marginBottom: "8px",
+        }}
+      >
+        All 4 toast variants (top-right corner):
+      </p>
+      <ul
+        style={{
+          fontSize: "13px",
+          color: "var(--color-font-subtle)",
+          paddingLeft: "20px",
+          lineHeight: "2",
+        }}
+      >
         <li>✅ Success — green background + green border</li>
         <li>⚠️ Warning — yellow background + yellow border</li>
         <li>🔴 Danger — red background + red border</li>

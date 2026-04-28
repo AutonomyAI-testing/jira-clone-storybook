@@ -844,7 +844,10 @@
   --color-background-drop: rgba(255, 255, 255, 0.7);
 }
 
-/* Toast type-specific styling with colored borders */
+/* Toast type-specific styling with colored backgrounds and borders.
+ * Each toast type uses both a colored background and a matching colored border
+ * to create clear visual distinction for success, warning, danger, and info states.
+ */
 .Toastify__toast {
   border: 2px solid var(--color-border) !important;
 }
