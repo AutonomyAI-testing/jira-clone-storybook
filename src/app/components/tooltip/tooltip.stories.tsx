@@ -2,12 +2,13 @@ import type { Meta, StoryObj } from "@storybook/react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { Tooltip } from "./tooltip";
 
+const BUTTON_STYLES = "rounded bg-background-neutral p-2 text-font hover:bg-background-neutral-hovered";
+
 const meta: Meta<typeof Tooltip> = {
   title: "Components/Tooltip",
   parameters: {
     layout: "centered",
   },
-  argTypes: {},
 };
 
 export default meta;
@@ -42,19 +43,13 @@ export const MultipleTooltips: Story = {
     <TooltipPrimitive.Provider>
       <div className="flex gap-4">
         <Tooltip title="Save">
-          <button className="rounded bg-background-neutral p-2 text-font hover:bg-background-neutral-hovered">
-            💾
-          </button>
+          <button className={BUTTON_STYLES}>💾</button>
         </Tooltip>
         <Tooltip title="Delete">
-          <button className="rounded bg-background-neutral p-2 text-font hover:bg-background-neutral-hovered">
-            🗑️
-          </button>
+          <button className={BUTTON_STYLES}>🗑️</button>
         </Tooltip>
         <Tooltip title="Settings">
-          <button className="rounded bg-background-neutral p-2 text-font hover:bg-background-neutral-hovered">
-            ⚙️
-          </button>
+          <button className={BUTTON_STYLES}>⚙️</button>
         </Tooltip>
       </div>
     </TooltipPrimitive.Provider>

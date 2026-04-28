@@ -3,14 +3,13 @@ import { twix } from "tailwindcss-radix-ui";
 import cx from "classix";
 import { twMerge } from "tailwind-merge";
 
-// Styled tooltip content component
-const StyledContent = twix(
-  TooltipPrimitive.Content,
-  cx(
-    "z-50 w-fit whitespace-nowrap break-words rounded border-2 border-border-danger bg-font px-2 py-1 text-2xs text-font-inverse shadow-md",
-    "duration-200 radix-state-open:animate-slide-up-fade"
-  )
+// Base styles for tooltip content — shared between styled component and className prop
+const TOOLTIP_STYLES = cx(
+  "z-50 w-fit whitespace-nowrap break-words rounded border-2 border-border-danger bg-font px-2 py-1 text-2xs text-font-inverse shadow-md",
+  "duration-200 radix-state-open:animate-slide-up-fade"
 );
+
+const StyledContent = twix(TooltipPrimitive.Content, TOOLTIP_STYLES);
 
 const StyledArrow = twix(
   TooltipPrimitive.Arrow,
@@ -23,7 +22,8 @@ export const Tooltip = ({
   className = "",
   children,
 }: TooltipProps): JSX.Element => {
-  if (!show) return children;
+  // Allow consumers to conditionally hide the tooltip by returning unwrapped children
+  if (!show) return <>{children}</>;
 
   return (
     <TooltipPrimitive.Root>
@@ -32,10 +32,7 @@ export const Tooltip = ({
       </TooltipPrimitive.Trigger>
       <TooltipPrimitive.Portal>
         <StyledContent
-          className={twMerge(
-            "z-50 w-fit whitespace-nowrap break-words rounded border-2 border-border-danger bg-font px-2 py-1 text-2xs text-font-inverse shadow-md",
-            className
-          )}
+          className={twMerge(TOOLTIP_STYLES, className)}
           sideOffset={8}
         >
           {title}
