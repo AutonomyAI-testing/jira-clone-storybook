@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { PriorityId } from "@domain/priority";
 import { PriorityIcon } from "./priority-icon";
@@ -29,15 +30,18 @@ type Story = StoryObj<typeof PriorityIcon>;
 const priorities: PriorityId[] = ["low", "medium", "high"];
 const sizes = [18, 24, 32, 48];
 
+const classNameValue =
+  "grid grid-cols-5 items-center justify-center gap-4 p-4 text-font";
+
 export const Default: Story = {
   render: (_) => (
-    <div className="grid grid-cols-5 items-center justify-center gap-4 p-4 text-font">
+    <div className={classNameValue}>
       <span></span>
       {sizes.map((size) => (
-        <span>{size}px</span>
+        <span key={size}>{size}px</span>
       ))}
       {priorities.map((priority) => (
-        <>
+        <React.Fragment key={priority}>
           <span>{priority}</span>
           {sizes.map((size) => (
             <PriorityIcon
@@ -46,7 +50,7 @@ export const Default: Story = {
               size={size}
             />
           ))}
-        </>
+        </React.Fragment>
       ))}
     </div>
   ),
@@ -90,3 +94,4 @@ export const Size48: Story = {
     size: 48,
   },
 };
+
