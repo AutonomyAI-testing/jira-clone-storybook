@@ -25,5 +25,5 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
 interface Props {
   variant: "500" | "404";
   message: string;
-  href: string;
+  href?: string;
 }
