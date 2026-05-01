@@ -7,7 +7,7 @@ interface FAQItem {
   answer: string;
 }
 
-const faqData: FAQItem[] = [
+const FAQ_DATA: FAQItem[] = [
   {
     question: "What is this project management tool?",
     answer:
@@ -60,10 +60,62 @@ const faqData: FAQItem[] = [
   },
 ];
 
+interface AccordionItemProps {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+/**
+ * Individual FAQ accordion item with expand/collapse functionality.
+ * Keyboard accessible with proper ARIA attributes for screen readers.
+ */
+const AccordionItem = ({
+  question,
+  answer,
+  isOpen,
+  onToggle,
+}: AccordionItemProps) => {
+  return (
+    <div className="bg-background-elevation-surface overflow-hidden rounded-md border border-border">
+      <button
+        onClick={onToggle}
+        className={cx(
+          "flex w-full items-center justify-between gap-4 p-4 text-left transition-colors",
+          "hover:bg-background-neutral-subtle-hovered",
+          "focus-visible:outline focus-visible:outline-2 focus-visible:outline-border-brand"
+        )}
+        aria-expanded={isOpen}
+      >
+        <h3 className="font-primary-bold text-lg text-font">{question}</h3>
+        <ChevronDownIcon
+          className={cx(
+            "h-5 w-5 shrink-0 text-icon transition-transform duration-200",
+            isOpen && "rotate-180"
+          )}
+          aria-hidden="true"
+        />
+      </button>
+      {isOpen && (
+        <div className="border-t border-border p-4">
+          <p className="font-primary-light text-font-subtle">{answer}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+/**
+ * FAQ page view with accordion-style Q&A sections.
+ * Uses single-panel accordion pattern where opening one item closes others.
+ */
 export const FAQView = () => {
+  // Track which FAQ item is currently expanded (only one can be open at a time)
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleItem = (index: number) => {
+  const handleToggle = (index: number) => {
+    // Close if clicking the already-open item, otherwise open the new item
     setOpenIndex(openIndex === index ? null : index);
   };
 
@@ -78,38 +130,14 @@ export const FAQView = () => {
       </p>
 
       <div className="flex flex-col gap-3">
-        {faqData.map((item, index) => (
-          <div
+        {FAQ_DATA.map((item, index) => (
+          <AccordionItem
             key={index}
-            className="overflow-hidden rounded-md border border-border bg-background-elevation-surface"
-          >
-            <button
-              onClick={() => toggleItem(index)}
-              className={cx(
-                "flex w-full items-center justify-between gap-4 p-4 text-left transition-colors",
-                "hover:bg-background-neutral-subtle-hovered",
-                "focus-visible:outline focus-visible:outline-2 focus-visible:outline-border-brand"
-              )}
-              aria-expanded={openIndex === index}
-            >
-              <h3 className="font-primary-bold text-lg text-font">
-                {item.question}
-              </h3>
-              <ChevronDownIcon
-                className={cx(
-                  "h-5 w-5 shrink-0 text-icon transition-transform duration-200",
-                  openIndex === index && "rotate-180"
-                )}
-              />
-            </button>
-            {openIndex === index && (
-              <div className="border-t border-border p-4">
-                <p className="font-primary-light text-font-subtle">
-                  {item.answer}
-                </p>
-              </div>
-            )}
-          </div>
+            question={item.question}
+            answer={item.answer}
+            isOpen={openIndex === index}
+            onToggle={() => handleToggle(index)}
+          />
         ))}
       </div>
     </div>

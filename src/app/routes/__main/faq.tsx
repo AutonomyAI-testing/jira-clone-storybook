@@ -6,7 +6,8 @@ export const meta: V2_MetaFunction = () => {
     { title: "FAQ - Project Management" },
     {
       name: "description",
-      content: "Frequently asked questions about using the project management tool",
+      content:
+        "Frequently asked questions about using the project management tool",
     },
   ];
 };

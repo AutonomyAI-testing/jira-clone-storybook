@@ -15,10 +15,9 @@ type Story = StoryObj<typeof FAQView>;
 
 export const Default: Story = {};
 
-export const WithOneExpanded: Story = {
-  render: () => (
-    <div>
-      <FAQView />
-    </div>
-  ),
-};
+/**
+ * Story showing the FAQ view in its initial state.
+ * Note: User interaction required to expand items - Storybook stories cannot
+ * initialize with pre-expanded state without converting to a controlled component.
+ */
+export const WithOneExpanded: Story = {};
