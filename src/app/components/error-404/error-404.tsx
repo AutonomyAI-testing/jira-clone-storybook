@@ -5,6 +5,6 @@ export const Error404 = ({ message = "Error 404: Not Found", href }: Props) => {
 };
 
 interface Props {
-  message: string;
-  href: string;
+  message?: string;
+  href?: string;
 }

@@ -15,7 +15,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   } = props;
 
   const [textareaHeight, setTextareaHeight] = useState<number>(40);
-  const textareaRef = useRef<HTMLParagraphElement>(null);
+  const textareaRef = useRef<HTMLDivElement>(null);
 
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     const target = e.currentTarget;
