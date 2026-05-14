@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { TextareaAutosize } from "@app/components/textarea-autosize";
+import { useTypewriter } from "@app/hooks/useTypewriter";
 
 export const Description = ({
   initDescription = "",
   readOnly,
 }: DescriptionProps): JSX.Element => {
   const [description, setDescription] = useState<string>(initDescription);
+  const animatedPlaceholder = useTypewriter("Add a description", 50);
 
   const updateDescription = (newDescription: string) => {
     setDescription(newDescription);
@@ -17,7 +19,7 @@ export const Description = ({
         name="description"
         value={description}
         setValue={updateDescription}
-        placeholder="Add a description"
+        placeholder={animatedPlaceholder}
         readOnly={readOnly}
       />
     </div>
