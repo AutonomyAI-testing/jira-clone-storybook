@@ -2,7 +2,12 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
 import { Error404View } from "./error-404.view";
 
-const RemixStubDecorator = (Story: React.ComponentType) => {
+/**
+ * Decorator that provides Remix routing context for the useNavigate hook
+ * without needing a full Remix app setup. This is required for the navigation
+ * button in the Error404View to function in Storybook.
+ */
+const RemixStubDecorator = (Story: React.ComponentType): JSX.Element => {
   const RemixStub = createRemixStub([
     {
       path: "/",
@@ -37,8 +42,7 @@ type Story = StoryObj<typeof Error404View>;
 export const Default: Story = {};
 
 /**
- * Alternative story showing the page in a smaller viewport
- * to verify responsive behavior
+ * Mobile viewport (320px) to verify responsive behavior on small screens
  */
 export const Mobile: Story = {
   parameters: {
@@ -49,7 +53,7 @@ export const Mobile: Story = {
 };
 
 /**
- * Alternative story showing the page on a tablet viewport
+ * Tablet viewport (768px) to verify responsive behavior on medium screens
  */
 export const Tablet: Story = {
   parameters: {
