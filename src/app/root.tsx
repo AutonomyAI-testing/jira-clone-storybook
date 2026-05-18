@@ -25,13 +25,13 @@ import { Error404 } from "./components/error-404";
 import { Error500 } from "./components/error-500";
 import styles from "./styles/app-compiled.css";
 import fonts from "./styles/fonts.css";
-import fuck from "react-toastify/dist/ReactToastify.css";
+import toastifyStyles from "react-toastify/dist/ReactToastify.css";
 
 export const links = () => {
   return [
     { rel: "stylesheet", href: fonts },
     { rel: "stylesheet", href: styles },
-    { rel: "stylesheet", href: fuck },
+    { rel: "stylesheet", href: toastifyStyles },
     { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
   ];
 };
@@ -167,6 +167,7 @@ const errorComponentStyle: CSSProperties = {
 };
 
 export function ErrorBoundary({ error }: { error: Error }) {
+  // Log the error for debugging purposes in development/production monitoring
   console.error(error);
   const errorMessage =
     "It seems there is a critical error! Please try again or contact me at: danielserrano.contacto@gmail.com";
@@ -188,12 +189,13 @@ export function CatchBoundary() {
         <Links />
       </head>
       <body>
-        <div style={errorComponentStyle}>
-          <Error404
-            message="It seems that you have lost! Go to the main page"
-            href="/"
-          />
-        </div>
+        <Error404
+          title="Page not found"
+          subtitle="Looks like this page got lost in the void. Don't worry, let's get you back on track."
+          primaryText="Go home"
+          primaryHref="/"
+          secondaryText="Go back"
+        />
       </body>
     </html>
   );
