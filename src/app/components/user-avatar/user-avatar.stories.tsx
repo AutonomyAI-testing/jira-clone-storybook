@@ -1,90 +1,68 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { usersMock } from "@domain/user";
+
 import { UserAvatar } from "./user-avatar";
 
 const meta: Meta<typeof UserAvatar> = {
   title: "Components/UserAvatar",
+  component: UserAvatar,
   parameters: {
     layout: "centered",
-  },
-  argTypes: {
-    name: {
-      defaultValue: "John Doe",
-      control: {
-        type: "text",
-      },
-    },
-    image: {
-      control: {
-        type: "text",
-      },
-    },
-    color: {
-      control: {
-        type: "color",
-      },
-    },
-    size: {
-      control: {
-        type: "number",
-      },
-    },
-    tooltip: {
-      control: {
-        type: "boolean",
-      },
-    },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof UserAvatar>;
 
-const userImage = usersMock[1].image;
-const userName = usersMock[1].name;
-
-export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-6 gap-4 p-4">
-      {[Image, Fallback, Tooltip, MediumSize, LargeSize].map(
-        (UserAvatarStory, index) => (
-          <UserAvatar name={userName} {...UserAvatarStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
-};
-
-export const Image: Story = {
+export const WithImage: Story = {
   args: {
-    image: userImage,
+    name: "Woody",
+    image: "woody.webp",
+    size: 36,
   },
 };
 
-export const Fallback: Story = {
+export const WithFallback: Story = {
   args: {
-    image: undefined,
+    name: "Daniel Serrano",
     color: "#dae3f9",
+    size: 36,
   },
 };
 
-export const Tooltip: Story = {
+export const Large: Story = {
   args: {
-    image: userImage,
+    name: "Buzz Lightyear",
+    image: "buzz-lightyear.webp",
+    size: 96,
+  },
+};
+
+export const LargeFallback: Story = {
+  args: {
+    name: "T-Rex",
+    color: "#c8f5c2",
+    size: 96,
+  },
+};
+
+export const WithTooltip: Story = {
+  args: {
+    name: "Jessie",
+    image: "jessie.webp",
+    size: 48,
     tooltip: true,
   },
 };
 
-export const MediumSize: Story = {
-  args: {
-    image: userImage,
-    size: 48,
-  },
-};
-
-export const LargeSize: Story = {
-  args: {
-    image: userImage,
-    size: 82,
-  },
+export const AvatarGroup: Story = {
+  render: () => (
+    <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+      <UserAvatar name="Woody" image="woody.webp" size={36} />
+      <UserAvatar name="Buzz Lightyear" image="buzz-lightyear.webp" size={36} />
+      <UserAvatar name="Jessie" image="jessie.webp" size={36} />
+      <UserAvatar name="Emperor Zurg" image="emperor-zurg.webp" size={36} />
+      <UserAvatar name="Daniel Serrano" color="#dae3f9" size={36} />
+      <UserAvatar name="T-Rex" size={36} />
+    </div>
+  ),
 };
