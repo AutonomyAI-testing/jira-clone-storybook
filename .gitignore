@@ -21,3 +21,4 @@ pnpm-lock.yaml
 src/infrastructure/db/db.sqlite
 storybook-static
 .DS_Store
+src/infrastructure/db/dev.db
