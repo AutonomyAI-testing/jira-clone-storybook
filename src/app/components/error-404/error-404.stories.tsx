@@ -6,8 +6,15 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
+  decorators: [
+    (Story) => (
+      <div style={{ width: "100%", height: "100vh", display: "flex", alignItems: "stretch" }}>
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     message: {
       control: {
@@ -20,6 +27,7 @@ const meta: Meta<typeof Error404> = {
       },
     },
   },
+
 };
 
 export default meta;
@@ -27,21 +35,21 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const WithMessage: Story = {
   args: {
-    message: "This is the error message",
+    message: "The resource you requested could not be found.",
   },
 };
 
-export const Link: Story = {
+export const WithHomeButton: Story = {
   args: {
-    href: "/link-to-safe-place",
+    href: "/",
   },
 };
 
-export const MessageLink: Story = {
+export const FullExample: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "It seems that you have lost! Go to the main page",
+    href: "/",
   },
 };
