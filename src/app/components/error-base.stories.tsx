@@ -1,14 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Error404 } from "./error-404";
+import { ErrorBase } from "./error-base";
 
-const meta: Meta<typeof Error404> = {
-  title: "Components/Error404",
-  component: Error404,
+const meta: Meta<typeof ErrorBase> = {
+  title: "Components/ErrorBase",
+  component: ErrorBase,
   parameters: {
     layout: "centered",
   },
   argTypes: {
+    variant: {
+      control: {
+        type: "select",
+        options: ["404", "500"],
+      },
+    },
     message: {
       control: {
         type: "text",
@@ -28,16 +34,11 @@ const meta: Meta<typeof Error404> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Error404>;
+type Story = StoryObj<typeof ErrorBase>;
 
-export const Default: Story = {
+export const Error404Variant: Story = {
   args: {
-    href: "/",
-  },
-};
-
-export const WithButton: Story = {
-  args: {
+    variant: "404",
     message:
       "It seems that you have lost! The page you're looking for doesn't exist.",
     buttonText: "Go to Projects",
@@ -45,16 +46,18 @@ export const WithButton: Story = {
   },
 };
 
-export const CustomMessage: Story = {
+export const Error500Variant: Story = {
   args: {
-    message: "This is a custom error message for testing purposes.",
-    buttonText: "Back to Safety",
+    variant: "500",
+    message: "Error 500: Server error",
+    buttonText: "Try again",
     href: "/",
   },
 };
 
 export const WithoutButton: Story = {
   args: {
+    variant: "404",
     message: "Page not found - no button displayed",
   },
 };
