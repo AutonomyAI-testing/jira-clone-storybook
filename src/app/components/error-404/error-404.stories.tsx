@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { withRemixStub } from "@app/stories/utils";
 
 import { Error404 } from "./error-404";
 
@@ -6,8 +7,10 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
+  // Wrap with RemixStub to support Link components used in Error404
+  decorators: [(Story) => withRemixStub(<Story />)],
   argTypes: {
     message: {
       control: {
@@ -27,21 +30,24 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+// Story showcasing custom error message
+export const WithCustomMessage: Story = {
   args: {
-    message: "This is the error message",
+    message: "Oops! The page you're looking for doesn't exist.",
   },
 };
 
-export const Link: Story = {
+// Story showcasing custom navigation link destination
+export const WithCustomLink: Story = {
   args: {
-    href: "/link-to-safe-place",
+    href: "/projects",
   },
 };
 
-export const MessageLink: Story = {
+// Story showcasing both custom message and navigation link
+export const WithCustomMessageAndLink: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "Something went wrong. Let's get you back on track.",
+    href: "/projects",
   },
 };

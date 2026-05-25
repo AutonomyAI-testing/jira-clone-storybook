@@ -2,6 +2,10 @@ import * as Avatar from "@radix-ui/react-avatar";
 import { User, getRandomPastelColor } from "@domain/user";
 import { Tooltip } from "@app/components/tooltip";
 
+/**
+ * UserAvatar component - renders a circular user avatar with image or initials fallback.
+ * Optimizes images by serving minified versions for smaller sizes to improve performance.
+ */
 export const UserAvatar = ({
   name,
   image,
@@ -9,6 +13,7 @@ export const UserAvatar = ({
   size = 36,
   tooltip = false,
 }: UserAvatarProps): JSX.Element => {
+  // Use optimized minified image for sizes <= 80px, full resolution for larger avatars
   const imageMinName = image?.replace(".webp", "-min.webp");
   const imageSrc = size > 80 ? `/avatars/${image}` : `/avatars/${imageMinName}`;
   const imageSize = {
