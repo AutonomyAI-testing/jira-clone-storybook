@@ -13,11 +13,32 @@ const meta: Meta<typeof Error404> = {
       control: {
         type: "text",
       },
+      description: "Error message text displayed below the wizard character",
     },
     href: {
       control: {
         type: "text",
       },
+      description: "Navigation URL for the button or link",
+    },
+    buttonText: {
+      control: {
+        type: "text",
+      },
+      description: "Text displayed on the button (when useButton=true)",
+    },
+    useButton: {
+      control: {
+        type: "boolean",
+      },
+      description: "Use prominent button CTA instead of subtle link",
+    },
+    buttonColor: {
+      control: {
+        type: "select",
+        options: ["primary", "neutral"],
+      },
+      description: "Color variant for the button",
     },
   },
 };
@@ -25,23 +46,51 @@ const meta: Meta<typeof Error404> = {
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
-export const Default: Story = {};
-
-export const Message: Story = {
+export const Default: Story = {
   args: {
-    message: "This is the error message",
+    message: "Page not found",
+    href: "/",
+    buttonText: "Back to Home",
+    useButton: true,
+    buttonColor: "primary",
   },
 };
 
-export const Link: Story = {
+export const ButtonVariant: Story = {
   args: {
-    href: "/link-to-safe-place",
+    message: "Page not found",
+    buttonText: "Back to Projects",
+    useButton: true,
+    buttonColor: "primary",
+    href: "/projects",
   },
 };
 
-export const MessageLink: Story = {
+export const ButtonNeutralVariant: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "The page you're looking for doesn't exist",
+    buttonText: "Go Home",
+    useButton: true,
+    buttonColor: "neutral",
+    href: "/",
+  },
+};
+
+export const CustomMessage: Story = {
+  args: {
+    message:
+      "The page you're looking for doesn't exist. Try navigating back or heading to the home page.",
+    buttonText: "Back to Projects",
+    useButton: true,
+    buttonColor: "primary",
+    href: "/projects",
+  },
+};
+
+export const LegacyLinkVariant: Story = {
+  args: {
+    message: "Page not found",
+    useButton: false,
+    href: "/",
   },
 };
