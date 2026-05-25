@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { Error404 } from "./error-404";
 
 const meta: Meta<typeof Error404> = {
@@ -8,18 +7,6 @@ const meta: Meta<typeof Error404> = {
   parameters: {
     layout: "fullscreen",
   },
-  argTypes: {
-    message: {
-      control: {
-        type: "text",
-      },
-    },
-    href: {
-      control: {
-        type: "text",
-      },
-    },
-  },
 };
 
 export default meta;
@@ -27,13 +14,14 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {
   args: {
+    message: "Oops! This page got lost in the magic.",
     href: "/",
   },
 };
 
 export const CustomMessage: Story = {
   args: {
-    message: "This page vanished in a puff of magical smoke!",
+    message: "This page has been moved to another dimension.",
     href: "/",
   },
 };
@@ -41,13 +29,13 @@ export const CustomMessage: Story = {
 export const WithCustomHref: Story = {
   args: {
     message: "Oops! This page got lost in the magic.",
-    href: "/dashboard",
+    href: "/projects",
   },
 };
 
 export const AllCustom: Story = {
   args: {
-    message: "The wizard's spell backfired on this page!",
-    href: "/projects",
+    message: "Something went wrong! The page you're looking for doesn't exist.",
+    href: "/dashboard",
   },
 };
