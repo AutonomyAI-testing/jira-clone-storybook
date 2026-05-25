@@ -1,0 +1,380 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 660">
+  <defs>
+    <!-- Hat gradient - deeper slate blue -->
+    <linearGradient id="hatGrad" x1="0%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" style="stop-color:#3a5fa0"/>
+      <stop offset="60%" style="stop-color:#2d4f8a"/>
+      <stop offset="100%" style="stop-color:#1f3a6a"/>
+    </linearGradient>
+    <linearGradient id="hatDarkSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0f1f3a;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#0f1f3a;stop-opacity:0"/>
+    </linearGradient>
+
+    <!-- TV body gradient -->
+    <linearGradient id="tvBodyGrad" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a57a"/>
+      <stop offset="50%" style="stop-color:#b8875d"/>
+      <stop offset="100%" style="stop-color:#8a6035"/>
+    </linearGradient>
+
+    <!-- TV frame gradient -->
+    <linearGradient id="tvFrameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c4956a"/>
+      <stop offset="100%" style="stop-color:#7a5a35"/>
+    </linearGradient>
+
+    <!-- Screen gradient -->
+    <radialGradient id="screenGrad" cx="38%" cy="38%" r="65%">
+      <stop offset="0%" style="stop-color:#c8f040"/>
+      <stop offset="35%" style="stop-color:#9ecf3a"/>
+      <stop offset="100%" style="stop-color:#5a9020"/>
+    </radialGradient>
+
+    <!-- Screen shine -->
+    <radialGradient id="screenShine" cx="30%" cy="30%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.75"/>
+      <stop offset="60%" style="stop-color:#ffffff;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Torso gradient -->
+    <linearGradient id="torsoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c4956a"/>
+      <stop offset="100%" style="stop-color:#8a6035"/>
+    </linearGradient>
+
+    <!-- Arm gradient -->
+    <linearGradient id="armGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#656570"/>
+      <stop offset="100%" style="stop-color:#44444e"/>
+    </linearGradient>
+
+    <!-- Glove gradient -->
+    <linearGradient id="gloveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f2ec"/>
+      <stop offset="100%" style="stop-color:#dedad0"/>
+    </linearGradient>
+
+    <!-- Boot gradient -->
+    <linearGradient id="bootGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8a6035"/>
+      <stop offset="100%" style="stop-color:#4a2e18"/>
+    </linearGradient>
+
+    <!-- Gold knob gradient -->
+    <radialGradient id="goldGrad" cx="35%" cy="35%" r="60%">
+      <stop offset="0%" style="stop-color:#ffe060"/>
+      <stop offset="100%" style="stop-color:#c89010"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ======= BACKGROUND ======= -->
+  <rect width="600" height="660" fill="#e8dbc5"/>
+  <!-- Subtle grain dots for parchment texture -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" result="noiseOut"/>
+    <feColorMatrix in="noiseOut" type="saturate" values="0" result="grayNoise"/>
+    <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended"/>
+    <feComponentTransfer in="blended">
+      <feFuncR type="linear" slope="1.02"/>
+      <feFuncG type="linear" slope="0.99"/>
+      <feFuncB type="linear" slope="0.95"/>
+    </feComponentTransfer>
+  </filter>
+  <rect width="600" height="660" fill="url(#grain)" opacity="0.07"/>
+
+  <!-- ======= VITRUVIAN CIRCLE & SQUARE ======= -->
+  <circle cx="300" cy="320" r="240" fill="none" stroke="#9b7b65" stroke-width="2" opacity="0.55"/>
+  <rect x="60" y="80" width="480" height="480" fill="none" stroke="#9b7b65" stroke-width="1.5" opacity="0.5"/>
+  <!-- Cross lines -->
+  <line x1="300" y1="60" x2="300" y2="580" stroke="#9b7b65" stroke-width="0.8" opacity="0.3"/>
+  <line x1="60" y1="320" x2="540" y2="320" stroke="#9b7b65" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- ======= UPPER ARMS (Vitruvian Man style - wide upward angle) ======= -->
+  <!-- Left upper arm -->
+  <line x1="240" y1="320" x2="120" y2="245" stroke="url(#armGrad)" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="120" cy="245" r="12" fill="#525258" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Left upper hand/glove -->
+  <g transform="translate(100, 225)">
+    <!-- Palm -->
+    <ellipse cx="0" cy="0" rx="26" ry="22" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- Thumb -->
+    <ellipse cx="-22" cy="6" rx="11" ry="15" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2" transform="rotate(-55 -22 6)"/>
+    <!-- Index finger -->
+    <ellipse cx="-16" cy="-18" rx="9" ry="16" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2" transform="rotate(-25 -16 -18)"/>
+    <!-- Middle finger -->
+    <ellipse cx="-2" cy="-24" rx="9" ry="17" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2" transform="rotate(-5 -2 -24)"/>
+    <!-- Ring finger -->
+    <ellipse cx="13" cy="-21" rx="9" ry="16" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2" transform="rotate(15 13 -21)"/>
+    <!-- Pinky -->
+    <ellipse cx="22" cy="-14" rx="8" ry="13" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2" transform="rotate(35 22 -14)"/>
+    <!-- Cuff -->
+    <ellipse cx="0" cy="20" rx="26" ry="11" fill="#e0ddd4" stroke="#1a1a1a" stroke-width="2"/>
+    <line x1="-22" y1="16" x2="22" y2="16" stroke="#1a1a1a" stroke-width="1.2" opacity="0.6"/>
+  </g>
+
+  <!-- Right upper arm -->
+  <line x1="360" y1="320" x2="480" y2="245" stroke="url(#armGrad)" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="480" cy="245" r="12" fill="#525258" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Right upper hand/glove -->
+  <g transform="translate(500, 225)">
+    <!-- Palm -->
+    <ellipse cx="0" cy="0" rx="26" ry="22" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- Thumb -->
+    <ellipse cx="22" cy="6" rx="11" ry="15" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2" transform="rotate(55 22 6)"/>
+    <!-- Index finger -->
+    <ellipse cx="16" cy="-18" rx="9" ry="16" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2" transform="rotate(25 16 -18)"/>
+    <!-- Middle finger -->
+    <ellipse cx="2" cy="-24" rx="9" ry="17" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2" transform="rotate(5 2 -24)"/>
+    <!-- Ring finger -->
+    <ellipse cx="-13" cy="-21" rx="9" ry="16" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2" transform="rotate(-15 -13 -21)"/>
+    <!-- Pinky -->
+    <ellipse cx="-22" cy="-14" rx="8" ry="13" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2" transform="rotate(-35 -22 -14)"/>
+    <!-- Cuff -->
+    <ellipse cx="0" cy="20" rx="26" ry="11" fill="#e0ddd4" stroke="#1a1a1a" stroke-width="2"/>
+    <line x1="-22" y1="16" x2="22" y2="16" stroke="#1a1a1a" stroke-width="1.2" opacity="0.6"/>
+  </g>
+
+  <!-- ======= LOWER ARMS (Vitruvian Man style - downward angle) ======= -->
+  <!-- Left lower arm -->
+  <line x1="245" y1="445" x2="130" y2="540" stroke="url(#armGrad)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="130" cy="540" r="11" fill="#525258" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Left lower hand/glove -->
+  <g transform="translate(110, 560)">
+    <!-- Palm -->
+    <ellipse cx="0" cy="0" rx="24" ry="20" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2"/>
+    <!-- Thumb -->
+    <ellipse cx="-20" cy="5" rx="10" ry="13" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="1.8" transform="rotate(-55 -20 5)"/>
+    <!-- Index finger -->
+    <ellipse cx="-15" cy="-16" rx="8" ry="14" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="1.8" transform="rotate(-25 -15 -16)"/>
+    <!-- Middle finger -->
+    <ellipse cx="-2" cy="-22" rx="8" ry="16" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="1.8" transform="rotate(-5 -2 -22)"/>
+    <!-- Ring finger -->
+    <ellipse cx="12" cy="-19" rx="8" ry="14" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="1.8" transform="rotate(15 12 -19)"/>
+    <!-- Pinky -->
+    <ellipse cx="20" cy="-12" rx="7" ry="12" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="1.8" transform="rotate(35 20 -12)"/>
+    <!-- Cuff -->
+    <ellipse cx="0" cy="18" rx="24" ry="10" fill="#e0ddd4" stroke="#1a1a1a" stroke-width="1.8"/>
+  </g>
+
+  <!-- Right lower arm -->
+  <line x1="355" y1="445" x2="470" y2="540" stroke="url(#armGrad)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="470" cy="540" r="11" fill="#525258" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Right lower hand/glove -->
+  <g transform="translate(490, 560)">
+    <!-- Palm -->
+    <ellipse cx="0" cy="0" rx="24" ry="20" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="2"/>
+    <!-- Thumb -->
+    <ellipse cx="20" cy="5" rx="10" ry="13" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="1.8" transform="rotate(55 20 5)"/>
+    <!-- Index finger -->
+    <ellipse cx="15" cy="-16" rx="8" ry="14" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="1.8" transform="rotate(25 15 -16)"/>
+    <!-- Middle finger -->
+    <ellipse cx="2" cy="-22" rx="8" ry="16" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="1.8" transform="rotate(5 2 -22)"/>
+    <!-- Ring finger -->
+    <ellipse cx="-12" cy="-19" rx="8" ry="14" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="1.8" transform="rotate(-15 -12 -19)"/>
+    <!-- Pinky -->
+    <ellipse cx="-20" cy="-12" rx="7" ry="12" fill="url(#gloveGrad)" stroke="#1a1a1a" stroke-width="1.8" transform="rotate(-35 -20 -12)"/>
+    <!-- Cuff -->
+    <ellipse cx="0" cy="18" rx="24" ry="10" fill="#e0ddd4" stroke="#1a1a1a" stroke-width="1.8"/>
+  </g>
+
+  <!-- ======= ROBOT BODY (TORSO) ======= -->
+  <!-- Neck joint -->
+  <rect x="275" y="365" width="50" height="18" rx="5" fill="#a87848" stroke="#1a1a1a" stroke-width="2.5"/>
+
+  <!-- Torso main - barrel shape -->
+  <rect x="220" y="383" width="160" height="130" rx="14" fill="url(#torsoGrad)" stroke="#1a1a1a" stroke-width="3"/>
+  <!-- Torso top lighter edge (bevel) -->
+  <rect x="223" y="386" width="154" height="10" rx="5" fill="#d4a87a" opacity="0.5"/>
+  <!-- Torso side shadow on right (barrel effect) -->
+  <rect x="340" y="383" width="28" height="130" rx="0 14 14 0" fill="#6a4820" opacity="0.25"/>
+
+  <!-- Torso left side bolt -->
+  <circle cx="235" cy="420" r="8" fill="#b07040" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="235" cy="420" r="4" fill="#c88050"/>
+  <!-- Torso right side bolt -->
+  <circle cx="365" cy="420" r="8" fill="#b07040" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="365" cy="420" r="4" fill="#c88050"/>
+
+  <!-- Control panel area -->
+  <rect x="240" y="410" width="120" height="85" rx="8" fill="#9a7048" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Panel detail lines -->
+  <line x1="248" y1="428" x2="352" y2="428" stroke="#c4905a" stroke-width="1.2" opacity="0.6"/>
+  <line x1="248" y1="442" x2="352" y2="442" stroke="#c4905a" stroke-width="1.2" opacity="0.6"/>
+
+  <!-- Gold button/knob - more prominent -->
+  <circle cx="300" cy="455" r="18" fill="#9a7048" stroke="#1a1a1a" stroke-width="2.5"/>
+  <circle cx="300" cy="455" r="14" fill="url(#goldGrad)" stroke="#c89020" stroke-width="2"/>
+  <circle cx="294" cy="449" r="5" fill="#ffe880" opacity="0.8"/>
+
+  <!-- ======= TV HEAD ======= -->
+  <!-- Main TV box -->
+  <rect x="215" y="230" width="190" height="160" rx="14" fill="url(#tvBodyGrad)" stroke="#1a1a1a" stroke-width="3.5"/>
+  <!-- Lighter top-left bevel -->
+  <path d="M 230 230 Q 215 230, 215 245 L 215 270 Q 240 232, 405 232 Z" fill="#d4a87a" opacity="0.5"/>
+  
+  <!-- Screen bezel/frame (darker) -->
+  <rect x="227" y="248" width="166" height="125" rx="8" fill="#6a4820" stroke="#1a1a1a" stroke-width="2.5"/>
+  
+  <!-- Screen (green CRT) -->
+  <rect x="235" y="256" width="150" height="109" rx="5" fill="url(#screenGrad)" stroke="#1a1a1a" stroke-width="1.5"/>
+  
+  <!-- Screen highlight - multiple blobs for glassy look -->
+  <!-- Main highlight blob -->
+  <ellipse cx="270" cy="280" rx="32" ry="22" fill="url(#screenShine)"/>
+  <!-- Secondary highlight blob - smaller -->
+  <ellipse cx="320" cy="295" rx="16" ry="12" fill="#ffffff" opacity="0.25"/>
+  <!-- Tertiary small highlight -->
+  <ellipse cx="290" cy="315" rx="10" ry="7" fill="#ffffff" opacity="0.12"/>
+  
+  <!-- Screen flicker line -->
+  <line x1="237" y1="295" x2="385" y2="295" stroke="#ffffff" stroke-width="1.5" opacity="0.08"/>
+
+  <!-- TV side ears / knobs -->
+  <rect x="200" y="270" width="18" height="50" rx="5" fill="#b07848" stroke="#1a1a1a" stroke-width="2"/>
+  <rect x="382" y="270" width="18" height="50" rx="5" fill="#b07848" stroke="#1a1a1a" stroke-width="2"/>
+
+  <!-- TV right shadow -->
+  <rect x="370" y="232" width="18" height="158" rx="0 14 14 0" fill="#6a4820" opacity="0.25"/>
+
+  <!-- ======= WIZARD HAT ======= -->
+  <!-- HAT CONE with droop to the right -->
+  <path d="M 170 250
+           Q 185 210, 210 165
+           Q 235 120, 260 75
+           Q 280 40, 295 15
+           Q 310 40, 335 75
+           Q 360 120, 380 165
+           Q 400 210, 415 250
+           L 340 250
+           Q 320 195, 305 145
+           Q 295 110, 295 15
+           L 290 20
+           Q 290 110, 280 145
+           Q 265 195, 245 250 Z"
+        fill="url(#hatGrad)" stroke="#1a1a1a" stroke-width="3.5" stroke-linejoin="round"/>
+
+  <!-- Hat cone right-side shadow for depth -->
+  <path d="M 295 15 Q 310 40, 335 75 Q 360 120, 380 165 Q 400 210, 415 250 L 340 250 Q 320 195, 305 145 Q 295 110, 295 15"
+        fill="#0f1f40" opacity="0.3"/>
+
+  <!-- Hat cone fold line (center crease) -->
+  <path d="M 260 165 Q 285 85, 295 15" fill="none" stroke="#1a2d5a" stroke-width="2.5" opacity="0.6"/>
+
+  <!-- Drooping tip curve for character -->
+  <path d="M 295 15 Q 315 25, 320 50" fill="none" stroke="#1a1a1a" stroke-width="2" opacity="0.4"/>
+
+  <!-- STARS on cone -->
+  <!-- Star 1 - large, top right -->
+  <g transform="translate(340, 100)">
+    <polygon points="0,-14 4,-4 14,-2.5 5.5,5 8,16 0,10 -8,16 -5.5,5 -14,-2.5 -4,-4"
+             fill="#f5c520" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/>
+  </g>
+  <!-- Star 2 - large, top left -->
+  <g transform="translate(245, 105)">
+    <polygon points="0,-13 3.5,-4 13,-2 5,4.5 7,15 0,9.5 -7,15 -5,4.5 -13,-2 -3.5,-4"
+             fill="#f5c520" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/>
+  </g>
+  <!-- Star 3 - medium right mid -->
+  <g transform="translate(360, 175)">
+    <polygon points="0,-10 3,-3 10,-1.5 4,4 6,12 0,7.5 -6,12 -4,4 -10,-1.5 -3,-3"
+             fill="#f5c520" stroke="#1a1a1a" stroke-width="1.2" stroke-linejoin="round"/>
+  </g>
+  <!-- Star 4 - medium left mid -->
+  <g transform="translate(230, 180)">
+    <polygon points="0,-10 3,-3 10,-1.5 4,4 6,12 0,7.5 -6,12 -4,4 -10,-1.5 -3,-3"
+             fill="#f5c520" stroke="#1a1a1a" stroke-width="1.2" stroke-linejoin="round"/>
+  </g>
+  <!-- Star 5 - small, upper middle -->
+  <g transform="translate(295, 60)">
+    <polygon points="0,-8 2.3,-2.3 8,-1.2 3,3 4.5,9 0,5.5 -4.5,9 -3,3 -8,-1.2 -2.3,-2.3"
+             fill="#f5c520" stroke="#1a1a1a" stroke-width="1"/>
+  </g>
+
+  <!-- CRESCENT MOONS on cone -->
+  <!-- Moon 1 - left area -->
+  <g transform="translate(255, 135) rotate(-15)">
+    <circle cx="0" cy="0" r="12" fill="#f5c520" stroke="#1a1a1a" stroke-width="2"/>
+    <circle cx="3.5" cy="-1" r="10" fill="#2d4f8a" stroke="none"/>
+  </g>
+  <!-- Moon 2 - right area -->
+  <g transform="translate(330, 140) rotate(10)">
+    <circle cx="0" cy="0" r="12" fill="#f5c520" stroke="#1a1a1a" stroke-width="2"/>
+    <circle cx="-3.5" cy="-1" r="10" fill="#2d4f8a" stroke="none"/>
+  </g>
+  <!-- Moon 3 - upper center-right -->
+  <g transform="translate(310, 75) rotate(20)">
+    <circle cx="0" cy="0" r="9" fill="#f5c520" stroke="#1a1a1a" stroke-width="1.5"/>
+    <circle cx="-2.5" cy="-0.8" r="7.5" fill="#2d4f8a" stroke="none"/>
+  </g>
+
+  <!-- HAT BRIM (drawn AFTER cone - much wider now with rx=190) -->
+  <ellipse cx="300" cy="250" rx="200" ry="35" fill="url(#hatGrad)" stroke="#1a1a1a" stroke-width="3.5"/>
+  <!-- Brim top highlight -->
+  <ellipse cx="280" cy="243" rx="140" ry="16" fill="#3560c8" opacity="0.35"/>
+  <!-- Brim underside shadow -->
+  <ellipse cx="300" cy="262" rx="190" ry="25" fill="#0f1f40" opacity="0.3"/>
+
+  <!-- Brim upward curve on edges (slight cup shape) -->
+  <path d="M 100 250 Q 110 235, 120 240 M 480 250 Q 490 235, 500 240" fill="none" stroke="#1a1a1a" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- STARS on hat brim -->
+  <!-- Brim star left -->
+  <g transform="translate(130, 250)">
+    <polygon points="0,-10 3,-3 10,-1.5 4,4 6,12 0,7.5 -6,12 -4,4 -10,-1.5 -3,-3"
+             fill="#f5c520" stroke="#1a1a1a" stroke-width="1.2" stroke-linejoin="round"/>
+  </g>
+  <!-- Brim star right -->
+  <g transform="translate(470, 250)">
+    <polygon points="0,-10 3,-3 10,-1.5 4,4 6,12 0,7.5 -6,12 -4,4 -10,-1.5 -3,-3"
+             fill="#f5c520" stroke="#1a1a1a" stroke-width="1.2" stroke-linejoin="round"/>
+  </g>
+  <!-- Brim moon left -->
+  <g transform="translate(170, 255) rotate(5)">
+    <circle cx="0" cy="0" r="9" fill="#f5c520" stroke="#1a1a1a" stroke-width="1.5"/>
+    <circle cx="3" cy="-0.6" r="7.5" fill="#2d4f8a" stroke="none"/>
+  </g>
+  <!-- Brim moon right -->
+  <g transform="translate(430, 255) rotate(-5)">
+    <circle cx="0" cy="0" r="9" fill="#f5c520" stroke="#1a1a1a" stroke-width="1.5"/>
+    <circle cx="-3" cy="-0.6" r="7.5" fill="#2d4f8a" stroke="none"/>
+  </g>
+  <!-- Brim star center-left -->
+  <g transform="translate(255, 265)">
+    <polygon points="0,-7 2,-2.5 7,-1 3,2.5 4,8 0,5 -4,8 -3,2.5 -7,-1 -2,-2.5"
+             fill="#f5c520" stroke="#1a1a1a" stroke-width="1"/>
+  </g>
+  <!-- Brim star center-right -->
+  <g transform="translate(345, 265)">
+    <polygon points="0,-7 2,-2.5 7,-1 3,2.5 4,8 0,5 -4,8 -3,2.5 -7,-1 -2,-2.5"
+             fill="#f5c520" stroke="#1a1a1a" stroke-width="1"/>
+  </g>
+
+  <!-- ======= LEGS & BOOTS with Joints ======= -->
+  <!-- Left upper leg segment -->
+  <rect x="265" y="510" width="26" height="50" rx="5" fill="#9a7048" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Left knee joint -->
+  <circle cx="278" cy="560" r="8" fill="#6a4820" stroke="#1a1a1a" stroke-width="2"/>
+  <!-- Left lower leg segment -->
+  <rect x="266" y="568" width="24" height="45" rx="4" fill="#8a6035" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Left ankle joint -->
+  <circle cx="278" cy="613" r="7" fill="#6a4820" stroke="#1a1a1a" stroke-width="2"/>
+  <!-- Left blocky foot -->
+  <rect x="254" y="615" width="48" height="32" rx="6" fill="url(#bootGrad)" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Left foot detail -->
+  <rect x="260" y="630" width="36" height="8" rx="2" fill="#5a3820" stroke="#1a1a1a" stroke-width="1.5" opacity="0.8"/>
+
+  <!-- Right upper leg segment -->
+  <rect x="309" y="510" width="26" height="50" rx="5" fill="#9a7048" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Right knee joint -->
+  <circle cx="322" cy="560" r="8" fill="#6a4820" stroke="#1a1a1a" stroke-width="2"/>
+  <!-- Right lower leg segment -->
+  <rect x="310" y="568" width="24" height="45" rx="4" fill="#8a6035" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Right ankle joint -->
+  <circle cx="322" cy="613" r="7" fill="#6a4820" stroke="#1a1a1a" stroke-width="2"/>
+  <!-- Right blocky foot -->
+  <rect x="298" y="615" width="48" height="32" rx="6" fill="url(#bootGrad)" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Right foot detail -->
+  <rect x="304" y="630" width="36" height="8" rx="2" fill="#5a3820" stroke="#1a1a1a" stroke-width="1.5" opacity="0.8"/>
+</svg>

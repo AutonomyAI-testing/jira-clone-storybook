@@ -6,7 +6,7 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     message: {
@@ -25,23 +25,29 @@ const meta: Meta<typeof Error404> = {
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
-export const Default: Story = {};
-
-export const Message: Story = {
+export const Default: Story = {
   args: {
-    message: "This is the error message",
+    href: "/",
   },
 };
 
-export const Link: Story = {
+export const CustomMessage: Story = {
   args: {
-    href: "/link-to-safe-place",
+    message: "This page vanished in a puff of magical smoke!",
+    href: "/",
   },
 };
 
-export const MessageLink: Story = {
+export const WithCustomHref: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "Oops! This page got lost in the magic.",
+    href: "/dashboard",
+  },
+};
+
+export const AllCustom: Story = {
+  args: {
+    message: "The wizard's spell backfired on this page!",
+    href: "/projects",
   },
 };
