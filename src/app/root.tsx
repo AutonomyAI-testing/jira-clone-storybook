@@ -21,17 +21,17 @@ import {
 import { formatTags, formatProperties } from "@utils/meta";
 import { getThemeSession } from "./session-storage/theme-storage.server";
 import { Toast } from "./components/toast";
-import { Error404 } from "./components/error-404";
+import { Error404Full } from "./components/error-404";
 import { Error500 } from "./components/error-500";
 import styles from "./styles/app-compiled.css";
 import fonts from "./styles/fonts.css";
-import fuck from "react-toastify/dist/ReactToastify.css";
+import toastifyStyles from "react-toastify/dist/ReactToastify.css";
 
 export const links = () => {
   return [
     { rel: "stylesheet", href: fonts },
     { rel: "stylesheet", href: styles },
-    { rel: "stylesheet", href: fuck },
+    { rel: "stylesheet", href: toastifyStyles },
     { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
   ];
 };
@@ -167,7 +167,6 @@ const errorComponentStyle: CSSProperties = {
 };
 
 export function ErrorBoundary({ error }: { error: Error }) {
-  console.error(error);
   const errorMessage =
     "It seems there is a critical error! Please try again or contact me at: danielserrano.contacto@gmail.com";
 
@@ -183,17 +182,13 @@ export function CatchBoundary() {
   return (
     <html>
       <head>
-        <title>Ooops! Not found</title>
+        <title>404 – Page Not Found</title>
         <Meta />
         <Links />
       </head>
-      <body>
-        <div style={errorComponentStyle}>
-          <Error404
-            message="It seems that you have lost! Go to the main page"
-            href="/"
-          />
-        </div>
+      <body className="bg-elevation-surface font-primary text-font">
+        <Error404Full />
+        <Scripts />
       </body>
     </html>
   );
