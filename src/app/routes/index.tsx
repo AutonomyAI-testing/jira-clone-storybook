@@ -13,7 +13,9 @@ export const loader: LoaderFunction = async ({ request }) => {
 export default function IndexRoute() {
   return (
     <div>
-      <h1>LANDING</h1>
+      {/* Heading uses inline style for red color (#e34935) as the project's custom Tailwind config
+          does not include standard color utilities. The color is from the design system. */}
+      <h1 style={{ color: "#e34935" }}>Let's Find Your Ideal Space</h1>
     </div>
   );
 }
