@@ -1,12 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { Error404 } from "./error-404";
 
 const meta: Meta<typeof Error404> = {
-  title: "Components/Error404",
+  title: "Pages/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     message: {
@@ -27,21 +26,23 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const CustomMessage: Story = {
   args: {
-    message: "This is the error message",
+    message:
+      "Whoops! This spell backfired. The wizard's divination failed us.",
   },
 };
 
-export const Link: Story = {
+export const CustomHref: Story = {
   args: {
-    href: "/link-to-safe-place",
+    href: "/projects",
   },
 };
 
-export const MessageLink: Story = {
+export const CustomMessageAndHref: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message:
+      "The crystal ball shows nothing but void... this page doesn't exist in our realm.",
+    href: "/projects",
   },
 };
