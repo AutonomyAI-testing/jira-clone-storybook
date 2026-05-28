@@ -20,17 +20,17 @@ export const Error404: FC<Props> = ({
       />
 
       {/* 404 number */}
-      <p className="text-[72px] font-black leading-none text-font-subtlest">
+      <p className="text-[72px] font-black leading-none text-font-danger">
         404
       </p>
 
       {/* Headline */}
-      <h1 className="text-2xl font-bold text-font">
+      <h1 className="text-2xl font-bold text-font-danger">
         You&apos;ve been hexed! 🧙
       </h1>
 
       {/* Message */}
-      <p className="text-base text-font-subtle">{message}</p>
+      <p className="text-base text-font-danger">{message}</p>
 
       {/* Home link */}
       {href && (
