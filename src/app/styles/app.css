@@ -157,7 +157,7 @@
 :root,
 .light {
   /* Text */
-  --color-font: var(--Neutral1000);
+  --color-font: var(--Green600);
   --color-font-brand: var(--Blue700);
   --color-font-success: var(--Green800);
   --color-font-danger: var(--Red800);
@@ -294,7 +294,7 @@
 
 .dark {
   /* Text */
-  --color-font: var(--DarkNeutral900);
+  --color-font: var(--Green600);
   --color-font-brand: var(--Blue400);
   --color-font-success: var(--Green300);
   --color-font-danger: var(--Red300);
