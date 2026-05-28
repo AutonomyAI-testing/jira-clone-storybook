@@ -1,4 +1,6 @@
 import type { Preview } from "@storybook/react";
+import React from "react";
+import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
 
 import { withThemeByClassName } from "@storybook/addon-styling";
 
@@ -26,6 +28,16 @@ const preview: Preview = {
   },
 
   decorators: [
+    (Story) => {
+      const RemixStub = createRemixStub([
+        {
+          path: "/",
+          element: React.createElement(Story),
+          action: async () => ({ status: 200 }),
+        },
+      ]);
+      return React.createElement(RemixStub);
+    },
     // Adds theme switching support.
     // NOTE: requires setting "darkMode" to "class" in your tailwind config
     // @ts-ignore
