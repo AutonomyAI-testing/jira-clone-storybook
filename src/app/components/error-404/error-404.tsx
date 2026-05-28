@@ -30,10 +30,11 @@ export const Error404 = ({ message, href = "/" }: Props): JSX.Element => {
 
       {/* Main Heading - fades in third */}
       <h1
-        className="mb-4 animate-slide-up text-center text-3xl font-primary-bold text-font"
+        className="mb-4 animate-slide-up text-center text-3xl font-primary-bold text-red-600"
         style={{
           animationDelay: "300ms",
           animationDuration: "0.6s",
+          color: "var(--Red600)",
         }}
       >
         Oops! Our wizard lost the map
