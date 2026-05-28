@@ -1,38 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
-import { usersMock } from "@domain/user";
 import { LoginView } from "./login.view";
+import { usersMock } from "@domain/user";
+import { withRemixStub } from "@app/stories/utils";
 
 const meta: Meta<typeof LoginView> = {
-  title: "Pages/Login",
+  title: "UI/Login/LoginView",
   component: LoginView,
   parameters: {
-    layout: "centered",
-  },
-  argTypes: {
-    users: {
-      defaultValue: usersMock,
-      control: {
-        type: "object",
-      },
-    },
+    layout: "fullscreen",
   },
   decorators: [
-    (Story) => {
-      const RemixStub = createRemixStub([
-        {
-          path: "/",
-          element: <Story />,
-          action: async () => {
-            return {
-              status: 200,
-            };
-          },
-        },
-      ]);
-
-      return <RemixStub />;
-    },
+    (Story: () => JSX.Element) => withRemixStub(<Story />),
   ],
 };
 
