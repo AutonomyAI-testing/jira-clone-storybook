@@ -4,7 +4,11 @@ export const Error500 = ({
   message = "Error 500: Server error",
   href,
 }: Props) => {
-  return <ErrorBase variant="500" message={message} href={href} />;
+  return (
+    <div className="outline outline-2 outline-border-danger">
+      <ErrorBase variant="500" message={message} href={href} />
+    </div>
+  );
 };
 
 interface Props {

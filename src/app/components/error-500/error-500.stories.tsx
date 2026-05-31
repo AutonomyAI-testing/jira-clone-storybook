@@ -8,40 +8,33 @@ const meta: Meta<typeof Error500> = {
   parameters: {
     layout: "centered",
   },
-  argTypes: {
-    message: {
-      control: {
-        type: "text",
-      },
-    },
-    href: {
-      control: {
-        type: "text",
-      },
-    },
-  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Error500>;
 
-export const Default: Story = {};
-
-export const Message: Story = {
+/** Default usage with placeholder message and no link */
+export const Default: Story = {
   args: {
-    message: "This is the error message",
+    message: "Error 500: Server error",
+    href: "",
   },
 };
 
-export const Link: Story = {
+/** Analytics ErrorBoundary — message with a link back to the board page */
+export const AnalyticsError: Story = {
   args: {
-    href: "/link-to-safe-place",
+    message: "The analytics page failed. Navigate to the board page",
+    href: "board",
   },
 };
 
-export const MessageLink: Story = {
+/** Server Error page ErrorBoundary — longer message with a link back to the board page
+ * (in production this also shows a toast notification via react-toastify) */
+export const ServerErrorPage: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message:
+      "The Server error page failed. This is an example of a server error page (check network tab). Navigate to the board page",
+    href: "board",
   },
 };
