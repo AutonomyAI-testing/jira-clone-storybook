@@ -3,6 +3,10 @@ import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing"
 
 import { Error404Page } from "./error-404-page";
 
+/**
+ * Decorator: Wraps stories with RemixStub to provide routing context.
+ * Required because Error404Page uses useNavigate() from @remix-run/react.
+ */
 const withRemixStub = (Story: React.ComponentType) => {
   const RemixStub = createRemixStub([
     {

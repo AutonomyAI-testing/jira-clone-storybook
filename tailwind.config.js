@@ -213,7 +213,6 @@ module.exports = {
         xs: ["0.8125rem", "1rem"],
       },
       keyframes: {
-        // Fade and scale animations
         "fade-in": {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
@@ -269,7 +268,6 @@ module.exports = {
         },
       },
       animation: {
-        // Fade and scale animations
         "fade-in": "fade-in 0.3s ease-in-out forwards",
         // Dropdown menu
         "scale-in": "scale-in 0.2s ease-in-out",

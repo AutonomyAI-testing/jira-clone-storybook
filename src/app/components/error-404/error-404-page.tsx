@@ -14,6 +14,10 @@ import { Wizard404Svg } from "./wizard-404-svg";
  * - Accessible heading hierarchy and ARIA labels
  * - Respects prefers-reduced-motion user preference
  */
+
+// Brand success color for the headline to reinforce positive action
+const HEADLINE_COLOR = "var(--Green600)";
+
 export const Error404Page = ({
   headline = "Oops! Page Not Found",
   subheading = "Error 404",
@@ -23,35 +27,41 @@ export const Error404Page = ({
 }: Props) => {
   const navigate = useNavigate();
 
+  const handleNavigate = () => navigate(ctaHref);
+  const handleGoBack = () => window.history.back();
+
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-elevation-surface px-4">
       <div className="max-w-md text-center">
         {/* Mascot Image with entrance animation */}
-        <div className="mb-8 flex justify-center animate-fade-in duration-300">
+        <div className="mb-8 flex animate-fade-in justify-center duration-300">
           <div className="w-[280px] transition-transform duration-300 hover:scale-105 sm:w-[350px] lg:w-[420px]">
             <Wizard404Svg />
           </div>
         </div>
 
         {/* Headline */}
-        <h1 className="animate-fade-in text-3xl font-primary-bold duration-300 delay-100 sm:text-4xl lg:text-5xl" style={{ color: "var(--Red600)" }}>
+        <h1
+          className="animate-fade-in font-primary-bold text-3xl delay-100 duration-300 sm:text-4xl lg:text-5xl"
+          style={{ color: HEADLINE_COLOR }}
+        >
           {headline}
         </h1>
 
         {/* Subheading */}
-        <p className="animate-fade-in py-3 text-lg text-font-subtle duration-300 delay-150 sm:py-4">
+        <p className="animate-fade-in py-3 text-lg text-font-subtle delay-150 duration-300 sm:py-4">
           {subheading}
         </p>
 
         {/* Body Message */}
-        <p className="animate-fade-in mb-8 leading-relaxed text-font duration-300 delay-200 sm:mb-10 sm:text-base">
+        <p className="mb-8 animate-fade-in leading-relaxed text-font delay-200 duration-300 sm:mb-10 sm:text-base">
           {message}
         </p>
 
         {/* CTA Button with animation */}
-        <div className="flex animate-fade-in flex-col gap-3 duration-300 delay-300 sm:flex-row sm:justify-center">
+        <div className="flex animate-fade-in flex-col gap-3 delay-300 duration-300 sm:flex-row sm:justify-center">
           <Button
-            onClick={() => navigate(ctaHref)}
+            onClick={handleNavigate}
             color="primary"
             variant="contained"
             size="lg"
@@ -60,11 +70,11 @@ export const Error404Page = ({
             {ctaText}
           </Button>
 
-          {/* Optional secondary back button */}
+          {/* Secondary action: Go back to previous page in browser history */}
           <button
-            onClick={() => window.history.back()}
+            onClick={handleGoBack}
             className={cx(
-              "w-full rounded px-8 py-2 text-lg font-primary text-font-subtle transition-colors duration-200 sm:w-auto",
+              "w-full rounded px-8 py-2 font-primary text-lg text-font-subtle transition-colors duration-200 sm:w-auto",
               "hover:bg-background-neutral-hovered active:bg-background-neutral-pressed"
             )}
           >
@@ -73,7 +83,10 @@ export const Error404Page = ({
         </div>
       </div>
 
-      {/* Accessibility: Reduced motion support via CSS media query in stylesheet */}
+      {/* 
+        Accessibility: Disable animations for users who prefer reduced motion.
+        This respects the system-level prefers-reduced-motion preference.
+      */}
       <style>{`
         @media (prefers-reduced-motion: reduce) {
           .animate-fade-in {
