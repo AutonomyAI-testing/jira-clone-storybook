@@ -2,32 +2,33 @@ import { Link } from "@remix-run/react";
 import cx from "classix";
 
 // Color constants for button states
-const BUTTON_COLOR_BASE = "var(--Blue700)";
-const BUTTON_COLOR_HOVER = "var(--Blue800)";
+const BUTTON_COLOR_BASE = "var(--Red600, #DC2626)";
+const BUTTON_COLOR_HOVER = "var(--Red700, #B91C1C)";
+const ERROR_CODE_COLOR = "#34e33b";
 
-export default function NotFound404Route() {
+export default function ServerError500Route() {
   return (
     <div
       className="flex min-h-screen w-full items-center justify-center"
       style={{ backgroundColor: "var(--Yellow100)" }}
     >
       <div className="flex flex-col items-center justify-center gap-8 px-6 py-12">
-        {/* Robot Wizard Illustration */}
+        {/* Robot Crashed Illustration */}
         <div className="w-full max-w-[400px]">
           <img
-            src="/images/robot-wizard.svg"
-            alt="Robot Wizard"
+            src="/images/robot-crashed.svg"
+            alt="Robot Crashed"
             className="h-auto w-full drop-shadow-lg"
           />
         </div>
 
-        {/* 404 Heading */}
+        {/* 500 Heading */}
         <div className="text-center">
           <h1
             className="text-[120px] font-black leading-none"
-            style={{ color: "var(--Blue700)" }}
+            style={{ color: ERROR_CODE_COLOR }}
           >
-            404
+            500
           </h1>
         </div>
 
@@ -37,13 +38,13 @@ export default function NotFound404Route() {
             className="text-2xl font-bold"
             style={{ color: "var(--Neutral1000)" }}
           >
-            Page Not Found
+            Server Error
           </h2>
           <p
             className="mt-2 text-lg"
             style={{ color: "var(--Neutral800)" }}
           >
-            The wizard's spell couldn't find this page
+            Something went wrong on our end. The wizard is on it.
           </p>
         </div>
 
@@ -56,7 +57,7 @@ export default function NotFound404Route() {
             "transition-colors duration-200"
           )}
           style={{
-            backgroundColor: "var(--Blue700)",
+            backgroundColor: BUTTON_COLOR_BASE,
             color: "var(--Neutral0)",
           }}
           onMouseEnter={(e) => {
@@ -66,7 +67,7 @@ export default function NotFound404Route() {
             e.currentTarget.style.backgroundColor = BUTTON_COLOR_BASE;
           }}
         >
-          Back to Projects
+          Try Again
         </Link>
       </div>
     </div>

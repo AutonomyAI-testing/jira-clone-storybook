@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="tvScreenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9AE44A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3D6B1F;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="hatGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2F4B77;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1B2F5B;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="torsoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9B7D65;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7A5D48;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="armGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B6F47;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6B5436;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Screen glare gradient -->
+    <radialGradient id="glareGradient" cx="35%" cy="35%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Filter for screen scanlines -->
+    <pattern id="scanlines" patternUnits="userSpaceOnUse" width="400" height="2">
+      <line x1="0" y1="0" x2="400" y2="0" stroke="#000000" stroke-width="1" opacity="0.15"/>
+    </pattern>
+  </defs>
+
+  <!-- Background Vitruvian reference elements -->
+  <!-- Outer circle -->
+  <circle cx="200" cy="260" r="180" fill="none" stroke="#8B7355" stroke-width="1.5" opacity="0.25"/>
+  
+  <!-- Outer square -->
+  <rect x="45" y="85" width="310" height="350" fill="none" stroke="#8B7355" stroke-width="1.5" opacity="0.25"/>
+
+  <!-- Cross lines (vertical and horizontal) -->
+  <line x1="200" y1="85" x2="200" y2="435" stroke="#8B7355" stroke-width="1" opacity="0.15"/>
+  <line x1="45" y1="260" x2="355" y2="260" stroke="#8B7355" stroke-width="1" opacity="0.15"/>
+
+  <!-- ============ WIZARD HAT (Top 40%) ============ -->
+  
+  <!-- Hat cone - VERY TALL with curved floppy tip -->
+  <g>
+    <!-- Main cone shape - wider and taller -->
+    <path d="M 200 10 Q 150 85 145 150 L 255 150 Q 250 85 200 10 Z" 
+          fill="url(#hatGradient)" stroke="#141E3D" stroke-width="2.5"/>
+    
+    <!-- Floppy curved tip that leans right -->
+    <path d="M 200 5 Q 215 -8 230 0 Q 242 8 235 25 Q 225 35 210 32 Q 202 30 200 5 Z" 
+          fill="url(#hatGradient)" stroke="#141E3D" stroke-width="2"/>
+    
+    <!-- Hat cone shading/dimension -->
+    <path d="M 155 85 Q 162 125 165 150" fill="none" stroke="#141E3D" stroke-width="1" opacity="0.4"/>
+  </g>
+  
+  <!-- Hat brim - VERY WIDE, wider than head -->
+  <ellipse cx="200" cy="152" rx="120" ry="20" fill="url(#hatGradient)" stroke="#141E3D" stroke-width="2.5"/>
+  
+  <!-- Brim shading -->
+  <ellipse cx="200" cy="152" rx="115" ry="17" fill="none" stroke="#0F1A2E" stroke-width="1" opacity="0.5"/>
+
+  <!-- ============ HAT DECORATION - Stars and Moons ============ -->
+  
+  <!-- Stars on cone (6 total - larger and positioned on hat) -->
+  <!-- Star 1 - top left of cone -->
+  <g transform="translate(170, 45)">
+    <polygon points="0,-8 2.4,-2.5 8,-1.5 4.4,2.2 5.5,8 0,4 -5.5,8 -4.4,2.2 -8,-1.5 -2.4,-2.5" 
+             fill="#FFD700" stroke="#E6B800" stroke-width="1"/>
+  </g>
+  
+  <!-- Star 2 - top right of cone -->
+  <g transform="translate(230, 45)">
+    <polygon points="0,-8 2.4,-2.5 8,-1.5 4.4,2.2 5.5,8 0,4 -5.5,8 -4.4,2.2 -8,-1.5 -2.4,-2.5" 
+             fill="#FFD700" stroke="#E6B800" stroke-width="1"/>
+  </g>
+  
+  <!-- Star 3 - middle left -->
+  <g transform="translate(155, 90)">
+    <polygon points="0,-8 2.4,-2.5 8,-1.5 4.4,2.2 5.5,8 0,4 -5.5,8 -4.4,2.2 -8,-1.5 -2.4,-2.5" 
+             fill="#FFD700" stroke="#E6B800" stroke-width="1"/>
+  </g>
+  
+  <!-- Star 4 - middle right -->
+  <g transform="translate(245, 90)">
+    <polygon points="0,-8 2.4,-2.5 8,-1.5 4.4,2.2 5.5,8 0,4 -5.5,8 -4.4,2.2 -8,-1.5 -2.4,-2.5" 
+             fill="#FFD700" stroke="#E6B800" stroke-width="1"/>
+  </g>
+  
+  <!-- Star 5 - lower left on brim -->
+  <g transform="translate(165, 135)">
+    <polygon points="0,-8 2.4,-2.5 8,-1.5 4.4,2.2 5.5,8 0,4 -5.5,8 -4.4,2.2 -8,-1.5 -2.4,-2.5" 
+             fill="#FFD700" stroke="#E6B800" stroke-width="1"/>
+  </g>
+  
+  <!-- Star 6 - lower right on brim -->
+  <g transform="translate(235, 135)">
+    <polygon points="0,-8 2.4,-2.5 8,-1.5 4.4,2.2 5.5,8 0,4 -5.5,8 -4.4,2.2 -8,-1.5 -2.4,-2.5" 
+             fill="#FFD700" stroke="#E6B800" stroke-width="1"/>
+  </g>
+
+  <!-- Crescent moons on cone (3-4 total - larger and more visible) -->
+  <!-- Moon 1 - top -->
+  <g transform="translate(200, 60)">
+    <circle cx="0" cy="0" r="8" fill="#FFD700" stroke="#E6B800" stroke-width="1.2"/>
+    <circle cx="2.5" cy="0" r="7" fill="#2F4B77" stroke="none"/>
+  </g>
+  
+  <!-- Moon 2 - left side -->
+  <g transform="translate(145, 100)">
+    <circle cx="0" cy="0" r="7" fill="#FFD700" stroke="#E6B800" stroke-width="1"/>
+    <circle cx="2" cy="0" r="6" fill="#2F4B77" stroke="none"/>
+  </g>
+  
+  <!-- Moon 3 - right side -->
+  <g transform="translate(255, 100)">
+    <circle cx="0" cy="0" r="7" fill="#FFD700" stroke="#E6B800" stroke-width="1"/>
+    <circle cx="2" cy="0" r="6" fill="#2F4B77" stroke="none"/>
+  </g>
+  
+  <!-- Moon 4 - brim left -->
+  <g transform="translate(140, 155)">
+    <circle cx="0" cy="0" r="6.5" fill="#FFD700" stroke="#E6B800" stroke-width="1"/>
+    <circle cx="2" cy="0" r="5.5" fill="#2F4B77" stroke="none"/>
+  </g>
+  
+  <!-- Moon 5 - brim right -->
+  <g transform="translate(260, 155)">
+    <circle cx="0" cy="0" r="6.5" fill="#FFD700" stroke="#E6B800" stroke-width="1"/>
+    <circle cx="2" cy="0" r="5.5" fill="#2F4B77" stroke="none"/>
+  </g>
+
+  <!-- ============ CRT MONITOR HEAD (Middle 30%) ============ -->
+  
+  <!-- Monitor outer frame (brown) -->
+  <rect x="120" y="150" width="160" height="130" rx="12" fill="url(#torsoGradient)" stroke="#5A4436" stroke-width="3"/>
+  
+  <!-- Monitor frame inner shadow -->
+  <rect x="128" y="158" width="144" height="114" rx="10" fill="none" stroke="#3A2C20" stroke-width="2" opacity="0.4"/>
+  
+  <!-- Screen with gradient background -->
+  <rect x="135" y="165" width="130" height="100" rx="4" fill="url(#tvScreenGradient)" stroke="#1a1a1a" stroke-width="2"/>
+  
+  <!-- Screen scanlines pattern -->
+  <rect x="135" y="165" width="130" height="100" rx="4" fill="url(#scanlines)" opacity="0.3"/>
+  
+  <!-- Screen glare effect - bright dramatic highlight in upper left -->
+  <ellipse cx="150" cy="175" rx="60" ry="50" fill="url(#glareGradient)" opacity="0.85"/>
+  
+  <!-- Additional glass glare streak -->
+  <path d="M 135 165 Q 160 175 170 190" fill="none" stroke="#FFFFFF" stroke-width="4" opacity="0.6" stroke-linecap="round"/>
+  
+  <!-- Extra bright lime glare patch in upper-left corner -->
+  <circle cx="145" cy="170" r="25" fill="#9AE44A" opacity="0.7"/>
+  
+  <!-- Screen bezel detail -->
+  <rect x="130" y="155" width="140" height="115" rx="8" fill="none" stroke="#4A3728" stroke-width="1.5" opacity="0.6"/>
+  
+  <!-- Center button/dial on monitor -->
+  <circle cx="200" cy="210" r="8" fill="#D4AF37" stroke="#2C2C2C" stroke-width="1.5"/>
+  <circle cx="200" cy="210" r="6" fill="#FFD700"/>
+  <line x1="197" y1="207" x2="203" y2="213" stroke="#2C2C2C" stroke-width="0.8" opacity="0.6"/>
+  <line x1="203" y1="207" x2="197" y2="213" stroke="#2C2C2C" stroke-width="0.8" opacity="0.6"/>
+
+  <!-- ============ TORSO (Upper body below head) ============ -->
+  
+  <!-- Main torso -->
+  <rect x="110" y="275" width="180" height="110" rx="10" fill="url(#torsoGradient)" stroke="#5A4436" stroke-width="2.5"/>
+  
+  <!-- Torso panel detail -->
+  <rect x="125" y="285" width="150" height="90" rx="6" fill="none" stroke="#5A4436" stroke-width="1.5" opacity="0.5"/>
+  
+  <!-- Torso highlight -->
+  <ellipse cx="145" cy="300" rx="35" ry="20" fill="#A89968" opacity="0.5"/>
+  
+  <!-- Central control panel -->
+  <rect x="155" y="310" width="90" height="60" rx="4" fill="#6B5436" stroke="#4A3728" stroke-width="1"/>
+  
+  <!-- Center button -->
+  <circle cx="200" cy="335" r="11" fill="#FFD700" stroke="#2C2C2C" stroke-width="1.5"/>
+  <circle cx="200" cy="335" r="9" fill="#E6B800"/>
+  <line x1="196" y1="331" x2="204" y2="339" stroke="#2C2C2C" stroke-width="1" opacity="0.6"/>
+  <line x1="204" y1="331" x2="196" y2="339" stroke="#2C2C2C" stroke-width="1" opacity="0.6"/>
+
+  <!-- ============ FOUR MECHANICAL ARMS ============ -->
+  
+  <!-- LEFT ARM 1 (upper left) - articulated with joints, angled downward -->
+  <g>
+    <!-- Upper arm segment -->
+    <rect x="75" y="280" width="32" height="45" rx="7" fill="url(#armGradient)" stroke="#1A1A1A" stroke-width="1.5"/>
+    <!-- Elbow joint -->
+    <circle cx="91" cy="325" r="8" fill="#8B6F47" stroke="#1A1A1A" stroke-width="1"/>
+    <!-- Forearm segment angled down-left at 45 degrees -->
+    <line x1="91" y1="333" x2="30" y2="390" stroke="url(#armGradient)" stroke-width="30" stroke-linecap="round"/>
+    <!-- Wrist joint -->
+    <circle cx="28" cy="392" r="7" fill="#8B6F47" stroke="#1A1A1A" stroke-width="1"/>
+    <!-- Glove -->
+    <circle cx="15" cy="405" r="13" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1.5"/>
+    <!-- Glove fingers -->
+    <ellipse cx="7" cy="412" rx="4.5" ry="8" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1"/>
+    <ellipse cx="13" cy="418" rx="5.5" ry="8.5" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1"/>
+    <ellipse cx="23" cy="412" rx="4.5" ry="8" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1"/>
+  </g>
+
+  <!-- LEFT ARM 2 (lower left) - articulated with joints, angled downward -->
+  <g>
+    <!-- Upper arm segment -->
+    <rect x="78" y="340" width="30" height="48" rx="7" fill="url(#armGradient)" stroke="#1A1A1A" stroke-width="1.5"/>
+    <!-- Elbow joint -->
+    <circle cx="93" cy="388" r="8" fill="#8B6F47" stroke="#1A1A1A" stroke-width="1"/>
+    <!-- Forearm segment angled down-left at 45 degrees -->
+    <line x1="93" y1="396" x2="25" y2="475" stroke="url(#armGradient)" stroke-width="30" stroke-linecap="round"/>
+    <!-- Wrist joint -->
+    <circle cx="23" cy="477" r="7" fill="#8B6F47" stroke="#1A1A1A" stroke-width="1"/>
+    <!-- Glove -->
+    <circle cx="10" cy="490" r="13" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1.5"/>
+    <!-- Glove fingers -->
+    <ellipse cx="2" cy="497" rx="4.5" ry="8" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1"/>
+    <ellipse cx="8" cy="503" rx="5.5" ry="8.5" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1"/>
+    <ellipse cx="18" cy="497" rx="4.5" ry="8" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1"/>
+  </g>
+
+  <!-- RIGHT ARM 1 (upper right) - articulated with joints, angled downward -->
+  <g>
+    <!-- Upper arm segment -->
+    <rect x="293" y="280" width="32" height="45" rx="7" fill="url(#armGradient)" stroke="#1A1A1A" stroke-width="1.5"/>
+    <!-- Elbow joint -->
+    <circle cx="309" cy="325" r="8" fill="#8B6F47" stroke="#1A1A1A" stroke-width="1"/>
+    <!-- Forearm segment angled down-right at 45 degrees -->
+    <line x1="309" y1="333" x2="370" y2="390" stroke="url(#armGradient)" stroke-width="30" stroke-linecap="round"/>
+    <!-- Wrist joint -->
+    <circle cx="372" cy="392" r="7" fill="#8B6F47" stroke="#1A1A1A" stroke-width="1"/>
+    <!-- Glove -->
+    <circle cx="385" cy="405" r="13" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1.5"/>
+    <!-- Glove fingers -->
+    <ellipse cx="393" cy="412" rx="4.5" ry="8" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1"/>
+    <ellipse cx="387" cy="418" rx="5.5" ry="8.5" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1"/>
+    <ellipse cx="377" cy="412" rx="4.5" ry="8" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1"/>
+  </g>
+
+  <!-- RIGHT ARM 2 (lower right) - articulated with joints, angled downward -->
+  <g>
+    <!-- Upper arm segment -->
+    <rect x="292" y="340" width="30" height="48" rx="7" fill="url(#armGradient)" stroke="#1A1A1A" stroke-width="1.5"/>
+    <!-- Elbow joint -->
+    <circle cx="307" cy="388" r="8" fill="#8B6F47" stroke="#1A1A1A" stroke-width="1"/>
+    <!-- Forearm segment angled down-right at 45 degrees -->
+    <line x1="307" y1="396" x2="375" y2="475" stroke="url(#armGradient)" stroke-width="30" stroke-linecap="round"/>
+    <!-- Wrist joint -->
+    <circle cx="377" cy="477" r="7" fill="#8B6F47" stroke="#1A1A1A" stroke-width="1"/>
+    <!-- Glove -->
+    <circle cx="390" cy="490" r="13" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1.5"/>
+    <!-- Glove fingers -->
+    <ellipse cx="398" cy="497" rx="4.5" ry="8" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1"/>
+    <ellipse cx="392" cy="503" rx="5.5" ry="8.5" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1"/>
+    <ellipse cx="382" cy="497" rx="4.5" ry="8" fill="#F5E6D3" stroke="#2C2C2C" stroke-width="1"/>
+  </g>
+
+  <!-- ============ LEGS & FEET (Bottom 30%) ============ -->
+  
+  <!-- Left leg -->
+  <rect x="145" y="380" width="25" height="65" rx="5" fill="#6B5436" stroke="#4A3728" stroke-width="1.5"/>
+  
+  <!-- Left foot -->
+  <ellipse cx="157.5" cy="450" rx="18" ry="12" fill="#5A4436" stroke="#3A2C20" stroke-width="1.5"/>
+  <rect x="140" y="450" width="35" height="10" fill="#4A3728" rx="2"/>
+  
+  <!-- Right leg -->
+  <rect x="230" y="380" width="25" height="65" rx="5" fill="#6B5436" stroke="#4A3728" stroke-width="1.5"/>
+  
+  <!-- Right foot -->
+  <ellipse cx="242.5" cy="450" rx="18" ry="12" fill="#5A4436" stroke="#3A2C20" stroke-width="1.5"/>
+  <rect x="225" y="450" width="35" height="10" fill="#4A3728" rx="2"/>
+  
+  <!-- Foot detail lines -->
+  <line x1="145" y1="460" x2="170" y2="460" stroke="#3A2C20" stroke-width="0.8" opacity="0.5"/>
+  <line x1="230" y1="460" x2="255" y2="460" stroke="#3A2C20" stroke-width="0.8" opacity="0.5"/>
+</svg>
