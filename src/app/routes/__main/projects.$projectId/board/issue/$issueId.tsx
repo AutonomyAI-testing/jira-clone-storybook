@@ -139,7 +139,6 @@ export const action: ActionFunction = async ({ request, params }) => {
   }
 
   if (_action === "delete") {
-    console.log("DELETING ISSUE");
     await deleteIssue(id);
     emitter.emit(EVENTS.ISSUE_DELETED, Date.now());
   }
@@ -181,10 +180,7 @@ export function CatchBoundary() {
               "duration-300 radix-state-open:animate-slide-up"
             )}
           >
-            <Error404
-              message="This issue does not exist. Go to the board page"
-              href={boardUrl}
-            />
+            <Error404 href={boardUrl} />
           </Dialog.Content>
         </Dialog.Overlay>
       </Dialog.Portal>
