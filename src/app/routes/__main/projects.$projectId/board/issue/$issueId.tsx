@@ -157,39 +157,7 @@ export const action: ActionFunction = async ({ request, params }) => {
 };
 
 export function CatchBoundary() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const boardUrl = location.pathname.split("/issue")[0];
-
-  const handleProgrammaticNavigation = () => {
-    navigate(boardUrl);
-  };
-
-  return (
-    <Dialog.Root open={true}>
-      <Dialog.Portal>
-        <Dialog.Overlay
-          className={cx(
-            "absolute left-0 top-0 z-50 box-border grid h-full w-full place-items-center overflow-y-auto bg-black bg-opacity-50 px-[40px] py-[40px]",
-            "radix-state-open:animate-fade-in duration-300"
-          )}
-        >
-          <Dialog.Content
-            onPointerDownOutside={handleProgrammaticNavigation}
-            className={cx(
-              "bg-background-surface relative z-50 flex rounded-md px-20 py-12 shadow-lg flex-center",
-              "duration-300 radix-state-open:animate-slide-up"
-            )}
-          >
-            <Error404
-              message="This issue does not exist. Go to the board page"
-              href={boardUrl}
-            />
-          </Dialog.Content>
-        </Dialog.Overlay>
-      </Dialog.Portal>
-    </Dialog.Root>
-  );
+  return <Error404 />;
 }
 
 export default function IssuePanelRoute() {

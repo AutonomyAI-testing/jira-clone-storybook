@@ -19,12 +19,5 @@ export default function IndexRoute() {
 }
 
 export function CatchBoundary() {
-  return (
-    <div>
-      <Error404
-        message="It seems that you have lost! Go to the main page"
-        href="/"
-      />
-    </div>
-  );
+  return <Error404 />;
 }
