@@ -28,6 +28,7 @@ const preview: Preview = {
   },
 
   decorators: [
+    // Wrap stories with RemixStub to enable Remix features like Link routing
     (Story) => {
       const RemixStub = createRemixStub([
         {

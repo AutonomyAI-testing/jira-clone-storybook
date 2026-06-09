@@ -15,6 +15,4 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const WizardRobot404: Story = {
-  render: () => <Error404 />,
-};
+export const WizardRobot404: Story = {};
