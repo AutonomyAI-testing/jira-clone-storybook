@@ -181,10 +181,7 @@ export function CatchBoundary() {
               "duration-300 radix-state-open:animate-slide-up"
             )}
           >
-            <Error404
-              message="This issue does not exist. Go to the board page"
-              href={boardUrl}
-            />
+            <Error404 />
           </Dialog.Content>
         </Dialog.Overlay>
       </Dialog.Portal>
