@@ -281,7 +281,7 @@ export const Error404 = (): JSX.Element => {
         {/* Headline */}
         <h1
           className="mb-3 text-3xl font-primary-bold"
-          style={{ color: "var(--Neutral0)" }}
+          style={{ color: "var(--Red500)" }}
         >
           Lost in the Digital Ether
         </h1>
