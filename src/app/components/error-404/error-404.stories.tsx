@@ -6,9 +6,39 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
+    heading: {
+      control: {
+        type: "text",
+      },
+    },
+    description: {
+      control: {
+        type: "text",
+      },
+    },
+    primaryHref: {
+      control: {
+        type: "text",
+      },
+    },
+    primaryLabel: {
+      control: {
+        type: "text",
+      },
+    },
+    secondaryHref: {
+      control: {
+        type: "text",
+      },
+    },
+    secondaryLabel: {
+      control: {
+        type: "text",
+      },
+    },
     message: {
       control: {
         type: "text",
@@ -27,21 +57,23 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const CustomHeading: Story = {
   args: {
-    message: "This is the error message",
+    heading: "Where did this page go?",
+    description:
+      "Our wizard robot searched every corner of the internet but couldn't find this page.",
   },
 };
 
-export const Link: Story = {
+export const LegacyMode: Story = {
   args: {
-    href: "/link-to-safe-place",
+    message: "It seems that you have lost! Go to the main page",
+    href: "/",
   },
 };
 
-export const MessageLink: Story = {
+export const WithoutSecondaryButton: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    secondaryHref: "",
   },
 };
