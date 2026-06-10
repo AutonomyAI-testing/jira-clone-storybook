@@ -5,7 +5,11 @@ import { Button } from "@app/components/button";
 import { UserAvatar } from "@app/components/user-avatar";
 import * as Select from "@app/components/select";
 
-export const LoginView = ({ users }: Props) => {
+export const LoginView = ({
+  users,
+  isLoading = false,
+  isDisabled = false,
+}: Props) => {
   const [selectedValue, setSelectedValue] = useState<User>(userMock1);
 
   const onValueChange = (userId: UserId) => {
@@ -16,9 +20,11 @@ export const LoginView = ({ users }: Props) => {
     }
   };
 
+  const isInteractionDisabled = isLoading || isDisabled;
+
   return (
     <div className="mx-auto max-w-[400px] pt-[10vh]">
-      <h1 className="font-primary-black text-5xl text-font">
+      <h1 className="font-primary-black text-5xl" style={{ color: "var(--Red600)" }}>
         Select login user
       </h1>
       <h2 className="mb-8 mt-3 font-primary-light text-lg text-font-subtle">
@@ -28,10 +34,16 @@ export const LoginView = ({ users }: Props) => {
         reflects in the UI and database. You can logout on the user avatar.
       </h2>
       <Form method="post" className="mx-auto w-[300px]">
+        {isLoading && (
+          <div className="mb-4 text-center text-font-subtle">
+            Loading...
+          </div>
+        )}
         <Select.Root
           name="user"
           defaultValue={userMock1.id}
           onValueChange={onValueChange}
+          disabled={isInteractionDisabled}
         >
           <Select.Trigger
             className="flex w-full justify-between"
@@ -64,8 +76,9 @@ export const LoginView = ({ users }: Props) => {
           value="setUser"
           aria-label="Login"
           className="mt-2 w-full"
+          disabled={isInteractionDisabled}
         >
-          Login
+          {isLoading ? "Logging in..." : "Login"}
         </Button>
       </Form>
     </div>
@@ -74,4 +87,6 @@ export const LoginView = ({ users }: Props) => {
 
 interface Props {
   users: User[];
+  isLoading?: boolean;
+  isDisabled?: boolean;
 }
