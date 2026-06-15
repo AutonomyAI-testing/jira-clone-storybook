@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Error404 } from "./error-404";
 
@@ -6,7 +6,7 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     message: {
@@ -20,28 +20,46 @@ const meta: Meta<typeof Error404> = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "100vh",
+          width: "100%",
+          padding: "40px",
+        }}
+      >
+        <div style={{ maxWidth: "600px", width: "100%", textAlign: "center" }}>
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 };
 
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
-export const Default: Story = {};
-
-export const Message: Story = {
+export const Default: Story = {
   args: {
-    message: "This is the error message",
+    message: "Error 404: Not Found",
+    href: "/",
   },
 };
 
-export const Link: Story = {
+export const MessageOnly: Story = {
   args: {
-    href: "/link-to-safe-place",
+    message: "This page could not be found.",
+    href: "",
   },
 };
 
-export const MessageLink: Story = {
+export const WithLink: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "Go back to home",
+    href: "/",
   },
 };
