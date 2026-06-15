@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Error500 } from "./error-500";
 
@@ -6,7 +6,7 @@ const meta: Meta<typeof Error500> = {
   title: "Components/Error500",
   component: Error500,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     message: {
@@ -20,6 +20,24 @@ const meta: Meta<typeof Error500> = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "100vh",
+          width: "100%",
+          padding: "40px",
+        }}
+      >
+        <div style={{ maxWidth: "600px", width: "100%", textAlign: "center" }}>
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 };
 
 export default meta;
