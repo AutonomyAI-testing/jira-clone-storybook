@@ -16,7 +16,7 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
           {message}
         </a>
       ) : (
-        <span className="max-w-[100px] text-lg text-font">{message}</span>
+        <span className="max-w-[100px] text-lg" style={{ color: "var(--Red700)" }}>{message}</span>
       )}
     </div>
   );
