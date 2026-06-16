@@ -262,6 +262,11 @@ module.exports = {
             transform: `translateX(calc(100% + 1rem))`,
           },
         },
+        // Error 404 illustration float
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-15px)" },
+        },
       },
       animation: {
         // Dropdown menu
@@ -278,6 +283,8 @@ module.exports = {
         "toast-slide-in-right": "toast-slide-in-right 150ms cubic-bezier(0.16, 1, 0.3, 1)",
         "toast-slide-in-bottom": "toast-slide-in-bottom 150ms cubic-bezier(0.16, 1, 0.3, 1)",
         "toast-swipe-out": "toast-swipe-out 100ms ease-out forwards",
+        // Error 404 illustration float
+        "float": "float 4s ease-in-out infinite",
       },
     },
   },
