@@ -25,7 +25,7 @@ import { CreateComment } from "./comment/create-comment";
 import { ViewComment } from "./comment/view-comment";
 import { SelectStatus } from "./select-status";
 import { SelectPriority } from "./select-priority";
-import { SelectAsignee } from "./select-asignee";
+import { SelectAssignee } from "./select-assignee";
 import { CreatedUpdatedAt } from "./created-updated-at";
 import { Spinner } from "./spinner";
 
@@ -188,8 +188,8 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                       />
                     </div>
                     <div>
-                      <p className="mb-1">Asignee</p>
-                      <SelectAsignee initAsignee={issue?.asignee || user} />
+                      <p className="mb-1">Assignee</p>
+                      <SelectAssignee initAssignee={issue?.assignee || user} />
                     </div>
                     <div>
                       <p className="mb-1">Reporter</p>

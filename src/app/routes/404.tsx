@@ -1,4 +1,5 @@
-// TODO: This is currently not working
+import { NotFoundPage } from "@app/components/not-found-page";
+
 export default function NotFound404Route() {
-  return <div>NOT FOUNDDDD</div>;
+  return <NotFoundPage />;
 }

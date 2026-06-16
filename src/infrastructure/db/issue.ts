@@ -13,7 +13,7 @@ export const getIssue = async (issueId: IssueId): Promise<Issue | null> => {
       id: issueId,
     },
     include: {
-      asignee: true,
+      assignee: true,
       reporter: true,
       category: true,
       priority: true,
@@ -38,7 +38,7 @@ export const getIssue = async (issueId: IssueId): Promise<Issue | null> => {
     description: issueDb.description || undefined,
     categoryType: issueDb.category.type as CategoryType,
     priority: issueDb.priority as Priority,
-    asignee: dnull(issueDb.asignee),
+    assignee: dnull(issueDb.assignee),
     reporter: dnull(issueDb.reporter),
     comments: issueDb.comments.map((comment) => ({
       ...comment,
@@ -62,7 +62,7 @@ export type CreateIssueInputData = {
   description: string;
   categoryId: CategoryId;
   priority: PriorityId;
-  asigneeId: UserId;
+  assigneeId: UserId;
   reporterId: UserId;
   comments: Comment[];
 };
