@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   ProjectSummary,
   projectToProjectSummary,
@@ -11,7 +11,7 @@ const meta: Meta<typeof ProjectCard> = {
   title: "Pages/Projects/ProjectCard",
   component: ProjectCard,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   argTypes: {
     project: {
