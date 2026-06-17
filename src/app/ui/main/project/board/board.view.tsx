@@ -3,6 +3,9 @@ import { Outlet, useNavigate, useRevalidator } from "@remix-run/react";
 import { useEventSource } from "remix-utils";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { HiOutlineViewBoards } from "react-icons/hi";
+import { BsListUl } from "react-icons/bs";
+import cx from "classix";
 import { Project } from "@domain/project";
 import { Category } from "@domain/category";
 import { IssueId } from "@domain/issue";
@@ -11,10 +14,13 @@ import { Kbd } from "@app/components/kbd-placeholder";
 import { UserAvatarList } from "./avatar-list";
 import { SelectSort } from "./select-sort";
 import { CategoryColumn } from "./category-column";
+import { ListView } from "./list-view";
 import { ProjectContextProvider } from "../project.store";
 import { EVENTS } from "@app/events";
 
 export const BoardView = ({ project }: Props): JSX.Element => {
+  const [viewMode, setViewMode] = useState<"board" | "list">("board");
+
   return (
     <ProjectContextProvider project={project}>
       <div className="box-border flex h-full flex-col">
@@ -26,9 +32,39 @@ export const BoardView = ({ project }: Props): JSX.Element => {
           <div className="inline">
             <SelectSort />
           </div>
+          <div className="ml-auto flex gap-2">
+            <button
+              onClick={() => setViewMode("board")}
+              className={cx(
+                "flex items-center justify-center rounded p-2 duration-200 ease-in-out",
+                viewMode === "board"
+                  ? "bg-background-brand-bold text-font-inverse hover:bg-background-brand-bold-hovered"
+                  : "text-font-subtle hover:bg-elevation-surface-raised"
+              )}
+              title="Board view"
+            >
+              <HiOutlineViewBoards size={20} />
+            </button>
+            <button
+              onClick={() => setViewMode("list")}
+              className={cx(
+                "flex items-center justify-center rounded p-2 duration-200 ease-in-out",
+                viewMode === "list"
+                  ? "bg-background-brand-bold text-font-inverse hover:bg-background-brand-bold-hovered"
+                  : "text-font-subtle hover:bg-elevation-surface-raised"
+              )}
+              title="List view"
+            >
+              <BsListUl size={20} />
+            </button>
+          </div>
         </section>
         <DndProvider backend={HTML5Backend}>
-          <Categories categories={project.categories} />
+          {viewMode === "board" ? (
+            <Categories categories={project.categories} />
+          ) : (
+            <ListView categories={project.categories} />
+          )}
         </DndProvider>
         <Outlet />
       </div>
