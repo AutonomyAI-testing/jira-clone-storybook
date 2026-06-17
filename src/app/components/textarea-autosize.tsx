@@ -54,7 +54,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
         readOnly={readOnly}
         onFocus={handleOnFocus}
         onBlur={onBlur}
-        style={{ height: `${textareaHeight}px` }}
+        style={{ height: `${textareaHeight}px`, color: "var(--Red700)" }}
         autoFocus={autofocus}
       />
       <p

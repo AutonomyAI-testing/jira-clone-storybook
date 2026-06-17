@@ -3,8 +3,9 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   argTypes: {
     initTitle: {
@@ -38,18 +39,16 @@ export default meta;
 type Story = StoryObj<typeof Title>;
 
 export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
+  args: {
+    initTitle: "Default title",
+  },
 };
 
-export const DefaultTitle: Story = {};
+export const RedFontColor: Story = {
+  args: {
+    initTitle: "This text is rendered in red (#ca3521)",
+  },
+};
 
 export const InitTitle: Story = {
   args: {
@@ -64,7 +63,7 @@ export const ReadOnly: Story = {
   },
 };
 
-export const Error: Story = {
+export const WithError: Story = {
   args: {
     placeholder: "Error title",
     error: "Title is required",

@@ -116,6 +116,7 @@ export const action: ActionFunction = async ({ request }) => {
 
     return redirect("/projects");
   }
+  return null;
 };
 
 export default function IssuePanelRoute() {
