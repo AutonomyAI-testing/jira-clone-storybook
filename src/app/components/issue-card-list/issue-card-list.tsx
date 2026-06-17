@@ -14,9 +14,6 @@ import {
 } from "@domain/issue";
 import { categoryTypeDict } from "@domain/category";
 import { UserAvatar } from "@app/components/user-avatar";
-// Note: PriorityIcon imported but not currently used. Left for future enhancement
-// if we want to display priority icons instead of just colored dots.
-import { PriorityIcon } from "@app/components/priority-icon";
 
 const DRAG_ISSUE_CARD_LIST = "ISSUE_CARD_LIST";
 type IssueStatus = "TODO" | "IN_PROGRESS" | "DONE";
@@ -24,6 +21,14 @@ type IssueStatus = "TODO" | "IN_PROGRESS" | "DONE";
 interface DragItem {
   index: number;
 }
+
+// Configuration for drag-and-drop operations
+const DRAG_HANDLE_STYLES = {
+  cursor: "grab",
+  userSelect: "none" as const,
+  fontSize: "12px",
+  lineHeight: "1",
+};
 
 // Maps priority levels to their visual indicator colors
 const getPriorityColor = (priority: "low" | "medium" | "high"): string => {
@@ -139,12 +144,7 @@ const DraggableIssueCard = ({
         {/* Drag handle */}
         <div
           className="flex-shrink-0 pt-1 text-font-subtle"
-          style={{
-            cursor: "grab",
-            userSelect: "none",
-            fontSize: "12px",
-            lineHeight: "1",
-          }}
+          style={DRAG_HANDLE_STYLES}
         >
           ⠿
         </div>
@@ -187,15 +187,18 @@ const DraggableIssueCard = ({
             {/* Status Chip */}
             {(() => {
               const status = issue.categoryType as IssueStatus;
+              const statusBgColor = getStatusBgColor(status);
+              const statusTextColor = getStatusTextColor(status);
+              const statusLabel = categoryTypeDict[status];
               return (
                 <div
                   className="whitespace-nowrap rounded px-2 py-1 text-xs font-medium"
                   style={{
-                    backgroundColor: getStatusBgColor(status),
-                    color: getStatusTextColor(status),
+                    backgroundColor: statusBgColor,
+                    color: statusTextColor,
                   }}
                 >
-                  {categoryTypeDict[status]}
+                  {statusLabel}
                 </div>
               );
             })()}
