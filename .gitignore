@@ -8,6 +8,7 @@ build
 .env
 src/app/styles/app-compiled.css
 src/infrastructure/db/jira-clone.db
+src/infrastructure/db/dev.db
 src/infrastructure/db/sqlite.db
 src/infrastructure/db/sqlite.db-journal
 package-lock.json
