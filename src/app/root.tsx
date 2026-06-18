@@ -8,6 +8,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useCatch,
   useFetcher,
   useLoaderData,
 } from "@remix-run/react";
@@ -25,13 +26,13 @@ import { Error404 } from "./components/error-404";
 import { Error500 } from "./components/error-500";
 import styles from "./styles/app-compiled.css";
 import fonts from "./styles/fonts.css";
-import fuck from "react-toastify/dist/ReactToastify.css";
+import toastifyStyles from "react-toastify/dist/ReactToastify.css";
 
 export const links = () => {
   return [
     { rel: "stylesheet", href: fonts },
     { rel: "stylesheet", href: styles },
-    { rel: "stylesheet", href: fuck },
+    { rel: "stylesheet", href: toastifyStyles },
     { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
   ];
 };
@@ -172,14 +173,26 @@ export function ErrorBoundary({ error }: { error: Error }) {
     "It seems there is a critical error! Please try again or contact me at: danielserrano.contacto@gmail.com";
 
   return (
-    // Inline styles because tailwind is not loaded at this point
-    <div style={errorComponentStyle}>
-      <Error500 message={errorMessage} href="/" />
-    </div>
+    <html>
+      <head>
+        <title>Application Error</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        {/* Inline styles because tailwind is not loaded at this point */}
+        <div style={errorComponentStyle}>
+          <Error500 message={errorMessage} href="/" />
+        </div>
+        <Scripts />
+      </body>
+    </html>
   );
 }
 
 export function CatchBoundary() {
+  const caught = useCatch();
+
   return (
     <html>
       <head>
@@ -194,6 +207,7 @@ export function CatchBoundary() {
             href="/"
           />
         </div>
+        <Scripts />
       </body>
     </html>
   );
