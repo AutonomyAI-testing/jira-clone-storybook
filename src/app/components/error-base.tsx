@@ -1,4 +1,4 @@
-export const ErrorBase = ({ variant, message, href }: Props) => {
+export const ErrorBase = ({ variant, message, href, messageClassName }: Props) => {
   const imgPath = `/images/error-${variant}.svg`;
 
   return (
@@ -11,12 +11,12 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
       {href ? (
         <a
           href={href}
-          className="max-w-[100px] text-lg text-link hover:underline active:text-link-pressed"
+          className={`max-w-[100px] text-lg ${messageClassName || "text-link hover:underline active:text-link-pressed"}`}
         >
           {message}
         </a>
       ) : (
-        <span className="max-w-[100px] text-lg text-font">{message}</span>
+        <span className={`max-w-[100px] text-lg ${messageClassName || "text-font"}`}>{message}</span>
       )}
     </div>
   );
@@ -25,5 +25,6 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
 interface Props {
   variant: "500" | "404";
   message: string;
-  href: string;
+  href?: string;
+  messageClassName?: string;
 }
