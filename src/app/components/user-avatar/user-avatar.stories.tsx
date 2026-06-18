@@ -2,37 +2,34 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { usersMock } from "@domain/user";
 import { UserAvatar } from "./user-avatar";
 
+const userImage = usersMock[1].image; // Woody
+const userName = usersMock[1].name;
+const userWithInitials = usersMock[0]; // Daniel Serrano (no image)
+
 const meta: Meta<typeof UserAvatar> = {
   title: "Components/UserAvatar",
+  component: UserAvatar,
   parameters: {
     layout: "centered",
   },
   argTypes: {
     name: {
-      defaultValue: "John Doe",
-      control: {
-        type: "text",
-      },
+      control: { type: "text" },
     },
     image: {
-      control: {
-        type: "text",
-      },
+      control: { type: "text" },
     },
     color: {
-      control: {
-        type: "color",
-      },
+      control: { type: "color" },
     },
     size: {
-      control: {
-        type: "number",
-      },
+      control: { type: "number" },
     },
     tooltip: {
-      control: {
-        type: "boolean",
-      },
+      control: { type: "boolean" },
+    },
+    gradientRing: {
+      control: { type: "boolean" },
     },
   },
 };
@@ -40,51 +37,91 @@ const meta: Meta<typeof UserAvatar> = {
 export default meta;
 type Story = StoryObj<typeof UserAvatar>;
 
-const userImage = usersMock[1].image;
-const userName = usersMock[1].name;
+// Primary story: gradient ring border with profile image (matches reference image)
+export const WithGradientRing: Story = {
+  args: {
+    name: userName,
+    image: userImage,
+    size: 240,
+    gradientRing: true,
+  },
+  parameters: {
+    layout: "padded",
+  },
+};
 
-export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-6 gap-4 p-4">
-      {[Image, Fallback, Tooltip, MediumSize, LargeSize].map(
-        (UserAvatarStory, index) => (
-          <UserAvatar name={userName} {...UserAvatarStory.args} key={index} />
-        )
-      )}
+// With profile image (default size)
+export const WithProfileImage: Story = {
+  args: {
+    name: userName,
+    image: userImage,
+    size: 36,
+  },
+};
+
+// Initials fallback (no image)
+export const InitialsFallback: Story = {
+  args: {
+    name: userWithInitials.name,
+    image: undefined,
+    color: userWithInitials.color,
+    size: 36,
+  },
+};
+
+// All size variants displayed together
+export const SizeVariants: Story = {
+  render: () => (
+    <div style={{ display: "flex", alignItems: "center", gap: "16px", padding: "20px", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+        <UserAvatar name={userName} image={userImage} size={24} />
+        <span style={{ fontSize: "11px", color: "#666" }}>24px</span>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+        <UserAvatar name={userName} image={userImage} size={36} />
+        <span style={{ fontSize: "11px", color: "#666" }}>36px (default)</span>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+        <UserAvatar name={userName} image={userImage} size={48} />
+        <span style={{ fontSize: "11px", color: "#666" }}>48px</span>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+        <UserAvatar name={userName} image={userImage} size={64} />
+        <span style={{ fontSize: "11px", color: "#666" }}>64px</span>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+        <UserAvatar name={userName} image={userImage} size={82} />
+        <span style={{ fontSize: "11px", color: "#666" }}>82px (large)</span>
+      </div>
     </div>
   ),
 };
 
-export const Image: Story = {
-  args: {
-    image: userImage,
-  },
+// Multiple users showing initials fallback variety
+export const MultipleUsers: Story = {
+  render: () => (
+    <div style={{ display: "flex", alignItems: "center", gap: "8px", padding: "20px", flexWrap: "wrap" }}>
+      {usersMock.slice(0, 6).map((user) => (
+        <UserAvatar
+          key={user.id}
+          name={user.name}
+          image={user.image}
+          color={user.color}
+          size={40}
+          tooltip
+        />
+      ))}
+    </div>
+  ),
 };
 
-export const Fallback: Story = {
-  args: {
-    image: undefined,
-    color: "#dae3f9",
-  },
-};
-
-export const Tooltip: Story = {
-  args: {
-    image: userImage,
-    tooltip: true,
-  },
-};
-
-export const MediumSize: Story = {
-  args: {
-    image: userImage,
-    size: 48,
-  },
-};
-
-export const LargeSize: Story = {
-  args: {
-    image: userImage,
-    size: 82,
-  },
+// Large size with gradient ring (close to reference image)
+export const LargeWithGradientRing: Story = {
+  render: () => (
+    <div style={{ padding: "40px", display: "flex", gap: "32px", alignItems: "flex-start", flexWrap: "wrap" }}>
+      {usersMock.filter((u) => u.image).slice(0, 4).map((user) => (
+        <UserAvatar key={user.id} name={user.name} image={user.image} size={82} gradientRing />
+      ))}
+    </div>
+  ),
 };
