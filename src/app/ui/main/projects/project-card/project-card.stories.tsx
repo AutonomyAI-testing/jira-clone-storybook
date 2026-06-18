@@ -4,14 +4,14 @@ import {
   projectToProjectSummary,
   projectMock1,
 } from "@domain/project";
-import { withRemixStub } from "@app/stories/utils";
+import { withRemixStub, withMainContext } from "@app/stories/utils";
 import { ProjectCard } from "./project-card";
 
 const meta: Meta<typeof ProjectCard> = {
   title: "Pages/Projects/ProjectCard",
   component: ProjectCard,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   argTypes: {
     project: {
@@ -20,7 +20,7 @@ const meta: Meta<typeof ProjectCard> = {
       },
     },
   },
-  decorators: [(Story) => withRemixStub(Story())],
+  decorators: [(Story: any) => withRemixStub(withMainContext(Story))] as any,
 };
 
 export default meta;
