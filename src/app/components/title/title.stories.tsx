@@ -3,8 +3,9 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   argTypes: {
     initTitle: {
@@ -37,18 +38,6 @@ const meta: Meta<typeof Title> = {
 export default meta;
 type Story = StoryObj<typeof Title>;
 
-export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
-};
-
 export const DefaultTitle: Story = {};
 
 export const InitTitle: Story = {
@@ -75,5 +64,34 @@ export const CustomMaxLength: Story = {
   args: {
     placeholder: "Custom max length",
     maxLength: 10,
+  },
+};
+
+export const Default: Story = {
+  render: (_) => (
+    <div className="grid grid-cols-1 gap-6">
+      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
+        (TitleStory, index) => (
+          <Title {...TitleStory.args} key={index} />
+        )
+      )}
+    </div>
+  ),
+};
+
+export const WithShortSubtitle: Story = {
+  args: {
+    initTitle: "Project kickoff",
+    subtitle: "Q3 initiative",
+    readOnly: true,
+  },
+};
+
+export const WithLongSubtitle: Story = {
+  args: {
+    initTitle: "Redesign the onboarding flow",
+    subtitle:
+      "This initiative covers the end-to-end onboarding experience for new users signing up via mobile, with a focus on reducing drop-off at the verification step.",
+    readOnly: true,
   },
 };
