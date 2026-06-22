@@ -1,13 +1,20 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj, StoryFn } from "@storybook/react";
 
 import { Error500 } from "./error-500";
+
+const FullscreenCenter = (Story: StoryFn) => (
+  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", width: "100%" }}>
+    <Story />
+  </div>
+);
 
 const meta: Meta<typeof Error500> = {
   title: "Components/Error500",
   component: Error500,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
+  decorators: [FullscreenCenter],
   argTypes: {
     message: {
       control: {
