@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 320" width="256" height="320">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FDB750;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5A623;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="256" height="320" fill="url(#bgGradient)"/>
+  
+  <!-- Head -->
+  <circle cx="128" cy="100" r="48" fill="#F4D4A8"/>
+  
+  <!-- Hair shadow -->
+  <ellipse cx="128" cy="60" rx="50" ry="28" fill="#1a1a2e"/>
+  
+  <!-- Hair (front) -->
+  <path d="M 80 65 Q 75 35, 100 25 Q 128 18, 156 25 Q 181 35, 176 65" fill="#1a1a2e"/>
+  
+  <!-- Hair spikes (left) -->
+  <path d="M 82 70 Q 70 50, 75 35" stroke="#0d0d1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 88 75 Q 78 55, 82 38" stroke="#0d0d1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+  
+  <!-- Hair spikes (right) -->
+  <path d="M 174 70 Q 186 50, 181 35" stroke="#0d0d1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 168 75 Q 178 55, 174 38" stroke="#0d0d1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+  
+  <!-- Left Eye -->
+  <ellipse cx="105" cy="95" rx="8" ry="14" fill="#FFE66D"/>
+  <circle cx="105" cy="98" r="5" fill="#1a1a2e"/>
+  <circle cx="104" cy="96" r="2" fill="white"/>
+  
+  <!-- Right Eye -->
+  <ellipse cx="151" cy="95" rx="8" ry="14" fill="#FFE66D"/>
+  <circle cx="151" cy="98" r="5" fill="#1a1a2e"/>
+  <circle cx="150" cy="96" r="2" fill="white"/>
+  
+  <!-- Eyebrows -->
+  <path d="M 100 82 Q 108 78, 116 80" stroke="#0d0d1a" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 140 80 Q 148 78, 156 82" stroke="#0d0d1a" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Nose -->
+  <path d="M 128 100 L 128 112" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Mouth -->
+  <path d="M 115 125 Q 128 135, 141 125" stroke="#C73E1D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Neck -->
+  <rect x="115" y="142" width="26" height="18" fill="#F4D4A8"/>
+  
+  <!-- Collar/Shirt top -->
+  <path d="M 95 160 L 110 165 L 110 180 L 146 180 L 146 165 L 161 160" stroke="#1a1a2e" stroke-width="2" fill="none"/>
+  
+  <!-- Shirt/Body (dark blue) -->
+  <path d="M 90 165 Q 85 190, 95 240 L 161 240 Q 171 190, 166 165" fill="#1a1a2e"/>
+  
+  <!-- Shirt highlight -->
+  <ellipse cx="120" cy="190" rx="12" ry="20" fill="#2a2a4e" opacity="0.7"/>
+  <ellipse cx="136" cy="190" rx="12" ry="20" fill="#2a2a4e" opacity="0.7"/>
+  
+  <!-- Sleeves outline -->
+  <path d="M 65 170 Q 55 180, 60 210" stroke="#0d0d1a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M 191 170 Q 201 180, 196 210" stroke="#0d0d1a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Left Hand (simple) -->
+  <circle cx="50" cy="220" r="6" fill="#F4D4A8"/>
+  
+  <!-- Right Hand (simple) -->
+  <circle cx="206" cy="220" r="6" fill="#F4D4A8"/>
+  
+  <!-- Expression accent lines (confidence/determination) -->
+  <path d="M 128 75 Q 130 70, 133 68" stroke="#C73E1D" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+</svg>
