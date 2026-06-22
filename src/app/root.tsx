@@ -181,19 +181,19 @@ export function ErrorBoundary({ error }: { error: Error }) {
 
 export function CatchBoundary() {
   return (
-    <html>
+    <html lang="en">
       <head>
-        <title>Ooops! Not found</title>
+        <title>Oops! Not found</title>
         <Meta />
         <Links />
       </head>
-      <body>
-        <div style={errorComponentStyle}>
-          <Error404
-            message="It seems that you have lost! Go to the main page"
-            href="/"
-          />
-        </div>
+      <body className="bg-elevation-surface font-primary text-font">
+        <Error404
+          title="Looks like you're lost in space"
+          description="The page you're looking for doesn't exist or has been moved."
+          href="/"
+        />
+        <Scripts />
       </body>
     </html>
   );

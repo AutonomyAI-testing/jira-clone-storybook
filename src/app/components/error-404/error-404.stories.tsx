@@ -6,15 +6,25 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
-    message: {
+    title: {
+      control: {
+        type: "text",
+      },
+    },
+    description: {
       control: {
         type: "text",
       },
     },
     href: {
+      control: {
+        type: "text",
+      },
+    },
+    message: {
       control: {
         type: "text",
       },
@@ -27,21 +37,29 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const WithCustomTitle: Story = {
   args: {
-    message: "This is the error message",
+    title: "Oops! That page flew away",
   },
 };
 
-export const Link: Story = {
+export const WithCustomDescription: Story = {
   args: {
-    href: "/link-to-safe-place",
+    description:
+      "The page you're looking for doesn't exist or has been moved to a different location. Please check the URL and try again.",
   },
 };
 
-export const MessageLink: Story = {
+export const WithCustomHref: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    href: "/projects",
+    title: "Let's get back to your projects",
+  },
+};
+
+export const LegacyMessageCompat: Story = {
+  args: {
+    message: "This is a legacy message using the old message prop",
+    href: "/",
   },
 };
