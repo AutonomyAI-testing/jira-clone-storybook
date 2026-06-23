@@ -4,7 +4,7 @@ import { usersMock } from "@domain/user";
 import { LoginView } from "./login.view";
 
 const meta: Meta<typeof LoginView> = {
-  title: "Pages/Login",
+  title: "Pages/LoginView",
   component: LoginView,
   parameters: {
     layout: "centered",
