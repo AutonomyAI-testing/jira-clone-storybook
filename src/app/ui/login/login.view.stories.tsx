@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj, StoryFn } from "@storybook/react";
 import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
 import { usersMock } from "@domain/user";
 import { LoginView } from "./login.view";
@@ -7,7 +7,7 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     users: {
@@ -18,11 +18,15 @@ const meta: Meta<typeof LoginView> = {
     },
   },
   decorators: [
-    (Story) => {
+    (Story: StoryFn) => {
       const RemixStub = createRemixStub([
         {
           path: "/",
-          element: <Story />,
+          element: (
+            <div style={{ width: "1400px", height: "700px" }}>
+              <Story />
+            </div>
+          ),
           action: async () => {
             return {
               status: 200,
@@ -32,7 +36,7 @@ const meta: Meta<typeof LoginView> = {
       ]);
 
       return <RemixStub />;
-    },
+    }
   ],
 };
 
