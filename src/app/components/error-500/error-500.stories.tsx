@@ -19,6 +19,9 @@ const meta: Meta<typeof Error500> = {
         type: "text",
       },
     },
+    onRetry: {
+      action: "onRetry",
+    },
   },
 };
 
@@ -43,5 +46,13 @@ export const MessageLink: Story = {
   args: {
     message: "This is the error message",
     href: "/link-to-safe-place",
+  },
+};
+
+export const WithRetry: Story = {
+  args: {
+    onRetry: () => {
+      // Retry action triggered
+    },
   },
 };
