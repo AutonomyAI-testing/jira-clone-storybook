@@ -9,5 +9,5 @@ export const Error500 = ({
 
 interface Props {
   message: string;
-  href: string;
+  href?: string;
 }
