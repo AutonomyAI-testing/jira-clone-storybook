@@ -33,11 +33,12 @@ export const UserAvatar = ({
         />
         <Avatar.Fallback
           delayMs={0}
-          className="flex items-center justify-center rounded-full text-[var(--Neutral1000)]"
+          className="flex items-center justify-center rounded-full"
           style={{
             ...imageSize,
             backgroundColor: color || getRandomPastelColor(),
             fontSize: `${size / 2}px`,
+            color: "var(--Red600)",
           }}
         >
           {acronym}
