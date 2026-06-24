@@ -71,6 +71,7 @@ export const action: ActionFunction = async ({ request }) => {
     });
   }
   console.error("Unknown action", _action);
+  return null;
 };
 
 export default function LoginRoute() {
