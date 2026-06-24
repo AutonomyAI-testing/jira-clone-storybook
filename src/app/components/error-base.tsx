@@ -1,5 +1,6 @@
-export const ErrorBase = ({ variant, message, href }: Props) => {
+export const ErrorBase = ({ variant, message, href, messageClassName = "text-font" }: Props) => {
   const imgPath = `/images/error-${variant}.svg`;
+  const messageClass = `max-w-[100px] text-lg ${messageClassName}`;
 
   return (
     <div className="max-w-[500px] text-center">
@@ -16,7 +17,7 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
           {message}
         </a>
       ) : (
-        <span className="max-w-[100px] text-lg text-font">{message}</span>
+        <span className={messageClass}>{message}</span>
       )}
     </div>
   );
@@ -26,4 +27,5 @@ interface Props {
   variant: "500" | "404";
   message: string;
   href: string;
+  messageClassName?: string;
 }
