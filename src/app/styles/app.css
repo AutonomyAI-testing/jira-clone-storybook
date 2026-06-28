@@ -839,3 +839,149 @@
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
 }
+
+.party {
+  /* Text */
+  --color-font: #3b0764;
+  --color-font-brand: #7c3aed;
+  --color-font-subtle: #6d28d9;
+  --color-font-subtlest: #9333ea;
+  --color-font-success: var(--Green800);
+  --color-font-danger: var(--Red800);
+  --color-font-warning: var(--Orange800);
+  --color-font-info: var(--Blue800);
+  --color-font-accent-blue: var(--Blue800);
+  --color-font-accent-green: var(--Green800);
+  --color-font-accent-grey: var(--Neutral800);
+  --color-font-disabled: var(--Neutral400A);
+  --color-font-inverse: var(--Neutral0);
+
+  /* Link */
+  --color-link: #7c3aed;
+  --color-link-pressed: #a855f7;
+
+  /* Icon */
+  --color-icon: #3b0764;
+  --color-icon-brand: #7c3aed;
+  --color-icon-danger: var(--Red600);
+  --color-icon-selected: #7c3aed;
+  --color-icon-subtle: #9333ea;
+  --color-icon-inverse: var(--Neutral0);
+  --color-icon-disabled: var(--Neutral400A);
+  --color-icon-accent-green: var(--Green600);
+  --color-icon-accent-yellow: #f59e0b;
+  --color-icon-accent-red: var(--Red600);
+
+  /* Border */
+  --color-border: rgba(168, 85, 247, 0.2);
+  --color-border-bold: #7c3aed;
+  --color-border-brand: #a855f7;
+  --color-border-success: var(--Green600);
+  --color-border-warning: var(--Orange600);
+  --color-border-danger: var(--Red600);
+  --color-border-info: var(--Blue600);
+  --color-border-selected: #7c3aed;
+  --color-border-focused: #a855f7;
+  --color-border-input: rgba(168, 85, 247, 0.3);
+  --color-border-disabled: rgba(168, 85, 247, 0.15);
+  --color-border-accent-blue: var(--Blue600);
+  --color-border-accent-grey: var(--Neutral600);
+
+  /* Elevation */
+  --color-elevation-surface: #fdf4ff;
+  --color-elevation-surface-hovered: #fae8ff;
+  --color-elevation-surface-pressed: #f0abfc;
+  --color-elevation-surface-overlay: #fdf4ff;
+  --color-elevation-surface-overlay-hovered: #fae8ff;
+  --color-elevation-surface-overlay-pressed: #f5d0fe;
+  --color-elevation-surface-raised: #ffffff;
+  --color-elevation-surface-raised-hovered: #fce7f3;
+  --color-elevation-surface-raised-pressed: #fbcfe8;
+  --color-elevation-surface-sunken: #fae8ff;
+
+  --color-shadow-overflow: 0px 0px 8px rgba(147, 51, 234, 0.2), 0px 0px 1px rgba(147, 51, 234, 0.15);
+  --color-shadow-overlay: 0px 8px 12px rgba(147, 51, 234, 0.18), 0px 0px 1px rgba(147, 51, 234, 0.25);
+
+  /* Background */
+  --color-background-brand-subtlest: #f5f3ff;
+  --color-background-brand-subtlest-hovered: #ede9fe;
+  --color-background-brand-subtlest-pressed: #ddd6fe;
+  --color-background-brand-bold: #7c3aed;
+  --color-background-brand-bold-hovered: #6d28d9;
+  --color-background-brand-bold-pressed: #5b21b6;
+  --color-background-brand-boldest: #4c1d95;
+  --color-background-brand-boldest-hovered: #5b21b6;
+  --color-background-brand-boldest-pressed: #6d28d9;
+
+  --color-background-success: var(--Green100);
+  --color-background-success-hovered: var(--Green200);
+  --color-background-success-pressed: var(--Green300);
+  --color-background-success-bold: var(--Green700);
+  --color-background-success-bold-hovered: var(--Green800);
+  --color-background-success-bold-pressed: var(--Green900);
+
+  --color-background-danger: var(--Red100);
+  --color-background-danger-hovered: var(--Red200);
+  --color-background-danger-pressed: var(--Red300);
+  --color-background-danger-bold: var(--Red700);
+  --color-background-danger-bold-hovered: var(--Red800);
+  --color-background-danger-bold-pressed: var(--Red900);
+
+  --color-background-warning: var(--Yellow100);
+  --color-background-warning-hovered: var(--Yellow200);
+  --color-background-warning-pressed: var(--Yellow300);
+  --color-background-warning-bold: var(--Yellow400);
+  --color-background-warning-bold-hovered: var(--Yellow500);
+  --color-background-warning-bold-pressed: var(--Yellow600);
+
+  --color-background-info: var(--Blue100);
+  --color-background-info-hovered: var(--Blue200);
+  --color-background-info-pressed: var(--Blue300);
+  --color-background-info-bold: var(--Blue700);
+  --color-background-info-bold-hovered: var(--Blue800);
+  --color-background-info-bold-pressed: var(--Blue900);
+
+  --color-background-neutral: rgba(168, 85, 247, 0.1);
+  --color-background-neutral-hovered: rgba(168, 85, 247, 0.2);
+  --color-background-neutral-pressed: rgba(168, 85, 247, 0.3);
+  --color-background-neutral-bold: #7c3aed;
+  --color-background-neutral-bold-hovered: #6d28d9;
+  --color-background-neutral-bold-pressed: #5b21b6;
+
+  --color-background-selected: #f5f3ff;
+  --color-background-selected-hovered: #ede9fe;
+  --color-background-selected-pressed: #ddd6fe;
+
+  --color-background-accent-green-subtlest: var(--Green100);
+  --color-background-accent-green-subtler: var(--Green200);
+  --color-background-accent-green-subtle: var(--Green400);
+  --color-background-accent-green-bolder: var(--Green700);
+  --color-background-accent-blue-subtlest: var(--Blue100);
+  --color-background-accent-blue-subtler: var(--Blue200);
+  --color-background-accent-blue-subtle: var(--Blue400);
+  --color-background-accent-blue-bolder: var(--Blue700);
+  --color-background-accent-grey-subtlest: var(--Neutral200);
+  --color-background-accent-grey-subtler: var(--Neutral300);
+  --color-background-accent-grey-subtle: var(--Neutral500);
+  --color-background-accent-grey-bolder: var(--Neutral700);
+
+  --color-background-input: #ffffff;
+  --color-background-input-hovered: #fdf4ff;
+  --color-background-input-pressed: #fae8ff;
+
+  --color-background-disabled: rgba(168, 85, 247, 0.08);
+  --color-background-interaction: rgba(168, 85, 247, 0.5);
+  --color-background-drop: rgba(253, 244, 255, 0.85);
+}
+
+/* Party theme: festive confetti dot pattern on the page background */
+.party body {
+  background-image:
+    radial-gradient(circle, rgba(168, 85, 247, 0.55) 2.5px, transparent 2.5px),
+    radial-gradient(circle, rgba(236, 72, 153, 0.55) 2px, transparent 2px),
+    radial-gradient(circle, rgba(251, 191, 36, 0.6) 2px, transparent 2px),
+    radial-gradient(circle, rgba(74, 222, 128, 0.5) 2.5px, transparent 2.5px);
+  background-size: 80px 80px, 120px 120px, 100px 100px, 110px 110px;
+  background-position: 0 0, 40px 40px, 20px 60px, 60px 20px;
+  background-attachment: fixed;
+}
