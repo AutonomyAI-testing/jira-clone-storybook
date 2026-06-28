@@ -1,3 +1,6 @@
+@import './poppins.css';
+@import './aai-tokens.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

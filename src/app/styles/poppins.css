@@ -1,0 +1,33 @@
+/* ============================================================
+   Poppins — AutonomyAI brand font
+   Self-hosted: Medium (500), Bold (700), ExtraBold (800)
+   Google Fonts CDN: Light (300), Regular (400), SemiBold (600), Black (900)
+   ============================================================ */
+
+/* CDN weights (Light, Regular, Regular Italic, SemiBold, Black) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,900;1,400&display=swap');
+
+/* Self-hosted weights */
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../../public/fonts/Poppins-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../../public/fonts/Poppins-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../../public/fonts/Poppins-ExtraBold.ttf') format('truetype');
+}
