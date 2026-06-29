@@ -4,17 +4,15 @@ import type {
   V2_MetaFunction,
 } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import { User } from "@domain/user";
-import { getUsers } from "@infrastructure/db/user";
-import { getUserSession } from "@app/session-storage";
 import { LoginView } from "@app/ui/login";
 import { formatTags, formatProperties } from "@utils/meta";
+import { getUserSession } from "@app/session-storage";
+import { getUsers } from "@infrastructure/db/user";
 
 export const meta: V2_MetaFunction = () => {
-  const title = "Jira clone - Login";
+  const title = "Sign in · AutonomyAI On-Call Agent";
   const description =
-    "Select your user profile and login to see your projects.";
+    "Sign in to your AutonomyAI On-Call Agent account.";
   const image = "https://jira-clone.fly.dev/static/images/readme/projects.png";
   const url = "https://jira-clone.fly.dev/login";
 
@@ -23,17 +21,6 @@ export const meta: V2_MetaFunction = () => {
     viewport: "width=device-width,initial-scale=1",
     title: title,
     description: description,
-    "twitter:card": "summary_large_image",
-    "twitter:site": url,
-    "twitter:domain": "jira-clone.fly.dev",
-    "twitter:title": title,
-    "twitter:description": description,
-    "twitter:image": image,
-    "twitter:image:width": "1297",
-    "twitter:image:height": "635",
-    "twitter:image:alt": title,
-    "twitter:creator": "@Jack_DanielSG",
-    "twitter:creator:id": "Jack_DanielSG",
   };
 
   const properties = {
@@ -48,13 +35,10 @@ export const meta: V2_MetaFunction = () => {
   return [{ title }, ...formatTags(tags), ...formatProperties(properties)];
 };
 
-type LoaderData = {
-  users: User[];
-};
-
 export const loader: LoaderFunction = async () => {
+  // Keep users available for demo login fallback
   const users = await getUsers();
-  return json<LoaderData>({ users });
+  return json({ users });
 };
 
 export const action: ActionFunction = async ({ request }) => {
@@ -65,15 +49,24 @@ export const action: ActionFunction = async ({ request }) => {
     const userId = formData.get("user") as string;
     const userSession = await getUserSession(request);
     userSession.setUser(userId);
-
     return redirect("/projects", {
       headers: { "Set-Cookie": await userSession.commit() },
     });
   }
-  console.error("Unknown action", _action);
+
+  // New login action — pick first user for demo
+  const users = await getUsers();
+  if (users.length > 0) {
+    const userSession = await getUserSession(request);
+    userSession.setUser(users[0].id);
+    return redirect("/projects", {
+      headers: { "Set-Cookie": await userSession.commit() },
+    });
+  }
+
+  return null;
 };
 
 export default function LoginRoute() {
-  const { users } = useLoaderData<LoaderData>();
-  return <LoginView users={users} />;
+  return <LoginView />;
 }
