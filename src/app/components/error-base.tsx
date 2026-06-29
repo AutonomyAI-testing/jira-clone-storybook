@@ -1,12 +1,15 @@
 export const ErrorBase = ({ variant, message, href }: Props) => {
-  const imgPath = `/images/error-${variant}.svg`;
+  const imgPath = "/images/error-character.png";
 
   return (
     <div className="max-w-[500px] text-center">
+      <h1 className="mb-2 text-[120px] font-black leading-none tracking-tight text-font opacity-10 select-none">
+        {variant}
+      </h1>
       <img
         src={imgPath}
-        alt="Server error"
-        className="mx-auto mb-4 h-[350px] w-auto"
+        alt="Error character"
+        className="mx-auto mb-4 h-[450px] w-[450px] object-contain"
       />
       {href ? (
         <a

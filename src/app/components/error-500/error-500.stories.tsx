@@ -27,6 +27,15 @@ type Story = StoryObj<typeof Error500>;
 
 export const Default: Story = {};
 
+export const ImageOnly: Story = {
+  args: {
+    message: "",
+  },
+  parameters: {
+    docs: { description: { story: "500 character illustration with no message text." } },
+  },
+};
+
 export const Message: Story = {
   args: {
     message: "This is the error message",
