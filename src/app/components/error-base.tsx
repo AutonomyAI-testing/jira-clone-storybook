@@ -5,7 +5,7 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
     <div className="max-w-[500px] text-center">
       <img
         src={imgPath}
-        alt="Server error"
+        alt={`Error ${variant}`}
         className="mx-auto mb-4 h-[350px] w-auto"
       />
       {href ? (
@@ -24,6 +24,6 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
 
 interface Props {
   variant: "500" | "404";
-  message: string;
-  href: string;
+  message?: string;
+  href?: string;
 }
