@@ -19,11 +19,9 @@ export const meta: V2_MetaFunction = () => {
 
 export default function NotFound404Route() {
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-elevation-surface">
-      <Error404
-        message="Oops! The page you're looking for doesn't exist. Go back home"
-        href="/"
-      />
-    </div>
+    <Error404
+      message="Looks like you're lost in the void."
+      href="/"
+    />
   );
 }
