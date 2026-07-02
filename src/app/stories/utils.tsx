@@ -7,18 +7,26 @@ import { ThemeProvider, Theme, Preference } from "@app/store/theme.store";
 type Story = PartialStoryFn<any, Record<string, never>>;
 
 export const withMainContext = (Story: Story): JSX.Element => {
-  return (
-    <UserContextProvider user={userMock1}>
-      <ThemeProvider
-        specifiedTheme={Theme.LIGHT}
-        specifiedPreference={Preference.SELECTED}
-      >
-        <div className="w-full">
-          <Story />
-        </div>
-      </ThemeProvider>
-    </UserContextProvider>
-  );
+  const RemixStub = createRemixStub([
+    {
+      path: "/",
+      element: (
+        <UserContextProvider user={userMock1}>
+          <ThemeProvider
+            specifiedTheme={Theme.LIGHT}
+            specifiedPreference={Preference.SELECTED}
+          >
+            <div className="w-full">
+              <Story />
+            </div>
+          </ThemeProvider>
+        </UserContextProvider>
+      ),
+      action: async () => ({ status: 200 }),
+    },
+  ]);
+
+  return <RemixStub />;
 };
 
 export const withRemixStub = (children: JSX.Element) => {

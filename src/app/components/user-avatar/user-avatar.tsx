@@ -8,9 +8,15 @@ export const UserAvatar = ({
   color,
   size = 36,
   tooltip = false,
+  gradientRing = false,
+  customSrc,
 }: UserAvatarProps): JSX.Element => {
   const imageMinName = image?.replace(".webp", "-min.webp");
-  const imageSrc = size > 80 ? `/avatars/${image}` : `/avatars/${imageMinName}`;
+  const imageSrc = customSrc
+    ? customSrc
+    : size > 80
+    ? `/avatars/${image}`
+    : `/avatars/${imageMinName}`;
   const imageSize = {
     width: `${size}px`,
     minWidth: `${size}px`,
@@ -22,32 +28,73 @@ export const UserAvatar = ({
     .map((word) => word[0].toUpperCase())
     .join("");
 
-  return (
-    <Tooltip title={name} show={tooltip}>
-      <Avatar.Root className="flex items-center rounded-full" style={imageSize}>
-        <Avatar.Image
-          className="rounded-full object-cover"
-          src={image ? imageSrc : undefined}
-          style={imageSize}
-          alt={name}
-        />
-        <Avatar.Fallback
-          delayMs={0}
-          className="flex items-center justify-center rounded-full text-[var(--Neutral1000)]"
+  const avatarContent = (
+    <Avatar.Root
+      className="flex items-center rounded-full"
+      style={gradientRing ? {} : imageSize}
+    >
+      {gradientRing ? (
+        <span
           style={{
-            ...imageSize,
-            backgroundColor: color || getRandomPastelColor(),
-            fontSize: `${size / 2}px`,
+            display: "inline-flex",
+            padding: "3px",
+            borderRadius: "50%",
+            background: "linear-gradient(135deg, #7ee8fa, #80ff72, #a78bfa, #60a5fa)",
+            width: `${size + 6}px`,
+            minWidth: `${size + 6}px`,
+            height: `${size + 6}px`,
           }}
         >
-          {acronym}
-        </Avatar.Fallback>
-      </Avatar.Root>
-    </Tooltip>
+          <Avatar.Image
+            className="rounded-full object-cover"
+            src={customSrc || (image ? imageSrc : undefined)}
+            style={imageSize}
+            alt={name}
+          />
+          <Avatar.Fallback
+            delayMs={0}
+            className="flex items-center justify-center rounded-full text-[var(--Neutral1000)]"
+            style={{
+              ...imageSize,
+              backgroundColor: color || getRandomPastelColor(),
+              fontSize: `${size / 2}px`,
+            }}
+          >
+            {acronym}
+          </Avatar.Fallback>
+        </span>
+      ) : (
+        <>
+          <Avatar.Image
+            className="rounded-full object-cover"
+            src={image ? imageSrc : undefined}
+            style={imageSize}
+            alt={name}
+          />
+          <Avatar.Fallback
+            delayMs={0}
+            className="flex items-center justify-center rounded-full text-[var(--Neutral1000)]"
+            style={{
+              ...imageSize,
+              backgroundColor: color || getRandomPastelColor(),
+              fontSize: `${size / 2}px`,
+            }}
+          >
+            {acronym}
+          </Avatar.Fallback>
+        </>
+      )}
+    </Avatar.Root>
   );
+
+  return <Tooltip title={name} show={tooltip}>{avatarContent}</Tooltip>;
 };
 
 interface UserAvatarProps extends Omit<User, "id"> {
   size?: number;
   tooltip?: boolean;
+  /** Renders a gradient ring border around the avatar */
+  gradientRing?: boolean;
+  /** Custom image src that bypasses the /avatars/ path logic */
+  customSrc?: string;
 }
