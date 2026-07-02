@@ -10,64 +10,81 @@ export const LoginView = ({ users }: Props) => {
 
   const onValueChange = (userId: UserId) => {
     const foundUser = users.find((user) => user.id === userId);
-
-    if (foundUser) {
-      setSelectedValue(foundUser);
-    }
+    if (foundUser) setSelectedValue(foundUser);
   };
 
   return (
-    <div className="mx-auto max-w-[400px] pt-[10vh]">
-      <h1 className="font-primary-black text-5xl text-font">
-        Select login user
-      </h1>
-      <h2 className="mb-8 mt-3 font-primary-light text-lg text-font-subtle">
-        There is no authentication involved. You can login with any user you
-        want! Keep in mind you can only access the projects the user is member
-        of. Try to create issues and comments with different users to see how it
-        reflects in the UI and database. You can logout on the user avatar.
-      </h2>
-      <Form method="post" className="mx-auto w-[300px]">
-        <Select.Root
-          name="user"
-          defaultValue={userMock1.id}
-          onValueChange={onValueChange}
-        >
-          <Select.Trigger
-            className="flex w-full justify-between"
-            aria-label="Open user select"
+    <div className="flex min-h-screen items-center justify-center px-4">
+      <div className="w-full max-w-[400px] rounded-2xl border border-border bg-surface p-8 shadow-lg">
+        {/* Mascot avatar */}
+        <div className="mb-6 flex justify-center">
+          <div
+            className="rounded-full p-[3px]"
+            style={{
+              background: "linear-gradient(135deg, #6ee7f7, #60a5fa, #a78bfa)",
+            }}
           >
-            <div className="flex items-center gap-2">
-              <UserAvatar {...selectedValue} />
-              <Select.Value />
-            </div>
-            <Select.TriggerIcon />
-          </Select.Trigger>
-          <Select.Content>
-            <Select.ScrollUpButton />
-            <Select.Viewport>
-              {users.map((user, index) => (
-                <Select.Item key={index} value={user.id}>
-                  <Select.ItemIndicator />
-                  <UserAvatar {...user} />
-                  <Select.ItemText>{user.name}</Select.ItemText>
-                </Select.Item>
-              ))}
-              <Select.Separator />
-            </Select.Viewport>
-            <Select.ScrollDownButton />
-          </Select.Content>
-        </Select.Root>
-        <Button
-          type="submit"
-          name="_action"
-          value="setUser"
-          aria-label="Login"
-          className="mt-2 w-full"
-        >
-          Login
-        </Button>
-      </Form>
+            <img
+              src="/avatars/mascot-avatar.png"
+              alt="Workspace mascot"
+              className="h-[200px] w-[200px] rounded-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Heading */}
+        <h1 className="mb-2 text-center font-primary-black text-4xl" style={{ color: "var(--Red500)" }}>
+          Select login user
+        </h1>
+
+        {/* Subtitle */}
+        <p className="mb-8 text-center font-primary-light text-base text-font-subtle">
+          No password needed — pick a workspace member and jump right in.
+        </p>
+
+        {/* Form */}
+        <Form method="post" className="w-full">
+          <Select.Root
+            name="user"
+            defaultValue={userMock1.id}
+            onValueChange={onValueChange}
+          >
+            <Select.Trigger
+              className="flex w-full justify-between"
+              aria-label="Open user select"
+            >
+              <div className="flex items-center gap-2">
+                <UserAvatar {...selectedValue} />
+                <Select.Value />
+              </div>
+              <Select.TriggerIcon />
+            </Select.Trigger>
+            <Select.Content>
+              <Select.ScrollUpButton />
+              <Select.Viewport>
+                {users.map((user, index) => (
+                  <Select.Item key={index} value={user.id}>
+                    <Select.ItemIndicator />
+                    <UserAvatar {...user} />
+                    <Select.ItemText>{user.name}</Select.ItemText>
+                  </Select.Item>
+                ))}
+                <Select.Separator />
+              </Select.Viewport>
+              <Select.ScrollDownButton />
+            </Select.Content>
+          </Select.Root>
+          <Button
+            type="submit"
+            name="_action"
+            value="setUser"
+            aria-label="Login"
+            className="mt-3 w-full"
+          >
+            Login
+          </Button>
+        </Form>
+      </div>
     </div>
   );
 };
