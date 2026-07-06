@@ -24,35 +24,39 @@ export default meta;
 type Story = StoryObj<typeof Error404>;
 
 /**
- * Default 404 page with no custom message or link provided.
- * Shows the wizard robot mascot and default friendly message.
+ * Default 404 page with a friendly message and link back home.
+ * Shows the wizard robot mascot.
  */
-export const Default: Story = {};
-
-/**
- * 404 page with a custom error message.
- * The mascot and heading remain the same, but the message is customized.
- */
-export const WithCustomMessage: Story = {
+export const Default: Story = {
   args: {
-    message:
-      "The page you're looking for has disappeared into the digital void. Our wizard robot is puzzled!",
-  },
-};
-
-/**
- * 404 page with a link to navigate home.
- * The primary CTA button will be visible and clickable.
- */
-export const WithHomeLink: Story = {
-  args: {
+    message: "Oops! We can't find this page.",
     href: "/",
   },
 };
 
 /**
+ * 404 page showing the standard "Go back to the main page" link in red.
+ */
+export const PageNotFound: Story = {
+  args: {
+    message: "Go back to the main page",
+    href: "/",
+  },
+};
+
+/**
+ * 404 page with a message only — no link/button shown.
+ */
+export const MessageOnly: Story = {
+  args: {
+    message: "Error 404: This page does not exist.",
+    href: "",
+  },
+};
+
+/**
  * Fully configured 404 page with custom message and home link.
- * Shows all interactive elements: mascot, heading, custom message, CTA button, and secondary links.
+ * Shows all interactive elements: mascot, heading, custom message, and CTA link.
  */
 export const Full: Story = {
   args: {
