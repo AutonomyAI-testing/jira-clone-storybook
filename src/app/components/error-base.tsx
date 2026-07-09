@@ -8,7 +8,7 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
     <div className="max-w-[500px] text-center">
       <img
         src={imgPath}
-        alt="Server error"
+        alt={variant === "404" ? "Wizard robot - page not found" : "Server error"}
         className="mx-auto mb-4 h-[350px] w-auto"
       />
       {href ? (
@@ -20,7 +20,7 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
           {message}
         </a>
       ) : (
-        <span className="max-w-[100px] text-lg text-font">{message}</span>
+        <span className="max-w-[100px] text-lg text-font-danger">{message}</span>
       )}
     </div>
   );
