@@ -839,3 +839,49 @@
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
 }
+
+/* ============================================================
+   AutonomyAI Login Page Design Tokens
+   ============================================================ */
+:root {
+  /* Brand colors */
+  --aai-orange:        #F25730;
+  --aai-orange-bright: #FC816F;
+  --aai-orange-deep:   #ED5339;
+  --aai-orange-peach:  #F69874;
+  --aai-blue:          #9FD2ED;
+  --aai-blue-deep:     #3A9EC5;
+
+  /* Ink / charcoal palette */
+  --ink-950: #0B0B0A;
+  --ink-900: #121211;
+  --ink-700: #212120;
+  --ink-600: #292928;
+  --ink-500: #333333;
+  --ink-400: #3C3B39;
+  --ink-300: #4A4946;
+
+  /* Foreground */
+  --fg:       #FFFFFF;
+  --fg-muted: #B4B1AC;
+  --fg-faint: #7C7A75;
+
+  /* Semantic */
+  --ok:   #4FB473;
+  --warn: #E8A13C;
+  --err:  #E5533C;
+
+  /* Fonts */
+  --font-display: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans:    'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Focus ring */
+  --ring: rgba(242,87,48,.25);
+
+  /* Glow */
+  --glow-orange: 0 0 0 1px rgba(242,87,48,.35), 0 8px 30px rgba(242,87,48,.22);
+
+  /* Easing */
+  --ease-out: cubic-bezier(.2,.7,.2,1);
+}

@@ -1,7 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
-import { usersMock } from "@domain/user";
 import { LoginView } from "./login.view";
+
+// Import the login page CSS so it renders correctly in Storybook
+import "../../styles/login-page.css";
+
+const withRemixStub = (Story: React.ComponentType) => {
+  const RemixStub = createRemixStub([
+    {
+      path: "/",
+      element: <Story />,
+      action: async () => ({ status: 200 }),
+    },
+  ]);
+  return <RemixStub />;
+};
 
 const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
@@ -9,50 +22,17 @@ const meta: Meta<typeof LoginView> = {
   parameters: {
     layout: "fullscreen",
   },
-  argTypes: {
-    users: {
-      defaultValue: usersMock,
-      control: {
-        type: "object",
-      },
-    },
-  },
-  decorators: [
-    (Story) => {
-      const RemixStub = createRemixStub([
-        {
-          path: "/",
-          element: <Story />,
-          action: async () => {
-            return {
-              status: 200,
-            };
-          },
-        },
-      ]);
-
-      return (
-        <div style={{ height: "100vh" }}>
-          <RemixStub />
-        </div>
-      );
-    },
-  ],
+  decorators: [withRemixStub],
 };
 
 export default meta;
 type Story = StoryObj<typeof LoginView>;
 
-export const Default: Story = {
-  args: {
-    users: usersMock,
-  },
-};
+/** Default empty state — as the user first sees the page */
+export const Default: Story = {};
 
-export const MobileView: Story = {
-  args: {
-    users: usersMock,
-  },
+/** Mobile viewport — brand panel is hidden, compact wordmark appears above the form */
+export const Mobile: Story = {
   parameters: {
     viewport: {
       defaultViewport: "mobile1",
