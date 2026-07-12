@@ -1,3 +1,40 @@
+/* AutonomyAI brand font — Poppins */
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../../public/fonts/Poppins-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../../public/fonts/Poppins-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../../public/fonts/Poppins-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../../public/fonts/Poppins-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../../public/fonts/Poppins-ExtraBold.ttf') format('truetype');
+}
+
 @font-face {
   font-family: "CircularStdLight";
   src: 
