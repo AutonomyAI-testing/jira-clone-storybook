@@ -7,7 +7,7 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     users: {
@@ -31,7 +31,11 @@ const meta: Meta<typeof LoginView> = {
         },
       ]);
 
-      return <RemixStub />;
+      return (
+        <div style={{ height: "100vh" }}>
+          <RemixStub />
+        </div>
+      );
     },
   ],
 };
@@ -42,5 +46,16 @@ type Story = StoryObj<typeof LoginView>;
 export const Default: Story = {
   args: {
     users: usersMock,
+  },
+};
+
+export const MobileView: Story = {
+  args: {
+    users: usersMock,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
   },
 };
