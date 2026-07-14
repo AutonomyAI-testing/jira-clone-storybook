@@ -4,7 +4,7 @@ import { userMock1 } from "@domain/user";
 import { UserContextProvider } from "@app/store/user.store";
 import { ThemeProvider, Theme, Preference } from "@app/store/theme.store";
 
-type Story = PartialStoryFn<any, Record<string, never>>;
+type Story = PartialStoryFn<unknown, Record<string, never>>;
 
 export const withMainContext = (Story: Story): JSX.Element => {
   return (

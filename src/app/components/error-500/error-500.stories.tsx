@@ -25,17 +25,24 @@ const meta: Meta<typeof Error500> = {
 export default meta;
 type Story = StoryObj<typeof Error500>;
 
-export const Default: Story = {};
-
-export const Message: Story = {
+export const Default: Story = {
   args: {
-    message: "This is the error message",
+    message: "Oops! Something went wrong on our end.",
+    href: "/",
   },
 };
 
-export const Link: Story = {
+export const ServerError: Story = {
   args: {
-    href: "/link-to-safe-place",
+    message: "Go back to the main page",
+    href: "/",
+  },
+};
+
+export const MessageOnly: Story = {
+  args: {
+    message: "Error 500: The server had a hiccup.",
+    href: "",
   },
 };
 
