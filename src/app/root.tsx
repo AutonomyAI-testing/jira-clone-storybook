@@ -168,13 +168,10 @@ const errorComponentStyle: CSSProperties = {
 
 export function ErrorBoundary({ error }: { error: Error }) {
   console.error(error);
-  const errorMessage =
-    "It seems there is a critical error! Please try again or contact me at: danielserrano.contacto@gmail.com";
 
   return (
-    // Inline styles because tailwind is not loaded at this point
     <div style={errorComponentStyle}>
-      <Error500 message={errorMessage} href="/" />
+      <Error500 href="/" />
     </div>
   );
 }
@@ -183,17 +180,12 @@ export function CatchBoundary() {
   return (
     <html>
       <head>
-        <title>Ooops! Not found</title>
+        <title>Page not found</title>
         <Meta />
         <Links />
       </head>
-      <body>
-        <div style={errorComponentStyle}>
-          <Error404
-            message="It seems that you have lost! Go to the main page"
-            href="/"
-          />
-        </div>
+      <body className="h-full bg-elevation-surface font-primary text-font">
+        <Error404 />
       </body>
     </html>
   );

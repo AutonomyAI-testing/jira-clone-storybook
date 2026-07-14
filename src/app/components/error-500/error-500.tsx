@@ -1,13 +1,21 @@
-import { ErrorBase } from "../error-base";
+import { ErrorPageView } from "@app/ui/error-page";
 
-export const Error500 = ({
-  message = "Error 500: Server error",
-  href,
-}: Props) => {
-  return <ErrorBase variant="500" message={message} href={href} />;
+export const Error500 = ({ message, href }: Props) => {
+  // Build custom actions if legacy href/message are provided
+  const actions = href
+    ? [{ label: message || "Go home", href, color: "primary" as const }]
+    : undefined;
+
+  return (
+    <ErrorPageView
+      errorCode={500}
+      description={!href && message ? message : undefined}
+      actions={actions}
+    />
+  );
 };
 
 interface Props {
-  message: string;
-  href: string;
+  message?: string;
+  href?: string;
 }
