@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
+import {
+  unstable_createRemixStub as createRemixStub,
+} from "@remix-run/testing";
 import { usersMock } from "@domain/user";
 import { LoginView } from "./login.view";
 
@@ -7,7 +9,7 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     users: {
