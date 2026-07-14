@@ -1,4 +1,5 @@
-// TODO: This is currently not working
+import { ErrorPageView } from "@app/ui/error-page";
+
 export default function NotFound404Route() {
-  return <div>NOT FOUNDDDD</div>;
+  return <ErrorPageView errorCode={404} />;
 }

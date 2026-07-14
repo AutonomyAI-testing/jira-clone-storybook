@@ -1,24 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { Error500 } from "./error-500";
 
 const meta: Meta<typeof Error500> = {
   title: "Components/Error500",
   component: Error500,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
-    message: {
-      control: {
-        type: "text",
-      },
-    },
-    href: {
-      control: {
-        type: "text",
-      },
-    },
+    message: { control: { type: "text" } },
+    href: { control: { type: "text" } },
   },
 };
 
@@ -27,21 +18,14 @@ type Story = StoryObj<typeof Error500>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const WithLink: Story = {
   args: {
-    message: "This is the error message",
+    href: "/",
   },
 };
 
-export const Link: Story = {
+export const WithCustomMessage: Story = {
   args: {
-    href: "/link-to-safe-place",
-  },
-};
-
-export const MessageLink: Story = {
-  args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "We're having trouble with our servers. Please check back soon.",
   },
 };
