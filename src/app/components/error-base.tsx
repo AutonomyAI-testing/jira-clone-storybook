@@ -23,7 +23,7 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
 };
 
 interface Props {
-  variant: "500" | "404";
+  variant: "500" | "404" | "wizard";
   message: string;
   href: string;
 }
