@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect } from "react";
+import { useEffect } from "react";
 import type { LoaderFunction, V2_MetaFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import {
@@ -21,8 +21,7 @@ import {
 import { formatTags, formatProperties } from "@utils/meta";
 import { getThemeSession } from "./session-storage/theme-storage.server";
 import { Toast } from "./components/toast";
-import { Error404 } from "./components/error-404";
-import { Error500 } from "./components/error-500";
+import { ErrorPage } from "./components/error-page";
 import styles from "./styles/app-compiled.css";
 import fonts from "./styles/fonts.css";
 import fuck from "react-toastify/dist/ReactToastify.css";
@@ -153,29 +152,17 @@ const App = (): JSX.Element => {
   );
 };
 
-const errorComponentStyle: CSSProperties = {
-  maxWidth: "500px",
-  width: "80%",
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  textAlign: "center",
-  color: "#0052cc",
-  fontFamily: "sans-serif",
-  fontWeight: "bold",
-};
-
 export function ErrorBoundary({ error }: { error: Error }) {
   console.error(error);
-  const errorMessage =
-    "It seems there is a critical error! Please try again or contact me at: danielserrano.contacto@gmail.com";
 
   return (
-    // Inline styles because tailwind is not loaded at this point
-    <div style={errorComponentStyle}>
-      <Error500 message={errorMessage} href="/" />
-    </div>
+    <ErrorPage
+      errorCode="500"
+      secondaryAction={{
+        label: "Contact support",
+        href: "mailto:danielserrano.contacto@gmail.com",
+      }}
+    />
   );
 }
 
@@ -183,17 +170,12 @@ export function CatchBoundary() {
   return (
     <html>
       <head>
-        <title>Ooops! Not found</title>
+        <title>404 — Page not found</title>
         <Meta />
         <Links />
       </head>
-      <body>
-        <div style={errorComponentStyle}>
-          <Error404
-            message="It seems that you have lost! Go to the main page"
-            href="/"
-          />
-        </div>
+      <body style={{ margin: 0, padding: 0 }}>
+        <ErrorPage errorCode="404" />
       </body>
     </html>
   );
