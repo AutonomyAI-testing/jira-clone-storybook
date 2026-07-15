@@ -21,8 +21,7 @@ import {
 import { formatTags, formatProperties } from "@utils/meta";
 import { getThemeSession } from "./session-storage/theme-storage.server";
 import { Toast } from "./components/toast";
-import { Error404 } from "./components/error-404";
-import { Error500 } from "./components/error-500";
+import { ErrorGeneral } from "./components/error-general";
 import styles from "./styles/app-compiled.css";
 import fonts from "./styles/fonts.css";
 import fuck from "react-toastify/dist/ReactToastify.css";
@@ -153,28 +152,27 @@ const App = (): JSX.Element => {
   );
 };
 
-const errorComponentStyle: CSSProperties = {
-  maxWidth: "500px",
-  width: "80%",
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  textAlign: "center",
-  color: "#0052cc",
-  fontFamily: "sans-serif",
-  fontWeight: "bold",
+const errorPageStyle: CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: "100vh",
+  padding: "2rem",
+  backgroundColor: "#f4f5f7",
 };
 
 export function ErrorBoundary({ error }: { error: Error }) {
   console.error(error);
-  const errorMessage =
-    "It seems there is a critical error! Please try again or contact me at: danielserrano.contacto@gmail.com";
 
   return (
     // Inline styles because tailwind is not loaded at this point
-    <div style={errorComponentStyle}>
-      <Error500 message={errorMessage} href="/" />
+    <div style={errorPageStyle}>
+      <ErrorGeneral
+        title="Error 500: Server Error"
+        message="It seems there is a critical error! Please try again or contact us at: danielserrano.contacto@gmail.com"
+        href="/"
+        linkLabel="Go back home"
+      />
     </div>
   );
 }
@@ -187,13 +185,13 @@ export function CatchBoundary() {
         <Meta />
         <Links />
       </head>
-      <body>
-        <div style={errorComponentStyle}>
-          <Error404
-            message="It seems that you have lost! Go to the main page"
-            href="/"
-          />
-        </div>
+      <body style={errorPageStyle}>
+        <ErrorGeneral
+          title="Error 404: Page Not Found"
+          message="It seems you have lost your way! Let the wizard guide you back to safety."
+          href="/"
+          linkLabel="Go back home"
+        />
       </body>
     </html>
   );
