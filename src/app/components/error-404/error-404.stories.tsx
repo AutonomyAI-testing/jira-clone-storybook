@@ -6,18 +6,27 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
+  decorators: [
+    (Story) => (
+      <div className="flex min-h-screen items-center justify-center bg-elevation-surface py-12">
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     message: {
-      control: {
-        type: "text",
-      },
+      control: { type: "text" },
+    },
+    description: {
+      control: { type: "text" },
     },
     href: {
-      control: {
-        type: "text",
-      },
+      control: { type: "text" },
+    },
+    linkText: {
+      control: { type: "text" },
     },
   },
 };
@@ -25,23 +34,29 @@ const meta: Meta<typeof Error404> = {
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
-export const Default: Story = {};
-
-export const Message: Story = {
+export const Default: Story = {
   args: {
-    message: "This is the error message",
+    message: "Page not found",
+    description:
+      "The page you're looking for doesn't exist or has been moved. Let's get you back on track.",
+    href: "/",
+    linkText: "Go to Homepage",
   },
 };
 
-export const Link: Story = {
+export const CustomMessage: Story = {
   args: {
-    href: "/link-to-safe-place",
+    message: "Oops! Lost in space",
+    description: "We couldn't find what you were looking for. Try going back or heading home.",
+    href: "/",
+    linkText: "Back to Home",
   },
 };
 
-export const MessageLink: Story = {
+export const NoLink: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "Page not found",
+    description:
+      "The page you're looking for doesn't exist or has been moved.",
   },
 };

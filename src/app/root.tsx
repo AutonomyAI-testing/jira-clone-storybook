@@ -154,15 +154,19 @@ const App = (): JSX.Element => {
 };
 
 const errorComponentStyle: CSSProperties = {
+  width: "100%",
+  height: "100vh",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontFamily: "sans-serif",
+};
+
+const errorInnerStyle: CSSProperties = {
   maxWidth: "500px",
   width: "80%",
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
   textAlign: "center",
   color: "#0052cc",
-  fontFamily: "sans-serif",
   fontWeight: "bold",
 };
 
@@ -174,7 +178,9 @@ export function ErrorBoundary({ error }: { error: Error }) {
   return (
     // Inline styles because tailwind is not loaded at this point
     <div style={errorComponentStyle}>
-      <Error500 message={errorMessage} href="/" />
+      <div style={errorInnerStyle}>
+        <Error500 message={errorMessage} href="/" />
+      </div>
     </div>
   );
 }
@@ -190,8 +196,10 @@ export function CatchBoundary() {
       <body>
         <div style={errorComponentStyle}>
           <Error404
-            message="It seems that you have lost! Go to the main page"
+            message="Page not found"
+            description="The page you're looking for doesn't exist or has been moved."
             href="/"
+            linkText="Go to Homepage"
           />
         </div>
       </body>
