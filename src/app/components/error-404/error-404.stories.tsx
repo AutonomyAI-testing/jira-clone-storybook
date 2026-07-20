@@ -6,18 +6,16 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     message: {
-      control: {
-        type: "text",
-      },
+      control: { type: "text" },
+      description: "Custom description text shown below the heading",
     },
     href: {
-      control: {
-        type: "text",
-      },
+      control: { type: "text" },
+      description: "URL the 'Go to homepage' button links to",
     },
   },
 };
@@ -25,23 +23,51 @@ const meta: Meta<typeof Error404> = {
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
+/** Default light-theme 404 page */
 export const Default: Story = {};
 
-export const Message: Story = {
+/** Custom message override */
+export const WithCustomMessage: Story = {
   args: {
-    message: "This is the error message",
+    message: "Looks like this page went missing during our last deployment.",
   },
 };
 
-export const Link: Story = {
+/** Custom redirect link (e.g. back to a specific project) */
+export const WithCustomHref: Story = {
   args: {
-    href: "/link-to-safe-place",
+    href: "/projects",
+    message: "Head back to your projects to find what you need.",
   },
 };
 
-export const MessageLink: Story = {
+/** Dark-mode variant — wraps in a div with the `dark` class so design tokens resolve correctly */
+export const DarkMode: Story = {
+  decorators: [
+    (Story) => (
+      <div className="dark">
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    backgrounds: { default: "dark" },
+  },
+};
+
+/** Dark mode with custom message */
+export const DarkModeWithMessage: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "That URL doesn't exist in this dimension. Try heading home.",
+  },
+  decorators: [
+    (Story) => (
+      <div className="dark">
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    backgrounds: { default: "dark" },
   },
 };
