@@ -1,4 +1,10 @@
-// TODO: This is currently not working
+import { Error404 } from "@app/components/error-404";
+
 export default function NotFound404Route() {
-  return <div>NOT FOUNDDDD</div>;
+  return (
+    <Error404
+      message="Looks like you've wandered into uncharted territory."
+      href="/"
+    />
+  );
 }
