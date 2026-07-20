@@ -6,19 +6,7 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
-  },
-  argTypes: {
-    message: {
-      control: {
-        type: "text",
-      },
-    },
-    href: {
-      control: {
-        type: "text",
-      },
-    },
+    layout: "fullscreen",
   },
 };
 
@@ -27,21 +15,35 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const CustomMessage: Story = {
   args: {
-    message: "This is the error message",
+    headline: "We lost that page",
+    description:
+      "It seems like the page you were looking for has vanished into the void.",
   },
 };
 
-export const Link: Story = {
+export const WithBackLink: Story = {
   args: {
-    href: "/link-to-safe-place",
+    secondaryHref: "/",
+    secondaryLabel: "Go to dashboard",
   },
 };
 
-export const MessageLink: Story = {
+export const MinimalDescription: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    description: "Page unavailable.",
+  },
+};
+
+export const FullCustom: Story = {
+  args: {
+    headline: "Oops! Nothing here.",
+    description:
+      "The route you navigated to doesn't exist. Double-check the URL or head back home.",
+    primaryLabel: "Go home",
+    primaryHref: "/",
+    secondaryHref: "/projects",
+    secondaryLabel: "View projects",
   },
 };
