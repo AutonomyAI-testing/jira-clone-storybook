@@ -183,17 +183,15 @@ export function CatchBoundary() {
   return (
     <html>
       <head>
-        <title>Ooops! Not found</title>
+        <title>404 — Page not found</title>
         <Meta />
         <Links />
       </head>
-      <body>
-        <div style={errorComponentStyle}>
-          <Error404
-            message="It seems that you have lost! Go to the main page"
-            href="/"
-          />
-        </div>
+      <body className="h-full bg-elevation-surface font-primary text-font">
+        <Error404
+          message="Looks like you've wandered into uncharted territory."
+          href="/"
+        />
       </body>
     </html>
   );
