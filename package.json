@@ -1,5 +1,6 @@
 {
   "private": true,
+  "version": "1.0.0",
   "packageManager": "pnpm@10.34.5",
   "sideEffects": false,
   "homepage": "http://daniserrano7.github.io/jira-clone/",
