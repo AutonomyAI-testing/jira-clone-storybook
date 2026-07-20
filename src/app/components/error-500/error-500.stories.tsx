@@ -41,7 +41,14 @@ export const Link: Story = {
 
 export const MessageLink: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "Oops! An unexpected server error occurred. Please try again later.",
+    href: "/projects",
+  },
+};
+
+export const ServerError: Story = {
+  args: {
+    message: "Something went wrong on our end. Go back to the dashboard.",
+    href: "/",
   },
 };
