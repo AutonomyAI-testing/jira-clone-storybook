@@ -11,7 +11,7 @@ export const Error404 = ({ href = "/" }: Props) => {
       </div>
 
       {/* Error code */}
-      <h1 className="font-primary-black mb-3 text-9xl text-icon-brand">404</h1>
+      <h1 className="font-primary-black mb-3 text-9xl text-font-danger">404</h1>
 
       {/* Headline */}
       <h2 className="font-primary-bold mb-4 text-3xl text-font">
