@@ -10,7 +10,7 @@ export const Error404 = ({ href = "/" }: Props) => {
       />
 
       {/* 404 error code */}
-      <h1 className="font-primary-black mb-3 text-[96px] leading-none tracking-tight text-font">
+      <h1 className="font-primary-black mb-3 text-[96px] leading-none tracking-tight text-font-danger">
         404
       </h1>
 
