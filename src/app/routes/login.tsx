@@ -74,6 +74,5 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function LoginRoute() {
-  const { users } = useLoaderData<LoaderData>();
-  return <LoginView users={users} />;
+  return <LoginView />;
 }
