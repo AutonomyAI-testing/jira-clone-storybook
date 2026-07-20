@@ -30,6 +30,7 @@ export const Default: Story = {};
 export const Message: Story = {
   args: {
     message: "This is the error message",
+    messageColor: "red",
   },
 };
 
