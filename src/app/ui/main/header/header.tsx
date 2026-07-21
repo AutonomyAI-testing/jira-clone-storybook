@@ -3,6 +3,7 @@ import cx from "classix";
 import { HiQuestionMarkCircle } from "react-icons/hi";
 import { AiFillGithub } from "react-icons/ai";
 import { Tooltip } from "@app/components/tooltip";
+import { SuddenlySpacesLogo } from "@app/components/suddenly-spaces-logo";
 import { SelctTheme } from "./select-theme";
 import { UserProfile } from "./user-profile";
 
@@ -17,8 +18,7 @@ export const Header = (): JSX.Element => {
           to="/"
           className="flex cursor-pointer items-center rounded px-3 py-2 text-font hover:bg-background-brand-subtlest hover:text-font-brand"
         >
-          <img src="/images/logo.png" width={24} height={24} alt="Logo" />
-          <span className="ml-2">Jira Clone</span>
+          <SuddenlySpacesLogo size={44} />
         </Link>
       </section>
       <section className="flex items-center gap-4">
