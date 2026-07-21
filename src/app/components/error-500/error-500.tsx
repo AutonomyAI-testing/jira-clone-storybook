@@ -12,7 +12,7 @@ export const Error500 = ({
         alt="500 server error illustration"
         className="h-[350px] w-auto mb-6"
       />
-      <p className="font-primary-black text-5xl text-font-brand mb-2">
+      <p className="font-primary-black text-5xl text-font-success mb-2">
         {errorCode}
       </p>
       <h1 className="font-primary-black text-3xl text-font mb-4">
