@@ -126,7 +126,7 @@ export const WelcomeView = ({ isLoggedIn }: Props): JSX.Element => {
         />
         <div className="max-w-2xl">
           <h1 className="font-primary-black text-5xl leading-tight text-font sm:text-6xl">
-            Project Management{" "}
+            <span className="text-font-danger">Project Management</span>{" "}
             <span className="text-font-brand">Magic</span>
           </h1>
           <p className="mt-4 font-primary-light text-xl text-font-subtle">
