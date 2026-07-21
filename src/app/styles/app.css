@@ -706,6 +706,48 @@
   --color-background-drop: rgba(0, 0, 0, 0.7);
 }
 
+/* ===== AutonomyAI Login Design Tokens ===== */
+:root {
+  /* Orange accent scale */
+  --aai-orange: #F25730;
+  --aai-orange-bright: #FC816F;
+  --aai-orange-deep: #ED5339;
+  --aai-orange-peach: #F69874;
+
+  /* Secondary accent */
+  --aai-blue: #9FD2ED;
+
+  /* Ink/dark scale */
+  --ink-950: #0B0B0A;
+  --ink-900: #121211;
+  --ink-800: #1A1A18;
+  --ink-700: #212120;
+  --ink-600: #2A2A28;
+  --ink-500: #333333;
+  --ink-400: #3C3B39;
+  --ink-300: #4A4946;
+
+  /* Text on dark */
+  --fg: #FFFFFF;
+  --fg-muted: #B4B1AC;
+  --fg-faint: #7C7A75;
+
+  /* Status colors */
+  --aai-ok: #4FB477;
+  --aai-warn: #E8A13C;
+  --aai-err: #E5533C;
+
+  /* Effects & utilities */
+  --glow-orange: 0 0 0 1px rgba(242, 87, 48, 0.35), 0 8px 30px rgba(242, 87, 48, 0.22);
+  --login-ring: rgba(242, 87, 48, 0.55);
+  --login-ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Font families */
+  --font-display: 'Poppins', system-ui, sans-serif;
+  --font-sans-login: 'Poppins', system-ui, sans-serif;
+  --font-mono-login: 'JetBrains Mono', ui-monospace, monospace;
+}
+
 .barbie {
   /* Text */
   --color-font: var(--Teal1000);
