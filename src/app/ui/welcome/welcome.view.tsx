@@ -47,9 +47,9 @@ export const WelcomeView = (): JSX.Element => {
           {/* Hero text */}
           <div className="flex max-w-[500px] flex-col gap-6 animate-fade-slide-up-delay-1">
             <div className="flex flex-col gap-3">
-              <h1 className="font-primary-black text-5xl leading-tight text-font">
+              <h1 className="font-primary-black text-5xl leading-tight text-font-danger">
                 Project management,{" "}
-                <span className="text-font-brand">simplified.</span>
+                <span className="text-font-danger">simplified.</span>
               </h1>
               <p className="font-primary-light text-lg leading-relaxed text-font-subtle">
                 A lightweight, pragmatic Jira clone for distributed teams.
