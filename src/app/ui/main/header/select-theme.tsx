@@ -1,5 +1,5 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { MdLightMode, MdDarkMode } from "react-icons/md";
+import { MdLightMode, MdDarkMode, MdSettings } from "react-icons/md";
 import cx from "classix";
 import {
   Theme,
@@ -12,7 +12,9 @@ import {
 } from "@app/store/theme.store";
 import { Tooltip } from "@app/components/tooltip";
 
-export const SelctTheme = (): JSX.Element => {
+export const SelctTheme = ({
+  showSettingsIcon = false,
+}: SelctThemeProps = {}): JSX.Element => {
   const { theme, setTheme, preference } = useTheme();
 
   const themeOptions: {
@@ -69,9 +71,16 @@ export const SelctTheme = (): JSX.Element => {
       <Tooltip title="Select theme">
         <DropdownMenu.Trigger
           aria-label="Open theme select"
-          className="group flex h-[30px] w-[30px] rounded-full outline outline-2 outline-icon flex-center hover:bg-background-brand-subtlest hover:outline-border-brand"
+          className={cx(
+            "group flex rounded-full outline outline-2 outline-icon flex-center hover:bg-background-brand-subtlest hover:outline-border-brand",
+            showSettingsIcon
+              ? "h-[40px] w-[40px]"
+              : "h-[30px] w-[30px]"
+          )}
         >
-          {theme === Theme.LIGHT ? (
+          {showSettingsIcon ? (
+            <MdSettings size={22} className={triggerIconClass} />
+          ) : theme === Theme.LIGHT ? (
             <MdLightMode className={triggerIconClass} />
           ) : (
             <MdDarkMode className={triggerIconClass} />
@@ -141,3 +150,7 @@ export const SelctTheme = (): JSX.Element => {
     </DropdownMenu.Root>
   );
 };
+
+interface SelctThemeProps {
+  showSettingsIcon?: boolean;
+}
