@@ -36,7 +36,7 @@ export const WelcomeView = (): JSX.Element => {
       <section className="flex flex-1 flex-col items-center justify-center px-8 pb-16 pt-12 text-center">
         <div className="flex flex-col items-center gap-8 md:flex-row md:gap-16 md:text-left">
           {/* Mascot */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 animate-fade-slide-up">
             <img
               src="/images/welcome-mascot.png"
               alt="Jira Clone mascot"
@@ -45,7 +45,7 @@ export const WelcomeView = (): JSX.Element => {
           </div>
 
           {/* Hero text */}
-          <div className="flex max-w-[500px] flex-col gap-6">
+          <div className="flex max-w-[500px] flex-col gap-6 animate-fade-slide-up-delay-1">
             <div className="flex flex-col gap-3">
               <h1 className="font-primary-black text-5xl leading-tight text-font">
                 Project management,{" "}
