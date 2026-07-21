@@ -7,7 +7,7 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     users: {
@@ -30,6 +30,19 @@ const meta: Meta<typeof LoginView> = {
           },
         },
       ]);
+
+      // Design reference is dark-first; force dark tokens for the preview.
+      if (typeof document !== "undefined") {
+        document.documentElement.classList.remove(
+          "light",
+          "lava",
+          "lime",
+          "barbie"
+        );
+        document.documentElement.classList.add("dark");
+        document.body.classList.remove("light", "lava", "lime", "barbie");
+        document.body.classList.add("dark");
+      }
 
       return <RemixStub />;
     },
