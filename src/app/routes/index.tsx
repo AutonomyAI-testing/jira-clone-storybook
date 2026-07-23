@@ -1,21 +1,13 @@
-import { LoaderFunction, redirect } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
 import { Error404 } from "@app/components/error-404";
+import { WelcomeView } from "@app/ui/welcome";
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url);
-  if (url.pathname === "/") {
-    return redirect("projects");
-  }
+export const loader: LoaderFunction = async () => {
   return null;
 };
 
-// Currently there is no landing. Just redirecting to /projects
 export default function IndexRoute() {
-  return (
-    <div>
-      <h1>LANDING</h1>
-    </div>
-  );
+  return <WelcomeView />;
 }
 
 export function CatchBoundary() {
