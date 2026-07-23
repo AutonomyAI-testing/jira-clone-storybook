@@ -1,21 +1,37 @@
-import { LoaderFunction, redirect } from "@remix-run/node";
+import type { V2_MetaFunction } from "@remix-run/node";
 import { Error404 } from "@app/components/error-404";
+import { WelcomeView } from "@app/ui/welcome";
+import { formatTags, formatProperties } from "@utils/meta";
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url);
-  if (url.pathname === "/") {
-    return redirect("projects");
-  }
-  return null;
+export const meta: V2_MetaFunction = () => {
+  const title = "SuddenlySpaces";
+  const description = "Welcome to SuddenlySpaces.";
+  const url = "https://jira-clone.fly.dev/";
+
+  const tags = {
+    charset: "utf-8",
+    viewport: "width=device-width,initial-scale=1",
+    title: title,
+    description: description,
+    "twitter:card": "summary",
+    "twitter:site": url,
+    "twitter:title": title,
+    "twitter:description": description,
+  };
+
+  const properties = {
+    "og:url": url,
+    "og:type": "website",
+    "og:site_name": title,
+    "og:title": title,
+    "og:description": description,
+  };
+
+  return [...formatTags(tags), ...formatProperties(properties)];
 };
 
-// Currently there is no landing. Just redirecting to /projects
 export default function IndexRoute() {
-  return (
-    <div>
-      <h1>LANDING</h1>
-    </div>
-  );
+  return <WelcomeView />;
 }
 
 export function CatchBoundary() {
