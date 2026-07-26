@@ -7,14 +7,12 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     users: {
       defaultValue: usersMock,
-      control: {
-        type: "object",
-      },
+      control: { type: "object" },
     },
   },
   decorators: [
@@ -23,14 +21,9 @@ const meta: Meta<typeof LoginView> = {
         {
           path: "/",
           element: <Story />,
-          action: async () => {
-            return {
-              status: 200,
-            };
-          },
+          action: async () => ({ status: 200 }),
         },
       ]);
-
       return <RemixStub />;
     },
   ],
@@ -39,8 +32,26 @@ const meta: Meta<typeof LoginView> = {
 export default meta;
 type Story = StoryObj<typeof LoginView>;
 
+/** Two-panel desktop layout — brand hero on the left, login form on the right */
 export const Default: Story = {
-  args: {
-    users: usersMock,
+  args: { users: usersMock },
+  parameters: {
+    viewport: { defaultViewport: "desktop" },
   },
+};
+
+/** Single-panel mobile layout — brand panel hidden, compact wordmark shown */
+export const Mobile: Story = {
+  args: { users: usersMock },
+  parameters: {
+    viewport: { defaultViewport: "mobile1" },
+  },
+  decorators: [
+    (Story) => (
+      <div id="login-mobile-root">
+        <style>{`#login-mobile-root section { align-items: flex-start !important; }`}</style>
+        <Story />
+      </div>
+    ),
+  ],
 };
