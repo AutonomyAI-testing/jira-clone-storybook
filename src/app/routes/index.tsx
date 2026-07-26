@@ -1,21 +1,47 @@
-import { LoaderFunction, redirect } from "@remix-run/node";
+import type { LoaderFunction, ActionFunction } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import { User } from "@domain/user";
+import { getUsers } from "@infrastructure/db/user";
+import { getUserSession } from "@app/session-storage/user-storage.server";
+import { WelcomeView } from "@app/ui/welcome";
 import { Error404 } from "@app/components/error-404";
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url);
-  if (url.pathname === "/") {
-    return redirect("projects");
-  }
-  return null;
+type LoaderData = {
+  users: User[];
 };
 
-// Currently there is no landing. Just redirecting to /projects
+export const loader: LoaderFunction = async ({ request }) => {
+  const userSession = await getUserSession(request);
+  const userId = userSession.getUser();
+
+  if (userId) {
+    return redirect("/projects");
+  }
+
+  const users = await getUsers();
+  return json<LoaderData>({ users });
+};
+
+export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData();
+  const _action = formData.get("_action") as string;
+
+  if (_action === "setUser") {
+    const userId = formData.get("user") as string;
+    const userSession = await getUserSession(request);
+    userSession.setUser(userId);
+
+    return redirect("/projects", {
+      headers: { "Set-Cookie": await userSession.commit() },
+    });
+  }
+  console.error("Unknown action", _action);
+};
+
 export default function IndexRoute() {
-  return (
-    <div>
-      <h1>LANDING</h1>
-    </div>
-  );
+  const { users } = useLoaderData<LoaderData>();
+  return <WelcomeView users={users} />;
 }
 
 export function CatchBoundary() {
