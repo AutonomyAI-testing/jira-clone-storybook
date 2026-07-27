@@ -109,6 +109,22 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
       return "";
     };
 
+    const darkStyle = (): string => {
+      if (variant === "contained") {
+        return "bg-background-success-bold text-font-inverse hover:bg-background-success-bold-hovered active:bg-background-success-bold-pressed";
+      }
+
+      if (variant === "subtlest") {
+        return "bg-background-success text-font-success hover:bg-background-success-hovered active:bg-background-success-pressed";
+      }
+
+      if (variant === "text") {
+        return "text-font-success hover:bg-background-success-hovered active:bg-background-success-pressed";
+      }
+
+      return "";
+    };
+
     return (
       <button
         ref={forwardedRef}
@@ -120,6 +136,8 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
           color === "danger" && dangerStyle(),
           color === "warning" && warningStyle(),
           color === "info" && infoStyle(),
+          color === "dark" && darkStyle(),
+          color === "dark" && "rounded-full",
           size === "lg" && "gap-3 px-8 py-2 text-lg",
           className
         )}
@@ -135,7 +153,7 @@ Button.displayName = "Button";
 
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  color?: "primary" | "neutral" | "success" | "danger" | "warning" | "info";
+  color?: "primary" | "neutral" | "success" | "danger" | "warning" | "info" | "dark";
   variant?: "contained" | "subtlest" | "text";
   size?: "md" | "lg";
 }

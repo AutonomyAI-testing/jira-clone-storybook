@@ -238,3 +238,12 @@ export const PrimaryTextBig: Story = {
     children: "Primary",
   },
 };
+
+export const ListYourSpace: Story = {
+  args: {
+    color: "dark",
+    variant: "contained",
+    size: "lg",
+    children: "List Your Space",
+  },
+};
