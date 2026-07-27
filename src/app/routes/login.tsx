@@ -12,9 +12,9 @@ import { LoginView } from "@app/ui/login";
 import { formatTags, formatProperties } from "@utils/meta";
 
 export const meta: V2_MetaFunction = () => {
-  const title = "Jira clone - Login";
+  const title = "Jira Clone - Sign in";
   const description =
-    "Select your user profile and login to see your projects.";
+    "Sign in to Jira Clone and manage your projects, sprints, and issues.";
   const image = "https://jira-clone.fly.dev/static/images/readme/projects.png";
   const url = "https://jira-clone.fly.dev/login";
 
