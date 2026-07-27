@@ -25,23 +25,22 @@ const meta: Meta<typeof Error404> = {
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
-export const Default: Story = {};
-
-export const Message: Story = {
+export const Default: Story = {
   args: {
-    message: "This is the error message",
+    message: "We couldn't find the page you're looking for.",
   },
 };
 
-export const Link: Story = {
+export const WithLink: Story = {
   args: {
-    href: "/link-to-safe-place",
+    message: "We couldn't find the page you're looking for.",
+    href: "/projects",
   },
 };
 
-export const MessageLink: Story = {
+export const CustomMessage: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "This page has been moved or doesn't exist anymore.",
+    href: "/projects",
   },
 };

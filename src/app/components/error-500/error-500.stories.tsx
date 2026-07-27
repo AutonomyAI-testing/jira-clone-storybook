@@ -25,23 +25,22 @@ const meta: Meta<typeof Error500> = {
 export default meta;
 type Story = StoryObj<typeof Error500>;
 
-export const Default: Story = {};
-
-export const Message: Story = {
+export const Default: Story = {
   args: {
-    message: "This is the error message",
+    message: "Something went wrong on our end. Please try again later.",
   },
 };
 
-export const Link: Story = {
+export const WithLink: Story = {
   args: {
-    href: "/link-to-safe-place",
+    message: "Something went wrong on our end. Please try again later.",
+    href: "/projects",
   },
 };
 
-export const MessageLink: Story = {
+export const CustomMessage: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "Our servers are having a bad day. We're working on it!",
+    href: "/projects",
   },
 };
