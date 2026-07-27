@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Error404 } from "./error-404";
 
@@ -27,21 +27,8 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const WithLink: Story = {
   args: {
-    message: "This is the error message",
-  },
-};
-
-export const Link: Story = {
-  args: {
-    href: "/link-to-safe-place",
-  },
-};
-
-export const MessageLink: Story = {
-  args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    href: "/",
   },
 };
