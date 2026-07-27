@@ -7,7 +7,7 @@ const meta: Meta<typeof LoginView> = {
   title: "Pages/Login",
   component: LoginView,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     users: {
@@ -43,4 +43,23 @@ export const Default: Story = {
   args: {
     users: usersMock,
   },
+};
+
+export const Mobile: Story = {
+  args: {
+    users: usersMock,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div id="login-mobile-root">
+        <style>{`#login-mobile-root main > section { align-items: flex-start !important; }`}</style>
+        <Story />
+      </div>
+    ),
+  ],
 };
