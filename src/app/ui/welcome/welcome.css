@@ -1,0 +1,625 @@
+/* ============================================================
+   Welcome Page — Scoped Design Tokens & Styles
+   Dark-themed two-panel landing/login page.
+   All custom properties are scoped to .welcome-shell so they
+   don't bleed into the existing global token system.
+   ============================================================ */
+
+.welcome-shell {
+  /* ---------- Brand core ---------- */
+  --w-orange:         #F25730;
+  --w-orange-bright:  #FC816F;
+  --w-orange-deep:    #ED5339;
+  --w-orange-peach:   #F69874;
+  --w-blue:           #9FD2ED;
+  --w-ok:             #4FB477;
+  --w-warn:           #E8A13C;
+  --w-err:            #E5533C;
+
+  /* ---------- Ink scale ---------- */
+  --w-ink-950: #0B0B0A;
+  --w-ink-900: #121211;
+  --w-ink-800: #1A1A18;
+  --w-ink-700: #212120;
+  --w-ink-600: #2A2A28;
+  --w-ink-500: #333333;
+  --w-ink-400: #3C3B39;
+  --w-ink-300: #4A4946;
+  --w-warm-glow: #5E5452;
+
+  /* ---------- Text ---------- */
+  --w-fg:        #FFFFFF;
+  --w-fg-muted:  #B4B1AC;
+  --w-fg-faint:  #7C7A75;
+
+  /* ---------- Motion ---------- */
+  --w-ease-out: cubic-bezier(.2,.7,.2,1);
+
+  /* ---------- Ring ---------- */
+  --w-ring: rgba(242, 87, 48, .55);
+  --w-glow-orange: 0 0 0 1px rgba(242,87,48,.35), 0 8px 30px rgba(242,87,48,.22);
+
+  /* --------- Layout ---------- */
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  min-height: 100vh;
+  position: relative;
+  font-family: "CircularStdMedium", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: var(--w-ink-900);
+  color: var(--w-fg);
+}
+
+/* Film-grain texture overlay */
+.welcome-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: .045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 920px) {
+  .welcome-shell {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   BRAND PANEL (left)
+   ============================================================ */
+.welcome-brand {
+  position: relative;
+  overflow: hidden;
+  background: var(--w-ink-900);
+  border-right: 1px solid var(--w-ink-400);
+  padding: clamp(36px, 4.5vw, 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-brand::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 18% 8%, rgba(94, 84, 82, .45), transparent 60%),
+    radial-gradient(50% 50% at 92% 100%, rgba(242, 87, 48, .10), transparent 62%);
+}
+
+.welcome-brand > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 920px) {
+  .welcome-brand {
+    display: none;
+  }
+}
+
+/* ---------- Wordmark ---------- */
+.w-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: "CircularStdBlack", "Helvetica Neue", Arial, sans-serif;
+  font-size: 19px;
+  letter-spacing: -.01em;
+}
+
+.w-wordmark .w-glyph {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  flex: none;
+  background: linear-gradient(150deg, var(--w-orange), var(--w-orange-peach));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 1px rgba(242,87,48,.35), 0 6px 18px rgba(242,87,48,.25);
+}
+
+.w-wordmark .w-glyph svg {
+  width: 16px;
+  height: 16px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.w-wordmark .w-brand-name {
+  color: var(--w-fg);
+}
+
+.w-wordmark .w-ai {
+  color: var(--w-orange);
+}
+
+.w-wordmark .w-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--w-ink-400);
+  margin: 0 3px;
+}
+
+.w-wordmark .w-product {
+  font-family: "CircularStdMedium", sans-serif;
+  font-size: 14px;
+  color: var(--w-fg-muted);
+  letter-spacing: 0;
+}
+
+/* ---------- Brand middle content ---------- */
+.w-brand-mid {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 48px 0;
+  max-width: 480px;
+}
+
+.w-eyebrow {
+  font-family: "CircularStdMedium", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--w-orange);
+  margin: 0 0 22px;
+}
+
+.w-h1 {
+  font-family: "CircularStdBlack", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(32px, 3.6vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  margin: 0;
+  color: var(--w-fg);
+  text-wrap: balance;
+}
+
+.w-h1 .w-grad {
+  background: linear-gradient(95deg, var(--w-orange), var(--w-orange-peach));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.w-lede {
+  font-family: "CircularStdMedium", sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--w-fg-muted);
+  margin: 22px 0 0;
+  max-width: 420px;
+}
+
+/* ---------- Pipeline status motif ---------- */
+.w-pipeline {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.w-pl-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  padding: 11px 0;
+}
+
+.w-pl-row .w-node {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex: none;
+  position: relative;
+  z-index: 1;
+}
+
+.w-pl-row:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 22px;
+  bottom: -22px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--w-ink-400), transparent);
+}
+
+.w-pl-row .w-lab {
+  font-family: "CircularStdMedium", ui-monospace, monospace;
+  font-size: 12.5px;
+  letter-spacing: .02em;
+  color: var(--w-fg-muted);
+}
+
+.w-pl-row .w-lab b {
+  color: var(--w-fg);
+  font-family: "CircularStdBold", sans-serif;
+}
+
+.w-pl-row .w-t {
+  margin-left: auto;
+  font-family: "CircularStdMedium", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--w-fg-faint);
+}
+
+.w-n-blue   { background: var(--w-blue); box-shadow: 0 0 0 4px rgba(159,210,237,.12); }
+.w-n-amber  { background: var(--w-warn); box-shadow: 0 0 0 4px rgba(232,161,60,.12); }
+.w-n-ok     { background: var(--w-ok);   box-shadow: 0 0 0 4px rgba(79,180,119,.14); }
+
+/* ---------- Brand footer ---------- */
+.w-brand-foot {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: "CircularStdMedium", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: var(--w-fg-faint);
+}
+
+.w-brand-foot .w-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--w-ink-300);
+}
+
+/* ============================================================
+   AUTH PANEL (right)
+   ============================================================ */
+.welcome-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(28px, 5vw, 64px);
+  background: var(--w-ink-900);
+}
+
+.w-card {
+  width: 100%;
+  max-width: 392px;
+}
+
+/* Mobile-only wordmark */
+.w-mobile-mark {
+  display: none;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 30px;
+  font-family: "CircularStdBlack", sans-serif;
+  font-size: 19px;
+  letter-spacing: -.01em;
+}
+
+@media (max-width: 920px) {
+  .w-mobile-mark {
+    display: flex;
+  }
+}
+
+/* ---------- Auth header ---------- */
+.w-auth-head {
+  margin-bottom: 30px;
+}
+
+.w-auth-ey {
+  font-family: "CircularStdMedium", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--w-fg-faint);
+  margin: 0 0 14px;
+}
+
+.w-auth-h2 {
+  font-family: "CircularStdBlack", "Helvetica Neue", Arial, sans-serif;
+  font-size: 30px;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  margin: 0;
+  color: #E5533C;
+}
+
+.w-auth-sub {
+  font-family: "CircularStdMedium", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--w-fg-muted);
+  margin: 9px 0 0;
+}
+
+/* ---------- SSO buttons ---------- */
+.w-sso {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.w-sso-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: "CircularStdBold", sans-serif;
+  font-size: 14px;
+  background: var(--w-ink-700);
+  color: var(--w-fg);
+  border: 1px solid var(--w-ink-400);
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: border-color .18s var(--w-ease-out), background .18s var(--w-ease-out);
+}
+
+.w-sso-btn:hover {
+  border-color: var(--w-ink-300);
+  background: var(--w-ink-600);
+}
+
+.w-sso-btn svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+
+/* ---------- Divider ---------- */
+.w-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 22px;
+  color: var(--w-fg-faint);
+}
+
+.w-divider::before,
+.w-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--w-ink-400);
+}
+
+.w-divider span {
+  font-family: "CircularStdMedium", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+/* ---------- Form fields ---------- */
+.w-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.w-field label {
+  display: block;
+  font-family: "CircularStdMedium", sans-serif;
+  font-size: 13px;
+  color: var(--w-fg-muted);
+  margin-bottom: 7px;
+}
+
+.w-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.w-input {
+  width: 100%;
+  font-family: "CircularStdMedium", sans-serif;
+  font-size: 15px;
+  color: var(--w-fg);
+  background: var(--w-ink-500);
+  border: 1px solid var(--w-ink-400);
+  border-radius: 8px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color .15s var(--w-ease-out), box-shadow .15s var(--w-ease-out);
+}
+
+.w-input::placeholder {
+  color: var(--w-fg-faint);
+}
+
+.w-input:focus {
+  border-color: var(--w-orange);
+  box-shadow: 0 0 0 3px var(--w-ring);
+}
+
+.w-input.w-input-error {
+  border-color: var(--w-err);
+}
+
+.w-input-with-reveal {
+  padding-right: 44px;
+}
+
+.w-reveal-btn {
+  position: absolute;
+  right: 6px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--w-fg-faint);
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color .15s var(--w-ease-out);
+}
+
+.w-reveal-btn:hover {
+  color: var(--w-fg-muted);
+}
+
+.w-reveal-btn svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+/* ---------- Label row (password label + forgot link) ---------- */
+.w-lbl-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.w-forgot-link {
+  font-family: "CircularStdMedium", sans-serif;
+  font-size: 12.5px;
+  color: var(--w-orange);
+  text-decoration: none;
+  transition: text-decoration .1s;
+}
+
+.w-forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Remember me checkbox ---------- */
+.w-remember {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: "CircularStdMedium", sans-serif;
+  font-size: 13.5px;
+  color: var(--w-fg-muted);
+  cursor: pointer;
+  user-select: none;
+  margin-top: 2px;
+}
+
+.w-remember .w-check-box {
+  width: 17px;
+  height: 17px;
+  border-radius: 5px;
+  border: 1px solid var(--w-ink-300);
+  background: var(--w-ink-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  transition: all .15s var(--w-ease-out);
+}
+
+.w-remember .w-check-box svg {
+  width: 11px;
+  height: 11px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 2.6;
+}
+
+.w-remember.w-checked .w-check-box {
+  background: var(--w-orange);
+  border-color: var(--w-orange);
+}
+
+/* ---------- Submit button ---------- */
+.w-submit-btn {
+  margin-top: 4px;
+  width: 100%;
+  font-family: "CircularStdBold", sans-serif;
+  font-size: 15px;
+  background: var(--w-orange);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 13px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  box-shadow: var(--w-glow-orange);
+  transition: background .15s var(--w-ease-out), transform .12s var(--w-ease-out);
+}
+
+.w-submit-btn:hover:not(:disabled) {
+  background: var(--w-orange-bright);
+  transform: translateY(-1px);
+}
+
+.w-submit-btn:active:not(:disabled) {
+  background: var(--w-orange-deep);
+  transform: translateY(0);
+}
+
+.w-submit-btn:disabled {
+  cursor: wait;
+  background: var(--w-orange-deep);
+}
+
+/* ---------- Spinner ---------- */
+@keyframes w-spin {
+  to { transform: rotate(360deg); }
+}
+
+.w-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, .4);
+  border-right-color: #fff;
+  border-radius: 50%;
+  animation: w-spin .65s linear infinite;
+}
+
+/* ---------- Footnote + security badge ---------- */
+.w-footnote {
+  margin-top: 26px;
+  text-align: center;
+  font-family: "CircularStdMedium", sans-serif;
+  font-size: 13.5px;
+  color: var(--w-fg-muted);
+}
+
+.w-footnote a {
+  color: var(--w-orange);
+  text-decoration: none;
+  font-family: "CircularStdBold", sans-serif;
+}
+
+.w-footnote a:hover {
+  text-decoration: underline;
+}
+
+.w-secure {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: "CircularStdMedium", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: .05em;
+  color: var(--w-fg-faint);
+}
+
+.w-secure svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
