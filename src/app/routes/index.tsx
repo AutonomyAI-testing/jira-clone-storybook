@@ -1,21 +1,19 @@
-import { LoaderFunction, redirect } from "@remix-run/node";
+import type { V2_MetaFunction } from "@remix-run/node";
 import { Error404 } from "@app/components/error-404";
+import { WelcomeView } from "@app/ui/welcome";
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url);
-  if (url.pathname === "/") {
-    return redirect("projects");
-  }
-  return null;
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: "Jira clone - Welcome" },
+    {
+      name: "description",
+      content: "Welcome to Jira clone — your project management tool.",
+    },
+  ];
 };
 
-// Currently there is no landing. Just redirecting to /projects
 export default function IndexRoute() {
-  return (
-    <div>
-      <h1>LANDING</h1>
-    </div>
-  );
+  return <WelcomeView />;
 }
 
 export function CatchBoundary() {
