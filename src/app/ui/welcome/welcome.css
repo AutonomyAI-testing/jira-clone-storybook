@@ -1,0 +1,116 @@
+.welcome-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--color-elevation-surface);
+  padding: 2rem;
+}
+
+.welcome-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+}
+
+.welcome-mascot {
+  width: 240px;
+  height: auto;
+  filter: drop-shadow(0px 8px 24px rgba(9, 30, 66, 0.18));
+  animation: welcome-float 3.6s ease-in-out infinite;
+}
+
+.welcome-title {
+  font-family: CircularStdBlack, sans-serif;
+  font-size: 4rem;
+  line-height: 1.1;
+  color: var(--color-font-danger);
+  letter-spacing: -0.02em;
+}
+
+.welcome-subtitle {
+  font-family: CircularStdMedium, sans-serif;
+  font-size: 1.125rem;
+  color: var(--color-font-subtle);
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+.welcome-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.welcome-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.75rem;
+  border-radius: 4px;
+  background-color: var(--color-background-brand-bold);
+  color: var(--color-font-inverse);
+  font-family: CircularStdBold, sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.welcome-btn-primary:hover {
+  background-color: var(--color-background-brand-bold-hovered);
+}
+
+.welcome-btn-primary:active {
+  background-color: var(--color-background-brand-bold-pressed);
+}
+
+.welcome-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.75rem;
+  border-radius: 4px;
+  background-color: var(--color-background-neutral);
+  color: var(--color-font);
+  font-family: CircularStdBold, sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.welcome-btn-secondary:hover {
+  background-color: var(--color-background-neutral-hovered);
+}
+
+.welcome-btn-secondary:active {
+  background-color: var(--color-background-neutral-pressed);
+}
+
+@keyframes welcome-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-title {
+    font-size: 3rem;
+  }
+
+  .welcome-mascot {
+    width: 180px;
+  }
+}
