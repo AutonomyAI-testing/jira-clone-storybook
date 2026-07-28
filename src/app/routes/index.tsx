@@ -4,12 +4,12 @@ import { Error404 } from "@app/components/error-404";
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
   if (url.pathname === "/") {
-    return redirect("projects");
+    return redirect("welcome");
   }
   return null;
 };
 
-// Currently there is no landing. Just redirecting to /projects
+// Redirect root to the welcome page
 export default function IndexRoute() {
   return (
     <div>
