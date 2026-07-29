@@ -1,21 +1,22 @@
 import { LoaderFunction, redirect } from "@remix-run/node";
 import { Error404 } from "@app/components/error-404";
+import { WelcomeView } from "@app/ui/welcome";
+import { getUserSession } from "@app/session-storage";
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url);
-  if (url.pathname === "/") {
-    return redirect("projects");
+  const userSession = await getUserSession(request);
+  const userId = userSession.getUser();
+
+  // If a session already exists, skip the welcome screen and go straight to projects
+  if (userId) {
+    return redirect("/projects");
   }
+
   return null;
 };
 
-// Currently there is no landing. Just redirecting to /projects
 export default function IndexRoute() {
-  return (
-    <div>
-      <h1>LANDING</h1>
-    </div>
-  );
+  return <WelcomeView />;
 }
 
 export function CatchBoundary() {
