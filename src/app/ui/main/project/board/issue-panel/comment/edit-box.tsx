@@ -3,6 +3,7 @@ import cx from "classix";
 import { TextareaAutosize } from "@app/components/textarea-autosize";
 import { Button } from "@app/components/button";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
+import { useTypewriter } from "@app/hooks/useTypewriter";
 
 export const EditBox = ({
   defaultMessage,
@@ -40,9 +41,11 @@ export const EditBox = ({
   const onFocus = () => setIsEditing(true);
 
   const isError = initError && !messageIsValid();
-  const placeholder = isError
+  const staticPlaceholder = isError
     ? "Message cannot be empty"
     : "Add your comment...";
+  const animatedPlaceholder = useTypewriter("Add your comment...", 50);
+  const placeholder = isError ? staticPlaceholder : animatedPlaceholder;
 
   return (
     <div className="w-full">
