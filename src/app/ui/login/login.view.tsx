@@ -18,7 +18,7 @@ export const LoginView = ({ users }: Props) => {
 
   return (
     <div className="mx-auto max-w-[400px] pt-[10vh]">
-      <h1 className="font-primary-black text-5xl text-font">
+      <h1 className="font-primary-black text-5xl" style={{ color: "#fbff00" }}>
         Select login user
       </h1>
       <h2 className="mb-8 mt-3 font-primary-light text-lg text-font-subtle">
@@ -63,7 +63,8 @@ export const LoginView = ({ users }: Props) => {
           name="_action"
           value="setUser"
           aria-label="Login"
-          className="mt-2 w-full"
+          className="mt-2 w-full !text-font"
+          color="success"
         >
           Login
         </Button>
