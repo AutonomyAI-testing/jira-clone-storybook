@@ -839,3 +839,45 @@
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
 }
+
+/* ============================================================
+   Welcome page — orange accent tokens (from brand design system)
+   ============================================================ */
+:root {
+  --welcome-orange:        #F25730;
+  --welcome-orange-bright: #FC816F;
+  --welcome-orange-deep:   #ED5339;
+  --welcome-orange-peach:  #F69874;
+  --welcome-blue-ice:      #9FD2ED;
+  --welcome-ok:            #4FB477;
+  --welcome-warn:          #E8A13C;
+  --welcome-glow-orange:   0 0 0 1px rgba(242,87,48,.35), 0 8px 30px rgba(242,87,48,.22);
+
+  /* Ink (warm charcoal) scale for welcome page panels */
+  --welcome-ink-950: #0B0B0A;
+  --welcome-ink-900: #121211;
+  --welcome-ink-800: #1A1A18;
+  --welcome-ink-700: #212120;
+  --welcome-ink-600: #2A2A28;
+  --welcome-ink-500: #333333;
+  --welcome-ink-400: #3C3B39;
+  --welcome-ink-300: #4A4946;
+  --welcome-warm-glow: #5E5452;
+
+  /* Foreground tokens on dark surfaces */
+  --welcome-fg:       #FFFFFF;
+  --welcome-fg-muted: #B4B1AC;
+  --welcome-fg-faint: #7C7A75;
+}
+
+/* Welcome page grain texture overlay */
+.welcome-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: .045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
