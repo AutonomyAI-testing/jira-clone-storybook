@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('tailwindcss').Config} */
 const plugin = require("tailwindcss/plugin");
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: ["./src/app/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
     colors: {
+      gray: colors.gray,
       font: {
         DEFAULT: "var(--color-font)",
         brand: "var(--color-font-brand)",
