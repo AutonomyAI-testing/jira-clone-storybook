@@ -17,11 +17,11 @@ export const LoginView = ({ users }: Props) => {
   };
 
   return (
-    <div className="mx-auto max-w-[400px] pt-[10vh]">
+    <div className="mx-auto max-w-[400px] pt-[10vh] outline outline-2 outline-black p-6">
       <h1 className="font-primary-black text-5xl text-font">
         Select login user
       </h1>
-      <h2 className="mb-8 mt-3 font-primary-light text-lg text-font-subtle">
+      <h2 className="mb-8 mt-3 font-primary-light text-lg" style={{ color: "#00fff7" }}>
         There is no authentication involved. You can login with any user you
         want! Keep in mind you can only access the projects the user is member
         of. Try to create issues and comments with different users to see how it
@@ -63,6 +63,7 @@ export const LoginView = ({ users }: Props) => {
           name="_action"
           value="setUser"
           aria-label="Login"
+          color="danger"
           className="mt-2 w-full"
         >
           Login
