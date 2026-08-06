@@ -216,6 +216,33 @@ export const InfoText: Story = {
   },
 };
 
+export const SearchSelected: Story = {
+  name: "Search (Selected)",
+  parameters: {
+    layout: "centered",
+  },
+  render: () => (
+    <Button
+      color="neutral"
+      variant="contained"
+      className="font-primary-bold"
+      style={{
+        backgroundColor: "#22c55e",
+        color: "#ffffff",
+        borderRadius: "1000px",
+        paddingLeft: "40px",
+        paddingRight: "40px",
+        paddingTop: "13px",
+        paddingBottom: "13px",
+        fontSize: "15px",
+        lineHeight: "26px",
+      }}
+    >
+      Search
+    </Button>
+  ),
+};
+
 export const PrimaryContainedBig: Story = {
   args: {
     size: "lg",
