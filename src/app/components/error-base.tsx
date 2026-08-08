@@ -1,5 +1,7 @@
 export const ErrorBase = ({ variant, message, href }: Props) => {
   const imgPath = `/images/error-${variant}.svg`;
+  // Use CSS variable for red text color to ensure visual consistency across error states
+  const messageColor = { color: "var(--Red500)" };
 
   return (
     <div className="max-w-[500px] text-center">
@@ -11,12 +13,13 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
       {href ? (
         <a
           href={href}
-          className="max-w-[100px] text-lg text-link hover:underline active:text-link-pressed"
+          className="max-w-[100px] text-lg hover:underline"
+          style={messageColor}
         >
           {message}
         </a>
       ) : (
-        <span className="max-w-[100px] text-lg text-font">{message}</span>
+        <span className="max-w-[100px] text-lg" style={messageColor}>{message}</span>
       )}
     </div>
   );
@@ -25,5 +28,5 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
 interface Props {
   variant: "500" | "404";
   message: string;
-  href: string;
+  href?: string;
 }

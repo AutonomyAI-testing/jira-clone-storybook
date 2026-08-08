@@ -25,7 +25,12 @@ const meta: Meta<typeof Error404> = {
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    message: "Oops! This page has vanished into the void.",
+    href: "/",
+  },
+};
 
 export const Message: Story = {
   args: {
