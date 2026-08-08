@@ -1,0 +1,348 @@
+<svg viewBox="0 0 600 650" width="600" height="650" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C4956A;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#A67C52;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B6340;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="hatConeGrad" x1="0%" y1="0%" x2="60%" y2="100%">
+      <stop offset="0%" style="stop-color:#3455c0;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#2847b5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a2d6e;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="hatBrimGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b5ad4;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2847b5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a2d6e;stop-opacity:1" />
+    </linearGradient>
+
+    <radialGradient id="screenGlow" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" style="stop-color:#c8f060;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#8fce28;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4e8c18;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="parchment" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" style="stop-color:#e8dcc0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d4c4a0;stop-opacity:1" />
+    </radialGradient>
+
+    <filter id="softShadow">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+
+    <filter id="deepShadow">
+      <feDropShadow dx="3" dy="6" stdDeviation="5" flood-opacity="0.4"/>
+    </filter>
+
+    <filter id="gloss">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+
+    <linearGradient id="armGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#606060;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#787878;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#505050;stop-opacity:1"/>
+    </linearGradient>
+
+    <linearGradient id="bootGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6B4E31;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#3D2B1F;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Parchment background -->
+  <rect width="600" height="650" fill="url(#parchment)"/>
+
+  <!-- Parchment texture spots -->
+  <circle cx="60" cy="80" r="3" fill="#b8a880" opacity="0.4"/>
+  <circle cx="520" cy="120" r="2" fill="#b8a880" opacity="0.3"/>
+  <circle cx="80" cy="500" r="2.5" fill="#b8a880" opacity="0.35"/>
+  <circle cx="540" cy="480" r="2" fill="#b8a880" opacity="0.3"/>
+  <circle cx="100" cy="300" r="1.5" fill="#b8a880" opacity="0.25"/>
+  <circle cx="490" cy="350" r="2" fill="#b8a880" opacity="0.28"/>
+  <circle cx="150" cy="600" r="3" fill="#b8a880" opacity="0.3"/>
+  <circle cx="440" cy="580" r="2" fill="#b8a880" opacity="0.28"/>
+  <circle cx="50" cy="200" r="2" fill="#c4ad7a" opacity="0.2"/>
+  <circle cx="560" cy="240" r="2.5" fill="#c4ad7a" opacity="0.18"/>
+  <circle cx="300" cy="620" r="3" fill="#b8a880" opacity="0.25"/>
+  <circle cx="200" cy="40" r="2" fill="#b8a880" opacity="0.3"/>
+  <circle cx="380" cy="30" r="1.5" fill="#b8a880" opacity="0.25"/>
+
+  <!-- Da Vinci large circle -->
+  <circle cx="300" cy="360" r="250" fill="none" stroke="#8B5A3A" stroke-width="2.5" opacity="0.55"/>
+
+  <!-- Da Vinci inner rectangle (golden ratio inspired) -->
+  <rect x="130" y="230" width="340" height="310" fill="none" stroke="#8B5A3A" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- ==================== WIZARD HAT ==================== -->
+  <!-- Hat shadow on brim -->
+  <ellipse cx="300" cy="182" rx="195" ry="44" fill="#1a2d6e" opacity="0.35"/>
+
+  <!-- Hat brim - wide with perspective curvature and darker outer edge -->
+  <ellipse cx="300" cy="178" rx="192" ry="42" fill="url(#hatBrimGrad)" stroke="#0a0f2a" stroke-width="4"/>
+
+  <!-- Hat brim top face (lighter blue for curvature illusion) -->
+  <ellipse cx="300" cy="174" rx="192" ry="38" fill="#2d4dca" stroke="none"/>
+  <ellipse cx="300" cy="172" rx="182" ry="30" fill="#3455d0" stroke="none"/>
+
+  <!-- Hat brim edge gloss -->
+  <ellipse cx="300" cy="168" rx="160" ry="12" fill="#FFFFFF" opacity="0.12" filter="url(#gloss)"/>
+
+  <!-- Stars on hat brim left -->
+  <g fill="#f5c518">
+    <polygon points="100,162 104,175 117,175 107,183 111,196 100,188 89,196 93,183 83,175 96,175" transform="scale(0.55) translate(82,100)"/>
+    <polygon points="100,162 104,175 117,175 107,183 111,196 100,188 89,196 93,183 83,175 96,175" transform="scale(0.45) translate(190,145)"/>
+    <polygon points="100,162 104,175 117,175 107,183 111,196 100,188 89,196 93,183 83,175 96,175" transform="scale(0.5) translate(510,100)"/>
+  </g>
+
+  <!-- Stars on brim (simpler inline) -->
+  <g fill="#f5c518" opacity="0.95">
+    <!-- Left brim stars -->
+    <polygon points="120,175 122,180 127,180 123,183 125,188 120,185 115,188 117,183 113,180 118,180"/>
+    <polygon points="155,171 157,176 162,176 158,179 160,184 155,181 150,184 152,179 148,176 153,176"/>
+    <polygon points="200,168 202,173 207,173 203,176 205,181 200,178 195,181 197,176 193,173 198,173"/>
+    <!-- Right brim stars -->
+    <polygon points="400,168 402,173 407,173 403,176 405,181 400,178 395,181 397,176 393,173 398,173"/>
+    <polygon points="445,171 447,176 452,176 448,179 450,184 445,181 440,184 442,179 438,176 443,176"/>
+    <polygon points="480,175 482,180 487,180 483,183 485,188 480,185 475,188 477,183 473,180 478,180"/>
+  </g>
+
+  <!-- Crescent moons on brim left -->
+  <g fill="#f5c518">
+    <path d="M 135,179 A 7,7 0 1,0 135,193 A 5,5 0 1,1 135,179 Z"/>
+    <path d="M 172,174 A 6,6 0 1,0 172,186 A 4,4 0 1,1 172,174 Z"/>
+    <!-- Right side -->
+    <path d="M 428,174 A 6,6 0 1,0 428,186 A 4,4 0 1,1 428,174 Z"/>
+    <path d="M 463,179 A 7,7 0 1,0 463,193 A 5,5 0 1,1 463,179 Z"/>
+  </g>
+
+  <!-- Hat cone/body - tall curved pointing hat with dramatic drooping tip to the right -->
+  <path d="M 300 18 C 330 15, 360 35, 365 65 C 368 85, 360 100, 380 110 C 390 115, 385 130, 360 145 C 340 155, 290 165, 250 160 C 210 155, 185 140, 180 125 C 175 110, 190 85, 220 55 C 245 30, 280 20, 300 18 Z"
+    fill="url(#hatConeGrad)" stroke="#0f1a42" stroke-width="2.5" filter="url(#deepShadow)"/>
+
+  <!-- Hat cone inner shading -->
+  <path d="M 300 22 C 325 20, 350 40, 355 70 C 357 85, 352 98, 368 108 C 375 112, 372 125, 355 138 C 340 148, 295 158, 260 155 C 215 150, 190 138, 186 128 C 182 116, 195 90, 225 60 C 240 40, 285 24, 300 22 Z"
+    fill="#1f3890" opacity="0.5"/>
+
+  <!-- Stars on hat cone -->
+  <g fill="#f5c518" opacity="0.9">
+    <polygon points="260,80 262,87 269,87 263,91 265,98 260,94 255,98 257,91 251,87 258,87"/>
+    <polygon points="290,48 292,55 299,55 293,59 295,66 290,62 285,66 287,59 281,55 288,55"/>
+    <polygon points="316,95 318,102 325,102 319,106 321,113 316,109 311,113 313,106 307,102 314,102"/>
+    <polygon points="275,120 277,125 282,125 278,128 280,133 275,130 270,133 272,128 268,125 273,125"/>
+    <polygon points="330,128 332,133 337,133 333,136 335,141 330,138 325,141 327,136 323,133 328,133"/>
+  </g>
+
+  <!-- Crescent moons on cone -->
+  <g fill="#f5c518">
+    <path d="M 268,100 A 8,8 0 1,0 268,116 A 6,6 0 1,1 268,100 Z"/>
+    <path d="M 302,64 A 6,6 0 1,0 302,76 A 4.5,4.5 0 1,1 302,64 Z"/>
+    <path d="M 328,110 A 7,7 0 1,0 328,124 A 5,5 0 1,1 328,110 Z"/>
+  </g>
+
+  <!-- Hat cone edge/fold highlight -->
+  <path d="M 300 22 C 320 20, 345 45, 360 85 C 365 100, 370 115, 365 135" stroke="#4a6ae0" stroke-width="2" fill="none" opacity="0.6"/>
+
+  <!-- ==================== TV HEAD ==================== -->
+  <!-- Outer casing -->
+  <rect x="185" y="190" width="230" height="185" rx="18" fill="#A0784A" stroke="#5A3E2B" stroke-width="4" filter="url(#deepShadow)"/>
+
+  <!-- Screen bezel -->
+  <rect x="200" y="205" width="200" height="155" rx="12" fill="#3D2B1F" stroke="#2A1F15" stroke-width="2"/>
+
+  <!-- Screen glass - bright lime green -->
+  <rect x="210" y="215" width="180" height="135" rx="8" fill="url(#screenGlow)"/>
+
+  <!-- Screen highlight patches (white cloud shapes like reference) -->
+  <ellipse cx="255" cy="245" rx="38" ry="25" fill="#FFFFFF" opacity="0.55" filter="url(#gloss)"/>
+  <ellipse cx="310" cy="295" rx="28" ry="35" fill="#FFFFFF" opacity="0.28" filter="url(#gloss)"/>
+  <ellipse cx="360" cy="250" rx="20" ry="18" fill="#FFFFFF" opacity="0.2"/>
+
+  <!-- Scanlines -->
+  <g opacity="0.06" stroke="#000" stroke-width="1">
+    <line x1="210" y1="224" x2="390" y2="224"/>
+    <line x1="210" y1="234" x2="390" y2="234"/>
+    <line x1="210" y1="244" x2="390" y2="244"/>
+    <line x1="210" y1="254" x2="390" y2="254"/>
+    <line x1="210" y1="264" x2="390" y2="264"/>
+    <line x1="210" y1="274" x2="390" y2="274"/>
+    <line x1="210" y1="284" x2="390" y2="284"/>
+    <line x1="210" y1="294" x2="390" y2="294"/>
+    <line x1="210" y1="304" x2="390" y2="304"/>
+    <line x1="210" y1="314" x2="390" y2="314"/>
+    <line x1="210" y1="324" x2="390" y2="324"/>
+    <line x1="210" y1="334" x2="390" y2="334"/>
+    <line x1="210" y1="344" x2="390" y2="344"/>
+  </g>
+
+  <!-- Screen border rivets on head casing -->
+  <circle cx="200" cy="204" r="5" fill="#C49840" stroke="#8B6540" stroke-width="1.5"/>
+  <circle cx="400" cy="204" r="5" fill="#C49840" stroke="#8B6540" stroke-width="1.5"/>
+  <circle cx="200" cy="368" r="5" fill="#C49840" stroke="#8B6540" stroke-width="1.5"/>
+  <circle cx="400" cy="368" r="5" fill="#C49840" stroke="#8B6540" stroke-width="1.5"/>
+
+  <!-- TV Side controls (right side detail) -->
+  <circle cx="415" cy="250" r="6" fill="#D4A853" stroke="#8B6540" stroke-width="1.5"/>
+  <circle cx="415" cy="270" r="6" fill="#D4A853" stroke="#8B6540" stroke-width="1.5"/>
+
+  <!-- ==================== NECK ==================== -->
+  <rect x="278" y="372" width="44" height="45" rx="6" fill="#8B6B4A" stroke="#6B4E31" stroke-width="2"/>
+  <circle cx="288" cy="378" r="3" fill="#D4A853"/>
+  <circle cx="312" cy="378" r="3" fill="#D4A853"/>
+  <circle cx="288" cy="410" r="3" fill="#D4A853"/>
+  <circle cx="312" cy="410" r="3" fill="#D4A853"/>
+
+  <!-- ==================== BODY / TORSO ==================== -->
+  <rect x="195" y="415" width="210" height="135" rx="10" fill="url(#bodyGradient)" stroke="#6B4E31" stroke-width="3" filter="url(#deepShadow)"/>
+
+  <!-- Body wood grain lines -->
+  <line x1="195" y1="450" x2="405" y2="450" stroke="#6B4E31" stroke-width="1" opacity="0.3"/>
+  <line x1="195" y1="470" x2="405" y2="470" stroke="#6B4E31" stroke-width="1" opacity="0.2"/>
+  <line x1="195" y1="490" x2="405" y2="490" stroke="#6B4E31" stroke-width="1" opacity="0.25"/>
+  <line x1="195" y1="520" x2="405" y2="520" stroke="#6B4E31" stroke-width="1" opacity="0.2"/>
+
+  <!-- Chest panel box (sunken) -->
+  <rect x="220" y="425" width="160" height="115" rx="8" fill="#7A5E3D" stroke="#5A3E2B" stroke-width="2.5"/>
+  <rect x="226" y="431" width="148" height="103" fill="none" stroke="#6B4E31" stroke-width="1" opacity="0.5"/>
+
+  <!-- Corner rivets on chest panel -->
+  <circle cx="236" cy="441" r="5" fill="#D4A853" stroke="#8B6040" stroke-width="1.5"/>
+  <circle cx="364" cy="441" r="5" fill="#D4A853" stroke="#8B6040" stroke-width="1.5"/>
+  <circle cx="236" cy="528" r="5" fill="#D4A853" stroke="#8B6040" stroke-width="1.5"/>
+  <circle cx="364" cy="528" r="5" fill="#D4A853" stroke="#8B6040" stroke-width="1.5"/>
+
+  <!-- Central golden button -->
+  <circle cx="300" cy="484" r="20" fill="#D4A853" stroke="#8B6040" stroke-width="3" filter="url(#softShadow)"/>
+  <circle cx="300" cy="484" r="15" fill="#C49840"/>
+  <circle cx="295" cy="479" r="5" fill="#FFFFFF" opacity="0.5"/>
+
+  <!-- Side body rivets -->
+  <circle cx="207" cy="435" r="4" fill="#C49840" stroke="#8B6040" stroke-width="1.5"/>
+  <circle cx="393" cy="435" r="4" fill="#C49840" stroke="#8B6040" stroke-width="1.5"/>
+  <circle cx="207" cy="535" r="4" fill="#C49840" stroke="#8B6040" stroke-width="1.5"/>
+  <circle cx="393" cy="535" r="4" fill="#C49840" stroke="#8B6040" stroke-width="1.5"/>
+
+  <!-- ==================== LEFT ARM (horizontal, welcoming pose) ==================== -->
+  <g filter="url(#softShadow)">
+    <!-- Shoulder -->
+    <circle cx="185" cy="445" r="16" fill="#9A7040" stroke="#6B4E31" stroke-width="2.5"/>
+
+    <!-- Upper arm - going left-downward -->
+    <rect x="50" y="435" width="140" height="28" rx="14" fill="url(#armGrad)" stroke="#404040" stroke-width="2.5"/>
+
+    <!-- Elbow joint -->
+    <circle cx="60" cy="449" r="14" fill="#909090" stroke="#505050" stroke-width="2"/>
+    <circle cx="60" cy="449" r="8" fill="#707070"/>
+
+    <!-- Wrist cuff -->
+    <rect x="18" y="440" width="45" height="20" rx="10" fill="#FFFFFF" stroke="#C0C0C0" stroke-width="2"/>
+
+    <!-- Left Hand/Glove -->
+    <g transform="translate(0,0)">
+      <!-- Palm base -->
+      <ellipse cx="22" cy="468" rx="20" ry="26" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="2" filter="url(#softShadow)"/>
+
+      <!-- Thumb -->
+      <ellipse cx="6" cy="459" rx="8" ry="14" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1.5"/>
+
+      <!-- Fingers -->
+      <ellipse cx="12" cy="442" rx="7" ry="15" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1.5"/>
+      <ellipse cx="22" cy="438" rx="7.5" ry="16" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1.5"/>
+      <ellipse cx="33" cy="442" rx="7" ry="15" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1.5"/>
+      <ellipse cx="41" cy="452" rx="6.5" ry="13" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1.5"/>
+
+      <!-- Knuckle lines -->
+      <line x1="12" y1="452" x2="12" y2="460" stroke="#CCCCCC" stroke-width="1" opacity="0.6"/>
+      <line x1="22" y1="450" x2="22" y2="458" stroke="#CCCCCC" stroke-width="1" opacity="0.6"/>
+      <line x1="33" y1="452" x2="33" y2="460" stroke="#CCCCCC" stroke-width="1" opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- ==================== RIGHT ARM (horizontal, welcoming pose) ==================== -->
+  <g filter="url(#softShadow)">
+    <!-- Shoulder -->
+    <circle cx="415" cy="445" r="16" fill="#9A7040" stroke="#6B4E31" stroke-width="2.5"/>
+
+    <!-- Upper arm - going right-downward -->
+    <rect x="410" y="435" width="140" height="28" rx="14" fill="url(#armGrad)" stroke="#404040" stroke-width="2.5"/>
+
+    <!-- Elbow joint -->
+    <circle cx="540" cy="449" r="14" fill="#909090" stroke="#505050" stroke-width="2"/>
+    <circle cx="540" cy="449" r="8" fill="#707070"/>
+
+    <!-- Wrist cuff -->
+    <rect x="537" y="440" width="45" height="20" rx="10" fill="#FFFFFF" stroke="#C0C0C0" stroke-width="2"/>
+
+    <!-- Right Hand/Glove -->
+    <g transform="translate(0,0)">
+      <!-- Palm base -->
+      <ellipse cx="578" cy="468" rx="20" ry="26" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="2" filter="url(#softShadow)"/>
+
+      <!-- Thumb -->
+      <ellipse cx="594" cy="459" rx="8" ry="14" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1.5"/>
+
+      <!-- Fingers -->
+      <ellipse cx="568" cy="442" rx="7" ry="15" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1.5"/>
+      <ellipse cx="578" cy="438" rx="7.5" ry="16" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1.5"/>
+      <ellipse cx="588" cy="442" rx="7" ry="15" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1.5"/>
+      <ellipse cx="566" cy="452" rx="6.5" ry="13" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1.5"/>
+
+      <!-- Knuckle lines -->
+      <line x1="568" y1="452" x2="568" y2="460" stroke="#CCCCCC" stroke-width="1" opacity="0.6"/>
+      <line x1="578" y1="450" x2="578" y2="458" stroke="#CCCCCC" stroke-width="1" opacity="0.6"/>
+      <line x1="588" y1="452" x2="588" y2="460" stroke="#CCCCCC" stroke-width="1" opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- ==================== LEFT LEG ==================== -->
+  <g filter="url(#softShadow)">
+    <!-- Upper leg -->
+    <rect x="228" y="548" width="48" height="60" rx="12" fill="#A0784A" stroke="#6B4E31" stroke-width="2.5"/>
+
+    <!-- Knee joint -->
+    <circle cx="252" cy="578" r="10" fill="#D4A853" stroke="#8B6040" stroke-width="2"/>
+
+    <!-- Lower leg -->
+    <rect x="232" y="590" width="42" height="50" rx="10" fill="#8B6340" stroke="#6B4E31" stroke-width="2"/>
+
+    <!-- Left Boot -->
+    <rect x="215" y="632" width="75" height="30" rx="8" fill="url(#bootGrad)" stroke="#2A1F15" stroke-width="2.5" filter="url(#softShadow)"/>
+    <!-- Boot toe cap -->
+    <ellipse cx="252" cy="650" rx="30" ry="12" fill="#4A3220"/>
+    <!-- Boot strap -->
+    <rect x="222" y="635" width="62" height="8" rx="2" fill="#5A3820" stroke="#2A1F15" stroke-width="1"/>
+    <!-- Boot rivet -->
+    <circle cx="240" cy="639" r="3" fill="#C49840"/>
+    <circle cx="264" cy="639" r="3" fill="#C49840"/>
+    <!-- Boot sole -->
+    <rect x="218" y="655" width="68" height="6" rx="3" fill="#2A1F15"/>
+  </g>
+
+  <!-- ==================== RIGHT LEG ==================== -->
+  <g filter="url(#softShadow)">
+    <!-- Upper leg -->
+    <rect x="324" y="548" width="48" height="60" rx="12" fill="#A0784A" stroke="#6B4E31" stroke-width="2.5"/>
+
+    <!-- Knee joint -->
+    <circle cx="348" cy="578" r="10" fill="#D4A853" stroke="#8B6040" stroke-width="2"/>
+
+    <!-- Lower leg -->
+    <rect x="326" y="590" width="42" height="50" rx="10" fill="#8B6340" stroke="#6B4E31" stroke-width="2"/>
+
+    <!-- Right Boot -->
+    <rect x="310" y="632" width="75" height="30" rx="8" fill="url(#bootGrad)" stroke="#2A1F15" stroke-width="2.5" filter="url(#softShadow)"/>
+    <!-- Boot toe cap -->
+    <ellipse cx="348" cy="650" rx="30" ry="12" fill="#4A3220"/>
+    <!-- Boot strap -->
+    <rect x="317" y="635" width="62" height="8" rx="2" fill="#5A3820" stroke="#2A1F15" stroke-width="1"/>
+    <!-- Boot rivet -->
+    <circle cx="335" cy="639" r="3" fill="#C49840"/>
+    <circle cx="359" cy="639" r="3" fill="#C49840"/>
+    <!-- Boot sole -->
+    <rect x="313" y="655" width="68" height="6" rx="3" fill="#2A1F15"/>
+  </g>
+</svg>
