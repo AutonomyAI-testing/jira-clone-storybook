@@ -6,7 +6,7 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     message: {
@@ -19,6 +19,42 @@ const meta: Meta<typeof Error404> = {
         type: "text",
       },
     },
+    primaryHref: {
+      control: {
+        type: "text",
+      },
+    },
+    secondaryHref: {
+      control: {
+        type: "text",
+      },
+    },
+    primaryLabel: {
+      control: {
+        type: "text",
+      },
+    },
+    secondaryLabel: {
+      control: {
+        type: "text",
+      },
+    },
+    heading: {
+      control: {
+        type: "text",
+      },
+    },
+    subheading: {
+      control: {
+        type: "text",
+      },
+    },
+    layout: {
+      control: {
+        type: "select",
+        options: ["page", "embedded"],
+      },
+    },
   },
 };
 
@@ -27,21 +63,56 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const FullPage: Story = {
   args: {
-    message: "This is the error message",
+    primaryHref: "/",
+    secondaryHref: "/projects",
+    primaryLabel: "Take me home",
+    secondaryLabel: "Go to Projects",
+    layout: "page",
   },
 };
 
-export const Link: Story = {
+export const Embedded: Story = {
+  parameters: {
+    layout: "centered",
+  },
   args: {
-    href: "/link-to-safe-place",
+    heading: "Project Not Found",
+    subheading:
+      "The project you're looking for doesn't exist or has been removed.",
+    primaryHref: "/projects",
+    primaryLabel: "Go to Projects",
+    layout: "embedded",
   },
 };
 
-export const MessageLink: Story = {
+export const LegacyProps: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "It seems that you have lost! Go to the main page",
+    href: "/",
+  },
+};
+
+export const CustomHeadingAndMessage: Story = {
+  args: {
+    heading: "Oops! We couldn't find that page",
+    subheading:
+      "It may have been moved or deleted. Don't worry, we're here to help!",
+    primaryHref: "/projects",
+    primaryLabel: "View Projects",
+    secondaryHref: "/",
+    secondaryLabel: "Go Home",
+    layout: "page",
+  },
+};
+
+export const BothButtons: Story = {
+  args: {
+    primaryHref: "/",
+    primaryLabel: "Return to Home",
+    secondaryHref: "/projects",
+    secondaryLabel: "Browse Projects",
+    layout: "page",
   },
 };
