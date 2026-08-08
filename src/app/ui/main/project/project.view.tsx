@@ -1,6 +1,7 @@
 import { Outlet, Link, useLocation } from "@remix-run/react";
 import { Sidebar } from "@app/ui/main/project/sidebar";
 
+// Map route path segments to display titles for project sections
 const sectionTitles: Record<string, string> = {
   board: "Board",
   analytics: "Analytics",
@@ -14,8 +15,10 @@ export const ProjectView = ({
   image,
 }: Props): JSX.Element => {
   const location = useLocation();
+  // Extract the last segment of the route path (e.g., 'board', 'analytics') to determine current section
   const section = location.pathname.split("/").slice(-1)[0];
 
+  // Display title for current section, falling back to default if route segment is not recognized
   const sectionTitle = sectionTitles[section] || sectionTitles[defaultSection];
 
   return (
@@ -32,7 +35,7 @@ export const ProjectView = ({
           </Link>
           <span className="mx-2">/</span>
           <span>{name}</span>
-          <h1 className="mb-5 mt-4 font-primary-black text-2xl">
+          <h1 className="mb-5 mt-4 font-primary-black text-2xl" style={{ color: '#e34935' }}>
             {sectionTitle}
           </h1>
         </section>
