@@ -84,10 +84,9 @@ export function ErrorBoundary({ error }: { error: Error }) {
 }
 
 export function CatchBoundary() {
-  const errorMessage = "Project not found. Navigate to the projects page";
   return (
     <div className="flex h-full items-center justify-center">
-      <Error404 message={errorMessage} href="/projects" />
+      <Error404 />
     </div>
   );
 }
