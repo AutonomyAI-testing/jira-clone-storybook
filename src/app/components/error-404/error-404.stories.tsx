@@ -6,42 +6,51 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
-  },
-  argTypes: {
-    message: {
-      control: {
-        type: "text",
-      },
-    },
-    href: {
-      control: {
-        type: "text",
-      },
-    },
+    layout: "fullscreen",
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {},
+};
 
-export const Message: Story = {
+export const WithCustomTitle: Story = {
   args: {
-    message: "This is the error message",
+    title: "Oops! Page Missing",
+    subtitle:
+      "We couldn't find what you were looking for. It may have been moved or deleted.",
+    primaryButtonText: "Back to Home",
+    primaryButtonHref: "/",
   },
 };
 
-export const Link: Story = {
+export const WithBothButtons: Story = {
   args: {
-    href: "/link-to-safe-place",
+    title: "404 - Page Not Found",
+    subtitle:
+      "The page you're looking for has disappeared into the digital void. Let's get you back on track!",
+    primaryButtonText: "Go Home",
+    primaryButtonHref: "/projects",
+    secondaryButtonText: "Go Back",
   },
 };
 
-export const MessageLink: Story = {
+export const WithoutSecondaryButton: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    title: "Page Not Found",
+    subtitle: "This page does not exist.",
+    primaryButtonText: "Go Home",
+    primaryButtonHref: "/projects",
+    secondaryButtonText: undefined,
+  },
+};
+
+export const LegacyMessagePattern: Story = {
+  args: {
+    message: "Error 404: Not Found",
+    href: "/projects",
   },
 };
