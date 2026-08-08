@@ -10,13 +10,17 @@
 
     --toastify-color-light: var(--color-elevation-surface-overlay) !important;
     --toastify-color-dark: var(--color-elevation-surface-overlay) !important;
-    --toastify-color-info: var(--color-border-info) !important;
-    --toastify-color-success: var(--color-border-success) !important;
-    --toastify-color-warning: var(--color-border-warning) !important;
-    --toastify-color-error: var(--color-border-danger) !important;
+    --toastify-color-info: var(--color-background-info) !important;
+    --toastify-color-success: var(--color-background-success) !important;
+    --toastify-color-warning: var(--color-background-warning) !important;
+    --toastify-color-error: var(--color-background-danger) !important;
     --toastify-text-color-dark: var(--color-font) !important;
     --toastify-text-color-light: var(--color-font) !important;
+    --toastify-text-color-info: var(--color-font) !important;
     --toastify-text-color-success: var(--color-font) !important;
+    --toastify-text-color-warning: var(--color-font) !important;
+    --toastify-text-color-error: var(--color-font) !important;
+    --toastify-toast-background: var(--color-elevation-surface-overlay) !important;
   }
 
   :root {
@@ -838,4 +842,32 @@
   --color-background-disabled: var(--Neutral100A);
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
+}
+
+/* Toast type-specific styling with colored backgrounds and borders.
+ * Each toast type uses both a colored background and a matching colored border
+ * to create clear visual distinction for success, warning, danger, and info states.
+ */
+.Toastify__toast {
+  border: 2px solid var(--color-border) !important;
+}
+
+.Toastify__toast--success {
+  background-color: var(--color-background-success) !important;
+  border-color: var(--color-border-success) !important;
+}
+
+.Toastify__toast--warning {
+  background-color: var(--color-background-warning) !important;
+  border-color: var(--color-border-warning) !important;
+}
+
+.Toastify__toast--error {
+  background-color: var(--color-background-danger) !important;
+  border-color: var(--color-border-danger) !important;
+}
+
+.Toastify__toast--info {
+  background-color: var(--color-background-info) !important;
+  border-color: var(--color-border-info) !important;
 }
