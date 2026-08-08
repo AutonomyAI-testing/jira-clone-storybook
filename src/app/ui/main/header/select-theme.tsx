@@ -46,6 +46,11 @@ export const SelctTheme = (): JSX.Element => {
       image: "/images/theme/barbie.png",
     },
     {
+      value: Theme.PARTY,
+      label: "Party 🎉",
+      image: "/images/theme/party.svg",
+    },
+    {
       value: Preference.SYSTEM,
       label: "System",
       image: "/images/theme/system.png",

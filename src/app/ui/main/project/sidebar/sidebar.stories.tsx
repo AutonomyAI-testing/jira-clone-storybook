@@ -6,37 +6,30 @@ import { Sidebar } from "./sidebar";
 const meta: Meta<typeof Sidebar> = {
   title: "Pages/Project/Sidebar",
   parameters: {
-    layout: "left",
+    layout: "fullscreen",
   },
-  argTypes: {
-    projectName: {
-      defaultValue: "Project name",
-      control: {
-        type: "text",
-      },
-    },
-    projectDescription: {
-      defaultValue: "Project description",
-      control: {
-        type: "text",
-      },
-    },
-    projectImage: {
-      defaultValue: "https://picsum.photos/seed/picsum/200/300",
-      control: {
-        type: "text",
-      },
-    },
-  },
-  decorators: [(Story) => withRemixStub(<Story />)],
 };
 
 export default meta;
 type Story = StoryObj<typeof Sidebar>;
 
 export const Default: Story = {
-  render: (_) => (
-    <div>
+  decorators: [(Story) => withRemixStub(<Story />)],
+  render: () => (
+    <div style={{ height: "100vh" }}>
+      <Sidebar
+        projectName={projectMock1.name}
+        projectDescription={projectMock1.description || "Project description"}
+        projectImage={projectMock1.image}
+      />
+    </div>
+  ),
+};
+
+export const PartyTheme: Story = {
+  decorators: [(Story) => withRemixStub(<Story />)],
+  render: () => (
+    <div className="party" style={{ height: "100vh" }}>
       <Sidebar
         projectName={projectMock1.name}
         projectDescription={projectMock1.description || "Project description"}

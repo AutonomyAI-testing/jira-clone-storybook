@@ -6,8 +6,14 @@ const meta: Meta<typeof Header> = {
   title: "Pages/Main/Header",
   component: Header,
   parameters: {
-    layout: "top",
+    layout: "fullscreen",
   },
+};
+
+export default meta;
+type Story = StoryObj<typeof Header>;
+
+export const Default: Story = {
   decorators: [
     (Story) => (
       <div className="w-full">{withRemixStub(withMainContext(Story))}</div>
@@ -15,7 +21,12 @@ const meta: Meta<typeof Header> = {
   ],
 };
 
-export default meta;
-type Story = StoryObj<typeof Header>;
-
-export const Default: Story = {};
+export const PartyTheme: Story = {
+  decorators: [
+    (Story) => (
+      <div className="party w-full">
+        {withRemixStub(withMainContext(Story))}
+      </div>
+    ),
+  ],
+};
