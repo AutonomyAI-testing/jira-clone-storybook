@@ -19,6 +19,16 @@ const meta: Meta<typeof Error500> = {
         type: "text",
       },
     },
+    loading: {
+      control: {
+        type: "boolean",
+      },
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+    },
   },
 };
 
@@ -43,5 +53,21 @@ export const MessageLink: Story = {
   args: {
     message: "This is the error message",
     href: "/link-to-safe-place",
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    message: "This is the error message",
+    href: "/link-to-safe-place",
+    loading: true,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    message: "This is the error message",
+    href: "/link-to-safe-place",
+    disabled: true,
   },
 };
