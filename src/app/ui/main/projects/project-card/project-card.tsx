@@ -16,8 +16,8 @@ export const ProjectCard = ({ project }: Props): JSX.Element => {
       <Link
         to={project.id}
         className={cx(
-          "group flex h-[112px] rounded bg-elevation-surface-raised text-font shadow-sm outline outline-2 outline-transparent duration-100 ease-linear",
-          "hover:-translate-y-0.5 hover:bg-background-brand-subtlest-hovered hover:text-font-brand hover:shadow-md hover:outline-border-brand"
+          "group z-0 flex h-[112px] rounded bg-red-600 text-font shadow-sm outline outline-2 outline-transparent duration-100 ease-linear",
+          "hover:-translate-y-0.5 hover:bg-red-700 hover:text-font-brand hover:shadow-md hover:outline-border-brand"
         )}
       >
         <img
