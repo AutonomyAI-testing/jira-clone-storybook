@@ -44,3 +44,17 @@ export const Default: Story = {
     users: usersMock,
   },
 };
+
+export const Loading: Story = {
+  args: {
+    users: usersMock,
+    isLoading: true,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    users: usersMock,
+    isDisabled: true,
+  },
+};
