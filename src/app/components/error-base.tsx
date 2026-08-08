@@ -11,12 +11,13 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
       {href ? (
         <a
           href={href}
-          className="max-w-[100px] text-lg text-link hover:underline active:text-link-pressed"
+          className="max-w-[100px] text-lg hover:underline active:[color:var(--Red700)]"
+          style={{ color: "var(--Red500)" }}
         >
           {message}
         </a>
       ) : (
-        <span className="max-w-[100px] text-lg text-font">{message}</span>
+        <span className="max-w-[100px] text-lg" style={{ color: "var(--Red500)" }}>{message}</span>
       )}
     </div>
   );
