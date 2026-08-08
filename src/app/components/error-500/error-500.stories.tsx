@@ -29,7 +29,7 @@ export const Default: Story = {};
 
 export const Message: Story = {
   args: {
-    message: "This is the error message",
+    message: "An unexpected error occurred",
   },
 };
 
@@ -41,7 +41,7 @@ export const Link: Story = {
 
 export const MessageLink: Story = {
   args: {
-    message: "This is the error message",
+    message: "An unexpected error occurred",
     href: "/link-to-safe-place",
   },
 };
