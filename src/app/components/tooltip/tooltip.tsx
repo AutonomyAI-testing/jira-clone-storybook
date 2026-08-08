@@ -2,6 +2,17 @@ import { useState } from "react";
 import cx from "classix";
 import { twMerge } from "tailwind-merge";
 
+/**
+ * Tooltip component that displays helpful text on hover (desktop) or tap (touch).
+ * Features smooth entrance/exit animations and bottom-only positioning.
+ *
+ * @example
+ * ```tsx
+ * <Tooltip title="Save your changes">
+ *   <button onClick={handleSave}>Save</button>
+ * </Tooltip>
+ * ```
+ */
 export const Tooltip = ({
   title,
   show = true,
@@ -9,22 +20,51 @@ export const Tooltip = ({
   children,
 }: TooltipProps): JSX.Element => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isTouching, setIsTouching] = useState<boolean>(false);
 
-  const showTooltip = () => setIsVisible(true);
-  const hideTooltip = () => setIsVisible(false);
+  // Show tooltip on mouse enter
+  const handleMouseEnter = () => setIsVisible(true);
+
+  // Hide tooltip on mouse leave, but preserve visibility on touch devices
+  // to maintain the tooltip while the user is still touching
+  const handleMouseLeave = () => {
+    if (!isTouching) {
+      setIsVisible(false);
+    }
+  };
+
+  // Activate tooltip on touch start
+  const handleTouchStart = () => {
+    setIsTouching(true);
+    setIsVisible(true);
+  };
+
+  // Hide tooltip immediately on touch end
+  const handleTouchEnd = () => {
+    setIsTouching(false);
+    setIsVisible(false);
+  };
 
   if (!show) return children;
 
   return (
     // Don't know why h-fit (and other h-*) doesn't work here
     <div className="relative w-fit" style={{ height: "fit-content" }}>
-      <div onMouseEnter={showTooltip} onMouseLeave={hideTooltip}>
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         {children}
       </div>
       <div
         className={cx(
-          "absolute left-1/2 top-full z-50 mt-1.5 -translate-x-1/2 transform justify-center break-words",
-          isVisible ? "flex" : "hidden"
+          "absolute left-1/2 top-full z-50 mt-1.5 -translate-x-1/2",
+          "flex justify-center break-words",
+          isVisible
+            ? "animate-slide-up-fade duration-300"
+            : "hidden duration-300"
         )}
       >
         <div
@@ -40,9 +80,33 @@ export const Tooltip = ({
   );
 };
 
+/**
+ * Props for the Tooltip component.
+ */
 interface TooltipProps {
+  /**
+   * The text content displayed in the tooltip when visible.
+   * Keep brief for optimal UX (ideally under 50 characters).
+   */
   title: string;
+
+  /**
+   * Controls whether tooltip is active and functional.
+   * Useful for conditionally disabling tooltips.
+   * @default true
+   */
   show?: boolean;
+
+  /**
+   * Additional Tailwind CSS classes merged with default tooltip styling.
+   * Use for custom colors, padding, or text styling.
+   * @default ""
+   */
   className?: string;
+
+  /**
+   * The element that triggers the tooltip on hover (desktop) or tap (touch).
+   * Should be a single JSX element, typically a button or icon.
+   */
   children: JSX.Element;
 }
