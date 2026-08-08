@@ -213,6 +213,10 @@ module.exports = {
         xs: ["0.8125rem", "1rem"],
       },
       keyframes: {
+        "fade-in": {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
         // Dropdown menu
         "scale-in": {
           "0%": { opacity: 0, transform: "scale(0)" },
@@ -264,6 +268,7 @@ module.exports = {
         },
       },
       animation: {
+        "fade-in": "fade-in 0.3s ease-in-out forwards",
         // Dropdown menu
         "scale-in": "scale-in 0.2s ease-in-out",
         "slide-down": "slide-down 0.6s cubic-bezier(0.16, 1, 0.3, 1)",

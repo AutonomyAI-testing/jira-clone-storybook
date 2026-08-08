@@ -1,0 +1,249 @@
+<svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <!-- Parchment texture pattern -->
+    <filter id="parchmentTexture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="noise" seed="2"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/>
+    </filter>
+    
+    <!-- Screen gradient -->
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5FD35F;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#388E3C;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Screen shine overlay -->
+    <radialGradient id="screenShine" cx="35%" cy="25%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Beige/Parchment background -->
+  <rect width="500" height="600" fill="#EDE0C4" filter="url(#parchmentTexture)"/>
+  
+  <!-- Vitruvian Man style background: Circle -->
+  <circle cx="250" cy="280" r="200" fill="none" stroke="#A0826D" stroke-width="3" opacity="0.4"/>
+  
+  <!-- Vitruvian Man style background: Rounded rectangle -->
+  <rect x="100" y="150" width="300" height="360" rx="40" fill="none" stroke="#8B7355" stroke-width="3" opacity="0.35"/>
+  
+  <!-- ==================== WIZARD HAT ==================== -->
+  <g id="wizard-hat">
+    <!-- Hat brim (wide ellipse at base) -->
+    <ellipse cx="250" cy="175" rx="130" ry="45" fill="#1E3A5F" stroke="#0F1E2E" stroke-width="2"/>
+    
+    <!-- Brim shadow/depth underneath -->
+    <ellipse cx="250" cy="178" rx="130" ry="40" fill="#0F1E2E" opacity="0.2"/>
+    
+    <!-- Hat cone - main tall pointed section -->
+    <path d="M 140 175 L 250 50 L 360 175 Z" fill="#2C4A7C" stroke="#0F1E2E" stroke-width="2.5"/>
+    
+    <!-- Hat cone shading on left side (depth) -->
+    <path d="M 140 175 L 250 50 L 210 175 Z" fill="#0F1E2E" opacity="0.15"/>
+    
+    <!-- Gracefully bent/curved hat tip -->
+    <path d="M 250 50 Q 260 40 255 25 Q 250 15 245 25 Q 240 40 250 50" fill="#2C4A7C" stroke="#0F1E2E" stroke-width="1.5"/>
+    
+    <!-- -------- Hat Decorations: Crescent Moons (using two overlapping circles) -------- -->
+    <!-- Moon 1: Upper left on cone -->
+    <g id="moon1">
+      <!-- Two overlapping circles to create crescent -->
+      <circle cx="195" cy="95" r="18" fill="#F4D03F"/>
+      <circle cx="208" cy="95" r="18" fill="#1E3A5F"/>
+    </g>
+    
+    <!-- Moon 2: Upper right on cone -->
+    <g id="moon2">
+      <circle cx="305" cy="95" r="18" fill="#F4D03F"/>
+      <circle cx="292" cy="95" r="18" fill="#1E3A5F"/>
+    </g>
+    
+    <!-- Moon 3: Left side of brim -->
+    <g id="moon3">
+      <circle cx="160" cy="165" r="15" fill="#F4D03F"/>
+      <circle cx="172" cy="165" r="15" fill="#1E3A5F"/>
+    </g>
+    
+    <!-- Moon 4: Right side of brim -->
+    <g id="moon4">
+      <circle cx="340" cy="165" r="15" fill="#F4D03F"/>
+      <circle cx="328" cy="165" r="15" fill="#1E3A5F"/>
+    </g>
+    
+    <!-- -------- Hat Decorations: 5-Pointed Stars -------- -->
+    <!-- Star 1: Top center of cone -->
+    <polygon points="250,65 256,85 278,85 262,97 268,117 250,105 232,117 238,97 222,85 244,85" fill="#F4D03F" stroke="#D4A836" stroke-width="0.5"/>
+    
+    <!-- Star 2: Upper left cone -->
+    <polygon points="180,120 184,133 198,133 187,142 191,155 180,146 169,155 173,142 162,133 176,133" fill="#F4D03F" stroke="#D4A836" stroke-width="0.5"/>
+    
+    <!-- Star 3: Upper right cone -->
+    <polygon points="320,120 324,133 338,133 327,142 331,155 320,146 309,155 313,142 302,133 316,133" fill="#F4D03F" stroke="#D4A836" stroke-width="0.5"/>
+    
+    <!-- Star 4: Left brim area -->
+    <polygon points="155,175 159,188 173,188 162,197 166,210 155,201 144,210 148,197 137,188 151,188" fill="#F4D03F" stroke="#D4A836" stroke-width="0.5"/>
+    
+    <!-- Star 5: Right brim area -->
+    <polygon points="345,175 349,188 363,188 352,197 356,210 345,201 334,210 338,197 327,188 341,188" fill="#F4D03F" stroke="#D4A836" stroke-width="0.5"/>
+  </g>
+  
+  <!-- ==================== TV SCREEN / MONITOR FRAME ==================== -->
+  <g id="monitor">
+    <!-- Outer frame (brown with depth/beveling) -->
+    <rect x="160" y="210" width="180" height="145" rx="12" fill="#A0826D" stroke="#654321" stroke-width="2.5"/>
+    
+    <!-- Inner beveled edge (darker) -->
+    <rect x="168" y="218" width="164" height="129" rx="10" fill="#8B6F47" stroke="#5C4A2E" stroke-width="1.5"/>
+    
+    <!-- Screen background (darker green inner border) -->
+    <rect x="180" y="230" width="140" height="105" rx="8" fill="#2D5A2D" stroke="#1A3A1A" stroke-width="1.5"/>
+    
+    <!-- CRT Screen with gradient -->
+    <rect x="185" y="235" width="130" height="95" fill="url(#screenGradient)"/>
+    
+    <!-- Screen shine/gloss effect -->
+    <ellipse cx="245" cy="255" rx="45" ry="30" fill="url(#screenShine)"/>
+    
+    <!-- Scanlines for CRT effect -->
+    <g opacity="0.08" stroke="white" stroke-width="0.8">
+      <line x1="185" y1="240" x2="315" y2="240"/>
+      <line x1="185" y1="245" x2="315" y2="245"/>
+      <line x1="185" y1="250" x2="315" y2="250"/>
+      <line x1="185" y1="255" x2="315" y2="255"/>
+      <line x1="185" y1="260" x2="315" y2="260"/>
+      <line x1="185" y1="265" x2="315" y2="265"/>
+      <line x1="185" y1="270" x2="315" y2="270"/>
+      <line x1="185" y1="275" x2="315" y2="275"/>
+      <line x1="185" y1="280" x2="315" y2="280"/>
+      <line x1="185" y1="285" x2="315" y2="285"/>
+      <line x1="185" y1="290" x2="315" y2="290"/>
+      <line x1="185" y1="295" x2="315" y2="295"/>
+      <line x1="185" y1="300" x2="315" y2="300"/>
+      <line x1="185" y1="305" x2="315" y2="305"/>
+      <line x1="185" y1="310" x2="315" y2="310"/>
+      <line x1="185" y1="315" x2="315" y2="315"/>
+      <line x1="185" y1="320" x2="315" y2="320"/>
+      <line x1="185" y1="325" x2="315" y2="325"/>
+    </g>
+    
+    <!-- Rivets/bolts on monitor frame sides -->
+    <!-- Left side rivets -->
+    <circle cx="172" cy="250" r="4" fill="#6B5436" stroke="#4A3728" stroke-width="0.5"/>
+    <circle cx="172" cy="280" r="4" fill="#6B5436" stroke="#4A3728" stroke-width="0.5"/>
+    <circle cx="172" cy="310" r="4" fill="#6B5436" stroke="#4A3728" stroke-width="0.5"/>
+    
+    <!-- Right side rivets -->
+    <circle cx="328" cy="250" r="4" fill="#6B5436" stroke="#4A3728" stroke-width="0.5"/>
+    <circle cx="328" cy="280" r="4" fill="#6B5436" stroke="#4A3728" stroke-width="0.5"/>
+    <circle cx="328" cy="310" r="4" fill="#6B5436" stroke="#4A3728" stroke-width="0.5"/>
+  </g>
+  
+  <!-- ==================== ROBOT BODY ==================== -->
+  <g id="robot-body">
+    <!-- Main body rectangle -->
+    <rect x="165" y="355" width="170" height="130" rx="10" fill="#A0826D" stroke="#654321" stroke-width="2.5"/>
+    
+    <!-- Body shadow/depth on bottom -->
+    <rect x="165" y="470" width="170" height="15" rx="10" fill="#654321" opacity="0.1"/>
+    
+    <!-- Central chest panel -->
+    <rect x="185" y="375" width="130" height="80" rx="6" fill="#8B6F47" stroke="#654321" stroke-width="1.5"/>
+    
+    <!-- Power button/circle on chest -->
+    <circle cx="250" cy="420" r="10" fill="#C9A876" stroke="#8B6F47" stroke-width="1.5"/>
+    <circle cx="250" cy="420" r="7" fill="#F4D03F" opacity="0.6"/>
+  </g>
+  
+  <!-- ==================== LEFT UPPER ARM ==================== -->
+  <g id="left-upper-arm">
+    <!-- Upper arm sleeve (angled upward ~30°) -->
+    <rect x="110" y="310" width="55" height="28" rx="14" fill="#3D3D3D" stroke="#1A1A1A" stroke-width="1.5" transform="rotate(-30 137.5 324)"/>
+  </g>
+  
+  <!-- ==================== LEFT LOWER ARM ==================== -->
+  <g id="left-lower-arm">
+    <!-- Lower arm sleeve (angled downward ~15°) -->
+    <rect x="70" y="345" width="50" height="26" rx="13" fill="#3D3D3D" stroke="#1A1A1A" stroke-width="1.5" transform="rotate(-15 95 358)"/>
+    
+    <!-- Left hand - white cartoon glove -->
+    <g id="left-hand">
+      <!-- Palm -->
+      <circle cx="50" cy="375" r="22" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="2"/>
+      
+      <!-- Fingers spread open -->
+      <g fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.5">
+        <!-- Thumb (upper left) -->
+        <ellipse cx="35" cy="360" rx="7" ry="12" transform="rotate(-45 35 360)"/>
+        
+        <!-- Index finger (left) -->
+        <ellipse cx="25" cy="375" rx="7" ry="14"/>
+        
+        <!-- Middle finger (bottom left) -->
+        <ellipse cx="32" cy="395" rx="7" ry="14" transform="rotate(30 32 395)"/>
+        
+        <!-- Ring finger (bottom right) -->
+        <ellipse cx="55" cy="402" rx="7" ry="14" transform="rotate(50 55 402)"/>
+        
+        <!-- Pinky finger (right) -->
+        <ellipse cx="72" cy="388" rx="7" ry="13" transform="rotate(70 72 388)"/>
+      </g>
+    </g>
+  </g>
+  
+  <!-- ==================== RIGHT UPPER ARM ==================== -->
+  <g id="right-upper-arm">
+    <!-- Upper arm sleeve (angled upward ~30°) -->
+    <rect x="335" y="310" width="55" height="28" rx="14" fill="#3D3D3D" stroke="#1A1A1A" stroke-width="1.5" transform="rotate(30 362.5 324)"/>
+  </g>
+  
+  <!-- ==================== RIGHT LOWER ARM ==================== -->
+  <g id="right-lower-arm">
+    <!-- Lower arm sleeve (angled downward ~15°) -->
+    <rect x="380" y="345" width="50" height="26" rx="13" fill="#3D3D3D" stroke="#1A1A1A" stroke-width="1.5" transform="rotate(15 405 358)"/>
+    
+    <!-- Right hand - white cartoon glove -->
+    <g id="right-hand">
+      <!-- Palm -->
+      <circle cx="450" cy="375" r="22" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="2"/>
+      
+      <!-- Fingers spread open -->
+      <g fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.5">
+        <!-- Thumb (upper right) -->
+        <ellipse cx="465" cy="360" rx="7" ry="12" transform="rotate(45 465 360)"/>
+        
+        <!-- Index finger (right) -->
+        <ellipse cx="475" cy="375" rx="7" ry="14"/>
+        
+        <!-- Middle finger (bottom right) -->
+        <ellipse cx="468" cy="395" rx="7" ry="14" transform="rotate(-30 468 395)"/>
+        
+        <!-- Ring finger (bottom left) -->
+        <ellipse cx="445" cy="402" rx="7" ry="14" transform="rotate(-50 445 402)"/>
+        
+        <!-- Pinky finger (left) -->
+        <ellipse cx="428" cy="388" rx="7" ry="13" transform="rotate(-70 428 388)"/>
+      </g>
+    </g>
+  </g>
+  
+  <!-- ==================== LEGS & FEET ==================== -->
+  <!-- Left Leg -->
+  <g id="left-leg">
+    <!-- Leg -->
+    <rect x="190" y="485" width="28" height="65" rx="14" fill="#8B6F47" stroke="#654321" stroke-width="1.5"/>
+    
+    <!-- Foot (angled outward slightly) -->
+    <rect x="180" y="550" width="50" height="32" rx="8" fill="#6B5436" stroke="#4A3728" stroke-width="1.5" transform="rotate(-8 205 566)"/>
+  </g>
+  
+  <!-- Right Leg -->
+  <g id="right-leg">
+    <!-- Leg -->
+    <rect x="282" y="485" width="28" height="65" rx="14" fill="#8B6F47" stroke="#654321" stroke-width="1.5"/>
+    
+    <!-- Foot (angled outward slightly) -->
+    <rect x="270" y="550" width="50" height="32" rx="8" fill="#6B5436" stroke="#4A3728" stroke-width="1.5" transform="rotate(8 295 566)"/>
+  </g>
+</svg>
