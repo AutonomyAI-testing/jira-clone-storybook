@@ -81,7 +81,7 @@ const createIssueIfNotExists = async (issue: Issue, categoryId: CategoryId): Pro
       name: issue.name,
       description: issue.description,
       category: { connect: { id: categoryId } },
-      asignee: { connect: { id: issue.asignee.id } },
+      assignee: { connect: { id: issue.assignee.id } },
       reporter: { connect: { id: issue.reporter.id } },
       priority: { connect: { id: issue.priority.id } },
       comments: {
