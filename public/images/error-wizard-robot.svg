@@ -1,0 +1,233 @@
+<svg viewBox="0 0 600 650" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define gradients for depth -->
+  <defs>
+    <linearGradient id="tvBodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#C49A7A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A0785A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7EC850;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#5DB233;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#48AD1F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="hatGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2A5BAD;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E4B8F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bootGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5D3A1A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3D2410;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Beige/parchment background -->
+  <rect width="600" height="650" fill="#EDE4C8"/>
+  
+  <!-- Vitruvian circle (thin dark maroon outline) -->
+  <circle cx="300" cy="325" r="260" fill="none" stroke="#7B3F5E" stroke-width="2.5"/>
+  
+  <!-- Vitruvian square (thin dark maroon outline) -->
+  <rect x="100" y="160" width="400" height="330" fill="none" stroke="#7B3F5E" stroke-width="2.5"/>
+  
+  <!-- LEFT MECHANICAL ARMS (2) -->
+  <!-- Left upper arm segment 1 -->
+  <rect x="75" y="245" width="75" height="28" rx="14" fill="#4A4A4A" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Left upper arm segment 2 -->
+  <rect x="40" y="240" width="45" height="38" rx="19" fill="#3A3A3A" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Left upper glove -->
+  <g>
+    <circle cx="35" cy="259" r="22" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- Glove fingers spread -->
+    <g stroke="#1a1a1a" stroke-width="2" fill="#E8E8E8">
+      <!-- Thumb -->
+      <path d="M 22 248 L 15 238" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="12" cy="235" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+      <!-- Fingers -->
+      <path d="M 28 238 L 26 220" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="25" cy="217" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+      <path d="M 38 235 L 42 216" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="43" cy="213" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+      <path d="M 48 248 L 56 235" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="59" cy="232" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+    </g>
+  </g>
+  
+  <!-- Left lower arm segment 1 -->
+  <rect x="65" y="310" width="75" height="28" rx="14" fill="#4A4A4A" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Left lower arm segment 2 -->
+  <rect x="30" y="310" width="45" height="38" rx="19" fill="#3A3A3A" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Left lower glove -->
+  <g>
+    <circle cx="25" cy="329" r="22" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- Glove fingers spread -->
+    <g stroke="#1a1a1a" stroke-width="2" fill="#E8E8E8">
+      <!-- Thumb -->
+      <path d="M 12 318 L 5 308" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="2" cy="305" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+      <!-- Fingers -->
+      <path d="M 18 308 L 16 290" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="15" cy="287" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+      <path d="M 28 305 L 32 286" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="33" cy="283" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+      <path d="M 38 318 L 46 305" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="49" cy="302" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+    </g>
+  </g>
+  
+  <!-- RIGHT MECHANICAL ARMS (2) -->
+  <!-- Right upper arm segment 1 -->
+  <rect x="450" y="245" width="75" height="28" rx="14" fill="#4A4A4A" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Right upper arm segment 2 -->
+  <rect x="515" y="240" width="45" height="38" rx="19" fill="#3A3A3A" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Right upper glove -->
+  <g>
+    <circle cx="565" cy="259" r="22" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- Glove fingers spread -->
+    <g stroke="#1a1a1a" stroke-width="2" fill="#E8E8E8">
+      <!-- Thumb -->
+      <path d="M 578 248 L 585 238" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="588" cy="235" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+      <!-- Fingers -->
+      <path d="M 572 238 L 574 220" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="575" cy="217" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+      <path d="M 562 235 L 558 216" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="557" cy="213" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+      <path d="M 552 248 L 544 235" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="541" cy="232" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+    </g>
+  </g>
+  
+  <!-- Right lower arm segment 1 -->
+  <rect x="460" y="310" width="75" height="28" rx="14" fill="#4A4A4A" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Right lower arm segment 2 -->
+  <rect x="525" y="310" width="45" height="38" rx="19" fill="#3A3A3A" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Right lower glove -->
+  <g>
+    <circle cx="575" cy="329" r="22" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- Glove fingers spread -->
+    <g stroke="#1a1a1a" stroke-width="2" fill="#E8E8E8">
+      <!-- Thumb -->
+      <path d="M 588 318 L 595 308" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="598" cy="305" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+      <!-- Fingers -->
+      <path d="M 582 308 L 584 290" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="585" cy="287" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+      <path d="M 572 305 L 568 286" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="567" cy="283" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+      <path d="M 562 318 L 554 305" stroke-linecap="round" stroke-width="3" fill="none"/>
+      <circle cx="551" cy="302" r="5" fill="#E8E8E8" stroke="#1a1a1a" stroke-width="2"/>
+    </g>
+  </g>
+  
+  <!-- MAIN TV BODY -->
+  <!-- Main body rectangle with rounded corners -->
+  <rect x="150" y="240" width="300" height="240" rx="35" fill="url(#tvBodyGradient)" stroke="#1a1a1a" stroke-width="3"/>
+  
+  <!-- TV screen bezel (brown frame) -->
+  <rect x="170" y="260" width="260" height="180" rx="20" fill="#8B6F47" stroke="#1a1a1a" stroke-width="2.5"/>
+  
+  <!-- Screen display (green) -->
+  <rect x="185" y="275" width="230" height="150" rx="15" fill="url(#screenGradient)" stroke="#1a1a1a" stroke-width="2.5"/>
+  
+  <!-- Screen gloss/shine effect -->
+  <ellipse cx="240" cy="295" rx="90" ry="40" fill="#FFFFFF" opacity="0.25"/>
+  
+  <!-- Bolts/rivets on sides -->
+  <!-- Left side bolts -->
+  <circle cx="155" cy="280" r="7" fill="#D4AF37" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="155" cy="320" r="7" fill="#D4AF37" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="155" cy="360" r="7" fill="#D4AF37" stroke="#1a1a1a" stroke-width="2"/>
+  
+  <!-- Right side bolts -->
+  <circle cx="445" cy="280" r="7" fill="#D4AF37" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="445" cy="320" r="7" fill="#D4AF37" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="445" cy="360" r="7" fill="#D4AF37" stroke="#1a1a1a" stroke-width="2"/>
+  
+  <!-- Bottom chest panel -->
+  <rect x="180" y="420" width="240" height="50" rx="12" fill="#8B6F47" stroke="#1a1a1a" stroke-width="2.5"/>
+  
+  <!-- Center gold button -->
+  <circle cx="300" cy="445" r="14" fill="#FFD700" stroke="#1a1a1a" stroke-width="2.5"/>
+  <circle cx="300" cy="445" r="10" fill="#F0C000" stroke="#1a1a1a" stroke-width="1.5"/>
+  
+  <!-- Chest panel detail lines -->
+  <line x1="220" y1="420" x2="220" y2="470" stroke="#6B5437" stroke-width="2"/>
+  <line x1="380" y1="420" x2="380" y2="470" stroke="#6B5437" stroke-width="2"/>
+  
+  <!-- BROWN LEGS -->
+  <!-- Left leg -->
+  <rect x="200" y="470" width="50" height="90" rx="10" fill="#5D3A1A" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Right leg -->
+  <rect x="350" y="470" width="50" height="90" rx="10" fill="#5D3A1A" stroke="#1a1a1a" stroke-width="2.5"/>
+  
+  <!-- LEFT BOOT -->
+  <g>
+    <!-- Boot main -->
+    <ellipse cx="225" cy="570" rx="45" ry="35" fill="url(#bootGradient)" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- Boot sole detail -->
+    <ellipse cx="225" cy="595" rx="48" ry="15" fill="#3D2410" stroke="#1a1a1a" stroke-width="2"/>
+  </g>
+  
+  <!-- RIGHT BOOT -->
+  <g>
+    <!-- Boot main -->
+    <ellipse cx="375" cy="570" rx="45" ry="35" fill="url(#bootGradient)" stroke="#1a1a1a" stroke-width="2.5"/>
+    <!-- Boot sole detail -->
+    <ellipse cx="375" cy="595" rx="48" ry="15" fill="#3D2410" stroke="#1a1a1a" stroke-width="2"/>
+  </g>
+  
+  <!-- WIZARD HAT -->
+  <!-- Hat crown (main cone) -->
+  <path d="M 250 180 L 280 60 L 350 180 Z" fill="url(#hatGradient)" stroke="#1a1a1a" stroke-width="3"/>
+  <!-- Hat brim -->
+  <ellipse cx="300" cy="180" rx="110" ry="45" fill="url(#hatGradient)" stroke="#1a1a1a" stroke-width="3"/>
+  
+  <!-- Hat decorative elements - stars and moons -->
+  <!-- Top star on crown -->
+  <g transform="translate(280, 110)">
+    <polygon points="0,-12 3.6,-3.8 12,-3.8 5.6,1.6 9.2,11.4 0,6 -9.2,11.4 -5.6,1.6 -12,-3.8 -3.6,-3.8" fill="#FFD700" stroke="#1a1a1a" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Side star on crown -->
+  <g transform="translate(340, 100)">
+    <polygon points="0,-12 3.6,-3.8 12,-3.8 5.6,1.6 9.2,11.4 0,6 -9.2,11.4 -5.6,1.6 -12,-3.8 -3.6,-3.8" fill="#FFD700" stroke="#1a1a1a" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Left moon on crown -->
+  <g transform="translate(265, 130)">
+    <!-- Crescent moon using two circles overlap technique -->
+    <circle cx="0" cy="0" r="10" fill="#FFD700" stroke="#1a1a1a" stroke-width="1.5"/>
+    <circle cx="4" cy="0" r="10" fill="url(#hatGradient)" stroke="none"/>
+  </g>
+  
+  <!-- Left stars on brim -->
+  <g transform="translate(210, 175)">
+    <polygon points="0,-10 3,-3.2 10,-3.2 4.5,1.3 7.5,9.5 0,5 -7.5,9.5 -4.5,1.3 -10,-3.2 -3,-3.2" fill="#FFD700" stroke="#1a1a1a" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Right stars on brim -->
+  <g transform="translate(390, 175)">
+    <polygon points="0,-10 3,-3.2 10,-3.2 4.5,1.3 7.5,9.5 0,5 -7.5,9.5 -4.5,1.3 -10,-3.2 -3,-3.2" fill="#FFD700" stroke="#1a1a1a" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Right moon on brim -->
+  <g transform="translate(350, 165)">
+    <!-- Crescent moon -->
+    <circle cx="0" cy="0" r="10" fill="#FFD700" stroke="#1a1a1a" stroke-width="1.5"/>
+    <circle cx="4" cy="0" r="10" fill="url(#hatGradient)" stroke="none"/>
+  </g>
+  
+  <!-- Left moon on brim -->
+  <g transform="translate(250, 165)">
+    <!-- Crescent moon -->
+    <circle cx="0" cy="0" r="10" fill="#FFD700" stroke="#1a1a1a" stroke-width="1.5"/>
+    <circle cx="4" cy="0" r="10" fill="url(#hatGradient)" stroke="none"/>
+  </g>
+  
+  <!-- Bottom center moon on brim -->
+  <g transform="translate(300, 210)">
+    <!-- Crescent moon -->
+    <circle cx="0" cy="0" r="8" fill="#FFD700" stroke="#1a1a1a" stroke-width="1.5"/>
+    <circle cx="3" cy="0" r="8" fill="url(#hatGradient)" stroke="none"/>
+  </g>
+</svg>

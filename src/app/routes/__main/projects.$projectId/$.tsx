@@ -16,15 +16,7 @@ export function CatchBoundary() {
     toast.warning("Try to go back to the previous page.");
   }, []);
 
-  const params = useParams();
-  const projectId = params.projectId as ProjectId;
-  const slug = params["*"] as string;
-  const errorMessage = `The section "/${slug}" does not exists, so a fallback 404 is shown (check network tab). Navigate to boards page`;
-  return (
-    <div className="flex h-full items-center justify-center">
-      <Error404 message={errorMessage} href={`/projects/${projectId}/board`} />
-    </div>
-  );
+  return <Error404 />;
 }
 
 // This will never render
