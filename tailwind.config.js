@@ -208,6 +208,19 @@ module.exports = {
       "dialog-overlay": "rgba(0,0,0,0.45)",
     },
     extend: {
+      colors: {
+        red: {
+          600: "#dc2626",
+        },
+        gray: {
+          50: "#f9fafb",
+          300: "#d1d5db",
+          400: "#9ca3af",
+        },
+        green: {
+          500: "#22c55e",
+        },
+      },
       fontSize: {
         "2xs": ["0.75rem", "1rem"],
         xs: ["0.8125rem", "1rem"],
