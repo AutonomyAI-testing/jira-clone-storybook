@@ -183,7 +183,7 @@ export function CatchBoundary() {
           >
             <Error404
               message="This issue does not exist. Go to the board page"
-              href={boardUrl}
+              actionHref={boardUrl}
             />
           </Dialog.Content>
         </Dialog.Overlay>

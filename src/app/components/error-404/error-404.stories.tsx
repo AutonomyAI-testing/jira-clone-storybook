@@ -6,15 +6,35 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
+    code: {
+      control: {
+        type: "text",
+      },
+    },
+    description: {
+      control: {
+        type: "text",
+      },
+    },
     message: {
       control: {
         type: "text",
       },
     },
-    href: {
+    actionText: {
+      control: {
+        type: "text",
+      },
+    },
+    actionHref: {
+      control: {
+        type: "text",
+      },
+    },
+    imageSrc: {
       control: {
         type: "text",
       },
@@ -27,21 +47,25 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const CustomMessage: Story = {
   args: {
-    message: "This is the error message",
+    message: "The page you are looking for has been moved or deleted.",
+    actionText: "Return to Home",
   },
 };
 
-export const Link: Story = {
+export const ProjectNotFound: Story = {
   args: {
-    href: "/link-to-safe-place",
+    code: "404",
+    description: "Project Error",
+    message: "Project not found. Please check the project ID and try again.",
+    actionText: "View All Projects",
+    actionHref: "/projects",
   },
 };
 
-export const MessageLink: Story = {
+export const WithCustomImage: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    imageSrc: "/images/error-404.svg",
   },
 };
