@@ -6,7 +6,7 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     message: {
@@ -25,23 +25,25 @@ const meta: Meta<typeof Error404> = {
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {},
+};
 
-export const Message: Story = {
+export const WithCustomMessage: Story = {
   args: {
-    message: "This is the error message",
+    message: "The project you're looking for has been archived or deleted.",
   },
 };
 
-export const Link: Story = {
+export const WithCustomHref: Story = {
   args: {
-    href: "/link-to-safe-place",
+    href: "/projects",
   },
 };
 
-export const MessageLink: Story = {
+export const WithBothProps: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "This page has moved. Return to the dashboard.",
+    href: "/dashboard",
   },
 };
