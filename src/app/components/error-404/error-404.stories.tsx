@@ -6,18 +6,36 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
+    viewport: {
+      defaultViewport: "responsive",
+    },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ minHeight: "100vh" }}>
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     message: {
       control: {
         type: "text",
       },
+      description: "Witty message displayed under the heading",
     },
     href: {
       control: {
         type: "text",
       },
+      description: "URL for the primary dashboard button",
+    },
+    showGoBack: {
+      control: {
+        type: "boolean",
+      },
+      description: "Whether to show the Go Back button",
     },
   },
 };
@@ -25,23 +43,33 @@ const meta: Meta<typeof Error404> = {
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
-export const Default: Story = {};
-
-export const Message: Story = {
+export const Default: Story = {
   args: {
-    message: "This is the error message",
+    message: "Looks like the wizard lost the spell and sent you here!",
+    href: "/projects",
+    showGoBack: true,
   },
 };
 
-export const Link: Story = {
+export const WithCustomMessage: Story = {
   args: {
-    href: "/link-to-safe-place",
+    message:
+      "Even the wizard's magic couldn't find this page. Let's get you back on track!",
+    href: "/projects",
   },
 };
 
-export const MessageLink: Story = {
+export const WithoutLink: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "Looks like the wizard lost the spell and sent you here!",
+  },
+};
+
+export const WithDashboardHref: Story = {
+  args: {
+    message:
+      "Your journey hit a dead end. But don't worry, the wizard can guide you home!",
+    href: "/",
+    showGoBack: true,
   },
 };
