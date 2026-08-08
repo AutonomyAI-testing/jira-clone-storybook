@@ -8,6 +8,6 @@ export const Error500 = ({
 };
 
 interface Props {
-  message: string;
-  href: string;
+  message?: string;
+  href?: string;
 }
