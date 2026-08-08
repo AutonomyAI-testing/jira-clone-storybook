@@ -29,7 +29,7 @@ export const Default: Story = {};
 
 export const Message: Story = {
   args: {
-    message: "This is the error message",
+    message: "Error 500: Server error",
   },
 };
 
@@ -41,7 +41,7 @@ export const Link: Story = {
 
 export const MessageLink: Story = {
   args: {
-    message: "This is the error message",
+    message: "Error 500: Server error",
     href: "/link-to-safe-place",
   },
 };
