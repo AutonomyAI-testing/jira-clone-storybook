@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState, useRef } from "react";
 import cx from "classix";
 
-export const TextareaAutosize = (props: TitleProps): JSX.Element => {
+export const TextareaAutosize = (props: TextareaAutosizeProps): JSX.Element => {
   const {
     name,
     value,
@@ -15,7 +15,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   } = props;
 
   const [textareaHeight, setTextareaHeight] = useState<number>(40);
-  const textareaRef = useRef<HTMLParagraphElement>(null);
+  const textareaRef = useRef<HTMLDivElement>(null);
 
   const handleOnFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     const target = e.currentTarget;
@@ -70,7 +70,7 @@ export const TextareaAutosize = (props: TitleProps): JSX.Element => {
   );
 };
 
-interface TitleProps {
+interface TextareaAutosizeProps {
   name: string;
   value: string;
   setValue: (value: string) => void;
