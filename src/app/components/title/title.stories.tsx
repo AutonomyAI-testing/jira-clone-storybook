@@ -3,34 +3,9 @@ import { Title } from "./title";
 
 const meta: Meta<typeof Title> = {
   title: "Components/Title",
+  component: Title,
   parameters: {
-    layout: "centered",
-  },
-  argTypes: {
-    initTitle: {
-      defaultValue: "Title",
-      control: {
-        type: "text",
-      },
-    },
-    readOnly: {
-      defaultValue: false,
-      control: {
-        type: "boolean",
-      },
-    },
-    maxLength: {
-      defaultValue: 80,
-      control: {
-        type: "number",
-      },
-    },
-    error: {
-      defaultValue: "",
-      control: {
-        type: "text",
-      },
-    },
+    layout: "padded",
   },
 };
 
@@ -38,42 +13,31 @@ export default meta;
 type Story = StoryObj<typeof Title>;
 
 export const Default: Story = {
-  render: (_) => (
-    <div className="grid grid-cols-1 gap-6">
-      {[DefaultTitle, ReadOnly, Error, CustomMaxLength].map(
-        (TitleStory, index) => (
-          <Title {...TitleStory.args} key={index} />
-        )
-      )}
-    </div>
-  ),
-};
-
-export const DefaultTitle: Story = {};
-
-export const InitTitle: Story = {
   args: {
-    initTitle: "Default title",
+    initTitle: "Fix authentication bug in login flow",
+    readOnly: false,
   },
 };
 
 export const ReadOnly: Story = {
   args: {
-    initTitle: "Read only title",
+    initTitle: "Implement dark mode support across the app",
     readOnly: true,
   },
 };
 
-export const Error: Story = {
+export const WithError: Story = {
   args: {
-    placeholder: "Error title",
+    initTitle: "",
+    readOnly: false,
     error: "Title is required",
   },
 };
 
-export const CustomMaxLength: Story = {
+export const Placeholder: Story = {
   args: {
-    placeholder: "Custom max length",
-    maxLength: 10,
+    initTitle: "",
+    readOnly: false,
+    placeholder: "Write the title",
   },
 };
