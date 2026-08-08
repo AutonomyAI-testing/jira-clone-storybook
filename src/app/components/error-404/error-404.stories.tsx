@@ -9,15 +9,35 @@ const meta: Meta<typeof Error404> = {
     layout: "centered",
   },
   argTypes: {
-    message: {
+    title: {
       control: {
         type: "text",
       },
+      description: "Main heading text (typically the error code)",
+    },
+    subtitle: {
+      control: {
+        type: "text",
+      },
+      description: "Subheading text (e.g., 'Page Not Found')",
+    },
+    description: {
+      control: {
+        type: "text",
+      },
+      description: "Detailed description or error message",
+    },
+    buttonLabel: {
+      control: {
+        type: "text",
+      },
+      description: "Label text for the CTA button",
     },
     href: {
       control: {
         type: "text",
       },
+      description: "Navigation target for the button",
     },
   },
 };
@@ -27,21 +47,31 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const CustomMessage: Story = {
   args: {
-    message: "This is the error message",
+    title: "404",
+    subtitle: "Oops! Page Not Found",
+    description:
+      "Sorry, the page you are looking for has moved or no longer exists. Please check the URL or return to the home page.",
   },
 };
 
-export const Link: Story = {
+export const CustomButton: Story = {
   args: {
-    href: "/link-to-safe-place",
+    title: "404",
+    subtitle: "Page Not Found",
+    description: "The requested page could not be found.",
+    buttonLabel: "Return Home",
+    href: "/",
   },
 };
 
-export const MessageLink: Story = {
+export const ProjectSpecific: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    title: "404",
+    subtitle: "Issue Not Found",
+    description: "This issue does not exist. Go to the board page.",
+    buttonLabel: "Go to Board",
+    href: "/projects/1/board",
   },
 };
