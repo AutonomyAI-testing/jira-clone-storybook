@@ -1,10 +1,10 @@
-import type { PartialStoryFn } from "@storybook/csf";
-import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
+import { unstable_createRemixStub as createRemixStub } from
+  "@remix-run/testing";
 import { userMock1 } from "@domain/user";
 import { UserContextProvider } from "@app/store/user.store";
 import { ThemeProvider, Theme, Preference } from "@app/store/theme.store";
 
-type Story = PartialStoryFn<any, Record<string, never>>;
+type Story = () => JSX.Element;
 
 export const withMainContext = (Story: Story): JSX.Element => {
   return (
@@ -36,3 +36,4 @@ export const withRemixStub = (children: JSX.Element) => {
 
   return <RemixStub />;
 };
+
