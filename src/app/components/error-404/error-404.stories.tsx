@@ -1,23 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { Error404 } from "./error-404";
 
 const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     message: {
-      control: {
-        type: "text",
-      },
+      control: { type: "text" },
     },
     href: {
-      control: {
-        type: "text",
-      },
+      control: { type: "text" },
     },
   },
 };
@@ -27,21 +22,22 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const CustomMessage: Story = {
   args: {
-    message: "This is the error message",
+    message: "This page has wandered too far off the path.",
   },
 };
 
-export const Link: Story = {
+export const WithLink: Story = {
   args: {
-    href: "/link-to-safe-place",
+    href: "/dashboard",
+    message: "The page you're looking for doesn't exist.",
   },
 };
 
-export const MessageLink: Story = {
+export const NoLink: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    href: undefined,
+    message: "You seem to be lost in another dimension.",
   },
 };
