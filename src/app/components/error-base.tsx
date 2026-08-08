@@ -5,9 +5,10 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
     <div className="max-w-[500px] text-center">
       <img
         src={imgPath}
-        alt="Server error"
+        alt={`Error ${variant} illustration`}
         className="mx-auto mb-4 h-[350px] w-auto"
       />
+      {/* Render message as a link if href is provided, otherwise show as plain text */}
       {href ? (
         <a
           href={href}
@@ -16,7 +17,7 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
           {message}
         </a>
       ) : (
-        <span className="max-w-[100px] text-lg text-font">{message}</span>
+        <span className="max-w-[100px] text-lg" style={{ color: "var(--Red700)" }}>{message}</span>
       )}
     </div>
   );
@@ -25,5 +26,5 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
 interface Props {
   variant: "500" | "404";
   message: string;
-  href: string;
+  href?: string;
 }
