@@ -25,13 +25,13 @@ import { Error404 } from "./components/error-404";
 import { Error500 } from "./components/error-500";
 import styles from "./styles/app-compiled.css";
 import fonts from "./styles/fonts.css";
-import fuck from "react-toastify/dist/ReactToastify.css";
+import toastifyStyles from "react-toastify/dist/ReactToastify.css";
 
 export const links = () => {
   return [
     { rel: "stylesheet", href: fonts },
     { rel: "stylesheet", href: styles },
-    { rel: "stylesheet", href: fuck },
+    { rel: "stylesheet", href: toastifyStyles },
     { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
   ];
 };
@@ -154,16 +154,14 @@ const App = (): JSX.Element => {
 };
 
 const errorComponentStyle: CSSProperties = {
-  maxWidth: "500px",
-  width: "80%",
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  textAlign: "center",
-  color: "#0052cc",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: "100vh",
+  margin: 0,
+  padding: "20px",
+  backgroundColor: "#f5f5f5",
   fontFamily: "sans-serif",
-  fontWeight: "bold",
 };
 
 export function ErrorBoundary({ error }: { error: Error }) {
@@ -183,17 +181,15 @@ export function CatchBoundary() {
   return (
     <html>
       <head>
-        <title>Ooops! Not found</title>
+        <title>404 – Page Not Found</title>
         <Meta />
         <Links />
       </head>
-      <body>
-        <div style={errorComponentStyle}>
-          <Error404
-            message="It seems that you have lost! Go to the main page"
-            href="/"
-          />
-        </div>
+      <body style={errorComponentStyle}>
+        <Error404
+          message="Even our magic-powered robot couldn't find the page you're looking for."
+          href="/"
+        />
       </body>
     </html>
   );
