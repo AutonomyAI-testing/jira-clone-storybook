@@ -1,4 +1,5 @@
-// TODO: This is currently not working
+import { Error404Wizard } from "@app/components/error-404-wizard";
+
 export default function NotFound404Route() {
-  return <div>NOT FOUNDDDD</div>;
+  return <Error404Wizard />;
 }
