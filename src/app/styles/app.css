@@ -221,6 +221,8 @@
   --color-shadow-overlay: 0px 8px 12px rgba(9, 30, 66, 0.15), 0px 0px 1px rgba(9, 30, 66, 0.31);
 
   /* Background */
+  --color-background-subtlest: var(--Neutral300);
+  --color-background-subtle: var(--Neutral400);
   --color-background-brand-subtlest: var(--Blue100);
   --color-background-brand-subtlest-hovered: var(--Blue200);
   --color-background-brand-subtlest-pressed: var(--Blue300);
@@ -359,6 +361,8 @@
     0px 0px 1px rgba(3, 4, 4, 0.5);
 
   /* Background */
+  --color-background-subtlest: var(--DarkNeutral300);
+  --color-background-subtle: var(--DarkNeutral350);
   --color-background-brand-subtlest: var(--Blue1000);
   --color-background-brand-subtlest-hovered: var(--Blue900);
   --color-background-brand-subtlest-pressed: var(--Blue800);
@@ -497,6 +501,8 @@
     0px 0px 1px rgba(3, 4, 4, 0.5);
 
   /* Background */
+  --color-background-subtlest: var(--DarkNeutral300);
+  --color-background-subtle: var(--DarkNeutral350);
   --color-background-brand-subtlest: var(--Red1000);
   --color-background-brand-subtlest-hovered: var(--Red900);
   --color-background-brand-subtlest-pressed: var(--Red800);
@@ -635,6 +641,8 @@
     0px 0px 1px rgba(3, 4, 4, 0.5);
 
   /* Background */
+  --color-background-subtlest: var(--DarkNeutral300);
+  --color-background-subtle: var(--DarkNeutral350);
   --color-background-brand-subtlest: var(--Lime1000);
   --color-background-brand-subtlest-hovered: var(--Lime900);
   --color-background-brand-subtlest-pressed: var(--Lime800);
@@ -769,6 +777,8 @@
   --color-shadow-overlay: 0px 8px 12px rgba(9, 30, 66, 0.15), 0px 0px 1px rgba(9, 30, 66, 0.31);
 
   /* Background */
+  --color-background-subtlest: var(--Neutral300);
+  --color-background-subtle: var(--Neutral400);
   --color-background-brand-subtlest: var(--Neutral200A);
   --color-background-brand-subtlest-hovered: var(--Teal200);
   --color-background-brand-subtlest-pressed: var(--Teal300);
