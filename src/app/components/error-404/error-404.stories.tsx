@@ -6,9 +6,34 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
+    heading: {
+      control: {
+        type: "text",
+      },
+    },
+    title: {
+      control: {
+        type: "text",
+      },
+    },
+    description: {
+      control: {
+        type: "text",
+      },
+    },
+    buttonLabel: {
+      control: {
+        type: "text",
+      },
+    },
+    buttonHref: {
+      control: {
+        type: "text",
+      },
+    },
     message: {
       control: {
         type: "text",
@@ -25,23 +50,41 @@ const meta: Meta<typeof Error404> = {
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
-export const Default: Story = {};
-
-export const Message: Story = {
+export const Default: Story = {
   args: {
-    message: "This is the error message",
+    heading: "404",
+    title: "Oops! Page not found",
+    description:
+      "The page you're looking for has vanished into thin air. Even our wizard robot couldn't find it.",
+    buttonLabel: "Go to Dashboard",
+    buttonHref: "/",
   },
 };
 
-export const Link: Story = {
+export const CustomMessage: Story = {
   args: {
-    href: "/link-to-safe-place",
+    heading: "404",
+    title: "Page Lost in the Abyss",
+    description:
+      "We searched everywhere, but this page is nowhere to be found.",
+    buttonLabel: "Return Home",
+    buttonHref: "/",
   },
 };
 
-export const MessageLink: Story = {
+export const LegacyMode: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "It seems that you have lost! Go to the main page",
+    href: "/",
+  },
+};
+
+export const WithCustomButton: Story = {
+  args: {
+    heading: "404",
+    title: "Something went wrong",
+    description: "The page you're looking for doesn't exist.",
+    buttonLabel: "Go to Projects",
+    buttonHref: "/projects",
   },
 };
