@@ -1,4 +1,4 @@
-export const ErrorBase = ({ variant, message, href }: Props) => {
+export const ErrorBase = ({ variant, message, href, onRetry }: Props) => {
   const imgPath = `/images/error-${variant}.svg`;
 
   return (
@@ -16,7 +16,16 @@ export const ErrorBase = ({ variant, message, href }: Props) => {
           {message}
         </a>
       ) : (
-        <span className="max-w-[100px] text-lg text-font">{message}</span>
+        <span className="max-w-[100px] text-lg" style={{ color: "var(--Red700)" }}>{message}</span>
+      )}
+      {onRetry && (
+        <button
+          onClick={onRetry}
+          className="mt-6 rounded bg-background-brand-bold px-6 py-2 hover:bg-background-brand-bold-hovered active:bg-background-brand-bold-pressed"
+          style={{ color: "var(--Red700)" }}
+        >
+          Try again
+        </button>
       )}
     </div>
   );
@@ -26,4 +35,5 @@ interface Props {
   variant: "500" | "404";
   message: string;
   href: string;
+  onRetry?: () => void;
 }
