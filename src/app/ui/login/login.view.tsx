@@ -63,7 +63,8 @@ export const LoginView = ({ users }: Props) => {
           name="_action"
           value="setUser"
           aria-label="Login"
-          className="mt-2 w-full"
+          className="mt-2 w-full text-justify"
+          style={{ color: "red" }}
         >
           Login
         </Button>
