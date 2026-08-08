@@ -8,6 +8,10 @@ const meta: Meta<typeof Error404> = {
   parameters: {
     layout: "centered",
   },
+  args: {
+    message: "Oops! Page not found. Go back to Home",
+    href: "/",
+  },
   argTypes: {
     message: {
       control: {
@@ -27,21 +31,9 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const NoLink: Story = {
   args: {
-    message: "This is the error message",
-  },
-};
-
-export const Link: Story = {
-  args: {
-    href: "/link-to-safe-place",
-  },
-};
-
-export const MessageLink: Story = {
-  args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "Error 404: Page Not Found",
+    href: "",
   },
 };

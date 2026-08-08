@@ -25,7 +25,12 @@ const meta: Meta<typeof Error500> = {
 export default meta;
 type Story = StoryObj<typeof Error500>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    message: "Internal Server Error — Something went wrong on our end.",
+    href: "/",
+  },
+};
 
 export const Message: Story = {
   args: {
