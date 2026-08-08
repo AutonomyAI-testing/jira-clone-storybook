@@ -25,23 +25,22 @@ const meta: Meta<typeof Error404> = {
 export default meta;
 type Story = StoryObj<typeof Error404>;
 
-export const Default: Story = {};
-
-export const Message: Story = {
+export const Default: Story = {
   args: {
-    message: "This is the error message",
+    message: "The page you're looking for has vanished into thin air.",
+    href: "/",
   },
 };
 
-export const Link: Story = {
+export const WithoutLink: Story = {
   args: {
-    href: "/link-to-safe-place",
+    message: "The page you're looking for has vanished into thin air.",
   },
 };
 
-export const MessageLink: Story = {
+export const CustomMessage: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "This feature is still under construction. Try again later!",
+    href: "/",
   },
 };
