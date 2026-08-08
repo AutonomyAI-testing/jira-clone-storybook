@@ -6,9 +6,14 @@ const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
+    headline: {
+      control: {
+        type: "text",
+      },
+    },
     message: {
       control: {
         type: "text",
@@ -27,21 +32,30 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const CustomHeadline: Story = {
   args: {
-    message: "This is the error message",
+    headline: "The page you seek has disappeared",
   },
 };
 
-export const Link: Story = {
+export const CustomMessage: Story = {
   args: {
-    href: "/link-to-safe-place",
+    message:
+      "Our magic couldn't locate this mystical page. Return home and try again!",
   },
 };
 
-export const MessageLink: Story = {
+export const CustomLink: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    href: "/projects",
+  },
+};
+
+export const AllCustom: Story = {
+  args: {
+    headline: "Something went wrong in the magical realm",
+    message:
+      "The wizard's spell failed to find this page. Let's take you back to safety.",
+    href: "/projects",
   },
 };
