@@ -1,47 +1,24 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { withRemixStub } from "@app/stories/utils";
+// Re-export Props type for use in Storybook type definitions
 
-import { Error404 } from "./error-404";
+import { Error404, type Props } from "./error-404";
 
 const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
-  parameters: {
-    layout: "centered",
-  },
-  argTypes: {
-    message: {
-      control: {
-        type: "text",
-      },
-    },
-    href: {
-      control: {
-        type: "text",
-      },
-    },
-  },
+  parameters: { layout: "fullscreen" },
+  decorators: [(Story) => withRemixStub(<Story />)],
 };
 
 export default meta;
-type Story = StoryObj<typeof Error404>;
+type Story = StoryObj<Props>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+// Example showing a custom redirect destination
+export const CustomHref: Story = {
   args: {
-    message: "This is the error message",
-  },
-};
-
-export const Link: Story = {
-  args: {
-    href: "/link-to-safe-place",
-  },
-};
-
-export const MessageLink: Story = {
-  args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    href: "/",
   },
 };
