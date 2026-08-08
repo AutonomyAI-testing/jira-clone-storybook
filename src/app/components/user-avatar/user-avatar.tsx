@@ -1,4 +1,5 @@
 import * as Avatar from "@radix-ui/react-avatar";
+import cx from "classix";
 import { User, getRandomPastelColor } from "@domain/user";
 import { Tooltip } from "@app/components/tooltip";
 
@@ -8,7 +9,9 @@ export const UserAvatar = ({
   color,
   size = 36,
   tooltip = false,
+  ring = false,
 }: UserAvatarProps): JSX.Element => {
+  // Use optimized image for smaller sizes, full-res for larger avatars
   const imageMinName = image?.replace(".webp", "-min.webp");
   const imageSrc = size > 80 ? `/avatars/${image}` : `/avatars/${imageMinName}`;
   const imageSize = {
@@ -16,6 +19,7 @@ export const UserAvatar = ({
     minWidth: `${size}px`,
     height: `${size}px`,
   };
+  // Generate initials from name (up to 2 first letters of first/last words)
   const acronym = name
     .split(" ")
     .slice(0, 2)
@@ -24,7 +28,14 @@ export const UserAvatar = ({
 
   return (
     <Tooltip title={name} show={tooltip}>
-      <Avatar.Root className="flex items-center rounded-full" style={imageSize}>
+      {/* Apply red ring border for featured/highlighted avatars */}
+      <Avatar.Root
+        className={cx(
+          "flex items-center rounded-full",
+          ring && "ring-2 ring-border-danger ring-offset-1"
+        )}
+        style={imageSize}
+      >
         <Avatar.Image
           className="rounded-full object-cover"
           src={image ? imageSrc : undefined}
@@ -50,4 +61,5 @@ export const UserAvatar = ({
 interface UserAvatarProps extends Omit<User, "id"> {
   size?: number;
   tooltip?: boolean;
+  ring?: boolean;
 }

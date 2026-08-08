@@ -14,6 +14,11 @@ const meta: Meta<typeof Error500> = {
         type: "text",
       },
     },
+    buttonText: {
+      control: {
+        type: "text",
+      },
+    },
     href: {
       control: {
         type: "text",
@@ -25,23 +30,30 @@ const meta: Meta<typeof Error500> = {
 export default meta;
 type Story = StoryObj<typeof Error500>;
 
-export const Default: Story = {};
-
-export const Message: Story = {
+export const Default: Story = {
   args: {
-    message: "This is the error message",
+    href: "/",
   },
 };
 
-export const Link: Story = {
+export const WithButton: Story = {
   args: {
-    href: "/link-to-safe-place",
+    message: "Something went wrong on our end. Please try again.",
+    buttonText: "Try again",
+    href: "/",
   },
 };
 
-export const MessageLink: Story = {
+export const CustomMessage: Story = {
   args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "This is a custom server error message for testing purposes.",
+    buttonText: "Go Home",
+    href: "/",
+  },
+};
+
+export const WithoutButton: Story = {
+  args: {
+    message: "Server error - no button displayed",
   },
 };
