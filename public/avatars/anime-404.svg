@@ -1,0 +1,108 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient background (yellow-orange to peachy) -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD580;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFAA60;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="skinTone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FDBF8F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5A85C;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="cheek" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#FFB3A0;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#FFB3A0;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="200" fill="url(#bgGradient)" />
+
+  <!-- Head -->
+  <circle cx="200" cy="180" r="95" fill="url(#skinTone)" />
+
+  <!-- Dark hair back -->
+  <ellipse cx="200" cy="120" rx="100" ry="85" fill="#1a1f3a" />
+
+  <!-- Hair front left -->
+  <path d="M 120 160 Q 110 140 115 100 Q 130 110 150 140 Z" fill="#1a1f3a" />
+
+  <!-- Hair front right -->
+  <path d="M 280 160 Q 290 140 285 100 Q 270 110 250 140 Z" fill="#1a1f3a" />
+
+  <!-- Hair spike left 1 -->
+  <path d="M 140 110 Q 120 70 125 40 Q 135 80 145 115" fill="#0f1520" />
+
+  <!-- Hair spike left 2 -->
+  <path d="M 165 105 Q 155 50 160 20 Q 170 70 175 115" fill="#0f1520" />
+
+  <!-- Hair spike center -->
+  <path d="M 200 95 Q 195 40 200 10 Q 205 40 210 95" fill="#0f1520" />
+
+  <!-- Hair spike right 1 -->
+  <path d="M 235 105 Q 225 50 230 20 Q 240 70 245 115" fill="#0f1520" />
+
+  <!-- Hair spike right 2 -->
+  <path d="M 260 110 Q 280 70 275 40 Q 265 80 255 115" fill="#0f1520" />
+
+  <!-- Left eye white -->
+  <ellipse cx="160" cy="170" rx="18" ry="24" fill="#FFFAF0" />
+
+  <!-- Right eye white -->
+  <ellipse cx="240" cy="170" rx="18" ry="24" fill="#FFFAF0" />
+
+  <!-- Left eye iris (golden) -->
+  <circle cx="160" cy="175" r="12" fill="#FFD700" />
+
+  <!-- Right eye iris (golden) -->
+  <circle cx="240" cy="175" r="12" fill="#FFD700" />
+
+  <!-- Left eye pupil -->
+  <circle cx="160" cy="175" r="7" fill="#1a1a2e" />
+
+  <!-- Right eye pupil -->
+  <circle cx="240" cy="175" r="7" fill="#1a1a2e" />
+
+  <!-- Left eye shine -->
+  <circle cx="162" cy="172" r="3" fill="white" />
+
+  <!-- Right eye shine -->
+  <circle cx="242" cy="172" r="3" fill="white" />
+
+  <!-- Eyebrows -->
+  <path d="M 145 150 Q 160 145 175 150" stroke="#0f1520" stroke-width="4" fill="none" stroke-linecap="round" />
+  <path d="M 225 150 Q 240 145 255 150" stroke="#0f1520" stroke-width="4" fill="none" stroke-linecap="round" />
+
+  <!-- Nose -->
+  <line x1="200" y1="170" x2="200" y2="200" stroke="#D4956F" stroke-width="2" />
+
+  <!-- Mouth -->
+  <path d="M 180 220 Q 200 235 220 220" stroke="#A86F5F" stroke-width="3" fill="none" stroke-linecap="round" />
+
+  <!-- Mouth inner -->
+  <path d="M 185 222 Q 200 230 215 222" stroke="#8B5A5A" stroke-width="1.5" fill="none" stroke-linecap="round" />
+
+  <!-- Cheek left -->
+  <ellipse cx="130" cy="190" rx="20" ry="15" fill="url(#cheek)" />
+
+  <!-- Cheek right -->
+  <ellipse cx="270" cy="190" rx="20" ry="15" fill="url(#cheek)" />
+
+  <!-- Neck -->
+  <rect x="185" y="260" width="30" height="25" fill="url(#skinTone)" />
+
+  <!-- Clothing - Navy jacket top -->
+  <path d="M 120 280 L 100 320 L 300 320 L 280 280 Z" fill="#1a2f48" />
+
+  <!-- Clothing - Orange/peach undershirt -->
+  <ellipse cx="200" cy="300" rx="70" ry="50" fill="#FF9A56" />
+
+  <!-- Clothing detail - left shoulder strap -->
+  <path d="M 140 280 L 130 310" stroke="#0f1520" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Clothing detail - right shoulder strap -->
+  <path d="M 260 280 L 270 310" stroke="#0f1520" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Clothing - stripe accent -->
+  <rect x="160" y="285" width="80" height="8" fill="#FFFFFF" opacity="0.6" />
+</svg>
