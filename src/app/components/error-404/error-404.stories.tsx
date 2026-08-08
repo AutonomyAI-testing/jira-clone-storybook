@@ -1,25 +1,24 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
+import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
 import { Error404 } from "./error-404";
 
 const meta: Meta<typeof Error404> = {
   title: "Components/Error404",
   component: Error404,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
-  argTypes: {
-    message: {
-      control: {
-        type: "text",
-      },
+  decorators: [
+    (Story: React.ComponentType) => {
+      const RemixStub = createRemixStub([
+        {
+          path: "/",
+          element: <Story />,
+        },
+      ]);
+      return <RemixStub />;
     },
-    href: {
-      control: {
-        type: "text",
-      },
-    },
-  },
+  ],
 };
 
 export default meta;
@@ -27,21 +26,16 @@ type Story = StoryObj<typeof Error404>;
 
 export const Default: Story = {};
 
-export const Message: Story = {
+export const CustomTitle: Story = {
   args: {
-    message: "This is the error message",
+    title: "Oops! Wrong turn.",
+    subtitle: "The page you're looking for has vanished into the anime dimension.",
   },
 };
 
-export const Link: Story = {
+export const LegacyMessage: Story = {
   args: {
-    href: "/link-to-safe-place",
-  },
-};
-
-export const MessageLink: Story = {
-  args: {
-    message: "This is the error message",
-    href: "/link-to-safe-place",
+    message: "It seems that you have lost! Go to the main page",
+    href: "/",
   },
 };
