@@ -2,10 +2,14 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { usersMock } from "@domain/user";
 import { UserAvatar } from "./user-avatar";
 
+const userImage = usersMock[1].image;
+const userName = usersMock[1].name;
+
 const meta: Meta<typeof UserAvatar> = {
   title: "Components/UserAvatar",
+  component: UserAvatar,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   argTypes: {
     name: {
@@ -40,36 +44,36 @@ const meta: Meta<typeof UserAvatar> = {
 export default meta;
 type Story = StoryObj<typeof UserAvatar>;
 
-const userImage = usersMock[1].image;
-const userName = usersMock[1].name;
-
 export const Default: Story = {
   render: (_) => (
-    <div className="grid grid-cols-6 gap-4 p-4">
-      {[Image, Fallback, Tooltip, MediumSize, LargeSize].map(
-        (UserAvatarStory, index) => (
-          <UserAvatar name={userName} {...UserAvatarStory.args} key={index} />
-        )
-      )}
+    <div className="flex flex-row gap-4 p-4 items-end">
+      <UserAvatar name={userName} image={userImage} />
+      <UserAvatar name={userName} image={undefined} color="#dae3f9" />
+      <UserAvatar name={userName} image={userImage} tooltip={true} />
+      <UserAvatar name={userName} image={userImage} size={48} />
+      <UserAvatar name={userName} image={userImage} size={82} />
     </div>
   ),
 };
 
-export const Image: Story = {
+export const WithImage: Story = {
   args: {
+    name: userName,
     image: userImage,
   },
 };
 
 export const Fallback: Story = {
   args: {
+    name: userName,
     image: undefined,
     color: "#dae3f9",
   },
 };
 
-export const Tooltip: Story = {
+export const WithTooltip: Story = {
   args: {
+    name: userName,
     image: userImage,
     tooltip: true,
   },
@@ -77,6 +81,7 @@ export const Tooltip: Story = {
 
 export const MediumSize: Story = {
   args: {
+    name: userName,
     image: userImage,
     size: 48,
   },
@@ -84,6 +89,7 @@ export const MediumSize: Story = {
 
 export const LargeSize: Story = {
   args: {
+    name: userName,
     image: userImage,
     size: 82,
   },
