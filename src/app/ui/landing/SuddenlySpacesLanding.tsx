@@ -184,7 +184,7 @@ export function SuddenlySpacesLanding() {
               margin: "0 0 16px 0",
             }}
           >
-            Let&rsquo;s Find Your Ideal Space
+            <span style={{ color: "#ff0000" }}>Let&rsquo;s Find</span> Your Ideal Space
           </h1>
           <p
             style={{
