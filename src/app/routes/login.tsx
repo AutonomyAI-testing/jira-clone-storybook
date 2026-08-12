@@ -1,15 +1,11 @@
-import type {
-  LoaderFunction,
-  ActionFunction,
-  V2_MetaFunction,
-} from "@remix-run/node";
-import { json, redirect } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import { User } from "@domain/user";
-import { getUsers } from "@infrastructure/db/user";
-import { getUserSession } from "@app/session-storage";
+import type { ActionFunction, V2_MetaFunction } from "@remix-run/node";
+import { redirect } from "@remix-run/node";
 import { LoginView } from "@app/ui/login";
 import { formatTags, formatProperties } from "@utils/meta";
+import { getUserSession } from "@app/session-storage";
+import loginCss from "../ui/login/login.css";
+
+export const links = () => [{ rel: "stylesheet", href: loginCss }];
 
 export const meta: V2_MetaFunction = () => {
   const title = "Jira clone - Login";
@@ -48,15 +44,6 @@ export const meta: V2_MetaFunction = () => {
   return [{ title }, ...formatTags(tags), ...formatProperties(properties)];
 };
 
-type LoaderData = {
-  users: User[];
-};
-
-export const loader: LoaderFunction = async () => {
-  const users = await getUsers();
-  return json<LoaderData>({ users });
-};
-
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const _action = formData.get("_action") as string;
@@ -74,6 +61,5 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function LoginRoute() {
-  const { users } = useLoaderData<LoaderData>();
-  return <LoginView users={users} />;
+  return <LoginView />;
 }

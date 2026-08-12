@@ -1,0 +1,602 @@
+/* ================================================================
+   Login page – scoped dark-theme styles
+   All rules scoped under .login-page to avoid polluting the global theme.
+   ================================================================ */
+
+.login-page {
+  /* Local design tokens */
+  --lp-bg: #161a1d;
+  --lp-panel: #1d2125;
+  --lp-border: #2c333a;
+  --lp-border-subtle: #22272b;
+  --lp-fg: #b6c2cf;
+  --lp-fg-muted: #8c9bab;
+  --lp-fg-faint: #596773;
+  --lp-input-bg: #282e33;
+  --lp-orange: #f18d13;
+  --lp-orange-bright: #faa53d;
+  --lp-orange-deep: #d97008;
+  --lp-orange-ring: rgba(241, 141, 19, 0.25);
+  --lp-blue: #579dff;
+  --lp-green: #2abb7f;
+  --lp-amber: #e2b203;
+  --lp-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  min-height: 100vh;
+  background: var(--lp-bg);
+  font-family: 'CircularStdMedium', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+}
+
+.login-page *,
+.login-page *::before,
+.login-page *::after {
+  box-sizing: border-box;
+}
+
+/* ======================== BRAND PANEL ======================== */
+
+.login-page .lp-brand {
+  position: relative;
+  overflow: hidden;
+  background: var(--lp-panel);
+  border-right: 1px solid var(--lp-border);
+  padding: clamp(36px, 4.5vw, 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+.login-page .lp-brand::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 18% 8%, rgba(94, 84, 82, 0.35), transparent 60%),
+    radial-gradient(50% 50% at 92% 100%, rgba(241, 141, 19, 0.08), transparent 62%);
+  z-index: 0;
+}
+
+.login-page .lp-brand > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Wordmark */
+.login-page .lp-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: 'CircularStdBlack', sans-serif;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  color: var(--lp-fg);
+  text-decoration: none;
+}
+
+.login-page .lp-wordmark-glyph {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  flex: none;
+  background: linear-gradient(150deg, var(--lp-orange), var(--lp-orange-bright));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 1px rgba(241, 141, 19, 0.35), 0 6px 18px rgba(241, 141, 19, 0.25);
+}
+
+.login-page .lp-wordmark-glyph svg {
+  width: 16px;
+  height: 16px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.login-page .lp-wordmark-accent {
+  color: var(--lp-orange);
+}
+
+/* Brand center */
+.login-page .lp-brand-mid {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 48px 0;
+  max-width: 480px;
+}
+
+.login-page .lp-eyebrow {
+  font-family: 'CircularStdMedium', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lp-orange);
+  margin: 0 0 22px;
+}
+
+.login-page .lp-brand h1 {
+  font-family: 'CircularStdBlack', sans-serif;
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--lp-fg);
+}
+
+.login-page .lp-brand h1 .lp-grad {
+  background: linear-gradient(95deg, var(--lp-orange), var(--lp-orange-bright));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.login-page .lp-brand-desc {
+  font-family: 'CircularStdLight', sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--lp-fg-muted);
+  margin: 20px 0 0;
+  max-width: 400px;
+}
+
+/* Pipeline */
+.login-page .lp-pipeline {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-page .lp-pl-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  padding: 11px 0;
+}
+
+.login-page .lp-pl-row:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: calc(50% + 7px);
+  width: 1px;
+  height: calc(100% - 4px);
+  background: var(--lp-border);
+}
+
+.login-page .lp-pl-node {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex: none;
+  position: relative;
+  z-index: 1;
+}
+
+.login-page .lp-pl-node.lp-n-blue {
+  background: var(--lp-blue);
+  box-shadow: 0 0 0 4px rgba(87, 157, 255, 0.12);
+}
+
+.login-page .lp-pl-node.lp-n-amber {
+  background: var(--lp-amber);
+  box-shadow: 0 0 0 4px rgba(226, 178, 3, 0.12);
+}
+
+.login-page .lp-pl-node.lp-n-green {
+  background: var(--lp-green);
+  box-shadow: 0 0 0 4px rgba(42, 187, 127, 0.14);
+}
+
+.login-page .lp-pl-label {
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: var(--lp-fg-muted);
+}
+
+.login-page .lp-pl-label b {
+  color: var(--lp-fg);
+  font-family: 'CircularStdBold', sans-serif;
+}
+
+.login-page .lp-pl-time {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--lp-fg-faint);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Brand footer */
+.login-page .lp-brand-foot {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--lp-fg-faint);
+}
+
+.login-page .lp-brand-foot-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--lp-border);
+  flex: none;
+}
+
+/* ======================== AUTH PANEL ======================== */
+
+.login-page .lp-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(28px, 5vw, 64px);
+  background: var(--lp-panel);
+}
+
+.login-page .lp-card {
+  width: 100%;
+  max-width: 392px;
+}
+
+/* Mobile wordmark - hidden by default, shows on mobile */
+.login-page .lp-mobile-mark {
+  display: none;
+  margin-bottom: 30px;
+}
+
+/* Auth heading */
+.login-page .lp-auth-head {
+  margin-bottom: 28px;
+}
+
+.login-page .lp-auth-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lp-fg-faint);
+  margin: 0 0 12px;
+}
+
+.login-page .lp-auth-head h2 {
+  font-family: 'CircularStdBlack', sans-serif;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: red;
+}
+
+.login-page .lp-auth-head p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--lp-fg-muted);
+  margin: 8px 0 0;
+}
+
+/* SSO buttons */
+.login-page .lp-sso {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.login-page .lp-sso-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'CircularStdBold', sans-serif;
+  font-size: 14px;
+  background: var(--lp-input-bg);
+  color: var(--lp-fg);
+  border: 1px solid var(--lp-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: border-color 0.18s var(--lp-ease), background 0.18s var(--lp-ease);
+}
+
+.login-page .lp-sso-btn:hover {
+  border-color: var(--lp-fg-faint);
+  background: var(--lp-border-subtle);
+}
+
+.login-page .lp-sso-btn svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+
+/* Divider */
+.login-page .lp-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 22px;
+  color: var(--lp-fg-faint);
+}
+
+.login-page .lp-divider::before,
+.login-page .lp-divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: var(--lp-border);
+}
+
+.login-page .lp-divider span {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Form */
+.login-page .lp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-page .lp-field label {
+  display: block;
+  font-size: 13px;
+  font-family: 'CircularStdMedium', sans-serif;
+  color: var(--lp-fg-muted);
+  margin-bottom: 7px;
+}
+
+.login-page .lp-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-page .lp-input {
+  width: 100%;
+  font-family: 'CircularStdMedium', sans-serif;
+  font-size: 14px;
+  color: var(--lp-fg);
+  background: var(--lp-input-bg);
+  border: 1px solid var(--lp-border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.15s var(--lp-ease), box-shadow 0.15s var(--lp-ease);
+}
+
+.login-page .lp-input::placeholder {
+  color: var(--lp-fg-faint);
+}
+
+.login-page .lp-input:focus {
+  border-color: var(--lp-orange);
+  box-shadow: 0 0 0 3px var(--lp-orange-ring);
+}
+
+.login-page .lp-input-pw {
+  padding-right: 44px;
+}
+
+.login-page .lp-reveal {
+  position: absolute;
+  right: 6px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--lp-fg-faint);
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  transition: color 0.15s var(--lp-ease);
+}
+
+.login-page .lp-reveal:hover {
+  color: var(--lp-fg-muted);
+}
+
+.login-page .lp-reveal svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Label row (password label + forgot link) */
+.login-page .lp-lbl-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-page .lp-forgot {
+  font-size: 12.5px;
+  color: var(--lp-orange);
+  text-decoration: none;
+}
+
+.login-page .lp-forgot:hover {
+  text-decoration: underline;
+}
+
+/* Remember me checkbox */
+.login-page .lp-remember {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13.5px;
+  color: var(--lp-fg-muted);
+  cursor: pointer;
+  user-select: none;
+  margin-top: 2px;
+}
+
+.login-page .lp-remember input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.login-page .lp-checkbox-box {
+  width: 17px;
+  height: 17px;
+  border-radius: 5px;
+  border: 1px solid var(--lp-border);
+  background: var(--lp-input-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s var(--lp-ease);
+  flex: none;
+}
+
+.login-page .lp-checkbox-box svg {
+  width: 11px;
+  height: 11px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+.login-page .lp-remember input[type='checkbox']:checked + .lp-checkbox-box {
+  background: var(--lp-orange);
+  border-color: var(--lp-orange);
+}
+
+.login-page .lp-remember input[type='checkbox']:checked + .lp-checkbox-box svg {
+  opacity: 1;
+}
+
+.login-page .lp-remember input[type='checkbox']:focus-visible + .lp-checkbox-box {
+  box-shadow: 0 0 0 3px var(--lp-orange-ring);
+}
+
+/* Submit button */
+.login-page .lp-submit {
+  margin-top: 4px;
+  width: 100%;
+  font-family: 'CircularStdBold', sans-serif;
+  font-size: 15px;
+  background: var(--lp-orange);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 13px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  box-shadow: 0 0 20px rgba(241, 141, 19, 0.2);
+  transition: background 0.15s var(--lp-ease), transform 0.12s var(--lp-ease);
+}
+
+.login-page .lp-submit:hover {
+  background: var(--lp-orange-bright);
+  transform: translateY(-1px);
+}
+
+.login-page .lp-submit:active {
+  background: var(--lp-orange-deep);
+  transform: translateY(0);
+}
+
+.login-page .lp-submit:disabled {
+  cursor: wait;
+  background: var(--lp-orange-deep);
+  transform: none;
+}
+
+/* Spinner (hidden unless .lp-loading) */
+.login-page .lp-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-right-color: #fff;
+  border-radius: 50%;
+  display: none;
+  flex: none;
+}
+
+.login-page .lp-submit.lp-loading .lp-spinner {
+  display: block;
+  animation: lp-spin 0.65s linear infinite;
+}
+
+@keyframes lp-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Footnote */
+.login-page .lp-footnote {
+  margin-top: 26px;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--lp-fg-muted);
+}
+
+.login-page .lp-footnote a {
+  color: var(--lp-orange);
+  text-decoration: none;
+  font-family: 'CircularStdBold', sans-serif;
+}
+
+.login-page .lp-footnote a:hover {
+  text-decoration: underline;
+}
+
+/* Security badge */
+.login-page .lp-secure {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--lp-fg-faint);
+}
+
+.login-page .lp-secure svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ======================== RESPONSIVE ======================== */
+
+@media (max-width: 920px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .login-page .lp-brand {
+    display: none;
+  }
+
+  .login-page .lp-mobile-mark {
+    display: flex;
+  }
+}
