@@ -262,6 +262,11 @@ module.exports = {
             transform: `translateX(calc(100% + 1rem))`,
           },
         },
+        // Hey Fei page
+        "fade-in": {
+          "0%": { opacity: 0, transform: "translateY(12px)" },
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
       },
       animation: {
         // Dropdown menu
@@ -278,6 +283,8 @@ module.exports = {
         "toast-slide-in-right": "toast-slide-in-right 150ms cubic-bezier(0.16, 1, 0.3, 1)",
         "toast-slide-in-bottom": "toast-slide-in-bottom 150ms cubic-bezier(0.16, 1, 0.3, 1)",
         "toast-swipe-out": "toast-swipe-out 100ms ease-out forwards",
+        // Hey Fei page
+        "fade-in": "fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both",
       },
     },
   },
