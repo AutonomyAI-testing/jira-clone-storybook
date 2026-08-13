@@ -30,7 +30,7 @@ export const HeroSection = () => {
             margin: "0 0 24px 0",
           }}
         >
-          Let&apos;s Find Your Ideal Space
+          <span style={{ color: "var(--color-font-danger)" }}>Let&apos;s Find</span> Your Ideal Space
         </h1>
 
         {/* Subtitle */}
