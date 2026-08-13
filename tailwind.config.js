@@ -243,6 +243,11 @@ module.exports = {
           "0%": { opacity: 0, transform: "translateX(2px)" },
           "100%": { opacity: 1, transform: "translateX(0)" },
         },
+        // Hey Fei page entrance
+        "fade-in-up": {
+          "0%": { opacity: 0, transform: "translateY(16px)" },
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
         // Toast
         "toast-hide": {
           "0%": { opacity: 1 },
@@ -273,6 +278,8 @@ module.exports = {
         "slide-right-fade": "slide-right-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-down-fade": "slide-down-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-left-fade": "slide-left-fade 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+        // Hey Fei page entrance
+        "fade-in-up": "fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both",
         // Toast
         "toast-hide": "toast-hide 100ms ease-in forwards",
         "toast-slide-in-right": "toast-slide-in-right 150ms cubic-bezier(0.16, 1, 0.3, 1)",
