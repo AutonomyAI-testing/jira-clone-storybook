@@ -13,6 +13,12 @@ export const WelcomeView = (): JSX.Element => {
         >
           Welcome
         </h1>
+        <p
+          className="font-primary-light text-center"
+          style={{ fontSize: "1.125rem", color: "var(--Neutral700)", maxWidth: "360px" }}
+        >
+          Your all-in-one workspace for tracking projects, managing tasks, and collaborating with your team.
+        </p>
       </div>
     </div>
   );
