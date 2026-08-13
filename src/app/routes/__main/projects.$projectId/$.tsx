@@ -22,7 +22,7 @@ export function CatchBoundary() {
   const errorMessage = `The section "/${slug}" does not exists, so a fallback 404 is shown (check network tab). Navigate to boards page`;
   return (
     <div className="flex h-full items-center justify-center">
-      <Error404 message={errorMessage} href={`/projects/${projectId}/board`} />
+      <Error404 />
     </div>
   );
 }
