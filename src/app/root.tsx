@@ -189,10 +189,7 @@ export function CatchBoundary() {
       </head>
       <body>
         <div style={errorComponentStyle}>
-          <Error404
-            message="It seems that you have lost! Go to the main page"
-            href="/"
-          />
+          <Error404 />
         </div>
       </body>
     </html>

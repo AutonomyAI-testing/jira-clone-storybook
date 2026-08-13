@@ -1,10 +1,17 @@
-import { ErrorBase } from "../error-base";
-
-export const Error404 = ({ message = "Error 404: Not Found", href }: Props) => {
-  return <ErrorBase variant="404" message={message} href={href} />;
+export const Error404 = () => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <img
+        src="/images/error-404-wizard.png"
+        alt="404 - Page not found"
+        style={{ width: 380 }}
+      />
+    </div>
+  );
 };
-
-interface Props {
-  message: string;
-  href: string;
-}
