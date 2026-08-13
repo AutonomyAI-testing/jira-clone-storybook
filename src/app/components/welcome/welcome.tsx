@@ -8,7 +8,7 @@ export const Welcome = (): JSX.Element => {
         height={120}
         className="size-[120px] object-contain"
       />
-      <h2 className="font-primary-black text-4xl text-font">Welcome</h2>
+      <h2 className="font-primary-black text-4xl text-red-500">Welcome</h2>
     </div>
   );
 };
