@@ -110,8 +110,8 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
       <div className="sticky left-0 top-0 flex justify-between px-3 py-2.5 font-primary-light text-xs uppercase text-font-subtlest duration-200 ease-in-out">
         <span className="flex items-center gap-2">
           <span>{category.name}</span>
-          <span className="inline-flex items-center rounded-full bg-background-accent-grey-subtler px-2 py-0.5 text-[10px] font-primary normal-case leading-none text-font-accent-grey">
-            {filteredIssues().length}
+          <span className="inline-flex min-w-[18px] items-center justify-center rounded-full bg-[var(--Neutral300)] px-1.5 py-0.5 text-2xs font-primary-light leading-none text-font-subtlest normal-case">
+            {category.issues.length}
           </span>
         </span>
         <Link
