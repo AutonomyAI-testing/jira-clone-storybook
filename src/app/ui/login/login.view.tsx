@@ -17,7 +17,11 @@ export const LoginView = ({ users }: Props) => {
   };
 
   return (
-    <div className="mx-auto max-w-[400px] pt-[10vh]">
+    <div className="min-h-screen w-full" style={{ backgroundColor: "#ffffff" }}>
+      <div className="mx-auto max-w-[400px] pt-[10vh]">
+      <h1 className="font-primary-black text-5xl mb-2" style={{ color: "#ff0000" }}>
+        Fei
+      </h1>
       <h1 className="font-primary-black text-5xl text-font">
         Select login user
       </h1>
@@ -68,6 +72,7 @@ export const LoginView = ({ users }: Props) => {
           Login
         </Button>
       </Form>
+      </div>
     </div>
   );
 };
