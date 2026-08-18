@@ -17,8 +17,8 @@ export const LoginView = ({ users }: Props) => {
   };
 
   return (
-    <div className="mx-auto max-w-[400px] pt-[10vh]">
-      <h1 className="font-primary-black text-5xl text-font">
+    <div className="mx-auto max-w-[400px] pt-[10vh] rounded border border-black p-6">
+      <h1 className="font-primary-black text-5xl" style={{ color: "var(--Red700)" }}>
         Select login user
       </h1>
       <h2 className="mb-8 mt-3 font-primary-light text-lg text-font-subtle">
