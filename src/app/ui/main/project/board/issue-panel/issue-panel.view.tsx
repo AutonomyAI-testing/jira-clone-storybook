@@ -225,8 +225,10 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                           Submmiting
                           <Spinner />
                         </>
-                      ) : (
+                      ) : issue ? (
                         "Accept"
+                      ) : (
+                        "Add issue"
                       )}
                     </Button>
                   </div>
