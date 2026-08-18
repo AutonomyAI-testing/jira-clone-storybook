@@ -1,6 +1,6 @@
 import { Form, useSubmit } from "@remix-run/react";
 import * as Select from "@radix-ui/react-select";
-import { FaSortAmountDownAlt } from "react-icons/fa";
+import { FaSortAmountDownAlt, FaChevronDown } from "react-icons/fa";
 import { HiFlag } from "react-icons/hi";
 import { BsClockHistory } from "react-icons/bs";
 import { Sort, sortList, DEFAULT_SORT } from "@domain/filter";
@@ -31,6 +31,9 @@ export const SelectSort = (): JSX.Element => {
             <FaSortAmountDownAlt size={14} />
           </div>
           <Select.Value>Sort by {sortBy}</Select.Value>
+          <div className="ml-1.5 flex items-center">
+            <FaChevronDown size={10} />
+          </div>
         </Select.Trigger>
         <Select.Content className="select-none rounded bg-elevation-surface-overlay p-1.5 shadow-blue">
           <Select.ScrollUpButton />
