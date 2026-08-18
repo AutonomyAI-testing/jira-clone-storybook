@@ -1,6 +1,5 @@
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import * as Switch from "@radix-ui/react-switch";
 import { MdClose } from "react-icons/md";
 import cx from "classix";
 import { Button } from "@app/components/button";
@@ -303,10 +302,11 @@ const ToggleRow = ({
       <label htmlFor={id} className="cursor-pointer text-sm text-font">
         {label}
       </label>
-      <Switch.Root
+      <button
         id={id}
-        checked={checked}
-        onCheckedChange={onCheckedChange}
+        role="switch"
+        aria-checked={checked}
+        onClick={() => onCheckedChange(!checked)}
         className={cx(
           "relative h-6 w-11 cursor-pointer rounded-full border-none transition-colors duration-200",
           "focus:outline-none focus-visible:ring-2 focus-visible:ring-border-focused",
@@ -315,14 +315,13 @@ const ToggleRow = ({
             : "bg-background-neutral-bold"
         )}
       >
-        <Switch.Thumb
+        <span
           className={cx(
-            "block h-5 w-5 rounded-full bg-white shadow-xs transition-transform duration-200",
-            "translate-x-0.5",
+            "absolute top-0.5 block h-5 w-5 rounded-full bg-white shadow transition-transform duration-200",
             checked ? "translate-x-[22px]" : "translate-x-0.5"
           )}
         />
-      </Switch.Root>
+      </button>
     </div>
   );
 };
