@@ -1,7 +1,8 @@
-import { Link } from "@remix-run/react";
+import { Link, NavLink } from "@remix-run/react";
 import cx from "classix";
 import { HiQuestionMarkCircle } from "react-icons/hi";
 import { AiFillGithub } from "react-icons/ai";
+import { IoSettingsOutline } from "react-icons/io5";
 import { Tooltip } from "@app/components/tooltip";
 import { SelctTheme } from "./select-theme";
 import { UserProfile } from "./user-profile";
@@ -39,6 +40,20 @@ export const Header = (): JSX.Element => {
           >
             <AiFillGithub size={24} />
           </a>
+        </Tooltip>
+        <Tooltip title="Workspace settings">
+          <NavLink
+            to="/workspace-settings"
+            className={({ isActive }) =>
+              cx(
+                iconBaseClass,
+                isActive && "bg-background-brand-subtlest text-icon-brand"
+              )
+            }
+            aria-label="Workspace settings"
+          >
+            <IoSettingsOutline size={22} />
+          </NavLink>
         </Tooltip>
         <SelctTheme />
         <UserProfile />
