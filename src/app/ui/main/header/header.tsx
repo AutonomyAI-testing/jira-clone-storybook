@@ -1,7 +1,8 @@
-import { Link } from "@remix-run/react";
+import { Link, NavLink } from "@remix-run/react";
 import cx from "classix";
 import { HiQuestionMarkCircle } from "react-icons/hi";
 import { AiFillGithub } from "react-icons/ai";
+import { MdSettings } from "react-icons/md";
 import { Tooltip } from "@app/components/tooltip";
 import { SelctTheme } from "./select-theme";
 import { UserProfile } from "./user-profile";
@@ -12,7 +13,7 @@ export const Header = (): JSX.Element => {
 
   return (
     <header className="relative z-10 flex w-full items-center justify-between bg-elevation-surface-raised px-5 py-2 shadow-[0_1px_5px_-1px_rgba(0,0,0,0.3)]">
-      <section>
+      <section className="flex items-center gap-2">
         <Link
           to="/"
           className="flex cursor-pointer items-center rounded px-3 py-2 text-font hover:bg-background-brand-subtlest hover:text-font-brand"
@@ -20,6 +21,20 @@ export const Header = (): JSX.Element => {
           <img src="/images/logo.png" width={24} height={24} alt="Logo" />
           <span className="ml-2">Jira Clone</span>
         </Link>
+        <NavLink
+          to="/team-settings"
+          className={({ isActive }) =>
+            cx(
+              "flex cursor-pointer items-center gap-1.5 rounded px-3 py-2 text-sm",
+              isActive
+                ? "bg-background-brand-subtlest text-font-brand"
+                : "text-font hover:bg-background-brand-subtlest hover:text-font-brand"
+            )
+          }
+        >
+          <MdSettings size={18} />
+          <span>Team settings</span>
+        </NavLink>
       </section>
       <section className="flex items-center gap-4">
         <Tooltip title="About">
