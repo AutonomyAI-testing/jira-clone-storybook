@@ -6,7 +6,7 @@ const meta: Meta<typeof Error500> = {
   title: "Components/Error500",
   component: Error500,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     message: {
