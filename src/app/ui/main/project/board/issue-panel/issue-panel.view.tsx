@@ -226,7 +226,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                           <Spinner />
                         </>
                       ) : (
-                        "Accept"
+                        issue?.id ? "Accept" : "New issue"
                       )}
                     </Button>
                   </div>
