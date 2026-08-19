@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from "react";
-import * as Dialog from "@app/components/dialog";
+import { useState, useEffect } from "react";
 import { Button } from "@app/components/button";
 import cx from "classix";
 import { IoClose } from "react-icons/io5";
