@@ -2,6 +2,7 @@ import { Link } from "@remix-run/react";
 import cx from "classix";
 import { HiQuestionMarkCircle } from "react-icons/hi";
 import { AiFillGithub } from "react-icons/ai";
+import { IoSettingsOutline } from "react-icons/io5";
 import { Tooltip } from "@app/components/tooltip";
 import { SelctTheme } from "./select-theme";
 import { UserProfile } from "./user-profile";
@@ -39,6 +40,15 @@ export const Header = (): JSX.Element => {
           >
             <AiFillGithub size={24} />
           </a>
+        </Tooltip>
+        <Tooltip title="Workspace Settings">
+          <Link
+            to="/workspace-settings"
+            className={iconBaseClass}
+            aria-label="Workspace Settings"
+          >
+            <IoSettingsOutline size={22} />
+          </Link>
         </Tooltip>
         <SelctTheme />
         <UserProfile />
