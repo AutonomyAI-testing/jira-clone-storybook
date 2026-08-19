@@ -228,7 +228,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                       ) : issue ? (
                         "Accept"
                       ) : (
-                        "Save issue"
+                        "New issue"
                       )}
                     </Button>
                   </div>
