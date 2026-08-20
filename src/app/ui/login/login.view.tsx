@@ -17,7 +17,7 @@ export const LoginView = ({ users }: Props) => {
   };
 
   return (
-    <div className="mx-auto max-w-[400px] pt-[10vh]">
+    <div className="mx-auto max-w-[400px] pt-[10vh]" style={{ display: "grid", paddingRight: "50px", paddingBottom: "7px", backgroundColor: "#BF4747", outline: "2px solid green" }}>
       <h1 className="font-primary-black text-5xl text-font">
         Select login user
       </h1>
