@@ -2,9 +2,10 @@ import { useState, useEffect, useRef, Dispatch, SetStateAction } from "react";
 import { Link, useFetcher } from "@remix-run/react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RxValueNone } from "react-icons/rx";
+import { MdOutlineArchive } from "react-icons/md";
 import cx from "classix";
 import { useDrop } from "react-dnd";
-import { Category } from "@domain/category";
+import { Category, CategoryId } from "@domain/category";
 import { Issue, IssueId } from "@domain/issue";
 import { ScrollArea } from "@app/components/scroll-area";
 import { useProjectStore } from "@app/ui/main/project";
@@ -18,7 +19,9 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
     submittingIssues,
     setSubmittingIssues,
     handleDragging,
+    archivedCategoryId,
   } = props;
+  const isArchivedColumn = category.type === "ARCHIVED";
   const [columnHeight, setColumnHeight] = useState<number>(0);
   const columnRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const fetcher = useFetcher();
@@ -108,17 +111,20 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
       </div>
       {/* Column header */}
       <div className="sticky left-0 top-0 flex justify-between px-3 py-2.5 font-primary-light text-xs uppercase text-font-subtlest duration-200 ease-in-out">
-        <span className="flex gap-2">
+        <span className="flex items-center gap-2">
+          {isArchivedColumn && <MdOutlineArchive size={14} />}
           <span>{category.name}</span>
           {!emptyCategory && <span>( {category.issues.length} )</span>}
         </span>
-        <Link
-          to={issueLink}
-          className="text-font-subtlest/60 flex cursor-pointer rounded border-none p-1 hover:bg-background-neutral"
-          aria-label={`Add new ${category.name} issue`}
-        >
-          <AiOutlinePlus size={24} />
-        </Link>
+        {!isArchivedColumn && (
+          <Link
+            to={issueLink}
+            className="text-font-subtlest/60 flex cursor-pointer rounded border-none p-1 hover:bg-background-neutral"
+            aria-label={`Add new ${category.name} issue`}
+          >
+            <AiOutlinePlus size={24} />
+          </Link>
+        )}
       </div>
       {/* Column body items */}
       <div ref={columnRef} className="h-full">
@@ -135,6 +141,7 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
                       categoryId={category.id}
                       isSubmitting={submittingIssues.includes(issue.id)}
                       handleDragging={handleDragging}
+                      archivedCategoryId={archivedCategoryId}
                     />
                   </li>
                 ))
@@ -153,6 +160,7 @@ interface CategoryColumnProps {
   submittingIssues: IssueId[];
   setSubmittingIssues: Dispatch<SetStateAction<IssueId[]>>;
   handleDragging: (isDragging: boolean) => void;
+  archivedCategoryId?: CategoryId;
 }
 
 const EmptyCategory = (): JSX.Element => (

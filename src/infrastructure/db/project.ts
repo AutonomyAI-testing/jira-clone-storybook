@@ -1,8 +1,9 @@
 import { Prisma } from "@prisma/client";
+import { v4 as uuidv4 } from "uuid";
 
 import { UserId } from "@domain/user";
 import { Project, ProjectSummary, ProjectId } from "@domain/project";
-import { Category, CategoryType } from "@domain/category";
+import { Category, CategoryType, categoryTypeDict } from "@domain/category";
 import { Priority } from "@domain/priority";
 import { Sort } from "@domain/filter";
 import { db } from "./db.server";
@@ -40,6 +41,9 @@ export const getProject = async (
         },
       },
       categories: {
+        orderBy: {
+          order: "asc",
+        },
         include: {
           issues: {
             select: {
@@ -93,6 +97,30 @@ export const getProject = async (
 interface GetProjectOptions {
   sortIssuesBy: Sort;
 }
+
+export const ensureArchivedCategory = async (projectId: ProjectId): Promise<void> => {
+  const existing = await db.category.findFirst({
+    where: { projectId, type: "ARCHIVED" },
+  });
+  if (existing) return;
+
+  // Find the max order among existing categories for this project
+  const maxOrderResult = await db.category.aggregate({
+    where: { projectId },
+    _max: { order: true },
+  });
+  const nextOrder = (maxOrderResult._max.order ?? 2) + 1;
+
+  await db.category.create({
+    data: {
+      id: uuidv4(),
+      type: "ARCHIVED",
+      name: categoryTypeDict["ARCHIVED"],
+      order: nextOrder,
+      project: { connect: { id: projectId } },
+    },
+  });
+};
 
 export const getProjectSummary = async (projectId: ProjectId): Promise<ProjectSummary | null> => {
   const projectSummaryDb = await db.project.findUnique({

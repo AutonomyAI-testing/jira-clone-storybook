@@ -4,7 +4,7 @@ import { useEventSource } from "remix-utils";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Project } from "@domain/project";
-import { Category } from "@domain/category";
+import { Category, CategoryId } from "@domain/category";
 import { IssueId } from "@domain/issue";
 import { Search } from "@app/ui/main/project/board/search";
 import { Kbd } from "@app/components/kbd-placeholder";
@@ -80,6 +80,10 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [onKeyDown]);
 
+  const archivedCategoryId: CategoryId | undefined = categories.find(
+    (c) => c.type === "ARCHIVED"
+  )?.id;
+
   return (
     <section className="mt-12 flex h-full flex-col">
       <span className="mb-2 block justify-self-end font-primary-light text-2xs text-font-subtlest">
@@ -94,6 +98,7 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
             submittingIssues={submittingIssues}
             setSubmittingIssues={setSubmittingIssues}
             handleDragging={setIsDragging}
+            archivedCategoryId={archivedCategoryId}
           />
         ))}
       </div>

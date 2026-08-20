@@ -1,5 +1,8 @@
 import { useEffect } from "react";
-import { Link } from "@remix-run/react";
+import { Link, useFetcher } from "@remix-run/react";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { MdOutlineArchive } from "react-icons/md";
 import cx from "classix";
 import { useDrag } from "react-dnd";
 import { CategoryId } from "@domain/category";
@@ -19,9 +22,11 @@ export const IssueCard = ({
   categoryId,
   isSubmitting,
   handleDragging,
+  archivedCategoryId,
 }: Props): JSX.Element => {
   const issueIdPrefix = issue.id.split("-")[0];
   const sortBy = useSortBy();
+  const fetcher = useFetcher();
   const issueLink = sortBy
     ? `issue/${issue.id}?sortBy=${sortBy}`
     : `issue/${issue.id}`;
@@ -46,8 +51,20 @@ export const IssueCard = ({
     handleDragging(isDragging);
   }, [isDragging, handleDragging]);
 
+  const handleArchive = () => {
+    if (!archivedCategoryId) return;
+    fetcher.submit(
+      {
+        _action: "updateIssueCategory",
+        issueId: issue.id,
+        categoryId: archivedCategoryId,
+      },
+      { method: "post" }
+    );
+  };
+
   return (
-    <div ref={isSubmitting ? undefined : dragRef}>
+    <div ref={isSubmitting ? undefined : dragRef} className="group relative">
       <IssueCardContent
         link={issueLink}
         name={issue.name}
@@ -55,6 +72,36 @@ export const IssueCard = ({
         idPrefix={issueIdPrefix}
         isSubmitting={isSubmitting}
       />
+      {archivedCategoryId && categoryId !== archivedCategoryId && (
+        <div className="absolute right-1 top-1 opacity-0 transition-opacity group-hover:opacity-100">
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger asChild>
+              <button
+                className="flex items-center justify-center rounded p-0.5 text-font-subtlest hover:bg-background-neutral hover:text-font focus:outline-none"
+                aria-label="Issue actions"
+                onClick={(e) => e.preventDefault()}
+              >
+                <BsThreeDotsVertical size={14} />
+              </button>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Portal>
+              <DropdownMenu.Content
+                className="z-50 min-w-[140px] rounded-md bg-elevation-surface-overlay p-1 shadow-blue"
+                align="end"
+                sideOffset={4}
+              >
+                <DropdownMenu.Item
+                  className="flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-xs text-font outline-none hover:bg-background-neutral focus:bg-background-neutral"
+                  onSelect={handleArchive}
+                >
+                  <MdOutlineArchive size={14} className="text-font-subtlest" />
+                  Archive
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Root>
+        </div>
+      )}
     </div>
   );
 };
@@ -64,6 +111,7 @@ interface Props {
   categoryId: CategoryId;
   isSubmitting: boolean;
   handleDragging: (isDragging: boolean) => void;
+  archivedCategoryId?: CategoryId;
 }
 
 export const IssueCardContent = ({

@@ -10,7 +10,7 @@ import { Project, ProjectId } from "@domain/project";
 import { CategoryId } from "@domain/category";
 import { IssueId } from "@domain/issue";
 import { isValidSort, DEFAULT_SORT } from "@domain/filter";
-import { getProject } from "@infrastructure/db/project";
+import { getProject, ensureArchivedCategory } from "@infrastructure/db/project";
 import {
   updateIssueCategory,
   UpdateIssueCategoryData,
@@ -69,6 +69,8 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   const projectId = params.projectId as ProjectId;
 
   invariant(params.projectId, `params.projectId is required`);
+
+  await ensureArchivedCategory(projectId);
 
   const project: Project | null = await getProject(projectId, {
     sortIssuesBy: sortBy,

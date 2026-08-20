@@ -6,7 +6,9 @@ import * as Select from "@app/components/select";
 
 export const SelectStatus = ({ initStatus }: Props): JSX.Element => {
   const projectStore = useProjectStore();
-  const categories = projectStore.project.categories;
+  const allCategories = projectStore.project.categories;
+  // Exclude the Archived column — users can't manually set status to Archived
+  const categories = allCategories.filter((c) => c.type !== "ARCHIVED");
   const initCategory = categories.find(
     (category) => category.type === initStatus
   );
