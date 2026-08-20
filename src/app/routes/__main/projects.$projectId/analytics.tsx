@@ -1,5 +1,6 @@
 import type { LoaderFunction, V2_MetaFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import invariant from "tiny-invariant";
 import { Project, ProjectId } from "@domain/project";
 import { getProject } from "@infrastructure/db/project";
@@ -82,5 +83,6 @@ export function ErrorBoundary({ error }: { error: Error }) {
 }
 
 export default function AnalyticsRoute() {
-  return <AnalyticsView />;
+  const { project } = useLoaderData<LoaderData>();
+  return <AnalyticsView project={project} />;
 }
