@@ -17,8 +17,8 @@ export const LoginView = ({ users }: Props) => {
   };
 
   return (
-    <div className="mx-auto max-w-[400px] pt-[10vh]">
-      <h1 className="font-primary-black text-5xl text-font">
+    <div className="mx-auto max-w-[400px] pt-[10vh] rounded-lg p-6" style={{ outline: "2px solid black" }}>
+      <h1 className="font-primary-black text-5xl text-font-danger">
         Select login user
       </h1>
       <h2 className="mb-8 mt-3 font-primary-light text-lg text-font-subtle">
