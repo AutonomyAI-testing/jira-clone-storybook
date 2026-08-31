@@ -839,3 +839,75 @@
   --color-background-interaction: var(--Neutral500A);
   --color-background-drop: rgba(255, 255, 255, 0.7);
 }
+
+/* SuddenlySpaces Landing Page Styles */
+.ss-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: none;
+  position: absolute;
+  height: 0;
+  width: 100%;
+  outline: none;
+}
+.ss-slider-thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #ffffff;
+  border: 1px solid #919eab;
+  border-radius: 50%;
+  box-shadow: 0px 1px 2px 0px rgba(145, 158, 171, 0.16);
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  margin-top: 4px;
+  pointer-events: all;
+  position: relative;
+  z-index: 1;
+}
+.ss-slider-thumb::-moz-range-thumb {
+  background-color: #ffffff;
+  border: 1px solid #919eab;
+  border-radius: 50%;
+  box-shadow: 0px 1px 2px 0px rgba(145, 158, 171, 0.16);
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  pointer-events: all;
+}
+.ss-nav-link {
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  color: #1c252e;
+  text-decoration: none;
+  cursor: pointer;
+}
+.ss-nav-link:hover {
+  opacity: 0.8;
+}
+.ss-footer-link {
+  font-family: Metropolis, Montserrat, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.ss-footer-link:hover {
+  opacity: 0.7;
+}
+.ss-copyright-link {
+  font-family: "Microsoft Sans Serif", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #000000;
+  text-decoration: none;
+}
+.ss-copyright-link:hover {
+  opacity: 0.7;
+}

@@ -1,21 +1,29 @@
-import { LoaderFunction, redirect } from "@remix-run/node";
+import { LoaderFunction } from "@remix-run/node";
 import { Error404 } from "@app/components/error-404";
+import { SuddenlySpacesLanding } from "@app/ui/landing/SuddenlySpacesLanding";
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url);
-  if (url.pathname === "/") {
-    return redirect("projects");
-  }
+export const links = () => [
+  {
+    rel: "preconnect",
+    href: "https://fonts.googleapis.com",
+  },
+  {
+    rel: "preconnect",
+    href: "https://fonts.gstatic.com",
+    crossOrigin: "anonymous",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap",
+  },
+];
+
+export const loader: LoaderFunction = async () => {
   return null;
 };
 
-// Currently there is no landing. Just redirecting to /projects
 export default function IndexRoute() {
-  return (
-    <div>
-      <h1>LANDING</h1>
-    </div>
-  );
+  return <SuddenlySpacesLanding />;
 }
 
 export function CatchBoundary() {
