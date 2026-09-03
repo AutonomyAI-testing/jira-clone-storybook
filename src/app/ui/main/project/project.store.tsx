@@ -1,16 +1,8 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import { createContext, useContext } from "react";
 import { Project } from "@domain/project";
 
 interface ProjectStore {
   project: Project;
-  search: string;
-  setSearch: Dispatch<SetStateAction<string>>;
 }
 
 const ProjectContext = createContext<ProjectStore | undefined>(undefined);
@@ -22,10 +14,8 @@ export const ProjectContextProvider = ({
   project: Project;
   children: JSX.Element;
 }): JSX.Element => {
-  const [search, setSearch] = useState("");
-
   return (
-    <ProjectContext.Provider value={{ project, search, setSearch }}>
+    <ProjectContext.Provider value={{ project }}>
       {children}
     </ProjectContext.Provider>
   );

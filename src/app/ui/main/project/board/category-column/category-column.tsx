@@ -7,8 +7,8 @@ import { useDrop } from "react-dnd";
 import { Category } from "@domain/category";
 import { Issue, IssueId } from "@domain/issue";
 import { ScrollArea } from "@app/components/scroll-area";
-import { useProjectStore } from "@app/ui/main/project";
 import { useSortBy } from "@app/hooks/useSortBy";
+import { useBoardSearchStore } from "../board-search.store";
 import { IssueCard, DropItem, DRAG_ISSUE_CARD } from "./issue-card";
 
 export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
@@ -23,7 +23,7 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
   const columnRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const fetcher = useFetcher();
   const sortBy = useSortBy();
-  const { search } = useProjectStore();
+  const search = useBoardSearchStore((state) => state.search);
   const emptyCategory = category.issues.length === 0;
   const issueLink = sortBy
     ? `issue/new?category=${category.type}&sortBy=${sortBy}`

@@ -2,12 +2,12 @@ import React from "react";
 import cx from "classix";
 import { BiSearch } from "react-icons/bi";
 import { IoCloseOutline } from "react-icons/io5";
-import { useProjectStore } from "@app/ui/main/project";
+import { useBoardSearchStore } from "./board-search.store";
 
 export const Search = (): JSX.Element => {
-  const { search, setSearch } = useProjectStore();
-
-  const clearSearch = () => setSearch("");
+  const search = useBoardSearchStore((state) => state.search);
+  const setSearch = useBoardSearchStore((state) => state.setSearch);
+  const clearSearch = useBoardSearchStore((state) => state.clearSearch);
   const renderIcon = (): JSX.Element => {
     return search.length === 0 ? (
       <SearchIcon />
