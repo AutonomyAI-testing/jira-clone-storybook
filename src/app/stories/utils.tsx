@@ -1,23 +1,25 @@
 import type { PartialStoryFn } from "@storybook/csf";
 import { unstable_createRemixStub as createRemixStub } from "@remix-run/testing";
 import { userMock1 } from "@domain/user";
-import { UserContextProvider } from "@app/store/user.store";
-import { ThemeProvider, Theme, Preference } from "@app/store/theme.store";
+import { setUser } from "@app/store/user.store";
+import { useThemeStoreInit } from "@app/store/theme.store";
+import { Theme, Preference } from "@app/store/theme.store";
 
 type Story = PartialStoryFn<any, Record<string, never>>;
 
+const StoreHydrator = ({ children }: { children: JSX.Element }) => {
+  setUser(userMock1);
+  useThemeStoreInit(Theme.LIGHT, Preference.SELECTED);
+  return children;
+};
+
 export const withMainContext = (Story: Story): JSX.Element => {
   return (
-    <UserContextProvider user={userMock1}>
-      <ThemeProvider
-        specifiedTheme={Theme.LIGHT}
-        specifiedPreference={Preference.SELECTED}
-      >
-        <div className="w-full">
-          <Story />
-        </div>
-      </ThemeProvider>
-    </UserContextProvider>
+    <StoreHydrator>
+      <div className="w-full">
+        <Story />
+      </div>
+    </StoreHydrator>
   );
 };
 
