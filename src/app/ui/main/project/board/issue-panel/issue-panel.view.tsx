@@ -14,6 +14,7 @@ import { CategoryType } from "@domain/category";
 import { Issue, defaultIssuesIds } from "@domain/issue";
 import { Comment, CommentId } from "@domain/comment";
 import { useUserStore } from "@app/store/user.store";
+import { useProjectStore } from "@app/ui/main/project";
 import { ActionData as IssueActionData } from "@app/routes/__main/projects.$projectId/board/issue/$issueId";
 import { UserAvatar } from "@app/components/user-avatar";
 import { Button } from "@app/components/button";
@@ -36,6 +37,13 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
     null
   );
   const { user } = useUserStore();
+  const { addRecentIssue } = useProjectStore();
+
+  useEffect(() => {
+    if (issue?.id && issue?.title) {
+      addRecentIssue({ id: issue.id, title: issue.title });
+    }
+  }, [issue?.id, issue?.title, addRecentIssue]);
   const reporter = issue ? issue.reporter : user;
   const formRef = useRef<HTMLFormElement>(null);
   const actionData = useActionData() as IssueActionData;

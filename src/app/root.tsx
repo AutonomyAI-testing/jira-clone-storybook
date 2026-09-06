@@ -15,8 +15,8 @@ import cx from "classix";
 import {
   Theme,
   Preference,
-  ThemeProvider,
   useTheme,
+  useThemeStoreInit,
 } from "@app/store/theme.store";
 import { formatTags, formatProperties } from "@utils/meta";
 import { getThemeSession } from "./session-storage/theme-storage.server";
@@ -86,11 +86,8 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export default function AppWithProviders() {
   const { theme, preference } = useLoaderData<LoaderData>();
-  return (
-    <ThemeProvider specifiedTheme={theme} specifiedPreference={preference}>
-      <App />
-    </ThemeProvider>
-  );
+  useThemeStoreInit(theme, preference);
+  return <App />;
 }
 
 const App = (): JSX.Element => {

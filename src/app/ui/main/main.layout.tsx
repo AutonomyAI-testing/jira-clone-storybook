@@ -1,16 +1,15 @@
 import { Outlet } from "@remix-run/react";
 import { User } from "@domain/user";
-import { UserContextProvider } from "@app/store/user.store";
+import { setUser } from "@app/store/user.store";
 import { Header } from "./header";
 
 export const MainLayout = ({ user }: Props) => {
+  setUser(user);
   return (
-    <UserContextProvider user={user}>
-      <div className="flex h-full flex-col">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContextProvider>
+    <div className="flex h-full flex-col">
+      <Header />
+      <Outlet />
+    </div>
   );
 };
 
