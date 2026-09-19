@@ -2,11 +2,14 @@ import { useEffect } from "react";
 import { Link } from "@remix-run/react";
 import cx from "classix";
 import { useDrag } from "react-dnd";
+import { IoChatbubbleOutline } from "react-icons/io5";
 import { CategoryId } from "@domain/category";
 import { Issue, IssueId } from "@domain/issue";
 import { PriorityId } from "@domain/priority";
+import { User } from "@domain/user";
 import { TaskIcon } from "@app/components/icons";
 import { PriorityIcon } from "@app/components/priority-icon";
+import { UserAvatar } from "@app/components/user-avatar";
 import { useSortBy } from "@app/hooks/useSortBy";
 
 export interface DropItem {
@@ -53,6 +56,8 @@ export const IssueCard = ({
         name={issue.name}
         priorityId={issue.priority.id}
         idPrefix={issueIdPrefix}
+        asignee={issue.asignee}
+        commentCount={issue.comments.length}
         isSubmitting={isSubmitting}
       />
     </div>
@@ -71,6 +76,8 @@ export const IssueCardContent = ({
   name,
   priorityId,
   idPrefix,
+  asignee,
+  commentCount = 0,
   isSubmitting,
 }: IssueCardContentProps): JSX.Element => (
   <div
@@ -84,13 +91,32 @@ export const IssueCardContent = ({
       <>
         <p className="line-clamp-2 min-h-[48px] w-full text-font">{name}</p>
         <div className="flex items-center justify-between pt-4">
-          <span className="flex items-center">
-            <TaskIcon size={18} />
-            <span className="ml-1.5 text-2xs text-font-subtlest">
-              {idPrefix}
+          <span className="flex items-center gap-2">
+            <span className="flex items-center">
+              <TaskIcon size={18} />
+              <span className="ml-1.5 text-2xs text-font-subtlest">
+                {idPrefix}
+              </span>
             </span>
+            {commentCount > 0 && (
+              <span className="flex items-center gap-0.5 text-font-subtlest">
+                <IoChatbubbleOutline size={13} />
+                <span className="text-2xs">{commentCount}</span>
+              </span>
+            )}
           </span>
-          <PriorityIcon priority={priorityId} />
+          <span className="flex items-center gap-2">
+            <PriorityIcon priority={priorityId} />
+            {asignee && (
+              <UserAvatar
+                name={asignee.name}
+                image={asignee.image}
+                color={asignee.color}
+                size={20}
+                tooltip
+              />
+            )}
+          </span>
         </div>
       </>
     </Link>
@@ -102,6 +128,8 @@ interface IssueCardContentProps {
   name: string;
   priorityId: PriorityId;
   idPrefix: string;
+  asignee?: User;
+  commentCount?: number;
   isSubmitting: boolean;
 }
 

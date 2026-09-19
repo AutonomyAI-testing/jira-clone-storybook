@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { userMock1, userMock2 } from "@domain/user";
 import { withRemixStub } from "@app/stories/utils";
 import { IssueCardContent } from "./issue-card";
 
@@ -56,13 +57,15 @@ type Story = StoryObj<typeof IssueCardContent>;
 export const Default: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      {[Standard, LongName, Submitting].map(({ args }, index) => (
+      {[Standard, WithComments, LongName, Submitting].map(({ args }, index) => (
         <IssueCardContent
           key={index}
           link={args?.link || "https://google.com"}
           name={args?.name || "Issue name"}
           priorityId={args?.priorityId || "low"}
           idPrefix={args?.idPrefix || "1234"}
+          asignee={args?.asignee}
+          commentCount={args?.commentCount || 0}
           isSubmitting={args?.isSubmitting || false}
         />
       ))}
@@ -75,7 +78,21 @@ export const Standard: Story = {
     link: "https://google.com",
     name: "Issue 1",
     priorityId: "high",
-    idPrefix: "1234",
+    idPrefix: "4db5",
+    asignee: userMock1,
+    commentCount: 0,
+    isSubmitting: false,
+  },
+};
+
+export const WithComments: Story = {
+  args: {
+    link: "https://google.com",
+    name: "Issue with comments and assignee",
+    priorityId: "medium",
+    idPrefix: "ea07",
+    asignee: userMock2,
+    commentCount: 3,
     isSubmitting: false,
   },
 };
@@ -83,9 +100,11 @@ export const Standard: Story = {
 export const LongName: Story = {
   args: {
     link: "https://google.com",
-    name: "This is a very long issue name that should be truncated",
+    name: "This is a very long issue name that should be truncated after two lines",
     priorityId: "high",
-    idPrefix: "1234",
+    idPrefix: "2371",
+    asignee: userMock1,
+    commentCount: 1,
     isSubmitting: false,
   },
 };
@@ -95,7 +114,9 @@ export const Submitting: Story = {
     link: "https://google.com",
     name: "Submitting issue",
     priorityId: "low",
-    idPrefix: "1234",
+    idPrefix: "cb3e",
+    asignee: userMock2,
+    commentCount: 2,
     isSubmitting: true,
   },
 };
