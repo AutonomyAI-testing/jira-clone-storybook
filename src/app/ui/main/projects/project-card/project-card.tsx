@@ -42,7 +42,7 @@ export const ProjectCard = ({ project }: Props): JSX.Element => {
               ? "cursor-not-allowed text-font-disabled text-opacity-50"
               : "text-icon hover:text-font-danger"
           )}
-          aria-label="Open delete issue dialog"
+          aria-label="Open delete project dialog"
           title={
             isDefaultProject
               ? "Cannot delete default project"
@@ -57,10 +57,10 @@ export const ProjectCard = ({ project }: Props): JSX.Element => {
         <AlertDialog.Portal>
           <AlertDialog.Overlay />
           <AlertDialog.Content>
-            <AlertDialog.Title>Delete issue?</AlertDialog.Title>
+            <AlertDialog.Title>Delete project?</AlertDialog.Title>
             <AlertDialog.Description>
               This action is permanent and cannot be undone. Are you sure you
-              want to remove this issue completely?
+              want to remove this project completely?
             </AlertDialog.Description>
             <Form
               method="delete"
@@ -73,7 +73,7 @@ export const ProjectCard = ({ project }: Props): JSX.Element => {
                 name="_action"
                 value="delete"
                 type="submit"
-                aria-label="Delete issue"
+                aria-label="Delete project"
               >
                 Delete
               </AlertDialog.Action>

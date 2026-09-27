@@ -19,7 +19,7 @@ export const Title = twix(
 );
 export const Description = twix(
   AlertDialog.Description,
-  "mt-8 flex w-full justify-end gap-4"
+  "mt-8 max-w-[400px]"
 );
 export const Cancel = ({ children, ...rest }: ButtonProps): JSX.Element => (
   <AlertDialog.Cancel asChild>
