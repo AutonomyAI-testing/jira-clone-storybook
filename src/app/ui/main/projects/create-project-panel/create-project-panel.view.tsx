@@ -165,7 +165,7 @@ export const CreateProjectPanelView = ({
                     >
                       {fetcher.state !== "idle" ? (
                         <>
-                          Submmiting
+                          Submitting
                           <Spinner />
                         </>
                       ) : (

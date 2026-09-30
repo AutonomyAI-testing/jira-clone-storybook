@@ -188,7 +188,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                       />
                     </div>
                     <div>
-                      <p className="mb-1">Asignee</p>
+                      <p className="mb-1">Assignee</p>
                       <SelectAsignee initAsignee={issue?.asignee || user} />
                     </div>
                     <div>
@@ -222,7 +222,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                     >
                       {transition.state !== "idle" ? (
                         <>
-                          Submmiting
+                          Submitting
                           <Spinner />
                         </>
                       ) : (
