@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Link, NavLink } from "@remix-run/react";
 import cx from "classix";
 import { HiQuestionMarkCircle } from "react-icons/hi";
 import { AiFillGithub } from "react-icons/ai";
@@ -22,14 +22,16 @@ export const Header = (): JSX.Element => {
         </Link>
       </section>
       <section className="flex items-center gap-4">
-        <Tooltip title="About">
-          <button
-            aria-label="About this website"
-            disabled
-            className={cx(iconBaseClass, "cursor-not-allowed")}
+        <Tooltip title="FAQ">
+          <NavLink
+            to="/faq"
+            aria-label="Go to FAQ page"
+            className={({ isActive }) =>
+              cx(iconBaseClass, isActive && "bg-background-brand-subtlest text-icon-brand")
+            }
           >
             <HiQuestionMarkCircle size={24} />
-          </button>
+          </NavLink>
         </Tooltip>
         <Tooltip title="Github">
           <a
