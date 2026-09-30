@@ -634,7 +634,7 @@ const ReviewStep = ({
     </label>
     {visitedSteps.length < registrationSteps.length - 1 && (
       <p className="text-xs text-font-subtlest">
-        You can jump back to any step you've already visited using its Edit link.
+        You can jump back to any step you&apos;ve already visited using its Edit link.
       </p>
     )}
   </div>
@@ -669,10 +669,10 @@ const RegistrationSuccess = ({ email }: { email: string }): JSX.Element => (
   <div className="mx-auto flex max-w-[480px] flex-col items-center py-20 text-center">
     <HiOutlineCheckCircle size={56} className="text-icon-accent-green" />
     <h1 className="mt-4 font-primary-black text-2xl text-font">
-      You're all set!
+      You&apos;re all set!
     </h1>
     <p className="mt-2 text-sm text-font-subtle">
-      We've sent a confirmation to <strong>{email}</strong>. Check your inbox
+      We&apos;ve sent a confirmation to <strong>{email}</strong>. Check your inbox
       to verify your account before signing in.
     </p>
   </div>
