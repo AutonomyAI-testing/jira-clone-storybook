@@ -53,3 +53,29 @@ export const Default: Story = {
     </>
   ),
 };
+
+export const ShortList: Story = {
+  render: (_) => (
+    <>
+      <p className="mb-1 text-font">Height: {height}px</p>
+      <div
+        style={{ height }}
+        className="rounded bg-background-neutral p-2 text-font"
+      >
+        <ScrollArea>
+          {Array.from({ length: 3 }, (_, index) => (
+            <div
+              key={index}
+              className={cx(
+                "p-2",
+                index % 2 === 0 ? "bg-elevation-surface" : "bg-elevation-subtle"
+              )}
+            >
+              Scroll item content
+            </div>
+          ))}
+        </ScrollArea>
+      </div>
+    </>
+  ),
+};
