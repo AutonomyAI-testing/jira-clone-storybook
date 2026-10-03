@@ -6,8 +6,6 @@ import type {
 import { redirect, json } from "@remix-run/node";
 import { useLoaderData, useLocation, useNavigate } from "@remix-run/react";
 import invariant from "tiny-invariant";
-import cx from "classix";
-import * as Dialog from "@radix-ui/react-dialog";
 import { UserId } from "@domain/user";
 import { ProjectId } from "@domain/project";
 import { CategoryId } from "@domain/category";
@@ -23,12 +21,16 @@ import {
 } from "@infrastructure/db/issue";
 import { deleteComment } from "@infrastructure/db/comment";
 import { IssuePanel } from "@app/ui/main/project/board/issue-panel";
-import { Error404 } from "@app/components/error-404";
+import { IssueNotFoundDialog } from "@app/ui/main/project/board/issue-not-found-dialog";
 import { textAreOnlySpaces } from "@utils/text-are-only-spaces";
 import { emitter, EVENTS } from "@app/events";
 import { formatTags, formatProperties } from "@utils/meta";
 
 export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
+  if (!data) {
+    return [{ title: "Jira clone - Issue not found" }];
+  }
+
   const { issue, projectId } = data as LoaderData;
   const title = `Jira clone - ${issue.name}`;
   const description = issue.description || "No description";
@@ -166,29 +168,11 @@ export function CatchBoundary() {
   };
 
   return (
-    <Dialog.Root open={true}>
-      <Dialog.Portal>
-        <Dialog.Overlay
-          className={cx(
-            "absolute left-0 top-0 z-50 box-border grid h-full w-full place-items-center overflow-y-auto bg-black bg-opacity-50 px-[40px] py-[40px]",
-            "radix-state-open:animate-fade-in duration-300"
-          )}
-        >
-          <Dialog.Content
-            onPointerDownOutside={handleProgrammaticNavigation}
-            className={cx(
-              "bg-background-surface relative z-50 flex rounded-md px-20 py-12 shadow-lg flex-center",
-              "duration-300 radix-state-open:animate-slide-up"
-            )}
-          >
-            <Error404
-              message="This issue does not exist. Go to the board page"
-              href={boardUrl}
-            />
-          </Dialog.Content>
-        </Dialog.Overlay>
-      </Dialog.Portal>
-    </Dialog.Root>
+    <IssueNotFoundDialog
+      message="This issue does not exist. Go to the board page"
+      href={boardUrl}
+      onDismiss={handleProgrammaticNavigation}
+    />
   );
 }
 
