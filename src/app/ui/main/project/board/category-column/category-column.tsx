@@ -24,7 +24,11 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
   const fetcher = useFetcher();
   const sortBy = useSortBy();
   const { search } = useProjectStore();
+  const filteredIssues: Issue[] = category.issues.filter((issue) =>
+    issue.name.toLowerCase().includes(search)
+  );
   const emptyCategory = category.issues.length === 0;
+  const noIssuesToShow = filteredIssues.length === 0;
   const issueLink = sortBy
     ? `issue/new?category=${category.type}&sortBy=${sortBy}`
     : `issue/new?category=${category.type}`;
@@ -60,11 +64,6 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
       setSubmittingIssues((prev) => [...prev, item.issueId]);
     }
   };
-
-  const filteredIssues = (): Issue[] =>
-    category.issues.filter((issue) => {
-      return issue.name.toLowerCase().includes(search);
-    });
 
   useEffect(() => {
     if (fetcher.data && fetcher.data.issueId) {
@@ -110,7 +109,7 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
       <div className="sticky left-0 top-0 flex justify-between px-3 py-2.5 font-primary-light text-xs uppercase text-font-subtlest duration-200 ease-in-out">
         <span className="flex gap-2">
           <span>{category.name}</span>
-          {!emptyCategory && <span>( {category.issues.length} )</span>}
+          {!noIssuesToShow && <span>( {filteredIssues.length} )</span>}
         </span>
         <Link
           to={issueLink}
@@ -125,10 +124,14 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
         <div style={{ height: `${columnHeight}px` }}>
           <ScrollArea>
             <ul className="mt-1 max-w-[260px] px-3 pb-1">
-              {emptyCategory ? (
-                <EmptyCategory />
+              {noIssuesToShow ? (
+                <EmptyCategory
+                  label={
+                    emptyCategory ? "No issues found" : "No matching issues"
+                  }
+                />
               ) : (
-                filteredIssues().map((issue, index) => (
+                filteredIssues.map((issue, index) => (
                   <li key={index} className="mb-2">
                     <IssueCard
                       issue={issue}
@@ -155,9 +158,13 @@ interface CategoryColumnProps {
   handleDragging: (isDragging: boolean) => void;
 }
 
-const EmptyCategory = (): JSX.Element => (
+interface EmptyCategoryProps {
+  label: string;
+}
+
+const EmptyCategory = ({ label }: EmptyCategoryProps): JSX.Element => (
   <li className="mt-4 flex flex-col items-center text-font-subtlest">
     <RxValueNone size={36} />
-    <p className="mt-4 font-primary-light text-xs uppercase">No issues found</p>
+    <p className="mt-4 font-primary-light text-xs uppercase">{label}</p>
   </li>
 );
