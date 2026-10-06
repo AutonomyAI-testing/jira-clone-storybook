@@ -5,12 +5,14 @@ import {
   Category as CategoryDB,
   Issue as IssueDB,
   Priority as PriorityDB,
+  Topic as TopicDB,
 } from "@prisma/client";
 import { User, usersMock, getRandomPastelColor } from "@domain/user";
 import { Project, ProjectId, projectsMock } from "@domain/project";
 import { Category, CategoryId } from "@domain/category";
 import { Issue } from "@domain/issue";
 import { Priority, prioritiesMock } from "@domain/priority";
+import { Topic, topicsMock } from "@domain/topic";
 
 const db = new PrismaClient();
 
@@ -35,6 +37,18 @@ const createPriorityIfNotExists = async (priority: Priority): Promise<PriorityDB
       id: priority.id,
       name: priority.name,
       order: priority.order,
+    },
+    update: {},
+  });
+};
+
+const createTopicIfNotExists = async (topic: Topic): Promise<TopicDB> => {
+  return db.topic.upsert({
+    where: { id: topic.id },
+    create: {
+      id: topic.id,
+      name: topic.name,
+      order: topic.order,
     },
     update: {},
   });
@@ -114,6 +128,15 @@ const seedPriorities = async () => {
   }
 };
 
+const seedTopics = async () => {
+  for (const topic of topicsMock) {
+    const topicDb = await createTopicIfNotExists(topic);
+    recordAlreadyExists(topicDb)
+      ? console.info(`Topic already exists: ${topic.name}. Skipping...`)
+      : console.info(`Created TOPIC: ${topic.name}`);
+  }
+};
+
 const seedProjects = async () => {
   for (const project of projectsMock) {
     const projectDb = await createProjectIfNotExists(project);
@@ -147,6 +170,7 @@ const seedProjects = async () => {
 const seedDb = async () => {
   await seedUsers();
   await seedPriorities();
+  await seedTopics();
   await seedProjects();
 };
 

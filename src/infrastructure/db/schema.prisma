@@ -12,12 +12,32 @@ model User {
   name           String
   image          String?
   color          String
+  // Set when the user goes through the registration wizard. Seeded users
+  // have none of these, which is why they are optional.
+  email          String?   @unique
+  passwordHash   String?
+  jobTitle       String?
+  onboardedAt    DateTime?
+  // Notification preferences collected in the last step of the wizard
+  notifyIssueActivity Boolean @default(true)
+  notifyMentions      Boolean @default(true)
+  notifyWeeklyDigest  Boolean @default(false)
+  interests      Topic[]
   projects       Project[]
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   issueReporters Issue[]   @relation("issue_reporter")
   issueAssignees Issue[]   @relation("issue_assignee")
   issueComments  Comment[]
+}
+
+model Topic {
+  id        String   @id
+  name      String
+  order     Int
+  users     User[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Project {
