@@ -151,6 +151,10 @@
     --Magenta800: #943d73;
     --Magenta900: #50253f;
     --Magenta1000: #421f34;
+
+    --Slate800: #454f5b;
+    --Slate900: #1c252e;
+    --Slate950: #000000;
   }
 }
 
@@ -173,6 +177,7 @@
   --color-font-subtlest: var(--Neutral700);
   --color-font-disabled: var(--Neutral400A);
   --color-font-inverse: var(--Neutral0);
+  --color-font-strong: var(--Slate950);
 
   /* Link */
   --color-link: var(--Blue700);
@@ -265,6 +270,10 @@
   --color-background-neutral-bold: var(--Neutral800);
   --color-background-neutral-bold-hovered: var(--Neutral900);
   --color-background-neutral-bold-pressed: var(--Neutral1000);
+  --color-background-neutral-boldest: var(--Slate950);
+  --color-background-neutral-boldest-hovered: var(--Slate900);
+  --color-background-neutral-boldest-pressed: var(--Slate800);
+  --color-background-inverse: var(--Slate900);
 
   --color-background-selected: var(--Blue100);
   --color-background-selected-hovered: var(--Blue200);
@@ -310,6 +319,7 @@
   --color-font-subtlest: var(--DarkNeutral700);
   --color-font-disabled: var(--DarkNeutral400A);
   --color-font-inverse: var(--DarkNeutral100);
+  --color-font-strong: var(--DarkNeutral1100);
 
   /* Link */
   --color-link: var(--Blue400);
@@ -403,6 +413,10 @@
   --color-background-neutral-bold: var(--DarkNeutral800);
   --color-background-neutral-bold-hovered: var(--DarkNeutral900);
   --color-background-neutral-bold-pressed: var(--DarkNeutral1000);
+  --color-background-neutral-boldest: var(--DarkNeutral1100);
+  --color-background-neutral-boldest-hovered: var(--DarkNeutral1000);
+  --color-background-neutral-boldest-pressed: var(--DarkNeutral900);
+  --color-background-inverse: var(--DarkNeutral1000);
 
   --color-background-selected: var(--Blue1000);
   --color-background-selected-hovered: var(--Blue900);
@@ -448,6 +462,7 @@
   --color-font-subtlest: var(--DarkNeutral700);
   --color-font-disabled: var(--DarkNeutral400A);
   --color-font-inverse: var(--DarkNeutral100);
+  --color-font-strong: var(--DarkNeutral1100);
 
   /* Link */
   --color-link: var(--Blue400);
@@ -541,6 +556,10 @@
   --color-background-neutral-bold: var(--DarkNeutral800);
   --color-background-neutral-bold-hovered: var(--DarkNeutral900);
   --color-background-neutral-bold-pressed: var(--DarkNeutral1000);
+  --color-background-neutral-boldest: var(--DarkNeutral1100);
+  --color-background-neutral-boldest-hovered: var(--DarkNeutral1000);
+  --color-background-neutral-boldest-pressed: var(--DarkNeutral900);
+  --color-background-inverse: var(--DarkNeutral1000);
 
   --color-background-selected: var(--Blue1000);
   --color-background-selected-hovered: var(--Blue900);
@@ -586,6 +605,7 @@
   --color-font-subtlest: var(--DarkNeutral700);
   --color-font-disabled: var(--DarkNeutral400A);
   --color-font-inverse: var(--DarkNeutral100);
+  --color-font-strong: var(--DarkNeutral1100);
 
   /* Link */
   --color-link: var(--Blue400);
@@ -679,6 +699,10 @@
   --color-background-neutral-bold: var(--DarkNeutral800);
   --color-background-neutral-bold-hovered: var(--DarkNeutral900);
   --color-background-neutral-bold-pressed: var(--DarkNeutral1000);
+  --color-background-neutral-boldest: var(--DarkNeutral1100);
+  --color-background-neutral-boldest-hovered: var(--DarkNeutral1000);
+  --color-background-neutral-boldest-pressed: var(--DarkNeutral900);
+  --color-background-inverse: var(--DarkNeutral1000);
 
   --color-background-selected: var(--Lime1000);
   --color-background-selected-hovered: var(--Lime900);
@@ -721,6 +745,7 @@
   --color-font-accent-grey: var(--Neutral800);
   --color-font-disabled: var(--Neutral400A);
   --color-font-inverse: var(--Neutral0);
+  --color-font-strong: var(--Slate950);
 
   /* Link */
   --color-link: var(--Teal700);
@@ -813,6 +838,10 @@
   --color-background-neutral-bold: var(--Neutral800);
   --color-background-neutral-bold-hovered: var(--Neutral900);
   --color-background-neutral-bold-pressed: var(--Neutral1000);
+  --color-background-neutral-boldest: var(--Slate950);
+  --color-background-neutral-boldest-hovered: var(--Slate900);
+  --color-background-neutral-boldest-pressed: var(--Slate800);
+  --color-background-inverse: var(--Slate900);
 
   --color-background-selected: var(--Magenta200);
   --color-background-selected-hovered: var(--Teal200);

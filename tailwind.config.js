@@ -18,6 +18,7 @@ module.exports = {
         subtlest: "var(--color-font-subtlest)",
         selected: "var(--color-font-selected)",
         inverse: "var(--color-font-inverse)",
+        strong: "var(--color-font-strong)",
         disabled: "var(--color-font-disabled)",
         accent: {
           green: "var(--color-font-accent-green)",
@@ -130,6 +131,11 @@ module.exports = {
             hovered: "var(--color-background-neutral-bold-hovered)",
             pressed: "var(--color-background-neutral-bold-pressed)",
           },
+          boldest: {
+            DEFAULT: "var(--color-background-neutral-boldest)",
+            hovered: "var(--color-background-neutral-boldest-hovered)",
+            pressed: "var(--color-background-neutral-boldest-pressed)",
+          },
         },
         selected: {
           DEFAULT: "var(--color-background-selected)",
@@ -138,6 +144,7 @@ module.exports = {
         },
         disabled: "var(--color-background-disabled)",
         drop: "var(--color-background-drop)",
+        inverse: "var(--color-background-inverse)",
         input: {
           DEFAULT: "var(--color-background-input)",
           hovered: "var(--color-background-input-hovered)",
@@ -197,6 +204,7 @@ module.exports = {
       primary: ["CircularStdMedium", "sans-serif"],
       "primary-bold": ["CircularStdBold", "sans-serif"],
       "primary-black": ["CircularStdBlack", "sans-serif"],
+      montserrat: ["Montserrat", "sans-serif"],
     },
     boxShadow: {
       xs: "rgba(0,0,0, 0.2) 0px 1px 1px, rgba(0,0,0, 0.2) 0px 0px 1px",
