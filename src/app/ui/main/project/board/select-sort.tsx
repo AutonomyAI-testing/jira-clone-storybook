@@ -9,6 +9,7 @@ import { useSortBy } from "@app/hooks/useSortBy";
 export const SelectSort = (): JSX.Element => {
   const submit = useSubmit();
   const sortBy = useSortBy() || DEFAULT_SORT;
+  const sortLabel = sortList.find((sort) => sort.id === sortBy)?.label || sortBy;
 
   const SortIcon = ({ sort }: { sort: Sort }): JSX.Element =>
     // prettier-ignore
@@ -30,7 +31,7 @@ export const SelectSort = (): JSX.Element => {
           <div className="mr-2 flex items-center">
             <FaSortAmountDownAlt size={14} />
           </div>
-          <Select.Value>Sort by {sortBy}</Select.Value>
+          <Select.Value>Sort by {sortLabel}</Select.Value>
         </Select.Trigger>
         <Select.Content className="select-none rounded bg-elevation-surface-overlay p-1.5 shadow-blue">
           <Select.ScrollUpButton />
