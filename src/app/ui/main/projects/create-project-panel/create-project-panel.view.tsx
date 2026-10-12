@@ -23,10 +23,20 @@ export const CreateProjectPanelView = ({
   const [portalContainer, setPortalContainer] = useState<HTMLDivElement | null>(
     null
   );
+  // The panel saves two ways: Accept submits the form (a navigation submit, so the route's
+  // errors come back through useActionData) and Shift + S submits the same form through the
+  // fetcher (so they arrive on fetcher.data). Show the errors of the submission made last.
+  const [submittedWithFetcher, setSubmittedWithFetcher] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const fetcher = useFetcher();
   const navigate = useNavigate();
-  const actionData = useActionData() as ProjectActionData;
+  const navigationActionData = useActionData() as
+    | ProjectActionData
+    | undefined;
+  const fetcherActionData = fetcher.data as ProjectActionData | undefined;
+  const actionData = submittedWithFetcher
+    ? fetcherActionData
+    : navigationActionData;
   const { user: loggedUser } = useUserStore();
 
   const postData = useCallback(
@@ -43,6 +53,7 @@ export const CreateProjectPanelView = ({
 
   const handleProgrammaticSubmit = useCallback((): void => {
     if (formRef.current) {
+      setSubmittedWithFetcher(true);
       postData(formRef.current);
     }
   }, [postData]);
@@ -62,14 +73,23 @@ export const CreateProjectPanelView = ({
   );
 
   useEffect(() => {
-    const isErrors =
-      actionData?.errors && Object.keys(actionData?.errors).length > 0;
+    const errors = actionData?.errors;
 
-    if (isErrors) {
+    if (!errors || Object.keys(errors).length === 0) return;
+
+    // The name error sits at the top of the panel and the members error below a list that is
+    // usually taller than the viewport, so bring the rejected field into view instead of always
+    // jumping to the top. A name error wins when both are present: it is the first field.
+    if (!errors.name && errors.users) {
       document
-        .getElementById("project-panel-overlay")
-        ?.scrollTo({ top: 0, behavior: "smooth" });
+        .getElementById("project-panel-members-error")
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
     }
+
+    document
+      .getElementById("project-panel-overlay")
+      ?.scrollTo({ top: 0, behavior: "smooth" });
   }, [actionData]);
 
   useEffect(() => {
@@ -103,7 +123,11 @@ export const CreateProjectPanelView = ({
               <CreateProjectPanelHeader
                 id={project?.id || "Create new project"}
               />
-              <Form method="post" ref={formRef}>
+              <Form
+                method="post"
+                ref={formRef}
+                onSubmit={() => setSubmittedWithFetcher(false)}
+              >
                 <div className="mb-6">
                   <Dialog.Title className="-ml-3 mb-8 mt-5">
                     <Title
@@ -148,6 +172,14 @@ export const CreateProjectPanelView = ({
                       </li>
                     ))}
                   </ul>
+                  {actionData?.errors?.users && (
+                    <p
+                      id="project-panel-members-error"
+                      className="mt-2 font-primary-light text-sm text-font-danger"
+                    >
+                      {actionData.errors.users}
+                    </p>
+                  )}
                 </div>
                 <div className="mt-6 grid grid-cols-3 items-end justify-center">
                   <span className="font-primary-light text-2xs text-font-subtlest text-opacity-80">
