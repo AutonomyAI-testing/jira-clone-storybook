@@ -66,6 +66,7 @@ export const getProject = async (
     users: projectDb.users.map(dnull),
     name: projectDb.name,
     description: projectDb.description || "",
+    teamSize: projectDb.teamSize || undefined,
     image: projectDb.image,
     categories: projectDb.categories.map((category) => ({
       id: category.id,
@@ -157,15 +158,17 @@ type CreateProjectInput = {
   name: string;
   description: string;
   image: string;
+  teamSize?: string;
   userIds: UserId[];
   categories: Omit<Category, "id">[];
 };
-export const createProject = async (project: CreateProjectInput): Promise<void> => {
-  await db.project.create({
+export const createProject = async (project: CreateProjectInput): Promise<ProjectId> => {
+  const createdProject = await db.project.create({
     data: {
       name: project.name,
       description: project.description,
       image: project.image,
+      teamSize: project.teamSize,
       categories: {
         create: project.categories.map((category) => ({
           name: category.name,
@@ -182,6 +185,8 @@ export const createProject = async (project: CreateProjectInput): Promise<void> 
       users: true,
     },
   });
+
+  return createdProject.id;
 };
 
 export const deleteProject = async (projectId: ProjectId): Promise<void> => {

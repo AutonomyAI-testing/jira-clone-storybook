@@ -2,9 +2,24 @@ export type UserId = string;
 export type User = {
   id: UserId;
   name: string;
+  email?: string;
+  role?: string;
+  company?: string;
   image?: string;
   color?: string;
 };
+
+// Options offered by the registration wizard. Stored as a plain string so a
+// user registered before an option is renamed keeps the value they picked.
+export const userRoles = [
+  "Product manager",
+  "Designer",
+  "Engineer",
+  "Founder / exec",
+  "Marketing",
+  "Operations",
+  "Something else",
+] as const;
 
 export const getRandomPastelColor = () => {
   const h = 360 * Math.random();
