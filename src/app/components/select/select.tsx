@@ -20,6 +20,19 @@ export const Trigger = twix(
   )
 );
 
+/**
+ * A chrome-less trigger for controls that render their own label/value stack
+ * and only need the chevron affordance.
+ */
+export const PlainTrigger = twix(
+  Select.Trigger,
+  cx(
+    "flex cursor-pointer items-center gap-2 rounded border-none px-2 py-1",
+    "bg-transparent hover:bg-background-neutral active:bg-background-neutral-pressed",
+    "font-primary-bold text-sm text-font"
+  )
+);
+
 export const TriggerIcon = (): JSX.Element => (
   <Select.Icon>
     <RiArrowDropDownLine size={28} />
