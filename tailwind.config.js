@@ -150,19 +150,28 @@ module.exports = {
             subtlest: "var(--color-background-accent-green-subtlest)",
             subtler: "var(--color-background-accent-green-subtler)",
             subtle: "var(--color-background-accent-green-subtle)",
-            bolder: "var(--color-background-accent-green-bolder)",
+            bolder: {
+              DEFAULT: "var(--color-background-accent-green-bolder)",
+              hovered: "var(--color-background-accent-green-bolder-hovered)",
+            },
           },
           blue: {
             subtlest: "var(--color-background-accent-blue-subtlest)",
             subtler: "var(--color-background-accent-blue-subtler)",
             subtle: "var(--color-background-accent-blue-subtle)",
-            bolder: "var(--color-background-accent-blue-bolder)",
+            bolder: {
+              DEFAULT: "var(--color-background-accent-blue-bolder)",
+              hovered: "var(--color-background-accent-blue-bolder-hovered)",
+            },
           },
           grey: {
             subtlest: "var(--color-background-accent-grey-subtlest)",
             subtler: "var(--color-background-accent-grey-subtler)",
             subtle: "var(--color-background-accent-grey-subtle)",
-            bolder: "var(--color-background-accent-grey-bolder)",
+            bolder: {
+              DEFAULT: "var(--color-background-accent-grey-bolder)",
+              hovered: "var(--color-background-accent-grey-bolder-hovered)",
+            },
           },
         },
       },

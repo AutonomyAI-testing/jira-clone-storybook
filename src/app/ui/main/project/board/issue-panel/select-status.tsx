@@ -34,13 +34,13 @@ export const SelectStatus = ({ initStatus }: Props): JSX.Element => {
       <Select.Trigger
         aria-label="Open status select"
         className={cx(
-          "!text-font-inverse hover:!opacity-80",
+          "!text-font-inverse",
           selectedStatus === "TODO" &&
-            "hover:bg-background-accent-grey-bolder-hovered !bg-background-accent-grey-bolder",
+            "!bg-background-accent-grey-bolder hover:!bg-background-accent-grey-bolder-hovered",
           selectedStatus === "IN_PROGRESS" &&
-            "hover:bg-background-accent-blue-bolder-hovered !bg-background-accent-blue-bolder",
+            "!bg-background-accent-blue-bolder hover:!bg-background-accent-blue-bolder-hovered",
           selectedStatus === "DONE" &&
-            "hover:bg-background-accent-green-bolder-hovered !bg-background-accent-green-bolder"
+            "!bg-background-accent-green-bolder hover:!bg-background-accent-green-bolder-hovered"
         )}
       >
         <Select.Value className="pt-1" />
