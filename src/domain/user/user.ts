@@ -2,8 +2,13 @@ export type UserId = string;
 export type User = {
   id: UserId;
   name: string;
+  email?: string;
   image?: string;
   color?: string;
+};
+
+export const isValidEmail = (email: string): boolean => {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 };
 
 export const getRandomPastelColor = () => {

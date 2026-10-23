@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 import { User, UserId, userMock1 } from "@domain/user";
 import { Button } from "@app/components/button";
 import { UserAvatar } from "@app/components/user-avatar";
@@ -68,6 +68,15 @@ export const LoginView = ({ users }: Props) => {
           Login
         </Button>
       </Form>
+      <p className="mt-6 text-center font-primary-light text-sm text-font-subtle">
+        No profile yet?{" "}
+        <Link
+          to="/register"
+          className="text-link hover:underline active:text-link-pressed"
+        >
+          Create one and set up a workspace
+        </Link>
+      </p>
     </div>
   );
 };
