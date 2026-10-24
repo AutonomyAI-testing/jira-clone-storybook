@@ -114,10 +114,12 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
         </span>
         <Link
           to={issueLink}
-          className="text-font-subtlest/60 flex cursor-pointer rounded border-none p-1 hover:bg-background-neutral"
+          className="flex cursor-pointer rounded border-none p-1 text-font-subtlest hover:bg-background-neutral"
           aria-label={`Add new ${category.name} issue`}
         >
-          <AiOutlinePlus size={24} />
+          {/* The opacity sits on the icon, not on the link, so the hover
+              background keeps its full strength. */}
+          <AiOutlinePlus size={24} className="opacity-60" />
         </Link>
       </div>
       {/* Column body items */}
