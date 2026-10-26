@@ -76,11 +76,13 @@ export const IssueCardContent = ({
   <div
     style={{ minWidth: "200px" }}
     className={cx(
-      "flex w-full cursor-pointer flex-col rounded border-none bg-elevation-surface-raised p-3 text-left shadow-xs duration-200 ease-in-out hover:bg-elevation-surface-raised-hovered active:bg-elevation-surface-raised-pressed",
+      "flex w-full cursor-pointer flex-col rounded border-none bg-elevation-surface-raised text-left shadow-xs duration-200 ease-in-out hover:bg-elevation-surface-raised-hovered active:bg-elevation-surface-raised-pressed",
       isSubmitting && "opacity-50"
     )}
   >
-    <Link to={link}>
+    {/* The padding lives on the link, not the card, so the whole card - not
+        just the text inside it - is the click target. */}
+    <Link to={link} className="p-3">
       <>
         <p className="line-clamp-2 min-h-[48px] w-full text-font">{name}</p>
         <div className="flex items-center justify-between pt-4">
