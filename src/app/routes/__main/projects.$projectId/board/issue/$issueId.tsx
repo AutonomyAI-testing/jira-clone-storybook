@@ -170,7 +170,7 @@ export function CatchBoundary() {
       <Dialog.Portal>
         <Dialog.Overlay
           className={cx(
-            "absolute left-0 top-0 z-50 box-border grid h-full w-full place-items-center overflow-y-auto bg-black bg-opacity-50 px-[40px] py-[40px]",
+            "absolute left-0 top-0 z-50 box-border grid h-full w-full place-items-center overflow-y-auto bg-elevation-backdrop px-[40px] py-[40px]",
             "radix-state-open:animate-fade-in duration-300"
           )}
         >

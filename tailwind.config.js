@@ -183,6 +183,7 @@ module.exports = {
           },
           sunken: "var(--color-elevation-surface-sunken)",
         },
+        backdrop: "var(--color-elevation-backdrop)",
         shadow: {
           overflow: "var(--color-elevation-shadow-overflow)",
           overlay: "var(--color-elevation-shadow-overlay)",

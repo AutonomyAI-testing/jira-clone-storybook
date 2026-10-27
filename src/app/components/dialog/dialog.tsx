@@ -12,7 +12,7 @@ export const Overlay = twix(
   Dialog.Overlay,
   cx(
     "absolute top-0 left-0 z-50 box-border grid h-full w-full place-items-center overflow-y-auto py-[40px] px-[40px]",
-    "radix-state-open:animate-fade-in duration-300 backdrop-blur-md"
+    "bg-elevation-backdrop radix-state-open:animate-fade-in duration-300 backdrop-blur-md"
   )
 );
 export const Content = twix(

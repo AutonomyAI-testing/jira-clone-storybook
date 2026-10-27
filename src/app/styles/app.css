@@ -216,6 +216,9 @@
   --color-elevation-surface-raised-hovered: var(--Neutral200);
   --color-elevation-surface-raised-pressed: var(--Neutral300);
   --color-elevation-surface-sunken: var(--Neutral100);
+  /* The dim behind a modal overlay. Same value in every theme, so it is declared here only
+     and the other themes inherit it (design register: overlay-backdrop #091E428A). */
+  --color-elevation-backdrop: rgba(9, 30, 66, 0.54);
 
   --color-shadow-overflow: 0px 0px 8px rgba(9, 30, 66, 0.16), 0px 0px 1px rgba(9, 30, 66, 0.12);
   --color-shadow-overlay: 0px 8px 12px rgba(9, 30, 66, 0.15), 0px 0px 1px rgba(9, 30, 66, 0.31);

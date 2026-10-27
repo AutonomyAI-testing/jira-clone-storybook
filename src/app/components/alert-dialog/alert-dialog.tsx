@@ -7,7 +7,7 @@ export const Trigger = AlertDialog.Trigger;
 export const Portal = AlertDialog.Portal;
 export const Overlay = twix(
   AlertDialog.Overlay,
-  "fixed top-0 left-0 z-50 h-full w-full backdrop-blur-sm"
+  "bg-elevation-backdrop fixed top-0 left-0 z-50 h-full w-full backdrop-blur-sm"
 );
 export const Content = twix(
   AlertDialog.Content,
