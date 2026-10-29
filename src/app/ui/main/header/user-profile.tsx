@@ -19,7 +19,7 @@ export const UserProfile = (): JSX.Element => {
           align="end"
           sideOffset={5}
           className={cx(
-            "z-50 rounded bg-elevation-surface-overlay shadow-md",
+            "z-50 rounded bg-elevation-surface-overlay shadow-overlay",
             "radix-side-bottom:animate-slide-down radix-side-top:animate-slide-up"
           )}
         >

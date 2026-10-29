@@ -59,7 +59,7 @@ export const Sidebar = (props: Props): JSX.Element => {
         <button
           onClick={toggleSidebar}
           className={cx(
-            "absolute -left-[12px] mt-6 flex h-[24px] w-[24px] cursor-pointer items-center justify-center rounded-full border-none bg-elevation-surface-raised text-icon shadow-[0_1px_5px_-1px_rgba(0,0,0,0.3)] transition-transform delay-150 duration-200 ease-in hover:bg-icon-brand hover:text-font-inverse",
+            "absolute -left-[12px] mt-6 flex h-[24px] w-[24px] cursor-pointer items-center justify-center rounded-full border-none bg-elevation-surface-raised text-icon shadow-overflow transition-transform delay-150 duration-200 ease-in hover:bg-icon-brand hover:text-font-inverse",
             !isOpen && "rotate-180"
           )}
           aria-label="Toggle sidebar"

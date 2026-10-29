@@ -28,7 +28,7 @@ export const TriggerIcon = (): JSX.Element => (
 
 export const Content = twix(
   Select.Content,
-  "bg-elevation-surface-overlay py-1 shadow-md"
+  "bg-elevation-surface-overlay py-1 shadow-overlay"
 );
 
 export const Item = twix(

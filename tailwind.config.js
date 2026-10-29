@@ -183,10 +183,6 @@ module.exports = {
           },
           sunken: "var(--color-elevation-surface-sunken)",
         },
-        shadow: {
-          overflow: "var(--color-elevation-shadow-overflow)",
-          overlay: "var(--color-elevation-shadow-overlay)",
-        },
       },
       white: "white",
       black: "black",
@@ -204,7 +200,11 @@ module.exports = {
       md: "0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)",
       lg: "rgba(14, 18, 22, 0.35) 0px 10px 38px -10px, rgba(14, 18, 22, 0.2) 0px 10px 20px -15px",
       blue: "5px 5px 20px 1px rgba(0, 82, 204, 0.2)",
-      overlay: "0px 8px 12px rgba(9, 30, 66, 0.15),0px 0px 1px rgba(9, 30, 66, 0.31)",
+      // The two elevation shadows the themes declare in app.css. `overflow` is the
+      // edge a fixed bar or a scroll container casts; `overlay` is the shadow of a
+      // layer floating above the page. Both resolve to the current theme.
+      overflow: "var(--color-shadow-overflow)",
+      overlay: "var(--color-shadow-overlay)",
       "dialog-overlay": "rgba(0,0,0,0.45)",
     },
     extend: {
