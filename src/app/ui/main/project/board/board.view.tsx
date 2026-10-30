@@ -1,9 +1,8 @@
 import { useState, useCallback, useEffect } from "react";
 import { Outlet, useNavigate, useRevalidator } from "@remix-run/react";
-import { useEventSource } from "remix-utils";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Project } from "@domain/project";
+import { Project, ProjectId } from "@domain/project";
 import { Category } from "@domain/category";
 import { IssueId } from "@domain/issue";
 import { Search } from "@app/ui/main/project/board/search";
@@ -12,7 +11,7 @@ import { UserAvatarList } from "./avatar-list";
 import { SelectSort } from "./select-sort";
 import { CategoryColumn } from "./category-column";
 import { ProjectContextProvider } from "../project.store";
-import { EVENTS } from "@app/events";
+import { useIssueEvents } from "@app/hooks/useIssueEvents";
 
 export const BoardView = ({ project }: Props): JSX.Element => {
   return (
@@ -28,7 +27,7 @@ export const BoardView = ({ project }: Props): JSX.Element => {
           </div>
         </section>
         <DndProvider backend={HTML5Backend}>
-          <Categories categories={project.categories} />
+          <Categories projectId={project.id} categories={project.categories} />
         </DndProvider>
         <Outlet />
       </div>
@@ -40,20 +39,21 @@ interface Props {
   project: Project;
 }
 
-const Categories = ({ categories }: CategoriesProps): JSX.Element => {
+const Categories = ({
+  projectId,
+  categories,
+}: CategoriesProps): JSX.Element => {
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [submittingIssues, setSubmittingIssues] = useState<IssueId[]>([]);
   const { revalidate } = useRevalidator();
   const navigate = useNavigate();
 
-  // Data created
-  useEventSource("board/issue/issue-event", {
-    event: EVENTS.ISSUE_CREATED,
-  });
-
-  const dataUpdated = useEventSource("board/issue/issue-event", {
-    event: EVENTS.ISSUE_CHANGED,
-  });
+  // Events sent to every client looking at this project. The url has to be
+  // absolute: a relative one is resolved against the address of the document
+  // the browser is on, so it stops matching the route as soon as an issue
+  // panel is open and the connection starts failing with a 404.
+  const issueEventsUrl = `/projects/${projectId}/board/issue/issue-event`;
+  const eventsReceived = useIssueEvents(issueEventsUrl);
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -72,7 +72,7 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
   // Revalidate to update category columns on event received
   useEffect(() => {
     revalidate();
-  }, [dataUpdated, revalidate]);
+  }, [eventsReceived, revalidate]);
 
   useEffect(() => {
     window.addEventListener("keydown", onKeyDown);
@@ -102,5 +102,6 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
 };
 
 interface CategoriesProps {
+  projectId: ProjectId;
   categories: Category[];
 }

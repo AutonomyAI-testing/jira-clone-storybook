@@ -3,7 +3,7 @@ import { eventStream } from "remix-utils";
 import { emitter, EVENTS } from "@app/events";
 
 export async function loader({ request }: LoaderArgs) {
-  return eventStream(request.signal, (send) => {
+  const stream = eventStream(request.signal, (send) => {
     const handleIssueCreated = (message: string) => {
       send({ event: EVENTS.ISSUE_CREATED, data: message });
     };
@@ -26,4 +26,13 @@ export async function loader({ request }: LoaderArgs) {
       emitter.off(EVENTS.ISSUE_DELETED, handleIssueDeleted);
     };
   });
+
+  // The server compresses every response that does not opt out of it, and a
+  // compressed event stream sits in the compression buffer until it has enough
+  // bytes to flush, so the events would never reach the browser. no-transform
+  // takes this response out of the compression.
+  const headers = new Headers(stream.headers);
+  headers.set("Cache-Control", "no-cache, no-transform");
+
+  return new Response(stream.body, { status: stream.status, headers });
 }
