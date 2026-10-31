@@ -5,7 +5,6 @@ import {
   useSearchParams,
   useTransition,
   useFetcher,
-  useLocation,
   useNavigate,
 } from "@remix-run/react";
 import * as Dialog from "@app/components/dialog";
@@ -14,6 +13,7 @@ import { CategoryType } from "@domain/category";
 import { Issue, defaultIssuesIds } from "@domain/issue";
 import { Comment, CommentId } from "@domain/comment";
 import { useUserStore } from "@app/store/user.store";
+import { useBoardUrl } from "@app/hooks/useBoardUrl";
 import { ActionData as IssueActionData } from "@app/routes/__main/projects.$projectId/board/issue/$issueId";
 import { UserAvatar } from "@app/components/user-avatar";
 import { Button } from "@app/components/button";
@@ -42,7 +42,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const fetcher = useFetcher();
   const params = useSearchParams();
   const transition = useTransition();
-  const location = useLocation();
+  const previousUrl = useBoardUrl();
   const navigate = useNavigate();
   const initStatus = (params[0].get("category") as CategoryType) || "TODO";
   const userIsNotReporter = user.id !== reporter.id;
@@ -107,11 +107,10 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
   useEffect(() => {
     if (!isOpen) {
       setTimeout(() => {
-        const previousUrl = location.pathname.split("/issue")[0];
         navigate(previousUrl);
       }, 300);
     }
-  }, [isOpen, navigate, location.pathname]);
+  }, [isOpen, navigate, previousUrl]);
 
   useEffect(() => {
     const formAction = fetcher.formData?.get("_action");
