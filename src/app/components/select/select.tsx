@@ -1,13 +1,33 @@
 import * as Select from "@radix-ui/react-select";
 import { twix } from "tailwindcss-radix-ui";
 import cx from "classix";
-import { RiArrowDropDownLine } from "react-icons/ri";
+import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 
 export const Root = Select.Root;
 export const Value = Select.Value;
 export const ItemText = Select.ItemText;
-export const ScrollUpButton = Select.ScrollUpButton;
-export const ScrollDownButton = Select.ScrollUpButton;
+const scrollButtonClass = cx(
+  "flex cursor-pointer items-center justify-center py-1 text-icon",
+  "hover:text-icon-brand"
+);
+
+export const ScrollUpButton = ({
+  children,
+  ...props
+}: Select.SelectScrollUpButtonProps): JSX.Element => (
+  <Select.ScrollUpButton className={scrollButtonClass} {...props}>
+    {children ?? <RiArrowDropUpLine size={24} />}
+  </Select.ScrollUpButton>
+);
+
+export const ScrollDownButton = ({
+  children,
+  ...props
+}: Select.SelectScrollDownButtonProps): JSX.Element => (
+  <Select.ScrollDownButton className={scrollButtonClass} {...props}>
+    {children ?? <RiArrowDropDownLine size={24} />}
+  </Select.ScrollDownButton>
+);
 export const Viewport = Select.Viewport;
 export const Separator = Select.Separator;
 
