@@ -20,6 +20,7 @@ import { Button } from "@app/components/button";
 import { Title } from "@app/components/title";
 import { Description } from "@app/components/description";
 import { Kbd } from "@app/components/kbd-placeholder";
+import { useAcceptShortcut } from "@app/hooks/useAcceptShortcut";
 import { PanelHeaderIssue } from "./panel-header-issue";
 import { CreateComment } from "./comment/create-comment";
 import { ViewComment } from "./comment/view-comment";
@@ -68,15 +69,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
     }
   }, [postData]);
 
-  const onKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.shiftKey && e.key.toLowerCase() === "s") {
-        e.preventDefault();
-        handleProgrammaticSubmit();
-      }
-    },
-    [handleProgrammaticSubmit]
-  );
+  useAcceptShortcut(handleProgrammaticSubmit);
 
   const handleFormSumbit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -97,12 +90,6 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
     );
     setComments(updatedComments);
   };
-
-  useEffect(() => {
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [onKeyDown]);
 
   useEffect(() => {
     if (!isOpen) {

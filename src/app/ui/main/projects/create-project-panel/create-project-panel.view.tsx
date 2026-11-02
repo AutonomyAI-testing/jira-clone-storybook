@@ -13,6 +13,7 @@ import { Button } from "@app/components/button";
 import { Title } from "@app/components/title";
 import { Description } from "@app/components/description";
 import { Kbd } from "@app/components/kbd-placeholder";
+import { useAcceptShortcut } from "@app/hooks/useAcceptShortcut";
 import { CreateProjectPanelHeader } from "./create-project-panel-header";
 
 export const CreateProjectPanelView = ({
@@ -51,15 +52,7 @@ export const CreateProjectPanelView = ({
     setIsOpen(false);
   };
 
-  const onKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.shiftKey && e.key.toLowerCase() === "s") {
-        e.preventDefault();
-        handleProgrammaticSubmit();
-      }
-    },
-    [handleProgrammaticSubmit]
-  );
+  useAcceptShortcut(handleProgrammaticSubmit);
 
   useEffect(() => {
     const isErrors =
@@ -71,12 +64,6 @@ export const CreateProjectPanelView = ({
         ?.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [actionData]);
-
-  useEffect(() => {
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [onKeyDown]);
 
   useEffect(() => {
     if (!isOpen) {

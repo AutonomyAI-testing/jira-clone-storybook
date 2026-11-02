@@ -8,6 +8,7 @@ import { Category } from "@domain/category";
 import { IssueId } from "@domain/issue";
 import { Search } from "@app/ui/main/project/board/search";
 import { Kbd } from "@app/components/kbd-placeholder";
+import { isTextEntryTarget } from "@utils/is-text-entry-target";
 import { UserAvatarList } from "./avatar-list";
 import { SelectSort } from "./select-sort";
 import { CategoryColumn } from "./category-column";
@@ -57,6 +58,10 @@ const Categories = ({ categories }: CategoriesProps): JSX.Element => {
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
+      // A capital N typed in the board filter, an issue's title or a comment is
+      // that field's text, so the create-issue chord leaves it alone.
+      if (isTextEntryTarget(e.target)) return;
+
       if (e.shiftKey && e.key.toLowerCase() === "n") {
         e.preventDefault();
         navigate("issue/new");
