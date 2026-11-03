@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, Dispatch, SetStateAction } from "react";
+import { useEffect, Dispatch, SetStateAction } from "react";
 import { Link, useFetcher } from "@remix-run/react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RxValueNone } from "react-icons/rx";
@@ -19,8 +19,6 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
     setSubmittingIssues,
     handleDragging,
   } = props;
-  const [columnHeight, setColumnHeight] = useState<number>(0);
-  const columnRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const fetcher = useFetcher();
   const sortBy = useSortBy();
   const { search } = useProjectStore();
@@ -73,12 +71,6 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
     }
   }, [fetcher, setSubmittingIssues]);
 
-  useEffect(() => {
-    if (columnRef.current) {
-      setColumnHeight(columnRef.current.offsetHeight);
-    }
-  }, []);
-
   return (
     <div
       ref={dropRef}
@@ -121,27 +113,25 @@ export const CategoryColumn = (props: CategoryColumnProps): JSX.Element => {
         </Link>
       </div>
       {/* Column body items */}
-      <div ref={columnRef} className="h-full">
-        <div style={{ height: `${columnHeight}px` }}>
-          <ScrollArea>
-            <ul className="mt-1 max-w-[260px] px-3 pb-1">
-              {emptyCategory ? (
-                <EmptyCategory />
-              ) : (
-                filteredIssues().map((issue, index) => (
-                  <li key={index} className="mb-2">
-                    <IssueCard
-                      issue={issue}
-                      categoryId={category.id}
-                      isSubmitting={submittingIssues.includes(issue.id)}
-                      handleDragging={handleDragging}
-                    />
-                  </li>
-                ))
-              )}
-            </ul>
-          </ScrollArea>
-        </div>
+      <div className="min-h-0 flex-1">
+        <ScrollArea>
+          <ul className="mt-1 max-w-[260px] px-3 pb-1">
+            {emptyCategory ? (
+              <EmptyCategory />
+            ) : (
+              filteredIssues().map((issue, index) => (
+                <li key={index} className="mb-2">
+                  <IssueCard
+                    issue={issue}
+                    categoryId={category.id}
+                    isSubmitting={submittingIssues.includes(issue.id)}
+                    handleDragging={handleDragging}
+                  />
+                </li>
+              ))
+            )}
+          </ul>
+        </ScrollArea>
       </div>
     </div>
   );
