@@ -90,21 +90,30 @@ export const CreateProjectPanelView = ({
         <Dialog.Portal container={portalContainer}>
           <Dialog.Overlay
             id="project-panel-overlay"
-            className={isOpen ? "" : "bg-opacity-0"}
+            className={cx(
+              // The panel is capped to the window, so the overlay never has to scroll;
+              // leaving it scrollable would shift the panel on a wheel event.
+              "overflow-y-hidden",
+              !isOpen && "bg-opacity-0"
+            )}
           >
             <Dialog.Content
               onEscapeKeyDown={handleProgrammaticClose}
               onPointerDownOutside={handleProgrammaticClose}
               className={cx(
-                "max-w-[600px]",
+                "flex max-h-[calc(100vh_-_80px)] max-w-[600px] flex-col",
                 !isOpen && "translate-y-[10px] opacity-0"
               )}
             >
               <CreateProjectPanelHeader
                 id={project?.id || "Create new project"}
               />
-              <Form method="post" ref={formRef}>
-                <div className="mb-6">
+              <Form
+                method="post"
+                ref={formRef}
+                className="flex min-h-0 flex-1 flex-col"
+              >
+                <div className="mb-6 flex min-h-0 flex-1 flex-col">
                   <Dialog.Title className="-ml-3 mb-8 mt-5">
                     <Title
                       initTitle={project?.name || ""}
@@ -116,7 +125,7 @@ export const CreateProjectPanelView = ({
                   <div className="-ml-3 mb-5">
                     <Description initDescription={project?.description || ""} />
                   </div>
-                  <ul className="space-y-1.5">
+                  <ul className="min-h-0 flex-1 space-y-1.5 overflow-y-auto">
                     {users.map((user) => (
                       <li
                         key={user.id}
@@ -149,7 +158,7 @@ export const CreateProjectPanelView = ({
                     ))}
                   </ul>
                 </div>
-                <div className="mt-6 grid grid-cols-3 items-end justify-center">
+                <div className="grid shrink-0 grid-cols-3 items-end justify-center">
                   <span className="font-primary-light text-2xs text-font-subtlest text-opacity-80">
                     Press <Kbd>Shift</Kbd> + <Kbd>S</Kbd> to accept
                   </span>
