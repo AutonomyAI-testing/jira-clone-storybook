@@ -10,6 +10,9 @@ export const categoryTypeDict: Record<CategoryType, string> = {
   DONE: "Done",
 };
 
+export const isValidCategoryType = (categoryType: string | null): categoryType is CategoryType =>
+  categoryType !== null && categoryTypes.includes(categoryType as CategoryType);
+
 export interface Category {
   id: CategoryId;
   type: CategoryType;

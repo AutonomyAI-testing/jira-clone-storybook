@@ -10,7 +10,7 @@ import {
 } from "@remix-run/react";
 import * as Dialog from "@app/components/dialog";
 import { toast } from "react-toastify";
-import { CategoryType } from "@domain/category";
+import { isValidCategoryType } from "@domain/category";
 import { Issue, defaultIssuesIds } from "@domain/issue";
 import { Comment, CommentId } from "@domain/comment";
 import { useUserStore } from "@app/store/user.store";
@@ -44,7 +44,10 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const transition = useTransition();
   const location = useLocation();
   const navigate = useNavigate();
-  const initStatus = (params[0].get("category") as CategoryType) || "TODO";
+  const categoryParam = params[0].get("category");
+  const initStatus = isValidCategoryType(categoryParam)
+    ? categoryParam
+    : "TODO";
   const userIsNotReporter = user.id !== reporter.id;
 
   const postData = useCallback(
