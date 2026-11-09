@@ -4,6 +4,7 @@ import cx from "classix";
 import { Comment, CommentId } from "@domain/comment";
 import { useUserStore } from "@app/store/user.store";
 import { UserAvatar } from "@app/components/user-avatar";
+import * as AlertDialog from "@app/components/alert-dialog";
 import { EditBox } from "./edit-box";
 import { formatDateTime } from "@utils/formatDateTime";
 
@@ -54,14 +55,10 @@ export const ViewComment = ({
           Edit
         </button>
         <span className="mx-2">{"·"}</span>
-        <button
-          onClick={remove}
+        <DeleteCommentModalDialog
+          onConfirm={remove}
           disabled={isNotSelfComment}
-          className="font-primary-light text-xs hover:underline"
-          aria-label="Delete comment"
-        >
-          Delete
-        </button>
+        />
       </div>
     </div>
   );
@@ -102,6 +99,52 @@ export const ViewComment = ({
     </div>
   );
 };
+
+const DeleteCommentModalDialog = ({
+  onConfirm,
+  disabled,
+}: DeleteCommentModalDialogProps): JSX.Element => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const confirm = () => {
+    setIsOpen(false);
+    onConfirm();
+  };
+
+  return (
+    <AlertDialog.Root open={isOpen} onOpenChange={setIsOpen}>
+      <AlertDialog.Trigger
+        className="font-primary-light text-xs hover:underline"
+        aria-label="Delete comment"
+        disabled={disabled}
+      >
+        Delete
+      </AlertDialog.Trigger>
+
+      <AlertDialog.Portal>
+        <AlertDialog.Overlay />
+        <AlertDialog.Content>
+          <AlertDialog.Title>Delete comment?</AlertDialog.Title>
+          <AlertDialog.Description>
+            This action is permanent and cannot be undone. Are you sure you want
+            to remove this comment completely?
+          </AlertDialog.Description>
+          <div className="mt-8 flex w-full justify-end gap-4">
+            <AlertDialog.Cancel aria-label="Cancel">Cancel</AlertDialog.Cancel>
+            <AlertDialog.Action aria-label="Delete comment" onClick={confirm}>
+              Delete
+            </AlertDialog.Action>
+          </div>
+        </AlertDialog.Content>
+      </AlertDialog.Portal>
+    </AlertDialog.Root>
+  );
+};
+
+interface DeleteCommentModalDialogProps {
+  onConfirm: () => void;
+  disabled?: boolean;
+}
 
 const commentIsEdited = (comment: Comment): boolean => {
   // Convert miliseconds to seconds just in case there is a minimal difference
