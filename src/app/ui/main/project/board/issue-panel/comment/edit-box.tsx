@@ -39,13 +39,25 @@ export const EditBox = ({
   };
   const onFocus = () => setIsEditing(true);
 
+  const onBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+    const focusMovedInside = e.currentTarget.contains(
+      e.relatedTarget as Node | null
+    );
+    if (focusMovedInside) return;
+
+    // Leave an empty box as it was found: no Save/Cancel row under a box with
+    // nothing to save. A box opened on an existing comment keeps its row.
+    if (isNewComment && !messageIsValid()) setIsEditing(false);
+  };
+
+  const isNewComment = defaultMessage === "";
   const isError = initError && !messageIsValid();
   const placeholder = isError
     ? "Message cannot be empty"
     : "Add your comment...";
 
   return (
-    <div className="w-full">
+    <div className="w-full" onBlur={onBlur}>
       <TextareaAutosize
         name="comment"
         value={message}
@@ -74,6 +86,7 @@ export const EditBox = ({
           Save
         </Button>
         <Button
+          type="button"
           color="neutral"
           variant="text"
           className="px-4 py-2.5"
