@@ -94,9 +94,21 @@ interface GetProjectOptions {
   sortIssuesBy: Sort;
 }
 
-export const getProjectSummary = async (projectId: ProjectId): Promise<ProjectSummary | null> => {
-  const projectSummaryDb = await db.project.findUnique({
-    where: { id: projectId },
+// Scoped to the viewer: a project the user is not a member of is reported as
+// not found, exactly like a project that does not exist.
+export const getProjectSummary = async (
+  projectId: ProjectId,
+  userId: UserId
+): Promise<ProjectSummary | null> => {
+  const projectSummaryDb = await db.project.findFirst({
+    where: {
+      id: projectId,
+      users: {
+        some: {
+          id: userId,
+        },
+      },
+    },
     select: {
       id: true,
       name: true,

@@ -4,12 +4,17 @@ import { useLoaderData } from "@remix-run/react";
 import invariant from "tiny-invariant";
 import { ProjectSummary, ProjectId } from "@domain/project";
 import { getProjectSummary } from "@infrastructure/db/project";
+import { getUserSession } from "@app/session-storage";
 import { Error404 } from "@app/components/error-404";
 import { Error500 } from "@app/components/error-500";
 import { ProjectView } from "@app/ui/main/project";
 import { formatTags, formatProperties } from "@utils/meta";
 
 export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
+  if (!data) {
+    return [{ title: "Jira clone - Project not found" }];
+  }
+
   const { projectSummary } = data as LoaderData;
   const title = `Jira clone - ${projectSummary.name || "Project"}`;
   const description =
@@ -57,7 +62,14 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 
   invariant(params.projectId, `params.projectId is required`);
 
-  const projectSummary = await getProjectSummary(projectId);
+  const userSession = await getUserSession(request);
+  const userId = userSession.getUser();
+
+  if (!userId) {
+    return redirect("/login");
+  }
+
+  const projectSummary = await getProjectSummary(projectId, userId);
 
   if (!projectSummary) {
     throw new Response("Not Found", {
