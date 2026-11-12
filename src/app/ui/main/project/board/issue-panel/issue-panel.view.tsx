@@ -9,6 +9,7 @@ import {
   useNavigate,
 } from "@remix-run/react";
 import * as Dialog from "@app/components/dialog";
+import cx from "classix";
 import { toast } from "react-toastify";
 import { CategoryType } from "@domain/category";
 import { Issue, defaultIssuesIds } from "@domain/issue";
@@ -125,11 +126,14 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
     <>
       <Dialog.Root open={true}>
         <Dialog.Portal container={portalContainer}>
-          <Dialog.Overlay>
+          <Dialog.Overlay className="overflow-y-hidden">
             <Dialog.Content
               onEscapeKeyDown={handleProgrammaticClose}
               onPointerDownOutside={handleProgrammaticClose}
-              className={isOpen ? "" : "translate-y-[10px] opacity-0"}
+              className={cx(
+                "flex max-h-[calc(100vh_-_80px)] flex-col",
+                isOpen ? "" : "translate-y-[10px] opacity-0"
+              )}
             >
               <PanelHeaderIssue
                 id={issue?.id || "Create new issue"}
@@ -138,8 +142,13 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                   defaultIssuesIds.includes(issue?.id || "")
                 }
               />
-              <Form method="post" onSubmit={handleFormSumbit} ref={formRef}>
-                <div className="grid grid-cols-5 gap-16">
+              <Form
+                method="post"
+                onSubmit={handleFormSumbit}
+                ref={formRef}
+                className="flex min-h-0 flex-1 flex-col"
+              >
+                <div className="-mx-4 grid min-h-0 flex-1 grid-cols-5 gap-16 overflow-y-auto px-4">
                   <section className="col-span-3">
                     <div className="my-5 -ml-3 mb-6">
                       <Dialog.Title asChild>
