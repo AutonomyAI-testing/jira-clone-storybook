@@ -3,6 +3,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import cx from "classix";
 import { ProjectId, ProjectSummary, projectsMock } from "@domain/project";
 import * as AlertDialog from "@app/components/alert-dialog";
+import { ProjectImage } from "@app/components/project-image";
 
 const defaultProjectsIds: ProjectId[] = projectsMock.map(
   (projectMock) => projectMock.id
@@ -20,8 +21,8 @@ export const ProjectCard = ({ project }: Props): JSX.Element => {
           "hover:-translate-y-0.5 hover:bg-background-brand-subtlest-hovered hover:text-font-brand hover:shadow-md hover:outline-border-brand"
         )}
       >
-        <img
-          src={project.image || "/images/default-project.png"}
+        <ProjectImage
+          src={project.image}
           alt="Project"
           width="90px"
           height="104px"

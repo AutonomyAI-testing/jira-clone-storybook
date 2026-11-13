@@ -6,6 +6,7 @@ import { RiArrowDropLeftLine } from "react-icons/ri";
 import { ImStatsDots } from "react-icons/im";
 import { BsListNested, BsCloudSlash } from "react-icons/bs";
 import { TbError404 } from "react-icons/tb";
+import { ProjectImage } from "@app/components/project-image";
 
 export const Sidebar = (props: Props): JSX.Element => {
   const { projectName, projectDescription, projectImage } = props;
@@ -24,7 +25,7 @@ export const Sidebar = (props: Props): JSX.Element => {
         )}
       >
         <section className="flex w-full items-start px-5 py-6">
-          <img
+          <ProjectImage
             src={projectImage}
             width={28}
             height={28}
