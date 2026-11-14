@@ -25,7 +25,7 @@ export const commentMock3: Comment = {
   id: "ee000718-85e5-44ac-91e2-e29340fb0b61",
   user: usersMock[5], // Mr. Potato
   message:
-    "This is not they only accessible feature implemented. By using Radix UI, components like select, dialog or checkboxes are accessible by default, and you can handle them with the keyboard.",
+    "This is not the only accessible feature implemented. By using Radix UI, components like select, dialog or checkboxes are accessible by default, and you can handle them with the keyboard.",
   createdAt,
   updatedAt,
 };
