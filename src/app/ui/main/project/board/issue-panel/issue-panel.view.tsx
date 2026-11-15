@@ -176,23 +176,31 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                   </section>
                   <section className="col-span-2 space-y-10">
                     <div>
-                      <p className="mb-1">Status</p>
+                      <p className="mb-1 font-primary-black text-font">
+                        Status
+                      </p>
                       <SelectStatus
                         initStatus={issue?.categoryType || initStatus}
                       />
                     </div>
                     <div>
-                      <p className="mb-1">Priority</p>
+                      <p className="mb-1 font-primary-black text-font">
+                        Priority
+                      </p>
                       <SelectPriority
                         initPriority={issue?.priority.id || "low"}
                       />
                     </div>
                     <div>
-                      <p className="mb-1">Asignee</p>
+                      <p className="mb-1 font-primary-black text-font">
+                        Asignee
+                      </p>
                       <SelectAsignee initAsignee={issue?.asignee || user} />
                     </div>
                     <div>
-                      <p className="mb-1">Reporter</p>
+                      <p className="mb-1 font-primary-black text-font">
+                        Reporter
+                      </p>
                       <div className="mt-1 flex w-fit items-center gap-2 rounded-full bg-background-neutral py-1 pb-1 pl-1 pr-3.5">
                         <UserAvatar {...reporter} />
                         <input
