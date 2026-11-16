@@ -22,7 +22,7 @@ export const Header = (): JSX.Element => {
         </Link>
       </section>
       <section className="flex items-center gap-4">
-        <Tooltip title="About">
+        <Tooltip title="Not implemented">
           <button
             aria-label="About this website"
             disabled
