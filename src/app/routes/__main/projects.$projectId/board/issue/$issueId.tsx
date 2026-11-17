@@ -29,6 +29,13 @@ import { emitter, EVENTS } from "@app/events";
 import { formatTags, formatProperties } from "@utils/meta";
 
 export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
+  // The loader answers "Not Found" for an issue that is not in this project, and
+  // meta still runs with no data, so it has to survive that or the boundary
+  // below never renders.
+  if (!data) {
+    return [{ title: "Jira clone - Issue not found" }];
+  }
+
   const { issue, projectId } = data as LoaderData;
   const title = `Jira clone - ${issue.name}`;
   const description = issue.description || "No description";
@@ -83,7 +90,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 
   invariant(params.projectId, `params.projectId is required`);
 
-  const issue = await getIssue(issueId);
+  const issue = await getIssue(issueId, projectId);
 
   if (!issue) {
     throw new Response("Not Found", {
@@ -105,6 +112,18 @@ export const action: ActionFunction = async ({ request, params }) => {
     ? `?sortBy=${sortByParam}`
     : "";
   const previousUrl = `/projects/${projectId}/board${sortBySeachParam}`;
+
+  // Actions run before any layout loader, and the issue id comes from the address,
+  // so the same scoping the loader does is needed here: without it a hand-built
+  // POST reaches updateIssue/deleteIssue with another project's issue id and
+  // writes it into this project.
+  const issue = await getIssue(id, projectId);
+
+  if (!issue) {
+    throw new Response("Not Found", {
+      status: 404,
+    });
+  }
 
   if (_action === "update") {
     const name = formData.get("title") as string;
@@ -177,7 +196,7 @@ export function CatchBoundary() {
           <Dialog.Content
             onPointerDownOutside={handleProgrammaticNavigation}
             className={cx(
-              "bg-background-surface relative z-50 flex rounded-md px-20 py-12 shadow-lg flex-center",
+              "relative z-50 flex rounded-md bg-elevation-surface px-20 py-12 shadow-lg flex-center",
               "duration-300 radix-state-open:animate-slide-up"
             )}
           >

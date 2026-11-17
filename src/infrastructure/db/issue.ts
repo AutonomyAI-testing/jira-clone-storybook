@@ -1,5 +1,6 @@
 import { Prisma } from "@prisma/client";
 import { UserId } from "@domain/user";
+import { ProjectId } from "@domain/project";
 import { CategoryType, CategoryId } from "@domain/category";
 import { IssueId, Issue } from "@domain/issue";
 import { Priority, PriorityId } from "@domain/priority";
@@ -7,10 +8,16 @@ import { Comment } from "@domain/comment";
 import { dnull } from "src/utils/dnull";
 import { db } from "./db.server";
 
-export const getIssue = async (issueId: IssueId): Promise<Issue | null> => {
-  const issueDb = await db.issue.findUnique({
+export const getIssue = async (issueId: IssueId, projectId: ProjectId): Promise<Issue | null> => {
+  // The issue id comes from the address, so it is resolved *within* the project
+  // in the address: looking it up by id alone renders another project's issue
+  // inside this board.
+  const issueDb = await db.issue.findFirst({
     where: {
       id: issueId,
+      category: {
+        projectId,
+      },
     },
     include: {
       asignee: true,
