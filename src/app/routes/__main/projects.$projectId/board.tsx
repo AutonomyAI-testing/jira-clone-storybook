@@ -87,7 +87,9 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   return json<LoaderData>({ project });
 };
 
-export const action: ActionFunction = async ({ request }) => {
+export const action: ActionFunction = async ({ request, params }) => {
+  invariant(params.projectId, `params.projectId is required`);
+  const projectId = params.projectId as ProjectId;
   const formData = await request.formData();
   const _action = formData.get("_action") as string;
 
@@ -97,10 +99,20 @@ export const action: ActionFunction = async ({ request }) => {
     const inputData: UpdateIssueCategoryData = {
       categoryId,
       issueId,
+      projectId,
     };
 
     try {
-      await updateIssueCategory(inputData);
+      const isMoved = await updateIssueCategory(inputData);
+
+      // The issue, or the category it was sent to, belongs to another project.
+      if (!isMoved) {
+        return json(
+          { error: "The issue does not belong to this project" },
+          { status: 404 }
+        );
+      }
+
       emitter.emit(EVENTS.ISSUE_CHANGED, Date.now());
       return json(null, { status: 201 });
     } catch (error) {

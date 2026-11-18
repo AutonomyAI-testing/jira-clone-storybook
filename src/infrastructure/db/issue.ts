@@ -1,5 +1,6 @@
 import { Prisma } from "@prisma/client";
 import { UserId } from "@domain/user";
+import { ProjectId } from "@domain/project";
 import { CategoryType, CategoryId } from "@domain/category";
 import { IssueId, Issue } from "@domain/issue";
 import { Priority, PriorityId } from "@domain/priority";
@@ -127,20 +128,48 @@ export const updateIssue = async (issue: UpdateIssueInputData) => {
 export type UpdateIssueCategoryData = {
   issueId: IssueId;
   categoryId: CategoryId;
+  projectId: ProjectId;
 };
-export const updateIssueCategory = async ({ issueId, categoryId }: UpdateIssueCategoryData) => {
-  await db.issue.update({
+/**
+ * Moves an issue into one of its own project's categories.
+ *
+ * Both sides of the move are scoped to `projectId`: an issue that belongs to another
+ * project is not touched, and neither is a category from another project. Returns
+ * whether the issue was moved, so the caller can refuse a request the address does
+ * not own.
+ */
+export const updateIssueCategory = async ({
+  issueId,
+  categoryId,
+  projectId,
+}: UpdateIssueCategoryData): Promise<boolean> => {
+  const category = await db.category.findFirst({
     where: {
-      id: issueId,
+      id: categoryId,
+      projectId,
     },
-    data: {
-      category: {
-        connect: {
-          id: categoryId,
-        },
-      },
+    select: {
+      id: true,
     },
   });
+
+  if (!category) {
+    return false;
+  }
+
+  const { count } = await db.issue.updateMany({
+    where: {
+      id: issueId,
+      category: {
+        projectId,
+      },
+    },
+    data: {
+      categoryId: category.id,
+    },
+  });
+
+  return count > 0;
 };
 
 export const deleteIssue = async (issueId: IssueId) => {
