@@ -12,7 +12,7 @@ export const ProjectCard = ({ project }: Props): JSX.Element => {
   const isDefaultProject = defaultProjectsIds.includes(project.id);
 
   return (
-    <div className="w-[400px]">
+    <div className="w-full max-w-[400px]">
       <Link
         to={project.id}
         className={cx(
