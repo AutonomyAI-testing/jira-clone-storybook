@@ -106,7 +106,7 @@ The login section is the first one you will see when you open the app. It is a s
 
 ### Projects list<a name="projects-list"></a>
 
-This sections whows the projects the logged in user has access to. It is possible to create a new project and assign users to it.
+This section shows the projects the logged in user has access to. It is possible to create a new project and assign users to it.
 
 <img src="./public/images/readme/projects.png" alt="Projects" />
 <img src="./public/images/readme/projects-new.png" alt="ProjectsNew" />
@@ -125,7 +125,7 @@ Within the issue editing panel you can manage the issue and see its information.
 
 ## Technologies<a name="technologies"></a>
 
-The app is made with [React](https://reactjs.org/) (using ES6 and hooks), [Typescript](https://www.typescriptlang.org/), [Remix Run](https://remix.run/) as a SSR framework, [Radix](https://www.radix-ui.com/) for accesible UI components and [Tailwind CSS](https://tailwindcss.com/) for the styling. Thanks to Remix and its SSR paradigm, state management is reduced at its minimum. Regarding data storage, I've used a [SQLite](https://www.sqlite.org) database, which uses a single file. Depending on the environment, persistent storage is handled differently. Database location URL can be set via environment variables. To handle the database I've used [Prisma](https://www.prisma.io/), which is a great ORM for SQLite. For testing, I've used [Vitest](https://vitest.dev/), but due to the new entities approach I no longer need to test the domain level. I'm planning to test routing and HTTP requests in the future.
+The app is made with [React](https://reactjs.org/) (using ES6 and hooks), [Typescript](https://www.typescriptlang.org/), [Remix Run](https://remix.run/) as a SSR framework, [Radix](https://www.radix-ui.com/) for accessible UI components and [Tailwind CSS](https://tailwindcss.com/) for the styling. Thanks to Remix and its SSR paradigm, state management is reduced at its minimum. Regarding data storage, I've used a [SQLite](https://www.sqlite.org) database, which uses a single file. Depending on the environment, persistent storage is handled differently. Database location URL can be set via environment variables. To handle the database I've used [Prisma](https://www.prisma.io/), which is a great ORM for SQLite. For testing, I've used [Vitest](https://vitest.dev/), but due to the new entities approach I no longer need to test the domain level. I'm planning to test routing and HTTP requests in the future.
 
 I've used [ESLint](https://eslint.org/) for linting with low restrictive rules. For the formatting, I've relied on [Prettier](https://prettier.io/). The app is deployed at [Fly](https://fly.io/).
 
@@ -170,7 +170,7 @@ Everything related to the Remix application, including the UI and the backend. T
 - Session-storage -> Cookie session logic, related to both user authentication and theme.
 - Store -> Context API stores to handle easily share user and theme sessions data.
 - Styles -> Tailwind CSS global styles and fonts specifications.
-- UI -> Hierachical structure of the views. The folder organization matches the UI composition so it can be easier to find a specific file or to get an idea of the UI organization. It intends to follow Robert Martin's [Screaming Architecture](http://blog.cleancoder.com/uncle-bob/2011/09/30/Screaming-Architecture.html) concept.
+- UI -> Hierarchical structure of the views. The folder organization matches the UI composition so it can be easier to find a specific file or to get an idea of the UI organization. It intends to follow Robert Martin's [Screaming Architecture](http://blog.cleancoder.com/uncle-bob/2011/09/30/Screaming-Architecture.html) concept.
 
 ## Conventions<a name="conventions"></a>
 
@@ -182,7 +182,7 @@ For react components, on the other hand, I prefer the standard [Pascal Case](htt
 
 > **_E.g._** IssueCard
 >
-> Regarding interfaces, it depend on the context. In general, I tend to use the same name they are refered to using Pascal Case.
+> Regarding interfaces, it depend on the context. In general, I tend to use the same name they are referred to using Pascal Case.
 > **_E.g._** categoryId -> CategoryId
 
 In the case of componentes, to avoid using the same name I add the suffix "Props" to refere to that component's props.
@@ -191,8 +191,8 @@ In the case of componentes, to avoid using the same name I add the suffix "Props
 
 ## Goals<a name="goals"></a>
 
-All my personal projects have a goal - something to practice. It can be a framework, a styling library or a programming concept. In this one, I tried to put in practice some Clean Architecture concepts, but limited to my understanding and the scope of the project. I did dome entity modeling and created boundaries between domain, infrastructure and ui/application. The goal was to follow the dependency rule and isolate the core parts (domain) from those with lower hierarchy. That is why I chose a Jira clone, in order to have a more or less complex domain to model.
+All my personal projects have a goal - something to practice. It can be a framework, a styling library or a programming concept. In this one, I tried to put in practice some Clean Architecture concepts, but limited to my understanding and the scope of the project. I did some entity modeling and created boundaries between domain, infrastructure and ui/application. The goal was to follow the dependency rule and isolate the core parts (domain) from those with lower hierarchy. That is why I chose a Jira clone, in order to have a more or less complex domain to model.
 
-As the development of the application progressed, I also wanted to try the use of Tailwind CSS as styling library and a Server-Side Rendering paradigm. I opted for Remix because I already had experience with Next.js and I liked it's focus on web standards approach.
+As the development of the application progressed, I also wanted to try the use of Tailwind CSS as styling library and a Server-Side Rendering paradigm. I opted for Remix because I already had experience with Next.js and I liked its focus on web standards approach.
 
-My last contribution was implementing a full Design System. I followed the [Atlasian's Design System](https://atlassian.design/components/tokens/all-tokens#color-text) to implement semantic color variables. To achieve this, I created a palette of base colors and a serie of semantic variables referring to each UI element (e.g. 'border', 'border-focus', 'border-selected', 'border-disabled', etc). Then, I created as many themes as I needed, each one in its own class name (e.g. 'theme-light', 'theme-dark', 'theme-dark-blue', etc). In every class theme, I listed all this semantic variables, each one with its own color implementation. This way, I can easily change the theme of the application by changing the class name of the root element, and all the theme colors will be applied accordingly. This serves two purposes: first, component styling is very easy because all of them follow the same pattern and cover all the possible states; second, it is very easy to change the theme of the application, and it is also very easy to create new themes, since we only need to add a new theme class and apply the semantic variables to it. So far I've created 6 themes, each of them fully customizable, and it will be trivial to add more. The goal is: the difficulty comes from the creative process, not from the technical implementation.
+My last contribution was implementing a full Design System. I followed the [Atlassian's Design System](https://atlassian.design/components/tokens/all-tokens#color-text) to implement semantic color variables. To achieve this, I created a palette of base colors and a series of semantic variables referring to each UI element (e.g. 'border', 'border-focus', 'border-selected', 'border-disabled', etc). Then, I created as many themes as I needed, each one in its own class name ('light', 'dark', 'lava', 'lime' and 'barbie'). In every theme class, I listed all these semantic variables, each one with its own color implementation. This way, I can easily change the theme of the application by changing the class name of the root element, and all the theme colors will be applied accordingly. This serves two purposes: first, component styling is very easy because all of them follow the same pattern and cover all the possible states; second, it is very easy to change the theme of the application, and it is also very easy to create new themes, since we only need to add a new theme class and apply the semantic variables to it. So far I've created 5 themes, each of them fully customizable, and it will be trivial to add more. The theme picker in the header offers those five plus a System option, which follows the operating system preference. The goal is: the difficulty comes from the creative process, not from the technical implementation.
