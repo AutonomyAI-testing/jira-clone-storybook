@@ -47,7 +47,7 @@ const MoreUsers = ({ users }: MoreUsersProps): JSX.Element => (
               key={user.id}
               className="mb-1 flex items-center justify-start gap-3 rounded px-1 py-1 outline-none last:mb-0 focus:bg-background-neutral focus-visible:outline-none"
             >
-              <UserAvatar {...user} size={44} />
+              <UserAvatar {...user} size={44} decorative />
               <span>{user.name}</span>
             </DropdownMenu.Item>
           ))}

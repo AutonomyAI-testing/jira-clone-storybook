@@ -8,6 +8,7 @@ export const UserAvatar = ({
   color,
   size = 36,
   tooltip = false,
+  decorative = false,
 }: UserAvatarProps): JSX.Element => {
   const imageMinName = image?.replace(".webp", "-min.webp");
   const imageSrc = size > 80 ? `/avatars/${image}` : `/avatars/${imageMinName}`;
@@ -24,12 +25,16 @@ export const UserAvatar = ({
 
   return (
     <Tooltip title={name} show={tooltip}>
-      <Avatar.Root className="flex items-center rounded-full" style={imageSize}>
+      <Avatar.Root
+        className="flex items-center rounded-full"
+        style={imageSize}
+        aria-hidden={decorative || undefined}
+      >
         <Avatar.Image
           className="rounded-full object-cover"
           src={image ? imageSrc : undefined}
           style={imageSize}
-          alt={name}
+          alt={decorative ? "" : name}
         />
         <Avatar.Fallback
           delayMs={0}
@@ -50,4 +55,6 @@ export const UserAvatar = ({
 interface UserAvatarProps extends Omit<User, "id"> {
   size?: number;
   tooltip?: boolean;
+  /** Presentational avatar, for when its name is already announced beside it. */
+  decorative?: boolean;
 }
