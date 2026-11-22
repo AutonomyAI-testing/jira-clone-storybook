@@ -35,11 +35,11 @@ The app setup is as simple as any other Remix Run project. First, clone the repo
 git clone https://github.com/daniserrano7/jira-clone.git
 ```
 
-After that, navigate to the folder and install the dependencies
+After that, navigate to the folder and install the dependencies. The project is pinned to pnpm (see `packageManager` in package.json) and ships only a `pnpm-lock.yaml`, so use pnpm rather than npm, which would add a `package-lock.json`:
 
 ```
 cd jira-clone
-npm install
+pnpm install
 ```
 
 The application needs a database to work. You must first define the SQLite database url via environment variable. The repo provides a template named .sample.env with the structure of your env vars. You can then create your own .env file with the required values. Finally, you can create the database with Prisma by executing the following command:
@@ -59,7 +59,7 @@ npx prisma db seed
 To run the application in dev mode, execute the following command:
 
 ```
-npm run dev
+pnpm run dev
 ```
 
 This project uses Tailwind CSS, so this command will concurrently run the Tailwind CSS compiler in watch mode.
@@ -69,27 +69,28 @@ This project uses Tailwind CSS, so this command will concurrently run the Tailwi
 To build a compiled version of the application, execute the following command:
 
 ```
-npm run build
+pnpm run build
 ```
 
 This command will also execute the Tailwind CSS compiler in production mode. To start the compiled version, execute the following command:
 
 ```
-npm run start
+pnpm run start
 ```
 
 ### Test<a name="test"></a>
 
-To execute the test, execute the following command:
+The tests are end-to-end tests written with [Playwright](https://playwright.dev/). Install its browsers once, then run the suite with a dev server already listening on port 3000:
 
 ```
-npm run test
+pnpm exec playwright install
+pnpm test
 ```
 
-Alternatively, you can run ESLint linter, Typescript type checks and Vitest tests all at once with the following command:
+Alternatively, you can run the ESLint linter, the Typescript type checks and the Playwright tests all at once with the following command:
 
 ```
-npm run test-all
+pnpm run test-all
 ```
 
 ## Overview<a name="overview"></a>
@@ -125,7 +126,7 @@ Within the issue editing panel you can manage the issue and see its information.
 
 ## Technologies<a name="technologies"></a>
 
-The app is made with [React](https://reactjs.org/) (using ES6 and hooks), [Typescript](https://www.typescriptlang.org/), [Remix Run](https://remix.run/) as a SSR framework, [Radix](https://www.radix-ui.com/) for accesible UI components and [Tailwind CSS](https://tailwindcss.com/) for the styling. Thanks to Remix and its SSR paradigm, state management is reduced at its minimum. Regarding data storage, I've used a [SQLite](https://www.sqlite.org) database, which uses a single file. Depending on the environment, persistent storage is handled differently. Database location URL can be set via environment variables. To handle the database I've used [Prisma](https://www.prisma.io/), which is a great ORM for SQLite. For testing, I've used [Vitest](https://vitest.dev/), but due to the new entities approach I no longer need to test the domain level. I'm planning to test routing and HTTP requests in the future.
+The app is made with [React](https://reactjs.org/) (using ES6 and hooks), [Typescript](https://www.typescriptlang.org/), [Remix Run](https://remix.run/) as a SSR framework, [Radix](https://www.radix-ui.com/) for accesible UI components and [Tailwind CSS](https://tailwindcss.com/) for the styling. Thanks to Remix and its SSR paradigm, state management is reduced at its minimum. Regarding data storage, I've used a [SQLite](https://www.sqlite.org) database, which uses a single file. Depending on the environment, persistent storage is handled differently. Database location URL can be set via environment variables. To handle the database I've used [Prisma](https://www.prisma.io/), which is a great ORM for SQLite. For testing, I've used [Playwright](https://playwright.dev/): the suite drives the app end to end in a real browser, starting with the login route. [Vitest](https://vitest.dev/) is still installed for the `test-coverage` script, which currently holds no tests.
 
 I've used [ESLint](https://eslint.org/) for linting with low restrictive rules. For the formatting, I've relied on [Prettier](https://prettier.io/). The app is deployed at [Fly](https://fly.io/).
 
