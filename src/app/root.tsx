@@ -10,6 +10,7 @@ import {
   ScrollRestoration,
   useFetcher,
   useLoaderData,
+  useRouteLoaderData,
 } from "@remix-run/react";
 import cx from "classix";
 import {
@@ -180,15 +181,20 @@ export function ErrorBoundary({ error }: { error: Error }) {
 }
 
 export function CatchBoundary() {
+  // This boundary has no loader of its own, so the reader's theme is read off
+  // the root route's data — the same value the app's own document uses. It is
+  // undefined until a theme has been chosen, and the default theme then applies.
+  const { theme } = useRouteLoaderData<LoaderData>("root") ?? {};
+
   return (
-    <html>
+    <html lang="en" className={cx("h-full", theme)}>
       <head>
         <title>Ooops! Not found</title>
         <Meta />
         <Links />
       </head>
-      <body>
-        <div style={errorComponentStyle}>
+      <body className="h-full bg-elevation-surface font-primary text-font">
+        <div className="flex h-full items-center justify-center">
           <Error404
             message="It seems that you have lost! Go to the main page"
             href="/"
