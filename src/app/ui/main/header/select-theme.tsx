@@ -127,9 +127,10 @@ export const SelctTheme = (): JSX.Element => {
                 </span>
                 <div>
                   <span className="text-sm">{label}</span>
+                  {/* The item's own label already names the theme, so the thumbnail is decorative. */}
                   <img
                     src={image}
-                    alt={`${label} theme`}
+                    alt=""
                     className="h-[100px] w-[180px] rounded border-2 border-border-disabled object-cover"
                   />
                 </div>
