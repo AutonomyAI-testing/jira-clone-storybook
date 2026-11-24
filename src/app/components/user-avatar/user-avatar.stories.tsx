@@ -2,10 +2,17 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { usersMock } from "@domain/user";
 import { UserAvatar } from "./user-avatar";
 
+const userImage = usersMock[1].image;
+const userName = usersMock[1].name;
+
 const meta: Meta<typeof UserAvatar> = {
   title: "Components/UserAvatar",
+  component: UserAvatar,
   parameters: {
     layout: "centered",
+  },
+  args: {
+    name: userName,
   },
   argTypes: {
     name: {
@@ -39,9 +46,6 @@ const meta: Meta<typeof UserAvatar> = {
 
 export default meta;
 type Story = StoryObj<typeof UserAvatar>;
-
-const userImage = usersMock[1].image;
-const userName = usersMock[1].name;
 
 export const Default: Story = {
   render: (_) => (

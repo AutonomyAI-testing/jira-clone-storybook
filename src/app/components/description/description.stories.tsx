@@ -3,6 +3,7 @@ import { Description } from "./description";
 
 const meta: Meta<typeof Description> = {
   title: "Components/Description",
+  component: Description,
   parameters: {
     layout: "centered",
   },
