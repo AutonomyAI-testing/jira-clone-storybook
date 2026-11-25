@@ -69,7 +69,7 @@ export const SelectText: Story = {
 
     return (
       <Select.Root name="user" defaultValue={items[0]}>
-        <Select.Trigger aria-label="Open asignee select">
+        <Select.Trigger aria-label="Open assignee select">
           Trigger
           <Select.Value />
           <Select.TriggerIcon />

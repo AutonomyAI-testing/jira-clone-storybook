@@ -42,7 +42,9 @@ export const Default: Story = {
               key={index}
               className={cx(
                 "p-2",
-                index % 2 === 0 ? "bg-elevation-surface" : "bg-elevation-subtle"
+                index % 2 === 0
+                  ? "bg-elevation-surface"
+                  : "bg-elevation-surface-sunken"
               )}
             >
               Scroll item content

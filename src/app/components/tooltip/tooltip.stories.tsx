@@ -14,7 +14,7 @@ type Story = StoryObj<typeof Tooltip>;
 
 export const Default: Story = {
   render: () => (
-    <Tooltip title="Tooltip messsage">
+    <Tooltip title="Tooltip message">
       <div className="rounded bg-background-neutral p-1 text-font">
         Hover over me!
       </div>
