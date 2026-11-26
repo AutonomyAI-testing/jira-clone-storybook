@@ -9,6 +9,7 @@ import { TaskIcon } from "@app/components/icons";
 export const PanelHeaderIssue = ({
   id,
   deleteDisabled,
+  deleteDisabledReason,
 }: PanelHeaderIssueProps): JSX.Element => {
   const location = useLocation();
   const previousUrl = location.pathname.split("/issue")[0];
@@ -21,7 +22,10 @@ export const PanelHeaderIssue = ({
         </span>
         <span className="ml-1 text-font-subtlest text-opacity-80">{id}</span>
       </span>
-      <DeleteIssueModalDialog disabled={deleteDisabled} />
+      <DeleteIssueModalDialog
+        disabled={deleteDisabled}
+        disabledReason={deleteDisabledReason}
+      />
       <Link
         to={previousUrl}
         className="ml-3 flex cursor-pointer rounded border-none p-0.5 text-icon flex-center hover:bg-background-neutral"
@@ -36,23 +40,25 @@ export const PanelHeaderIssue = ({
 interface PanelHeaderIssueProps {
   id: IssueId;
   deleteDisabled?: boolean;
+  deleteDisabledReason?: string;
 }
 
 const DeleteIssueModalDialog = ({
   disabled,
+  disabledReason = "This user cannot delete the issue",
 }: DeleteIssueModalDialogProps): JSX.Element => {
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger
         className={cx(
-          "flex rounded border-none p-1.5 text-icon flex-center",
+          "flex rounded border-none p-1.5 flex-center",
           disabled
-            ? "cursor-not-allowed hover:text-font-disabled"
-            : "hover:bg-background-danger hover:text-font-danger"
+            ? "cursor-not-allowed text-icon-disabled hover:text-font-disabled"
+            : "text-icon hover:bg-background-danger hover:text-font-danger"
         )}
         aria-label="Open delete issue dialog"
         disabled={disabled}
-        title={disabled ? "This user cannot delete the issue" : "Delete issue"}
+        title={disabled ? disabledReason : "Delete issue"}
       >
         <MdDeleteOutline size={26} />
       </AlertDialog.Trigger>
@@ -84,4 +90,5 @@ const DeleteIssueModalDialog = ({
 
 interface DeleteIssueModalDialogProps {
   disabled?: boolean;
+  disabledReason?: string;
 }

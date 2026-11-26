@@ -46,6 +46,12 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
   const navigate = useNavigate();
   const initStatus = (params[0].get("category") as CategoryType) || "TODO";
   const userIsNotReporter = user.id !== reporter.id;
+  const isNewIssue = !issue?.id;
+  const deleteDisabledReason = isNewIssue
+    ? "Cannot delete an issue that has not been created yet"
+    : defaultIssuesIds.includes(issue?.id || "")
+    ? "Cannot delete a default issue"
+    : "This user cannot delete the issue";
 
   const postData = useCallback(
     (formTarget: HTMLFormElement) => {
@@ -134,9 +140,11 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
               <PanelHeaderIssue
                 id={issue?.id || "Create new issue"}
                 deleteDisabled={
+                  isNewIssue ||
                   userIsNotReporter ||
                   defaultIssuesIds.includes(issue?.id || "")
                 }
+                deleteDisabledReason={deleteDisabledReason}
               />
               <Form method="post" onSubmit={handleFormSumbit} ref={formRef}>
                 <div className="grid grid-cols-5 gap-16">
@@ -203,9 +211,7 @@ export const IssuePanel = ({ issue }: Props): JSX.Element => {
                         <p className="m-0">{reporter.name}</p>
                       </div>
                     </div>
-                    <div>
-                      <CreatedUpdatedAt issue={issue} />
-                    </div>
+                    <CreatedUpdatedAt issue={issue} />
                   </section>
                 </div>
                 <div className="mt-6 grid grid-cols-3 items-end">
