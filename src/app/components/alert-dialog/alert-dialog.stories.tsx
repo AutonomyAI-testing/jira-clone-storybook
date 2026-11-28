@@ -16,7 +16,7 @@ type Story = StoryObj<typeof AlertDialog>;
 
 export const Default: Story = {
   render: () => (
-    <AlertDialog.Root>
+    <AlertDialog.Root defaultOpen>
       <AlertDialog.Trigger asChild>
         <Button>Trigger</Button>
       </AlertDialog.Trigger>

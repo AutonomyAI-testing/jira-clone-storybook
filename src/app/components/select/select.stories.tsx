@@ -35,6 +35,7 @@ const SelectUserComponent = () => {
   return (
     <Select.Root
       name="user"
+      defaultOpen
       defaultValue={defaultUser.id}
       onValueChange={onValueChange}
     >
@@ -68,7 +69,7 @@ export const SelectText: Story = {
     const items = ["Item 1", "Item 2", "Item 3"];
 
     return (
-      <Select.Root name="user" defaultValue={items[0]}>
+      <Select.Root name="user" defaultOpen defaultValue={items[0]}>
         <Select.Trigger aria-label="Open asignee select">
           Trigger
           <Select.Value />

@@ -8,6 +8,15 @@ const meta: Meta<typeof Dialog> = {
     layout: "centered",
   },
   argTypes: {},
+  decorators: [
+    (Story) => (
+      <>
+        {/* The overlay is portaled into the document, so it needs a document with a height */}
+        <style>{`html, body, #storybook-root { height: 100%; margin: 0; }`}</style>
+        <Story />
+      </>
+    ),
+  ],
 };
 
 export default meta;
@@ -15,7 +24,7 @@ type Story = StoryObj<typeof Dialog>;
 
 export const Default: Story = {
   render: () => (
-    <Dialog.Root>
+    <Dialog.Root defaultOpen>
       <Dialog.Trigger asChild>
         <Button>Trigger</Button>
       </Dialog.Trigger>
